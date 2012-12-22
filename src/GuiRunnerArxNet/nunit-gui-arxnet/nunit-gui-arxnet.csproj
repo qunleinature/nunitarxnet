@@ -141,6 +141,7 @@
     <Compile Include="TestAssemblyInfoFormArxNet.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="try1.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="NUnitFormArxNet.resx">
