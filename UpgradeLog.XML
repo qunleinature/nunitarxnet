@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="NUnitArxNet">
+</Property><Property Name="解决方案文件" Value="G:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.2-AC2012\NUnitArxNet.sln">
+</Property><Property Name="Date" Value="2012年12月21日">
+</Property><Property Name="Time" Value="4:56">
+</Property></Properties><Event ErrorLevel="1" Project="nunit-gui.exe" Source="..\NUnit-2.6.0.11340\src\GuiRunner\nunit-gui-exe\nunit-gui.exe.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="nunit-gui.exe" Source="..\NUnit-2.6.0.11340\src\GuiRunner\nunit-gui-exe\nunit-gui.exe.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="nunit-gui.exe" Source="..\NUnit-2.6.0.11340\src\GuiRunner\nunit-gui-exe\nunit-gui.exe.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="nunit-gui" Source="..\NUnit-2.6.0.11340\src\GuiRunner\nunit-gui\nunit-gui.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="nunit-gui" Source="..\NUnit-2.6.0.11340\src\GuiRunner\nunit-gui\nunit-gui.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="nunit-gui" Source="..\NUnit-2.6.0.11340\src\GuiRunner\nunit-gui\nunit-gui.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="nunit.mocks" Source="..\NUnit-2.6.0.11340\src\NUnitMocks\mocks\nunit.mocks.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="nunit.mocks" Source="..\NUnit-2.6.0.11340\src\NUnitMocks\mocks\nunit.mocks.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="nunit.mocks" Source="..\NUnit-2.6.0.11340\src\NUnitMocks\mocks\nunit.mocks.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="nunit.uikit.dll" Source="..\NUnit-2.6.0.11340\src\GuiComponents\UiKit\nunit.uikit.dll.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="nunit.uikit.dll" Source="..\NUnit-2.6.0.11340\src\GuiComponents\UiKit\nunit.uikit.dll.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="nunit.uikit.dll" Source="..\NUnit-2.6.0.11340\src\GuiComponents\UiKit\nunit.uikit.dll.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="nunit.util.dll" Source="..\NUnit-2.6.0.11340\src\ClientUtilities\util\nunit.util.dll.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="nunit.util.dll" Source="..\NUnit-2.6.0.11340\src\ClientUtilities\util\nunit.util.dll.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="nunit.util.dll" Source="..\NUnit-2.6.0.11340\src\ClientUtilities\util\nunit.util.dll.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="nunit.framework.dll" Source="..\NUnit-2.6.0.11340\src\NUnitFramework\framework\nunit.framework.dll.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="nunit.framework.dll" Source="..\NUnit-2.6.0.11340\src\NUnitFramework\framework\nunit.framework.dll.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="nunit.framework.dll" Source="..\NUnit-2.6.0.11340\src\NUnitFramework\framework\nunit.framework.dll.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="nunit.mocks.tests" Source="..\NUnit-2.6.0.11340\src\NUnitMocks\tests\nunit.mocks.tests.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="nunit.mocks.tests" Source="..\NUnit-2.6.0.11340\src\NUnitMocks\tests\nunit.mocks.tests.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="nunit.mocks.tests" Source="..\NUnit-2.6.0.11340\src\NUnitMocks\tests\nunit.mocks.tests.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="nunit.uikit.tests" Source="..\NUnit-2.6.0.11340\src\GuiComponents\tests\nunit.uikit.tests.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="nunit.uikit.tests" Source="..\NUnit-2.6.0.11340\src\GuiComponents\tests\nunit.uikit.tests.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="nunit.uikit.tests" Source="..\NUnit-2.6.0.11340\src\GuiComponents\tests\nunit.uikit.tests.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="nunit-console.exe" Source="..\NUnit-2.6.0.11340\src\ConsoleRunner\nunit-console-exe\nunit-console.exe.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="nunit-console.exe" Source="..\NUnit-2.6.0.11340\src\ConsoleRunner\nunit-console-exe\nunit-console.exe.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="nunit-console.exe" Source="..\NUnit-2.6.0.11340\src\ConsoleRunner\nunit-console-exe\nunit-console.exe.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="nunit-console.tests" Source="..\NUnit-2.6.0.11340\src\ConsoleRunner\tests\nunit-console.tests.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="nunit-console.tests" Source="..\NUnit-2.6.0.11340\src\ConsoleRunner\tests\nunit-console.tests.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="nunit-console.tests" Source="..\NUnit-2.6.0.11340\src\ConsoleRunner\tests\nunit-console.tests.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="nunit.util.tests" Source="..\NUnit-2.6.0.11340\src\ClientUtilities\tests\nunit.util.tests.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="nunit.util.tests" Source="..\NUnit-2.6.0.11340\src\ClientUtilities\tests\nunit.util.tests.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="nunit.framework.tests" Source="..\NUnit-2.6.0.11340\src\NUnitFramework\tests\nunit.framework.tests.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="nunit.framework.tests" Source="..\NUnit-2.6.0.11340\src\NUnitFramework\tests\nunit.framework.tests.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="nunit.core.dll" Source="..\NUnit-2.6.0.11340\src\NUnitCore\core\nunit.core.dll.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="nunit.core.dll" Source="..\NUnit-2.6.0.11340\src\NUnitCore\core\nunit.core.dll.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="nunit.core.dll" Source="..\NUnit-2.6.0.11340\src\NUnitCore\core\nunit.core.dll.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="nunit.core.tests" Source="..\NUnit-2.6.0.11340\src\NUnitCore\tests\nunit.core.tests.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="nunit.core.tests" Source="..\NUnit-2.6.0.11340\src\NUnitCore\tests\nunit.core.tests.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="test-assembly" Source="..\NUnit-2.6.0.11340\src\tests\test-assembly\test-assembly.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="test-assembly" Source="..\NUnit-2.6.0.11340\src\tests\test-assembly\test-assembly.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="test-assembly" Source="..\NUnit-2.6.0.11340\src\tests\test-assembly\test-assembly.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="nunit.core.interfaces.dll" Source="..\NUnit-2.6.0.11340\src\NUnitCore\interfaces\nunit.core.interfaces.dll.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="nunit.core.interfaces.dll" Source="..\NUnit-2.6.0.11340\src\NUnitCore\interfaces\nunit.core.interfaces.dll.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="nunit.core.interfaces.dll" Source="..\NUnit-2.6.0.11340\src\NUnitCore\interfaces\nunit.core.interfaces.dll.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="mock-assembly" Source="..\NUnit-2.6.0.11340\src\tests\mock-assembly\mock-assembly.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="mock-assembly" Source="..\NUnit-2.6.0.11340\src\tests\mock-assembly\mock-assembly.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="mock-assembly" Source="..\NUnit-2.6.0.11340\src\tests\mock-assembly\mock-assembly.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="nonamespace-assembly" Source="..\NUnit-2.6.0.11340\src\tests\nonamespace-assembly\nonamespace-assembly.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="nonamespace-assembly" Source="..\NUnit-2.6.0.11340\src\tests\nonamespace-assembly\nonamespace-assembly.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="nonamespace-assembly" Source="..\NUnit-2.6.0.11340\src\tests\nonamespace-assembly\nonamespace-assembly.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="test-utilities" Source="..\NUnit-2.6.0.11340\src\tests\test-utilities\test-utilities.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="test-utilities" Source="..\NUnit-2.6.0.11340\src\tests\test-utilities\test-utilities.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="test-utilities" Source="..\NUnit-2.6.0.11340\src\tests\test-utilities\test-utilities.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="nunit-console" Source="..\NUnit-2.6.0.11340\src\ConsoleRunner\nunit-console\nunit-console.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="nunit-console" Source="..\NUnit-2.6.0.11340\src\ConsoleRunner\nunit-console\nunit-console.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="nunit-console" Source="..\NUnit-2.6.0.11340\src\ConsoleRunner\nunit-console\nunit-console.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="nunit-agent.exe" Source="..\NUnit-2.6.0.11340\src\NUnitTestServer\nunit-agent-exe\nunit-agent.exe.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="nunit-agent.exe" Source="..\NUnit-2.6.0.11340\src\NUnitTestServer\nunit-agent-exe\nunit-agent.exe.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="nunit-agent.exe" Source="..\NUnit-2.6.0.11340\src\NUnitTestServer\nunit-agent-exe\nunit-agent.exe.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="pnunit.framework" Source="..\NUnit-2.6.0.11340\src\PNUnit\pnunit.framework\pnunit.framework.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="pnunit.framework" Source="..\NUnit-2.6.0.11340\src\PNUnit\pnunit.framework\pnunit.framework.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="pnunit.framework" Source="..\NUnit-2.6.0.11340\src\PNUnit\pnunit.framework\pnunit.framework.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="pnunit-agent" Source="..\NUnit-2.6.0.11340\src\PNUnit\agent\pnunit-agent.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="pnunit-agent" Source="..\NUnit-2.6.0.11340\src\PNUnit\agent\pnunit-agent.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="pnunit-agent" Source="..\NUnit-2.6.0.11340\src\PNUnit\agent\pnunit-agent.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="pnunit-launcher" Source="..\NUnit-2.6.0.11340\src\PNUnit\launcher\pnunit-launcher.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="pnunit-launcher" Source="..\NUnit-2.6.0.11340\src\PNUnit\launcher\pnunit-launcher.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="pnunit-launcher" Source="..\NUnit-2.6.0.11340\src\PNUnit\launcher\pnunit-launcher.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="pnunit.tests" Source="..\NUnit-2.6.0.11340\src\PNUnit\tests\pnunit.tests.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="pnunit.tests" Source="..\NUnit-2.6.0.11340\src\PNUnit\tests\pnunit.tests.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="pnunit.tests" Source="..\NUnit-2.6.0.11340\src\PNUnit\tests\pnunit.tests.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="nunit.uiexception.dll" Source="..\NUnit-2.6.0.11340\src\GuiException\UiException\nunit.uiexception.dll.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="nunit.uiexception.dll" Source="..\NUnit-2.6.0.11340\src\GuiException\UiException\nunit.uiexception.dll.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="nunit.uiexception.dll" Source="..\NUnit-2.6.0.11340\src\GuiException\UiException\nunit.uiexception.dll.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="nunit.uiexception.tests" Source="..\NUnit-2.6.0.11340\src\GuiException\tests\nunit.uiexception.tests.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="nunit.uiexception.tests" Source="..\NUnit-2.6.0.11340\src\GuiException\tests\nunit.uiexception.tests.csproj" Description="Converted">
+</Event><Event ErrorLevel="2" Project="nunit-editor" Source="..\NUnit-2.6.0.11340\src\ProjectEditor\editor\nunit-editor.csproj" Description="无法打开项目文件以执行升级操作。">
+</Event><Event ErrorLevel="2" Project="nunit-editor.tests" Source="..\NUnit-2.6.0.11340\src\ProjectEditor\tests\nunit-editor.tests.csproj" Description="无法打开项目文件以执行升级操作。">
+</Event><Event ErrorLevel="0" Project="nunit-command-arxnet.dll" Source="src\CommandRunnerArxNet\nunit-command-arxnet-dll\nunit-command-arxnet.dll.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="nunit-command-arxnet.dll" Source="src\CommandRunnerArxNet\nunit-command-arxnet-dll\nunit-command-arxnet.dll.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="nunit-command-arxnet" Source="src\CommandRunnerArxNet\nunit-command-arxnet\nunit-command-arxnet.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="nunit-command-arxnet" Source="src\CommandRunnerArxNet\nunit-command-arxnet\nunit-command-arxnet.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="cs-failures" Source="samples\csharp\failures\cs-failures.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="cs-failures" Source="samples\csharp\failures\cs-failures.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="cs-money" Source="samples\csharp\money\cs-money.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="cs-money" Source="samples\csharp\money\cs-money.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="cs-syntax" Source="samples\csharp\syntax\cs-syntax.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="cs-syntax" Source="samples\csharp\syntax\cs-syntax.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="nunit-command-arxnet.tests" Source="src\CommandRunnerArxNet\tests\nunit-command-arxnet.tests.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="nunit-command-arxnet.tests" Source="src\CommandRunnerArxNet\tests\nunit-command-arxnet.tests.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="nunit-gui-arxnet.dll" Source="src\GuiRunnerArxNet\nunit-gui-arxnet-dll\nunit-gui-arxnet.dll.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="nunit-gui-arxnet.dll" Source="src\GuiRunnerArxNet\nunit-gui-arxnet-dll\nunit-gui-arxnet.dll.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="nunit-gui-arxnet" Source="src\GuiRunnerArxNet\nunit-gui-arxnet\nunit-gui-arxnet.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="nunit-gui-arxnet" Source="src\GuiRunnerArxNet\nunit-gui-arxnet\nunit-gui-arxnet.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="nunit-gui-arxnet.tests" Source="src\GuiRunnerArxNet\tests\nunit-gui-arxnet.tests.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="nunit-gui-arxnet.tests" Source="src\GuiRunnerArxNet\tests\nunit-gui-arxnet.tests.csproj" Description="无需转换">
+</Event><Event ErrorLevel="1" Project="nunit-gui.tests" Source="..\NUnit-2.6.0.11340\src\GuiRunner\tests\nunit-gui.tests.csproj" Description="您的项目以 .NET Framework 2.0 或 3.0 为目标。如果您的项目使用的程序集需要更新的 .NET Framework，则项目生成将失败。通过单击项目菜单上的“属性”，然后在“.NET Framework”下拉框中选择一个新版本，可以更改 .NET Framework 的版本。(在 Visual Basic 中，可在单击“高级编辑器选项...”按钮时显示的“编译”选项卡上找到此下拉框。)">
+</Event><Event ErrorLevel="0" Project="nunit-gui.tests" Source="..\NUnit-2.6.0.11340\src\GuiRunner\tests\nunit-gui.tests.csproj" Description="项目已成功转换">
+</Event><Event ErrorLevel="3" Project="nunit-gui.tests" Source="..\NUnit-2.6.0.11340\src\GuiRunner\tests\nunit-gui.tests.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="DwgClean" Source="..\..\CAD\DwgClean\0.0.2-AC2012\DwgClean\DwgClean.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="DwgClean" Source="..\..\CAD\DwgClean\0.0.2-AC2012\DwgClean\DwgClean.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="TestDwgClean" Source="..\..\CAD\DwgClean\0.0.2-AC2012\TestDwgClean\TestDwgClean.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="TestDwgClean" Source="..\..\CAD\DwgClean\0.0.2-AC2012\TestDwgClean\TestDwgClean.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="nunit-util-arxnet" Source="src\ClientUtilitiesArxNet\nunit-util-arxnet\nunit-util-arxnet.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="nunit-util-arxnet" Source="src\ClientUtilitiesArxNet\nunit-util-arxnet\nunit-util-arxnet.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="nunit-util-arxnet.tests" Source="src\ClientUtilitiesArxNet\tests\nunit-util-arxnet.tests.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="nunit-util-arxnet.tests" Source="src\ClientUtilitiesArxNet\tests\nunit-util-arxnet.tests.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="nunit-uikit-arxnet" Source="src\GuiComponentsArxNet\nunit-uikit-arxnet\nunit-uikit-arxnet.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="nunit-uikit-arxnet" Source="src\GuiComponentsArxNet\nunit-uikit-arxnet\nunit-uikit-arxnet.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="nunit-uikit-arxnet.tests" Source="src\GuiComponentsArxNet\tests\nunit-uikit-arxnet.tests.csproj" Description="项目文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="nunit-uikit-arxnet.tests" Source="src\GuiComponentsArxNet\tests\nunit-uikit-arxnet.tests.csproj" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="" Source="NUnitArxNet.sln" Description="解决方案文件不需要转换。">
+</Event><Event ErrorLevel="3" Project="" Source="NUnitArxNet.sln" Description="无需转换">
+</Event><Event ErrorLevel="0" Project="nunit.framework.dll" Source="..\NUnit-2.6.0.11340\src\NUnitFramework\framework\nunit.framework.dll.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="nunit.framework.tests" Source="..\NUnit-2.6.0.11340\src\NUnitFramework\tests\nunit.framework.tests.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="nunit.util.dll" Source="..\NUnit-2.6.0.11340\src\ClientUtilities\util\nunit.util.dll.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="nunit.util.tests" Source="..\NUnit-2.6.0.11340\src\ClientUtilities\tests\nunit.util.tests.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="nunit-console.exe" Source="..\NUnit-2.6.0.11340\src\ConsoleRunner\nunit-console-exe\App.config" Description="文件已成功转换。所有的 &lt;supportedRuntime&gt; 和 &lt;requiredRuntime&gt; 标记都已移除，以使项目能够用 Visual Studio 2005 生成并运行。">
+</Event><Event ErrorLevel="3" Project="nunit-console.exe" Source="..\NUnit-2.6.0.11340\src\ConsoleRunner\nunit-console-exe\App.config" Description="Converted">
+</Event><Event ErrorLevel="0" Project="nunit-console.tests" Source="..\NUnit-2.6.0.11340\src\ConsoleRunner\tests\nunit-console.tests.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="nunit-console" Source="..\NUnit-2.6.0.11340\src\ConsoleRunner\nunit-console\nunit-console.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="nunit-gui.exe" Source="..\NUnit-2.6.0.11340\src\GuiRunner\nunit-gui-exe\App.config" Description="文件已成功转换。所有的 &lt;supportedRuntime&gt; 和 &lt;requiredRuntime&gt; 标记都已移除，以使项目能够用 Visual Studio 2005 生成并运行。">
+</Event><Event ErrorLevel="3" Project="nunit-gui.exe" Source="..\NUnit-2.6.0.11340\src\GuiRunner\nunit-gui-exe\App.config" Description="Converted">
+</Event><Event ErrorLevel="0" Project="nunit-gui" Source="..\NUnit-2.6.0.11340\src\GuiRunner\nunit-gui\nunit-gui.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="nunit-gui.tests" Source="..\NUnit-2.6.0.11340\src\GuiRunner\tests\nunit-gui.tests.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="nunit.core.dll" Source="..\NUnit-2.6.0.11340\src\NUnitCore\core\nunit.core.dll.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="nunit.core.tests" Source="..\NUnit-2.6.0.11340\src\NUnitCore\tests\nunit.core.tests.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="nunit.core.interfaces.dll" Source="..\NUnit-2.6.0.11340\src\NUnitCore\interfaces\nunit.core.interfaces.dll.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="nunit.uikit.dll" Source="..\NUnit-2.6.0.11340\src\GuiComponents\UiKit\nunit.uikit.dll.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="nunit.uikit.tests" Source="..\NUnit-2.6.0.11340\src\GuiComponents\tests\nunit.uikit.tests.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="nunit.uiexception.dll" Source="..\NUnit-2.6.0.11340\src\GuiException\UiException\nunit.uiexception.dll.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="nunit.uiexception.tests" Source="..\NUnit-2.6.0.11340\src\GuiException\tests\nunit.uiexception.tests.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="test-assembly" Source="..\NUnit-2.6.0.11340\src\tests\test-assembly\test-assembly.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="mock-assembly" Source="..\NUnit-2.6.0.11340\src\tests\mock-assembly\mock-assembly.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="nonamespace-assembly" Source="..\NUnit-2.6.0.11340\src\tests\nonamespace-assembly\nonamespace-assembly.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="test-utilities" Source="..\NUnit-2.6.0.11340\src\tests\test-utilities\test-utilities.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="nunit.mocks" Source="..\NUnit-2.6.0.11340\src\NUnitMocks\mocks\nunit.mocks.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="nunit.mocks.tests" Source="..\NUnit-2.6.0.11340\src\NUnitMocks\tests\nunit.mocks.tests.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="pnunit.framework" Source="..\NUnit-2.6.0.11340\src\PNUnit\pnunit.framework\pnunit.framework.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="pnunit-agent" Source="..\NUnit-2.6.0.11340\src\PNUnit\agent\pnunit-agent.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="pnunit-launcher" Source="..\NUnit-2.6.0.11340\src\PNUnit\launcher\pnunit-launcher.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="pnunit.tests" Source="..\NUnit-2.6.0.11340\src\PNUnit\tests\pnunit.tests.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event><Event ErrorLevel="0" Project="nunit-agent.exe" Source="..\NUnit-2.6.0.11340\src\NUnitTestServer\nunit-agent-exe\nunit-agent.exe.csproj" Description="扫描完成: 项目文件不需要升级。">
+</Event></UpgradeLog>
