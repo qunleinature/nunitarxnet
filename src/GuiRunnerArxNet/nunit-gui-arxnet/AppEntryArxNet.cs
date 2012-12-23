@@ -136,10 +136,10 @@ namespace NUnit.Gui.ArxNet
             {
                 log.Info("Starting Gui Application");
                 //FormsApplication.Run(form);
-                //Document doc = CADApplication.DocumentManager.MdiActiveDocument;
-                //CADApplication.ShowModelessDialog(doc.Window.Handle, form);                
+                Document doc = CADApplication.DocumentManager.MdiActiveDocument;
+                CADApplication.ShowModelessDialog(doc.Window.Handle, form);                
                 //CADApplication.ShowModalDialog(form);
-                CADApplication.ShowModelessDialog(form);
+                //CADApplication.ShowModelessDialog(form);
                 //log.Info("Application Exit");
             }
             catch (SystemException ex)
