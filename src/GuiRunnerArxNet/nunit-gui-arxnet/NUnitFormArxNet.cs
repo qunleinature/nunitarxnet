@@ -180,7 +180,19 @@ namespace NUnit.Gui.ArxNet
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );            
+			base.Dispose( disposing );
+
+            //2012.12.23改
+            log.Info("Application Exit");
+
+            log.Info("Stopping Services");
+            ServiceManager.Services.StopAllServices();
+            ServiceManager.Services.ClearServices();
+
+            log.Info("Exiting NUnit GUI");
+            InternalTrace.Close();
+            
+            //2012.12.23改
 		}
 
 		#endregion
@@ -1893,6 +1905,7 @@ the version under which NUnit is currently running ({0}) or trying to load a 64-
 
         private void NUnitFormArxNet_Closed(object sender, FormClosedEventArgs e)
         {
+            /*
             //2012.12.23改
             log.Info("Application Exit");
 
@@ -1901,7 +1914,9 @@ the version under which NUnit is currently running ({0}) or trying to load a 64-
 
             log.Info("Exiting NUnit GUI");
             InternalTrace.Close();
-            //2012.12.23改            
+            //2012.12.23改
+            */
+            
         }
 	}
 }

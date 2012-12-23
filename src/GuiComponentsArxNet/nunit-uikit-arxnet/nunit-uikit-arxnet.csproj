@@ -117,8 +117,23 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ResultTabsArxNet.resx">
+      <DependentUpon>ResultTabsArxNet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsDialogBaseArxNet.resx">
+      <DependentUpon>SettingsDialogBaseArxNet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimpleSettingsDialogArxNet.resx">
+      <DependentUpon>SimpleSettingsDialogArxNet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabbedSettingsDialogArxNet.resx">
+      <DependentUpon>TabbedSettingsDialogArxNet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TestTreeArxNet.resx">
       <DependentUpon>TestTreeArxNet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TreeBasedSettingsDialogArxNet.resx">
+      <DependentUpon>TreeBasedSettingsDialogArxNet.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

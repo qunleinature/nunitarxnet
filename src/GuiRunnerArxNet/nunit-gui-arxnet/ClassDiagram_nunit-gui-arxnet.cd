@@ -11,6 +11,7 @@
     <Position X="2.75" Y="0.5" Width="2" />
     <Compartments>
       <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
       <HashCode>mMKBxOxajnTC5RqpfczXGOJy5KLkMJgvtmyycQmTETc=</HashCode>
