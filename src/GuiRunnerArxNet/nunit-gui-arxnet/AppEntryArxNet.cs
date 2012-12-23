@@ -9,7 +9,7 @@
 // 2012.8.24修改
 // 2012.12.23修改:
 //  1.改GuiTestEventDispatcher为GuiTestEventDispatcherArxNet  
-//  2.
+//  2.改主窗体为无模式对话框
 // ****************************************************************
 
 using System;
