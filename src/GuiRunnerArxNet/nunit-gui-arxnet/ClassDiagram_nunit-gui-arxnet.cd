@@ -18,7 +18,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="NUnit.Gui.ArxNet.AppEntryArxNet">
-    <Position X="5" Y="0.5" Width="1.5" />
+    <Position X="5.25" Y="0.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>AppEntryArxNet.cs</FileName>
