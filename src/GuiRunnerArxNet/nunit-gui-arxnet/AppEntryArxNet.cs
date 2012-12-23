@@ -7,6 +7,9 @@
 // ****************************************************************
 // Copyright 2012, Lei Qun
 // 2012.8.24修改
+// 2012.12.23修改:
+//  1.改GuiTestEventDispatcher为GuiTestEventDispatcherArxNet  
+//  2.
 // ****************************************************************
 
 using System;
@@ -134,16 +137,23 @@ namespace NUnit.Gui.ArxNet
                 log.Info("Starting Gui Application");
                 //FormsApplication.Run(form);
                 //Document doc = CADApplication.DocumentManager.MdiActiveDocument;
-                //CADApplication.ShowModelessDialog(doc.Window.Handle, form);
+                //CADApplication.ShowModelessDialog(doc.Window.Handle, form);                
+                //CADApplication.ShowModalDialog(form);
+                CADApplication.ShowModelessDialog(form);
                 //log.Info("Application Exit");
-                CADApplication.ShowModalDialog(form);
             }
             catch (SystemException ex)
             {
                 log.Error("Gui Application threw an excepion", ex);
+
+                //2012.12.23改
+                log.Info("Stopping Services");
+                ServiceManager.Services.StopAllServices();
+                //2012.12.23改
+
                 throw;
             }
-            finally
+            /*finally
             {
                 log.Info("Stopping Services");
                 ServiceManager.Services.StopAllServices();
@@ -157,7 +167,7 @@ namespace NUnit.Gui.ArxNet
             }
 
             log.Info("Exiting NUnit GUI");
-            InternalTrace.Close();
+            InternalTrace.Close();*/
 
             return 0;
         }

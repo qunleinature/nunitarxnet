@@ -9,6 +9,7 @@
 // 2012.8.24修改
 // 2012.12.20修改
 // 2012.12.20修改:ResultTabs变为ResultTabsArxNet
+// 2012.12.23添加：private void NUnitFormArxNet_Closed(object sender, FormClosedEventArgs e)
 // ****************************************************************
 
 using System;
@@ -167,12 +168,7 @@ namespace NUnit.Gui.ArxNet
 			this.recentFilesService = ServicesArxNet.RecentFiles;
 			this.userSettings = ServicesArxNet.UserSettings;
 
-            this.presenter = new NUnitPresenterArxNet(this, TestLoader);
-
-            //保存前一CAD活动文档
-            //prevActiveDocument = CADApplication.DocumentManager.MdiActiveDocument;
-            //CADApplication.DocumentManager.MdiActiveDocument.Window.h
-        
+            this.presenter = new NUnitPresenterArxNet(this, TestLoader);        
 		}
 
 		protected override void Dispose( bool disposing )
@@ -184,18 +180,7 @@ namespace NUnit.Gui.ArxNet
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
-
-            /*AppEntryArxNet.log.Info("Application Exit");
-
-            AppEntryArxNet.log.Info("Stopping Services");
-            ServiceManager.Services.StopAllServices();
-
-            AppEntryArxNet.log.Info("Exiting NUnit GUI");
-            InternalTrace.Close();*/
-
-            //恢复前一CAD活动文档
-            //CADApplication.DocumentManager.MdiActiveDocument = prevActiveDocument;
+			base.Dispose( disposing );            
 		}
 
 		#endregion
@@ -1908,13 +1893,15 @@ the version under which NUnit is currently running ({0}) or trying to load a 64-
 
         private void NUnitFormArxNet_Closed(object sender, FormClosedEventArgs e)
         {
-            /*AppEntryArxNet.log.Info("Application Exit");
+            //2012.12.23改
+            log.Info("Application Exit");
 
-            AppEntryArxNet.log.Info("Stopping Services");
-            ServiceManager.ServicesArxNet.StopAllServices();            
+            log.Info("Stopping Services");
+            ServiceManager.Services.StopAllServices();
 
-            AppEntryArxNet.log.Info("Exiting NUnit GUI");
-            InternalTrace.Close();*/
+            log.Info("Exiting NUnit GUI");
+            InternalTrace.Close();
+            //2012.12.23改            
         }
 	}
 }
