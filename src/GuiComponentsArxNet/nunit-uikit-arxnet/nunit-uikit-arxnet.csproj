@@ -78,6 +78,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GuiTestEventDispatcherArxNet.cs" />
     <Compile Include="ResultTabsArxNet.cs">
       <SubType>UserControl</SubType>
     </Compile>

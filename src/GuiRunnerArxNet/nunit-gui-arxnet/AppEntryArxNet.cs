@@ -22,6 +22,7 @@ using NUnit.Util;
 using NUnit.Core;
 using NUnit.Core.Extensibility;
 using NUnit.Util.ArxNet;
+using NUnit.UiKit.ArxNet;
 
 using Autodesk.AutoCAD.Runtime;
 using Autodesk.AutoCAD.EditorInput;
@@ -101,7 +102,7 @@ namespace NUnit.Gui.ArxNet
                 ServiceManager.Services.AddService(new DomainManager());
                 ServiceManager.Services.AddService(new RecentFilesService());
                 ServiceManager.Services.AddService(new ProjectService());
-                ServiceManager.Services.AddService(new TestLoaderArxNet(new GuiTestEventDispatcher()));
+                ServiceManager.Services.AddService(new TestLoaderArxNet(new GuiTestEventDispatcherArxNet()));
                 ServiceManager.Services.AddService(new AddinRegistry());
                 ServiceManager.Services.AddService(new AddinManager());
                 ServiceManager.Services.AddService(new TestAgency());
