@@ -10,6 +10,7 @@
 // 2012.12.20修改
 // 2012.12.20修改:ResultTabs变为ResultTabsArxNet
 // 2012.12.23添加：private void NUnitFormArxNet_Closed(object sender, FormClosedEventArgs e)
+// 2012.12.23修改：清理工作放在protected override void Dispose( bool disposing )中
 // ****************************************************************
 
 using System;

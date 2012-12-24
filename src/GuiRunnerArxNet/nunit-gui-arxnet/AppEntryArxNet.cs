@@ -10,6 +10,8 @@
 // 2012.12.23修改:
 //  1.改GuiTestEventDispatcher为GuiTestEventDispatcherArxNet  
 //  2.改主窗体为无模式对话框
+// 2012.24修改
+//  1.利用反射将ServiceManager类复位
 // ****************************************************************
 
 using System;
@@ -19,6 +21,8 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using System.Reflection;
+using System.Collections;
 
 using NUnit.UiKit;
 using NUnit.Util;
@@ -51,6 +55,14 @@ namespace NUnit.Gui.ArxNet
         [STAThread]
         new public static int Main(string[] args)
         {
+            //利用反射将ServiceManager类复位
+            FieldInfo field;
+            Type type = typeof(ServiceManager);
+            field = type.GetField("services", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.SetField);
+            field.SetValue(ServiceManager.Services, new ArrayList());
+            field = type.GetField("serviceIndex", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.SetField);
+            field.SetValue(ServiceManager.Services, new Hashtable());
+
             // Create SettingsService early so we know the trace level right at the start
             SettingsService settingsService = new SettingsService();
             InternalTrace.Initialize("nunit-gui_%p.log", (InternalTraceLevel)settingsService.GetSetting("Options.InternalTraceLevel", InternalTraceLevel.Default));
