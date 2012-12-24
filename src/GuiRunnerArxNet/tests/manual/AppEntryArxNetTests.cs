@@ -11,6 +11,9 @@ using System.Text;
 
 using NUnit.Framework;
 using NUnit.Gui.ArxNet;
+using NUnit.UiKit;
+
+using Com.Utility.UnitTest;
 
 namespace NUnit.Gui.ArxNet.Tests
 {
@@ -23,7 +26,17 @@ namespace NUnit.Gui.ArxNet.Tests
         {
             string[] args = new string[0];
             AppEntryArxNet appEntryArxNet = new AppEntryArxNet();
-            appEntryArxNet.Main(args);
+            int result = appEntryArxNet.Main(args);
+            Assert.That(result, Is.EqualTo(0));
+        }
+
+        //private static IMessageDisplay MessageDisplay
+        [Test]
+        public void MessageDisplay()
+        {
+            IMessageDisplay messageDisplay = UnitTestHelper.GetNonPublicStaticProperty(typeof(AppEntryArxNet), "MessageDisplay") as IMessageDisplay;
+            Assert.That(messageDisplay, Is.Not.Null);
+            messageDisplay.Display("NUnit.Gui.ArxNet.Tests.MessageDisplay");
         }
     }
 }
