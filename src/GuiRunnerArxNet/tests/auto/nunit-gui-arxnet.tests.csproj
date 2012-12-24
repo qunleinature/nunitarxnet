@@ -32,7 +32,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\bin\Debug\tests\</OutputPath>
+    <OutputPath>..\..\..\..\bin\Debug\tests\</OutputPath>
     <DefineConstants>TRACE;DEBUG;CLR_2_0;NET_3_5;CS_3_0;AC2012</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
