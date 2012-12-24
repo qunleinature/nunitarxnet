@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NUnit.Util.ArxNet.TestLoaderArxNet">
+    <Position X="0.75" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>IAQCAAEDEKCgAgMgBFAKCAIYIwAIhMcIRkAgCIQCACo=</HashCode>
+      <FileName>TestLoaderArxNet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NUnit.Util.ArxNet.ServicesArxNet">
+    <Position X="4.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAAAgEBAABAASAABBACQAAAAEgAAAAAAAACAAAAIAIA=</HashCode>
+      <FileName>ServicesArxNet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="微软雅黑" Size="9" />
+</ClassDiagram>

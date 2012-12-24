@@ -192,7 +192,8 @@ namespace NUnit.Gui.ArxNet
 
             log.Info("Exiting NUnit GUI");
             InternalTrace.Close();
-            
+
+            if (AppEntryArxNet.nunitRunned == false) AppEntryArxNet.nunitRunned = true;
             //2012.12.23¸Ä
 		}
 

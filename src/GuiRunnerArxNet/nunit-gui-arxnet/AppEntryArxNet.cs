@@ -11,7 +11,9 @@
 //  1.改GuiTestEventDispatcher为GuiTestEventDispatcherArxNet  
 //  2.改主窗体为无模式对话框
 // 2012.24修改
-//  1.利用反射将ServiceManager类复位
+//  1.利用反射将ServiceManager、Services、ServicesArxNet类复位
+//  2.public int NUnit.Gui.ArxNet.AppEntryArxNet.Main (string[] args)去掉static
+//  3.增加：static public bool nunitRunned = false;//nunit测试命令是否已运行过了
 // ****************************************************************
 
 using System;
@@ -45,23 +47,66 @@ namespace NUnit.Gui.ArxNet
     /// <summary>
     /// Class to manage application startup.
     /// </summary>
-    public class AppEntryArxNet : AppEntry
+    public class AppEntryArxNet
     {
         static internal Logger log = InternalTrace.GetLogger(typeof(AppEntryArxNet));
+
+        static public bool nunitRunned = false;//nunit测试命令是否已运行过了
 
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        new public static int Main(string[] args)
+        public int Main(string[] args)
         {
-            //利用反射将ServiceManager类复位
-            FieldInfo field;
-            Type type = typeof(ServiceManager);
-            field = type.GetField("services", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.SetField);
-            field.SetValue(ServiceManager.Services, new ArrayList());
-            field = type.GetField("serviceIndex", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.SetField);
-            field.SetValue(ServiceManager.Services, new Hashtable());
+            if (nunitRunned)
+            {
+                Type type;
+                FieldInfo field;
+                //利用反射将含静态成员的类复位
+                //ServiceManager类复位
+                type = typeof(ServiceManager);
+                field = type.GetField("services", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(ServiceManager.Services, new ArrayList());
+                field = type.GetField("serviceIndex", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(ServiceManager.Services, new Hashtable());
+                //Services类复位
+                type = typeof(Services);
+                field = type.GetField("addinManager", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(null, null);
+                field = type.GetField("addinRegistry", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(null, null);
+                field = type.GetField("agency", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(null, null);
+                field = type.GetField("domainManager", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(null, null);
+                field = type.GetField("loader", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(null, null);
+                field = type.GetField("projectService", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(null, null);
+                field = type.GetField("recentFiles", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(null, null);
+                field = type.GetField("userSettings", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(null, null);
+                //ServicesArxNet类复位
+                type = typeof(ServicesArxNet);
+                field = type.GetField("addinManager", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(null, null);
+                field = type.GetField("addinRegistry", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(null, null);
+                field = type.GetField("agency", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(null, null);
+                field = type.GetField("domainManager", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(null, null);
+                field = type.GetField("loader", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(null, null);
+                field = type.GetField("projectService", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(null, null);
+                field = type.GetField("recentFiles", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(null, null);
+                field = type.GetField("userSettings", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(null, null);
+            }
 
             // Create SettingsService early so we know the trace level right at the start
             SettingsService settingsService = new SettingsService();
@@ -161,6 +206,7 @@ namespace NUnit.Gui.ArxNet
                 //2012.12.23改
                 log.Info("Stopping Services");
                 ServiceManager.Services.StopAllServices();
+                ServiceManager.Services.ClearServices();
                 //2012.12.23改
 
                 throw;
