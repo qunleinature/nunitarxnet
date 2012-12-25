@@ -1692,7 +1692,7 @@ namespace NUnit.Gui.ArxNet
 
 				Version version = Environment.Version;
 
-                if (TestLoader != null && TestLoader.AssemblyInfo != null)//2012-12-25³ýbug
+                if (TestLoader != null && TestLoader.AssemblyInfo != null)////build29938fix
                 {
                     foreach (TestAssemblyInfo info in TestLoader.AssemblyInfo)
                         if (info.ImageRuntimeVersion < version)
@@ -1753,11 +1753,11 @@ namespace NUnit.Gui.ArxNet
 			}
 			EnableRunCommand( true );
 
-            if (TestLoader == null) return;//2012-12-25³ýbug
+            if (TestLoader == null) return;////build29938fix
 
 			if ( TestLoader.TestCount == 0 )
 			{
-                if (TestLoader.AssemblyInfo != null)//2012-12-25³ýbug
+                if (TestLoader.AssemblyInfo != null)////build29938fix
                 {
                     foreach (TestAssemblyInfo info in TestLoader.AssemblyInfo)
                         if (info.TestFrameworks.Count > 0) return;

@@ -3,33 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using Autodesk.AutoCAD.Runtime;
+using Autodesk.AutoCAD.EditorInput;
+using Autodesk.AutoCAD.ApplicationServices;
+
 using NUnit.Framework;
 using NUnit.Util.ArxNet;
 using NUnit.Gui;
 using NUnit.Gui.ArxNet;
+using NUnit.Core;
+using NUnit.Util;
+using NUnit.UiKit;
+using NUnit.Util.ArxNet;
+
+using Com.Utility.UnitTest;
 
 namespace NUnit.Gui.ArxNet.Tests
 {
     [TestFixture]
     public class NUnitPresenterArxNetTests
     {
-        //Constructor
-        //public NUnitPresenterArxNet(NUnitFormArxNet form, TestLoaderArxNet loader)
+        //public void AddAssembly(string configName)
         [Test]
-        public void Constructor()
+        public void AddAssembly()
         {
-            /*NUnitFormArxNet expectedForm = new NUnitFormArxNet(new GuiOptions(new string[0]));
-            TestLoaderArxNet expectedLoader = new TestLoaderArxNet();
-            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(expectedForm, expectedLoader);
-            //TestLoaderArxNet expectedLoader = unn
-            Assert.That(nUnitPresenterArxNet.Form, Is.EqualTo(expectedForm));*/
-        }
-
-        //public NUnitFormArxNet Form
-        [Test]
-        public void Form()
-        {
-
+            NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
+            TestLoaderArxNet loader = new TestLoaderArxNet();
+            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(form, loader);
+            nUnitPresenterArxNet.NewProject();
+            nUnitPresenterArxNet.AddAssembly();
+            loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            ProjectConfig config = loader.TestProject.ActiveConfig;
+            if (config.Assemblies !=null && config.Assemblies.Count > 0)
+            {
+                string assembly = config.Assemblies[config.Assemblies.Count - 1];
+                Application.ShowAlertDialog("添加的程序集为" + assembly);
+            }
+            else
+                Application.ShowAlertDialog("没添加程序集");
         }
     }
 }

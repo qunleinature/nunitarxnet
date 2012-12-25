@@ -7,6 +7,12 @@
 // ****************************************************************
 // Copyright 2012, Lei Qun
 // 2012.12.21修改
+// 2012.12.25修改：
+//  build29938bug002
+//      NUnit.Util.ArxNet.TestLoaderArxNet.CanReloadUnderRuntimeVersion空对象错误
+//  build29938fix002
+//      1.对NNUnit.Util.ArxNet.TestLoaderArxNet.CanReloadUnderRuntimeVersion方法添加对异常的处理
+//      2.添加对对象为null的检查
 // ****************************************************************
 
 namespace NUnit.Util.ArxNet
@@ -559,18 +565,29 @@ namespace NUnit.Util.ArxNet
         /// </summary>
         public bool CanReloadUnderRuntimeVersion(Version version)
         {
-            //2012-12-25除bug
-            if (testRunner == null || testRunner.AssemblyInfo == null) return false;
-            //2012-12-25除bug
+            try//build29938fix002
+            {
+                /*build29938fix002*/
+                if (ServicesArxNet.TestAgency == null) return false;
+                /*build29938fix002*/
 
-            if (!ServicesArxNet.TestAgency.IsRuntimeVersionSupported(version))
-                return false;
-
-            foreach (TestAssemblyInfo info in AssemblyInfo)
-                if (info.ImageRuntimeVersion > version)
+                if (!ServicesArxNet.TestAgency.IsRuntimeVersionSupported(version))
                     return false;
 
-            return true;
+                /*build29938fix002*/
+                if (AssemblyInfo == null) return false;
+                /*build29938fix002*/
+
+                foreach (TestAssemblyInfo info in AssemblyInfo)
+                    if (info.ImageRuntimeVersion > version)
+                        return false;
+
+                return true;
+            }
+            catch//build29938fix002
+            {
+                throw;//build29938fix002
+            }
         }
 
 		/// <summary>

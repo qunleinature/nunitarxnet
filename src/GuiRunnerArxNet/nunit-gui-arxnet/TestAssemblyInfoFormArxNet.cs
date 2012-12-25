@@ -46,6 +46,9 @@ namespace NUnit.Gui.ArxNet
 			      Path.GetFileName(Assembly.GetEntryAssembly().Location), 
 			      RuntimeFramework.CurrentFramework );
 
+            if (ServicesArxNet.TestLoader == null) return;//build29938fix
+            if (ServicesArxNet.TestLoader.AssemblyInfo == null) return;////build29938fix
+
             foreach (TestAssemblyInfo info in ServicesArxNet.TestLoader.AssemblyInfo)
             {
                 if (info.ProcessId != currentProcessId)

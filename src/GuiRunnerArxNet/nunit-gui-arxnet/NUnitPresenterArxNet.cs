@@ -8,6 +8,7 @@
 // Copyright 2012, Lei Qun
 // 2012.8.24修改
 // 2012.12.20修改
+// 2012.12.25修改: 对build29938除bug
 // ****************************************************************
 
 using System;
@@ -291,19 +292,40 @@ namespace NUnit.Gui.ArxNet
 
         public void AddAssembly(string configName)
         {
-            ProjectConfig config = configName == null
-                ? loader.TestProject.ActiveConfig
-                : loader.TestProject.Configs[configName];
+            try//build29938fix002
+            {
+                /*build29938fix002*/
+                if (loader == null) return;
+                if (loader.TestProject == null) return;
+                if (loader.TestProject.ActiveConfig == null) return;
+                if (loader.TestProject.Configs == null) return;
+                /*build29938fix002*/
 
-            OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Title = "Add Assembly";
-            dlg.InitialDirectory = config.BasePath;
-            dlg.Filter = "Assemblies (*.dll,*.exe)|*.dll;*.exe";
-            dlg.FilterIndex = 1;
-            dlg.FileName = "";
+                ProjectConfig config = configName == null
+                    ? loader.TestProject.ActiveConfig
+                    : loader.TestProject.Configs[configName];
 
-            if (dlg.ShowDialog(Form) == DialogResult.OK)
-                config.Assemblies.Add(dlg.FileName);
+                /*build29938fix002*/
+                if (config == null) return;
+                if (config.Assemblies == null) return;
+                /*build29938fix002*/
+
+                OpenFileDialog dlg = new OpenFileDialog();
+                dlg.Title = "Add Assembly";
+                dlg.InitialDirectory = config.BasePath;
+                dlg.Filter = "Assemblies (*.dll,*.exe)|*.dll;*.exe";
+                dlg.FilterIndex = 1;
+                dlg.FileName = "";
+
+                if (dlg.ShowDialog(Form) == DialogResult.OK)
+                    config.Assemblies.Add(dlg.FileName);
+            }
+            /*build29938fix002*/
+            catch
+            {
+                throw;
+            }
+            /*build29938fix002*/
         }
 
         public void AddVSProject()

@@ -15,10 +15,11 @@ namespace NUnit.Gui.ArxNet.Tests
     [TestFixture]
     public class NUnitPresenterArxNetTests
     {
+        //public NUnitFormArxNet Form        
         //Constructor
         //public NUnitPresenterArxNet(NUnitFormArxNet form, TestLoaderArxNet loader)
         [Test]
-        public void Constructor()
+        public void ConstructorAndForm()
         {
             NUnitFormArxNet expectedForm = new NUnitFormArxNet(new GuiOptions(new string[0]));
             TestLoaderArxNet expectedLoader = new TestLoaderArxNet();
@@ -29,11 +30,7 @@ namespace NUnit.Gui.ArxNet.Tests
             Assert.That(actualLoader, Is.EqualTo(expectedLoader));
         }
 
-        //public NUnitFormArxNet Form
-        [Test]
-        public void Form()
-        {
+        
 
-        }
     }
 }
