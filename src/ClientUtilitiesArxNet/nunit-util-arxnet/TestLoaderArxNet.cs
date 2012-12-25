@@ -559,6 +559,10 @@ namespace NUnit.Util.ArxNet
         /// </summary>
         public bool CanReloadUnderRuntimeVersion(Version version)
         {
+            //2012-12-25³ýbug
+            if (testRunner == null || testRunner.AssemblyInfo == null) return false;
+            //2012-12-25³ýbug
+
             if (!ServicesArxNet.TestAgency.IsRuntimeVersionSupported(version))
                 return false;
 

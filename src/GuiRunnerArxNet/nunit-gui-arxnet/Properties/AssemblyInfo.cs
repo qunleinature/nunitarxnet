@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过以下
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("NUnit-Gui-ArxNet")]
+[assembly: AssemblyTitle("NUnit-Gui-Runner-ArxNet")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("LeiSoft")]
-[assembly: AssemblyProduct("NUnit-Gui-ArxNet")]
-[assembly: AssemblyCopyright("Copyright (C) 2012 Lei Qun.\r\nCopyright (C) 2002-2011 Charlie Poole.\r\nCopyright (C) 2002-2004 James W. Newkirk, Michael C. Two, Alexei A. Vorontsov.\r\nCopyright (C) 2000-2002 Philip Craig.\r\nAll Rights Reserved.")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyProduct("NUnit-Gui-Runner-ArxNet")]
+[assembly: AssemblyCopyright("Copyright ©  2012")]
+[assembly: AssemblyTrademark("Copyright (C) 2012 Lei Qun.\r\nCopyright (C) 2002-2011 Charlie Poole.\r\nCopyright (C) 2002-2004 James W. Newkirk, Michael C. Two, Alexei A. Vorontsov.\r\nCopyright (C) 2000-2002 Philip Craig.\r\nAll Rights Reserved.")]
 [assembly: AssemblyCulture("")]
 
 // 将 ComVisible 设置为 false 使此程序集中的类型
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("6891c504-ea42-4d06-bb50-4cba2a7610cf")]
+[assembly: Guid("10b56b94-1c0e-44af-944a-f93a5f276e03")]
 
 // 程序集的版本信息由下面四个值组成:
 //

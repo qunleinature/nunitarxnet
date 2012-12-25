@@ -26,8 +26,7 @@ using System.Runtime.InteropServices;
 //
 //      主版本
 //      次版本
-//      内部版本号
-//      修订号
+//      修正版本号
+//      编译版本号
 //
-[assembly: AssemblyVersion("0.0.2.2012")]
-[assembly: AssemblyFileVersion("0.0.2.0")]
+[assembly: AssemblyVersion("0.0.2.*")]

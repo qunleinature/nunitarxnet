@@ -1691,9 +1691,13 @@ namespace NUnit.Gui.ArxNet
                 presenter.RemoveWatcher();
 
 				Version version = Environment.Version;
-				foreach( TestAssemblyInfo info in TestLoader.AssemblyInfo )
-					if ( info.ImageRuntimeVersion < version )
-						version = info.ImageRuntimeVersion;
+
+                if (TestLoader != null && TestLoader.AssemblyInfo != null)//2012-12-25³ýbug
+                {
+                    foreach (TestAssemblyInfo info in TestLoader.AssemblyInfo)
+                        if (info.ImageRuntimeVersion < version)
+                            version = info.ImageRuntimeVersion;
+                }
 			
 				recentFilesService.SetMostRecent( new RecentFileEntry( e.Name, version ) );
 			}
@@ -1748,11 +1752,16 @@ namespace NUnit.Gui.ArxNet
 				longOpDisplay = null;
 			}
 			EnableRunCommand( true );
-			
+
+            if (TestLoader == null) return;//2012-12-25³ýbug
+
 			if ( TestLoader.TestCount == 0 )
 			{
-				foreach( TestAssemblyInfo info in TestLoader.AssemblyInfo )
-					if ( info.TestFrameworks.Count > 0 ) return;
+                if (TestLoader.AssemblyInfo != null)//2012-12-25³ýbug
+                {
+                    foreach (TestAssemblyInfo info in TestLoader.AssemblyInfo)
+                        if (info.TestFrameworks.Count > 0) return;
+                }
 
                 MessageDisplay.Error("This assembly was not built with any known testing framework.");
 			}

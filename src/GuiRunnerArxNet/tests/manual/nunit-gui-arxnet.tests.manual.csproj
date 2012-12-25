@@ -36,13 +36,25 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Com.Utility\Com.Utility.UnitTest\0.0.4\Com.Utility.UnitTest\bin\Debug\Com.Utility.UnitTest.dll</HintPath>
     </Reference>
+    <Reference Include="nunit-gui-runner, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\NUnit-2.6.0.11340\bin\Debug\lib\nunit-gui-runner.dll</HintPath>
+    </Reference>
     <Reference Include="nunit-gui-runner-arxnet">
       <HintPath>..\..\..\..\bin\Debug\lib\nunit-gui-runner-arxnet.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit-util-arxnet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\bin\Debug\lib\nunit-util-arxnet.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework, Version=2.6.0.11340, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
     <Reference Include="nunit.uikit, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\NUnit-2.6.0.11340\bin\Debug\lib\nunit.uikit.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.util, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\NUnit-2.6.0.11340\bin\Debug\lib\nunit.util.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

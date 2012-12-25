@@ -8,6 +8,8 @@ using NUnit.Util.ArxNet;
 using NUnit.Gui;
 using NUnit.Gui.ArxNet;
 
+using Com.Utility.UnitTest;
+
 namespace NUnit.Gui.ArxNet.Tests
 {
     [TestFixture]
@@ -18,11 +20,13 @@ namespace NUnit.Gui.ArxNet.Tests
         [Test]
         public void Constructor()
         {
-            /*NUnitFormArxNet expectedForm = new NUnitFormArxNet(new GuiOptions(new string[0]));
+            NUnitFormArxNet expectedForm = new NUnitFormArxNet(new GuiOptions(new string[0]));
             TestLoaderArxNet expectedLoader = new TestLoaderArxNet();
-            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(expectedForm, expectedLoader);
-            //TestLoaderArxNet expectedLoader = unn
-            Assert.That(nUnitPresenterArxNet.Form, Is.EqualTo(expectedForm));*/
+            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(expectedForm, expectedLoader);            
+            Assert.That(nUnitPresenterArxNet.Form, Is.EqualTo(expectedForm));
+            //private TestLoaderArxNet loader = null;
+            TestLoaderArxNet actualLoader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            Assert.That(actualLoader, Is.EqualTo(expectedLoader));
         }
 
         //public NUnitFormArxNet Form
