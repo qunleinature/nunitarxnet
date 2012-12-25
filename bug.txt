@@ -13,4 +13,4 @@ build29938fix002
 	1.对NNUnit.Util.ArxNet.TestLoaderArxNet.CanReloadUnderRuntimeVersion方法添加对异常的处理
 	2.添加对对象为null的检查
 build:
-build39106
+build39106 v0.0.2.39106-n2.6.0.11340-AC2012

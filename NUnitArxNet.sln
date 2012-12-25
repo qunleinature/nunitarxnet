@@ -5,8 +5,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NUnitArxNet", "NUnitArxNet"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A65042E1-D8BC-48DD-8DE1-F0991F07EA77}"
 	ProjectSection(SolutionItems) = preProject
+		bug.txt = bug.txt
 		..\NUnit-2.6.0.11340\src\nunit.snk = ..\NUnit-2.6.0.11340\src\nunit.snk
 		..\NUnit-2.6.0.11340\NUnitTests.config = ..\NUnit-2.6.0.11340\NUnitTests.config
+		readme.txt = readme.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NUnitFramework", "NUnitFramework", "{A2FF9F1B-1854-479A-859C-6ECEBF045E4C}"
@@ -132,8 +134,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDwgClean", "..\..\CAD\D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A65042E1-D8BC-48DD-8DE1-F0991F07EA77}"
 	ProjectSection(SolutionItems) = preProject
+		bug.txt = bug.txt
 		..\NUnit-2.6.0.11340\src\nunit.snk = ..\NUnit-2.6.0.11340\src\nunit.snk
 		..\NUnit-2.6.0.11340\NUnitTests.config = ..\NUnit-2.6.0.11340\NUnitTests.config
+		readme.txt = readme.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ttt", "ttt", "{9E494634-04DC-492A-906E-C4E9843B7837}"

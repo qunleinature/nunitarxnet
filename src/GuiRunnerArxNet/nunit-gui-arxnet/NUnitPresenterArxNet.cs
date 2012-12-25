@@ -8,7 +8,9 @@
 // Copyright 2012, Lei Qun
 // 2012.8.24修改
 // 2012.12.20修改
-// 2012.12.25修改: 对build29938除bug
+// 2012.12.25修改: 
+// 1.对build29938除bug
+// 2.单元测试改
 // ****************************************************************
 
 using System;
@@ -212,9 +214,20 @@ namespace NUnit.Gui.ArxNet
         // TODO: Not used?
         public void AddToProject(string configName)
         {
+            /*2012-12-25单元测试改*/
+            if (loader == null) return;
+            if (loader.TestProject == null) return;
+            if (loader.TestProject.Configs == null) return;
+            /*2012-12-25单元测试改*/
+
             ProjectConfig config = configName == null
                 ? loader.TestProject.ActiveConfig
                 : loader.TestProject.Configs[configName];
+
+            /*2012-12-25单元测试改*/
+            if (config == null) return;
+            if (config.Assemblies == null) return;
+            /*2012-12-25单元测试改*/
 
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.Title = "Add Assemblies To Project";
@@ -297,7 +310,6 @@ namespace NUnit.Gui.ArxNet
                 /*build29938fix002*/
                 if (loader == null) return;
                 if (loader.TestProject == null) return;
-                if (loader.TestProject.ActiveConfig == null) return;
                 if (loader.TestProject.Configs == null) return;
                 /*build29938fix002*/
 

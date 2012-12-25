@@ -25,6 +25,7 @@ namespace NUnit.Gui.ArxNet.Tests
     {
         //public void AddAssembly(string configName)
         [Test]
+        [Category("AddAssembly")]
         public void AddAssembly()
         {
             NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
@@ -41,6 +42,26 @@ namespace NUnit.Gui.ArxNet.Tests
             }
             else
                 Application.ShowAlertDialog("没添加程序集");
+        }
+
+        [Test]
+        [Category("AddAssembly")]
+        public void AddAssembly_form_loader_null()
+        {
+            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(null, null);
+            nUnitPresenterArxNet.AddAssembly();
+        }
+
+        //public void AddToProject(string configName)
+        [Test]
+        public void AddToProject()
+        {
+            NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
+            TestLoaderArxNet loader = new TestLoaderArxNet();
+            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(form, loader);
+            nUnitPresenterArxNet.NewProject();
+            nUnitPresenterArxNet.AddToProject();
+
         }
     }
 }
