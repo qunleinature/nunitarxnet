@@ -14,7 +14,6 @@ using NUnit.Gui.ArxNet;
 using NUnit.Core;
 using NUnit.Util;
 using NUnit.UiKit;
-using NUnit.Util.ArxNet;
 
 using Com.Utility.UnitTest;
 
@@ -38,10 +37,10 @@ namespace NUnit.Gui.ArxNet.Tests
             if (config.Assemblies !=null && config.Assemblies.Count > 0)
             {
                 string assembly = config.Assemblies[config.Assemblies.Count - 1];
-                Application.ShowAlertDialog("添加的程序集为" + assembly);
+                Application.ShowAlertDialog("添加的程序集为：" + assembly);
             }
             else
-                Application.ShowAlertDialog("没添加程序集");
+                Application.ShowAlertDialog("没添加程序集!");
         }
 
         [Test]
@@ -60,8 +59,21 @@ namespace NUnit.Gui.ArxNet.Tests
             TestLoaderArxNet loader = new TestLoaderArxNet();
             NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(form, loader);
             nUnitPresenterArxNet.NewProject();
+            ServicesArxNet.UserSettings.SaveSetting("Options.TestLoader.VisualStudioSupport", true);
             nUnitPresenterArxNet.AddToProject();
 
+            loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            NUnitProject project = loader.TestProject;            
+            ProjectConfig config = project.ActiveConfig;
+            if (config.Assemblies !=null && config.Assemblies.Count > 0)
+            {
+                string assembly = config.Assemblies[config.Assemblies.Count - 1];
+                Application.ShowAlertDialog("最后一个程序集为：" + assembly);
+            }
+            else
+                Application.ShowAlertDialog("没添加程序集!");
+
+            Application.ShowAlertDialog("项目文件的最后一个ConfigurationFile：" + project.Configs[project.Configs.Count - 1].ConfigurationFile);
         }
     }
 }

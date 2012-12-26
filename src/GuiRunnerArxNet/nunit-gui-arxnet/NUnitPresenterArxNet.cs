@@ -287,7 +287,19 @@ namespace NUnit.Gui.ArxNet
                     }
                     else if (result == DialogResult.No)
                     {
-                        foreach (string assembly in vsProject.Configs[configName].Assemblies)
+                        /*2012-12-26单元测试加*/
+                        if (vsProject == null) return;
+                        if (vsProject.Configs == null) return;  
+                     
+                        VSProjectConfig vsConfig = configName == null
+                            ? vsProject.Configs[0]
+                            : vsProject.Configs[configName];
+
+                        if (vsConfig == null) return;
+                        if (vsConfig.Assemblies == null) return; 
+                        /*2012-12-26单元测试加*/
+
+                        foreach (string assembly in /*vsProject.Configs[configName].Assemblies*/vsConfig.Assemblies)//2012-12-26单元测试改
                             config.Assemblies.Add(assembly);
                         return;
                     }
