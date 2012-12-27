@@ -53,6 +53,7 @@ namespace NUnit.Gui.ArxNet.Tests
 
         //public void AddToProject(string configName)
         [Test]
+        [Category("AddToProject")]
         public void AddToProject()
         {
             NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
@@ -60,11 +61,11 @@ namespace NUnit.Gui.ArxNet.Tests
             NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(form, loader);
             nUnitPresenterArxNet.NewProject();
             ServicesArxNet.UserSettings.SaveSetting("Options.TestLoader.VisualStudioSupport", true);
-            nUnitPresenterArxNet.AddToProject();
+            nUnitPresenterArxNet.AddToProject("Debug");
 
             loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
-            NUnitProject project = loader.TestProject;            
-            ProjectConfig config = project.ActiveConfig;
+            NUnitProject project = loader.TestProject;
+            ProjectConfig config = project.Configs[project.Configs.Count - 1];
             if (config.Assemblies !=null && config.Assemblies.Count > 0)
             {
                 string assembly = config.Assemblies[config.Assemblies.Count - 1];
@@ -73,7 +74,42 @@ namespace NUnit.Gui.ArxNet.Tests
             else
                 Application.ShowAlertDialog("没添加程序集!");
 
-            Application.ShowAlertDialog("项目文件的最后一个ConfigurationFile：" + project.Configs[project.Configs.Count - 1].ConfigurationFile);
+            Application.ShowAlertDialog("最后一个项目文件：" + config.ConfigurationFilePath);
+        }
+
+        [Test]
+        [Category("AddToProject")]
+        public void AddToProject_form_loader_null()
+        {
+            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(null, null);
+            nUnitPresenterArxNet.AddToProject();
+        }
+
+        //public void AddVSProject()
+        [Test]
+        [Category("AddVSProject")]
+        public void AddVSProject()
+        {
+            NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
+            TestLoaderArxNet loader = new TestLoaderArxNet();
+            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(form, loader);
+            nUnitPresenterArxNet.NewProject();            
+            nUnitPresenterArxNet.AddVSProject();
+
+            //loader.TestProject.Add(vsProject);
+            loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            NUnitProject project = loader.TestProject;
+            ProjectConfig config = project.Configs[project.Configs.Count - 1];
+            Application.ShowAlertDialog("添加的VS项目文件：" + config.ConfigurationFilePath);
+
+        }
+
+        [Test]
+        [Category("AddVSProject")]
+        public void AddVSProject_form_loader_null()
+        {
+            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(null, null);
+            nUnitPresenterArxNet.AddVSProject();
         }
     }
 }

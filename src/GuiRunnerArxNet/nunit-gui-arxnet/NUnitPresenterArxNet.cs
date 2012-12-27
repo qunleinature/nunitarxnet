@@ -11,6 +11,8 @@
 // 2012.12.25修改: 
 // 1.对build29938除bug
 // 2.单元测试改
+// 2012.12.27修改
+// 1.单元测试改
 // ****************************************************************
 
 using System;
@@ -291,9 +293,7 @@ namespace NUnit.Gui.ArxNet
                         if (vsProject == null) return;
                         if (vsProject.Configs == null) return;  
                      
-                        VSProjectConfig vsConfig = configName == null
-                            ? vsProject.Configs[0]
-                            : vsProject.Configs[configName];
+                        VSProjectConfig vsConfig = vsProject.Configs[configName];
 
                         if (vsConfig == null) return;
                         if (vsConfig.Assemblies == null) return; 
@@ -354,6 +354,11 @@ namespace NUnit.Gui.ArxNet
 
         public void AddVSProject()
         {
+            /*2012-12-单元测试加*/
+            if (loader == null) return;
+            if (loader.TestProject == null) return;
+            /*2012-12-单元测试加*/
+
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.Title = "Add Visual Studio Project";
 
@@ -372,7 +377,8 @@ namespace NUnit.Gui.ArxNet
             {
                 try
                 {
-                    VSProject vsProject = new VSProject(dlg.FileName);
+                    VSProject vsProject = new VSProject(dlg.FileName);                    
+
                     loader.TestProject.Add(vsProject);
                 }
                 catch (Exception ex)
