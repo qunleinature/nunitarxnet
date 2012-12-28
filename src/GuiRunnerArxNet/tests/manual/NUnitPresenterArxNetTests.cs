@@ -119,7 +119,7 @@ namespace NUnit.Gui.ArxNet.Tests
             NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
             TestLoaderArxNet loader = new TestLoaderArxNet();
             NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(form, loader);
-            nUnitPresenterArxNet.NewProject();
+            //nUnitPresenterArxNet.NewProject();
             nUnitPresenterArxNet.CloseProject();
         }
     }
