@@ -111,5 +111,16 @@ namespace NUnit.Gui.ArxNet.Tests
             NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(null, null);
             nUnitPresenterArxNet.AddVSProject();
         }
+
+        //public DialogResult CloseProject()
+        [Test]
+        public void CloseProject()
+        {
+            NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
+            TestLoaderArxNet loader = new TestLoaderArxNet();
+            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(form, loader);
+            nUnitPresenterArxNet.NewProject();
+            nUnitPresenterArxNet.CloseProject();
+        }
     }
 }
