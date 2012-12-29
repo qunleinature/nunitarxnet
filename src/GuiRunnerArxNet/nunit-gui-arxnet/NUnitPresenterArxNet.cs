@@ -13,6 +13,8 @@
 // 2.单元测试改
 // 2012.12.27修改
 // 1.单元测试改
+// 2012.12.29修改
+// 1.单元测试改
 // ****************************************************************
 
 using System;
@@ -28,6 +30,15 @@ using NUnit.Util;
 using NUnit.UiKit;
 using NUnit.Gui;
 using NUnit.Util.ArxNet;
+
+using Autodesk.AutoCAD.Runtime;
+//using Autodesk.AutoCAD.EditorInput;
+using Autodesk.AutoCAD.ApplicationServices;
+
+using FormsApplication = System.Windows.Forms.Application;
+using CADApplication = Autodesk.AutoCAD.ApplicationServices.Application;
+using SystemException = System.Exception;
+using CADException = Autodesk.AutoCAD.Runtime.Exception;
 
 namespace NUnit.Gui.ArxNet
 {
@@ -216,50 +227,51 @@ namespace NUnit.Gui.ArxNet
         // TODO: Not used?
         public void AddToProject(string configName)
         {
-            /*2012-12-25单元测试改*/
-            if (loader == null) return;
-            if (loader.TestProject == null) return;
-            if (loader.TestProject.Configs == null) return;
-            /*2012-12-25单元测试改*/
-
-            ProjectConfig config = configName == null
-                ? loader.TestProject.ActiveConfig
-                : loader.TestProject.Configs[configName];
-
-            /*2012-12-25单元测试改*/
-            if (config == null) return;
-            if (config.Assemblies == null) return;
-            /*2012-12-25单元测试改*/
-
-            OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Title = "Add Assemblies To Project";
-            dlg.InitialDirectory = config.BasePath;
-
-            if (VisualStudioSupport)
-                dlg.Filter =
-                    "Projects & Assemblies(*.csproj,*.vbproj,*.vjsproj, *.vcproj,*.dll,*.exe )|*.csproj;*.vjsproj;*.vbproj;*.vcproj;*.dll;*.exe|" +
-                    "Visual Studio Projects (*.csproj,*.vjsproj,*.vbproj,*.vcproj)|*.csproj;*.vjsproj;*.vbproj;*.vcproj|" +
-                    "C# Projects (*.csproj)|*.csproj|" +
-                    "J# Projects (*.vjsproj)|*.vjsproj|" +
-                    "VB Projects (*.vbproj)|*.vbproj|" +
-                    "C++ Projects (*.vcproj)|*.vcproj|" +
-                    "Assemblies (*.dll,*.exe)|*.dll;*.exe";
-            else
-                dlg.Filter = "Assemblies (*.dll,*.exe)|*.dll;*.exe";
-
-            dlg.FilterIndex = 1;
-            dlg.FileName = "";
-
-            if (dlg.ShowDialog(Form) != DialogResult.OK)
-                return;
-
-            if (PathUtils.IsAssemblyFileType(dlg.FileName))
+            try
             {
-                config.Assemblies.Add(dlg.FileName);
-                return;
-            }
-            else if (VSProject.IsProjectFile(dlg.FileName))
-                try
+                /*2012-12-25单元测试改*/
+                if (loader == null) return;
+                if (loader.TestProject == null) return;
+                if (loader.TestProject.Configs == null) return;
+                /*2012-12-25单元测试改*/
+
+                ProjectConfig config = configName == null
+                    ? loader.TestProject.ActiveConfig
+                    : loader.TestProject.Configs[configName];
+
+                /*2012-12-25单元测试改*/
+                if (config == null) return;
+                if (config.Assemblies == null) return;
+                /*2012-12-25单元测试改*/
+
+                OpenFileDialog dlg = new OpenFileDialog();
+                dlg.Title = "Add Assemblies To Project";
+                dlg.InitialDirectory = config.BasePath;
+
+                if (VisualStudioSupport)
+                    dlg.Filter =
+                        "Projects & Assemblies(*.csproj,*.vbproj,*.vjsproj, *.vcproj,*.dll,*.exe )|*.csproj;*.vjsproj;*.vbproj;*.vcproj;*.dll;*.exe|" +
+                        "Visual Studio Projects (*.csproj,*.vjsproj,*.vbproj,*.vcproj)|*.csproj;*.vjsproj;*.vbproj;*.vcproj|" +
+                        "C# Projects (*.csproj)|*.csproj|" +
+                        "J# Projects (*.vjsproj)|*.vjsproj|" +
+                        "VB Projects (*.vbproj)|*.vbproj|" +
+                        "C++ Projects (*.vcproj)|*.vcproj|" +
+                        "Assemblies (*.dll,*.exe)|*.dll;*.exe";
+                else
+                    dlg.Filter = "Assemblies (*.dll,*.exe)|*.dll;*.exe";
+
+                dlg.FilterIndex = 1;
+                dlg.FileName = "";
+
+                if (dlg.ShowDialog(Form) != DialogResult.OK)
+                    return;
+
+                if (PathUtils.IsAssemblyFileType(dlg.FileName))
+                {
+                    config.Assemblies.Add(dlg.FileName);
+                    return;
+                }
+                else if (VSProject.IsProjectFile(dlg.FileName))
                 {
                     VSProject vsProject = new VSProject(dlg.FileName);
                     MessageBoxButtons buttons;
@@ -291,23 +303,30 @@ namespace NUnit.Gui.ArxNet
                     {
                         /*2012-12-26单元测试加*/
                         if (vsProject == null) return;
-                        if (vsProject.Configs == null) return;  
-                     
+                        if (vsProject.Configs == null) return;
+
                         VSProjectConfig vsConfig = vsProject.Configs[configName];
 
                         if (vsConfig == null) return;
-                        if (vsConfig.Assemblies == null) return; 
+                        if (vsConfig.Assemblies == null) return;
                         /*2012-12-26单元测试加*/
 
                         foreach (string assembly in /*vsProject.Configs[configName].Assemblies*/vsConfig.Assemblies)//2012-12-26单元测试改
                             config.Assemblies.Add(assembly);
                         return;
                     }
-                }
-                catch (Exception ex)
-                {
-                    Form.MessageDisplay.Error("Invalid VS Project", ex);
-                }
+                }   
+            }
+            /*2012-12-29单元测试加*/
+            catch (CADException exception)
+            {
+                Form.MessageDisplay.Error("Invalid VS Project", exception);
+            }
+            catch (SystemException exception)
+            {
+                Form.MessageDisplay.Error("Invalid VS Project", exception);
+            }
+            /*2012-12-29单元测试加*/
         }
 
         public void AddAssembly()
@@ -345,47 +364,59 @@ namespace NUnit.Gui.ArxNet
                     config.Assemblies.Add(dlg.FileName);
             }
             /*build29938fix002*/
-            catch
+            /*2012-12-29单元测试加*/
+            catch (CADException exception)
             {
-                throw;
+                Form.MessageDisplay.Error("Unable to Add the Assembly", exception);
             }
+            catch (SystemException exception)
+            {
+                Form.MessageDisplay.Error("Unable to Add the Assembly", exception);
+            }
+            /*2012-12-29单元测试加*/            
             /*build29938fix002*/
         }
 
         public void AddVSProject()
         {
-            /*2012-12-单元测试加*/
-            if (loader == null) return;
-            if (loader.TestProject == null) return;
-            /*2012-12-单元测试加*/
-
-            OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Title = "Add Visual Studio Project";
-
-            dlg.Filter =
-                "All Project Types (*.csproj,*.vjsproj,*.vbproj,*.vcproj)|*.csproj;*.vjsproj;*.vbproj;*.vcproj|" +
-                "C# Projects (*.csproj)|*.csproj|" +
-                "J# Projects (*.vjsproj)|*.vjsproj|" +
-                "VB Projects (*.vbproj)|*.vbproj|" +
-                "C++ Projects (*.vcproj)|*.vcproj|" +
-                "All Files (*.*)|*.*";
-
-            dlg.FilterIndex = 1;
-            dlg.FileName = "";
-
-            if (dlg.ShowDialog(Form) == DialogResult.OK)
+            try
             {
-                try
-                {
-                    VSProject vsProject = new VSProject(dlg.FileName);                    
+                /*2012-12-单元测试加*/
+                if (loader == null) return;
+                if (loader.TestProject == null) return;
+                /*2012-12-单元测试加*/
+
+                OpenFileDialog dlg = new OpenFileDialog();
+                dlg.Title = "Add Visual Studio Project";
+
+                dlg.Filter =
+                    "All Project Types (*.csproj,*.vjsproj,*.vbproj,*.vcproj)|*.csproj;*.vjsproj;*.vbproj;*.vcproj|" +
+                    "C# Projects (*.csproj)|*.csproj|" +
+                    "J# Projects (*.vjsproj)|*.vjsproj|" +
+                    "VB Projects (*.vbproj)|*.vbproj|" +
+                    "C++ Projects (*.vcproj)|*.vcproj|" +
+                    "All Files (*.*)|*.*";
+
+                dlg.FilterIndex = 1;
+                dlg.FileName = "";
+
+                if (dlg.ShowDialog(Form) == DialogResult.OK)
+                {                    
+                    VSProject vsProject = new VSProject(dlg.FileName);
 
                     loader.TestProject.Add(vsProject);
                 }
-                catch (Exception ex)
-                {
-                    Form.MessageDisplay.Error("Invalid VS Project", ex);
-                }
             }
+            /*2012-12-29单元测试加*/
+            catch (CADException exception)
+            {
+                Form.MessageDisplay.Error("Invalid VS Project", exception);
+            }
+            catch (SystemException exception)
+            {
+                Form.MessageDisplay.Error("Invalid VS Project", exception);
+            }
+            /*2012-12-29单元测试加*/
         }
 
         #endregion
@@ -429,49 +460,74 @@ namespace NUnit.Gui.ArxNet
 
         private DialogResult SaveProjectIfDirty()
         {
-            DialogResult result = DialogResult.OK;
-            NUnitProject project = loader.TestProject;
-
-            if (project.IsDirty)
+            try//2012-12-29单元测试加
             {
-                string msg = string.Format(
-                    "Project {0} has been changed. Do you want to save changes?", project.Name);
+                if (loader == null) return DialogResult.Cancel;//2012-12-29单元测试加
 
-                result = Form.MessageDisplay.Ask(msg, MessageBoxButtons.YesNoCancel);
-                if (result == DialogResult.Yes)
-                    SaveProject();
+                DialogResult result = DialogResult.No;
+                NUnitProject project = loader.TestProject;
+
+                if (project == null) return DialogResult.Cancel;//2012-12-29单元测试加
+
+                if (project.IsDirty)
+                {
+                    string msg = string.Format(
+                        "Project {0} has been changed. Do you want to save changes?", project.Name);
+
+                    result = Form.MessageDisplay.Ask(msg, MessageBoxButtons.YesNoCancel);
+                    if (result == DialogResult.Yes)
+                        SaveProject();
+                }
+
+                return result;
             }
-
-            return result;
+            /*2012-12-29单元测试加*/
+            catch (CADException exception)
+            {
+                Form.MessageDisplay.Error("Unable to Save the Project", exception);
+                return DialogResult.Cancel;
+            }
+            catch (SystemException exception)
+            {
+                Form.MessageDisplay.Error("Unable to Save the Project", exception);
+                return DialogResult.Cancel;
+            }
+            /*2012-12-29单元测试加*/
         }
 
         public void SaveLastResult()
         {
-            //TODO: Save all results
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Title = "Save Test Results as XML";
-            dlg.Filter = "XML Files (*.xml)|*.xml|All Files (*.*)|*.*";
-            dlg.FileName = "TestResult.xml";
-            dlg.InitialDirectory = Path.GetDirectoryName(loader.TestFileName);
-            dlg.DefaultExt = "xml";
-            dlg.ValidateNames = true;
-            dlg.OverwritePrompt = true;
-
-            if (dlg.ShowDialog(Form) == DialogResult.OK)
+            try
             {
-                try
-                {
+                //TODO: Save all results
+                SaveFileDialog dlg = new SaveFileDialog();
+                dlg.Title = "Save Test Results as XML";
+                dlg.Filter = "XML Files (*.xml)|*.xml|All Files (*.*)|*.*";
+                dlg.FileName = "TestResult.xml";
+                dlg.InitialDirectory = Path.GetDirectoryName(loader.TestFileName);
+                dlg.DefaultExt = "xml";
+                dlg.ValidateNames = true;
+                dlg.OverwritePrompt = true;
+
+                if (dlg.ShowDialog(Form) == DialogResult.OK)
+                {                    
                     string fileName = dlg.FileName;
 
                     loader.SaveLastResult(fileName);
 
                     Form.MessageDisplay.Info(String.Format("Results saved as {0}", fileName));
                 }
-                catch (Exception exception)
-                {
-                    Form.MessageDisplay.Error("Unable to Save Results", exception);
-                }
             }
+            /*2012-12-29单元测试加*/
+            catch (CADException exception)
+            {
+                Form.MessageDisplay.Error("Unable to Save Results", exception);
+            }
+            catch (SystemException exception)
+            {
+                Form.MessageDisplay.Error("Unable to Save Results", exception);
+            }
+            /*2012-12-29单元测试加*/
         }
 
         #endregion

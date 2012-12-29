@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 using Autodesk.AutoCAD.Runtime;
 using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.ApplicationServices;
+
+using FormsApplication = System.Windows.Forms.Application;
+using CADApplication = Autodesk.AutoCAD.ApplicationServices.Application;
 
 using NUnit.Framework;
 using NUnit.Util.ArxNet;
@@ -37,10 +41,10 @@ namespace NUnit.Gui.ArxNet.Tests
             if (config.Assemblies !=null && config.Assemblies.Count > 0)
             {
                 string assembly = config.Assemblies[config.Assemblies.Count - 1];
-                Application.ShowAlertDialog("添加的程序集为：" + assembly);
+                CADApplication.ShowAlertDialog("添加的程序集为：" + assembly);
             }
             else
-                Application.ShowAlertDialog("没添加程序集!");
+                CADApplication.ShowAlertDialog("没添加程序集!");
         }
 
         [Test]
@@ -69,12 +73,12 @@ namespace NUnit.Gui.ArxNet.Tests
             if (config.Assemblies !=null && config.Assemblies.Count > 0)
             {
                 string assembly = config.Assemblies[config.Assemblies.Count - 1];
-                Application.ShowAlertDialog("最后一个程序集为：" + assembly);
+                CADApplication.ShowAlertDialog("最后一个程序集为：" + assembly);
             }
             else
-                Application.ShowAlertDialog("没添加程序集!");
+                CADApplication.ShowAlertDialog("没添加程序集!");
 
-            Application.ShowAlertDialog("最后一个项目文件：" + config.ConfigurationFilePath);
+            CADApplication.ShowAlertDialog("最后一个项目文件：" + config.ConfigurationFilePath);
         }
 
         [Test]
@@ -100,7 +104,7 @@ namespace NUnit.Gui.ArxNet.Tests
             loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
             NUnitProject project = loader.TestProject;
             ProjectConfig config = project.Configs[project.Configs.Count - 1];
-            Application.ShowAlertDialog("添加的VS项目文件：" + config.ConfigurationFilePath);
+            CADApplication.ShowAlertDialog("添加的VS项目文件：" + config.ConfigurationFilePath);
 
         }
 
@@ -112,8 +116,32 @@ namespace NUnit.Gui.ArxNet.Tests
             nUnitPresenterArxNet.AddVSProject();
         }
 
+        //private DialogResult SaveProjectIfDirty()
+        [Test]
+        [Category("SaveProjectIfDirty")]
+        public void SaveProjectIfDirty()
+        {
+            NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
+            TestLoaderArxNet loader = new TestLoaderArxNet();
+            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(form, loader);
+            nUnitPresenterArxNet.NewProject();
+            nUnitPresenterArxNet.AddAssembly();
+            DialogResult result = (DialogResult)UnitTestHelper.CallNonPublicMethod(nUnitPresenterArxNet, "SaveProjectIfDirty", null);
+            CADApplication.ShowAlertDialog("DialogResult：" + result);
+        }
+
+        [Test]
+        [Category("SaveProjectIfDirty")]
+        public void SaveProjectIfDirty_form_loader_null()
+        {
+            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(null, null);
+            DialogResult result = (DialogResult)UnitTestHelper.CallNonPublicMethod(nUnitPresenterArxNet, "SaveProjectIfDirty", null);
+            CADApplication.ShowAlertDialog("DialogResult：" + result);
+        }
+
         //public DialogResult CloseProject()
         [Test]
+        [Category("CloseProject")]
         public void CloseProject()
         {
             NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
