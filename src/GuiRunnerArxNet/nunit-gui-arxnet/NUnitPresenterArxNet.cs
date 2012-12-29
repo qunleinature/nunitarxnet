@@ -82,19 +82,41 @@ namespace NUnit.Gui.ArxNet
 
         public void NewProject()
         {
-            if (loader.IsProjectLoaded)
-                CloseProject();
+            try//2012-12-30单元测试加
+            {
+                if (loader == null) return;
 
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Title = "New Test Project";
-            dlg.Filter = "NUnit Test Project (*.nunit)|*.nunit|All Files (*.*)|*.*";
-            dlg.FileName = ServicesArxNet.ProjectService.GenerateProjectName();
-            dlg.DefaultExt = "nunit";
-            dlg.ValidateNames = true;
-            dlg.OverwritePrompt = true;
+                if (loader.IsProjectLoaded)
+                    CloseProject();
 
-            if (dlg.ShowDialog(Form) == DialogResult.OK)
-                loader.NewProject(dlg.FileName);
+                SaveFileDialog dlg = new SaveFileDialog();
+                dlg.Title = "New Test Project";
+                dlg.Filter = "NUnit Test Project (*.nunit)|*.nunit|All Files (*.*)|*.*";
+                dlg.FileName = ServicesArxNet.ProjectService.GenerateProjectName();
+                dlg.DefaultExt = "nunit";
+                dlg.ValidateNames = true;
+                dlg.OverwritePrompt = true;
+
+                if (dlg.ShowDialog(Form) == DialogResult.OK)
+                    loader.NewProject(dlg.FileName);
+            }
+            /*2012-12-30单元测试加*/
+            catch (CADException exception)
+            {
+                if (Form != null)
+                    Form.MessageDisplay.Error("Unable to Gett the New Project", exception);
+                else
+                    CADApplication.ShowAlertDialog("Unable to Gett the New Project\n" + exception.Message);
+            }
+            catch (SystemException exception)
+            {
+                if (Form != null)
+                    Form.MessageDisplay.Error("Unable to Gett the New Project", exception);
+                else
+                    CADApplication.ShowAlertDialog("Unable to Gett the New Project\n" + exception.Message);
+            }
+            /*2012-12-30单元测试加*/
+
         }
 
         #endregion

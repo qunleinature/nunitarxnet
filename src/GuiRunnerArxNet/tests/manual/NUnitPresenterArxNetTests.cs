@@ -193,5 +193,13 @@ namespace NUnit.Gui.ArxNet.Tests
             NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(form, loader);
             nUnitPresenterArxNet.NewProject();
         }
+
+        [Test]
+        [Category("NewProject")]
+        public void NewProject_form_loader_null()
+        {
+            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(null, null);
+            nUnitPresenterArxNet.NewProject();
+        }
     }
 }
