@@ -208,12 +208,36 @@ namespace NUnit.Gui.ArxNet
 
         public DialogResult CloseProject()
         {
-            DialogResult result = SaveProjectIfDirty();
+            try
+            {
+                DialogResult result = SaveProjectIfDirty();
 
-            if (result != DialogResult.Cancel)
-                loader.UnloadProject();
+                //2012-12-29单元测试加
+                if (loader == null) return DialogResult.No;
 
-            return result;
+                if (result != DialogResult.Cancel)
+                    loader.UnloadProject();
+
+                return result;
+            }
+            /*2012-12-29单元测试加*/
+            catch (CADException exception)
+            {
+                if (Form != null)
+                    Form.MessageDisplay.Error("Unable to Close the Project", exception);
+                else
+                    CADApplication.ShowAlertDialog("Unable to Close the Project\n" + exception.Message);
+                return DialogResult.No;
+            }
+            catch (SystemException exception)
+            {
+                if (Form != null)
+                    Form.MessageDisplay.Error("Unable to Close the Project", exception);
+                else
+                    CADApplication.ShowAlertDialog("Unable to Close the Project\n" + exception.Message);
+                return DialogResult.No;
+            }
+            /*2012-12-29单元测试加*/
         }
 
         #endregion
@@ -320,11 +344,17 @@ namespace NUnit.Gui.ArxNet
             /*2012-12-29单元测试加*/
             catch (CADException exception)
             {
-                Form.MessageDisplay.Error("Invalid VS Project", exception);
+                if (Form != null)
+                    Form.MessageDisplay.Error("Invalid VS Project", exception);
+                else
+                    CADApplication.ShowAlertDialog("Invalid VS Project\n" + exception.Message);
             }
             catch (SystemException exception)
             {
-                Form.MessageDisplay.Error("Invalid VS Project", exception);
+                if (Form != null)
+                    Form.MessageDisplay.Error("Invalid VS Project", exception);
+                else
+                    CADApplication.ShowAlertDialog("Invalid VS Project\n" + exception.Message);
             }
             /*2012-12-29单元测试加*/
         }
@@ -367,11 +397,17 @@ namespace NUnit.Gui.ArxNet
             /*2012-12-29单元测试加*/
             catch (CADException exception)
             {
-                Form.MessageDisplay.Error("Unable to Add the Assembly", exception);
+               if (Form != null)
+                    Form.MessageDisplay.Error("Unable to Add the Assembly", exception);
+                else
+                    CADApplication.ShowAlertDialog("Unable to Add the Assembly\n" + exception.Message);
             }
             catch (SystemException exception)
             {
-                Form.MessageDisplay.Error("Unable to Add the Assembly", exception);
+                if (Form != null)
+                    Form.MessageDisplay.Error("Unable to Add the Assembly", exception);
+                else
+                    CADApplication.ShowAlertDialog("Unable to Add the Assembly\n" + exception.Message);
             }
             /*2012-12-29单元测试加*/            
             /*build29938fix002*/
@@ -409,12 +445,18 @@ namespace NUnit.Gui.ArxNet
             }
             /*2012-12-29单元测试加*/
             catch (CADException exception)
-            {
-                Form.MessageDisplay.Error("Invalid VS Project", exception);
+            {                
+                if (Form != null)
+                    Form.MessageDisplay.Error("Invalid VS Project", exception);
+                else
+                    CADApplication.ShowAlertDialog("Invalid VS Project\n" + exception.Message);
             }
             catch (SystemException exception)
             {
-                Form.MessageDisplay.Error("Invalid VS Project", exception);
+                if (Form != null)
+                    Form.MessageDisplay.Error("Invalid VS Project", exception);
+                else
+                    CADApplication.ShowAlertDialog("Invalid VS Project\n" + exception.Message);
             }
             /*2012-12-29单元测试加*/
         }
@@ -462,12 +504,12 @@ namespace NUnit.Gui.ArxNet
         {
             try//2012-12-29单元测试加
             {
-                if (loader == null) return DialogResult.Cancel;//2012-12-29单元测试加
+                if (loader == null) return DialogResult.No;//2012-12-29单元测试加
 
                 DialogResult result = DialogResult.No;
                 NUnitProject project = loader.TestProject;
 
-                if (project == null) return DialogResult.Cancel;//2012-12-29单元测试加
+                if (project == null) return DialogResult.No;//2012-12-29单元测试加
 
                 if (project.IsDirty)
                 {
@@ -484,13 +526,21 @@ namespace NUnit.Gui.ArxNet
             /*2012-12-29单元测试加*/
             catch (CADException exception)
             {
-                Form.MessageDisplay.Error("Unable to Save the Project", exception);
-                return DialogResult.Cancel;
+                if (Form != null)
+                    Form.MessageDisplay.Error("Unable to Save the Project", exception);
+                else
+                    CADApplication.ShowAlertDialog("Unable to Save the Project\n" + exception.Message);
+
+                return DialogResult.No;
             }
             catch (SystemException exception)
             {
-                Form.MessageDisplay.Error("Unable to Save the Project", exception);
-                return DialogResult.Cancel;
+                if (Form != null)
+                    Form.MessageDisplay.Error("Unable to Save the Project", exception);
+                else
+                    CADApplication.ShowAlertDialog("Unable to Save the Project\n" + exception.Message);
+
+                return DialogResult.No;
             }
             /*2012-12-29单元测试加*/
         }
@@ -521,11 +571,18 @@ namespace NUnit.Gui.ArxNet
             /*2012-12-29单元测试加*/
             catch (CADException exception)
             {
-                Form.MessageDisplay.Error("Unable to Save Results", exception);
+                if (Form != null)
+                    Form.MessageDisplay.Error("Unable to Save Results", exception);
+                else
+                    CADApplication.ShowAlertDialog("Unable to Save Results\n" + exception.Message);
+
             }
             catch (SystemException exception)
             {
-                Form.MessageDisplay.Error("Unable to Save Results", exception);
+                if (Form != null)
+                    Form.MessageDisplay.Error("Unable to Save Results", exception);
+                else
+                    CADApplication.ShowAlertDialog("Unable to Save Results\n" + exception.Message);
             }
             /*2012-12-29单元测试加*/
         }
@@ -569,7 +626,10 @@ namespace NUnit.Gui.ArxNet
                         ? "Verify that nunit.editor.exe is properly installed in the NUnit bin directory."
                         : "Verify that you have set the path to the editor correctly.");
 
-                Form.MessageDisplay.Error(message);
+                if (Form != null)
+                    Form.MessageDisplay.Error(message);
+                else
+                    CADApplication.ShowAlertDialog(message);
 
                 return;
             }

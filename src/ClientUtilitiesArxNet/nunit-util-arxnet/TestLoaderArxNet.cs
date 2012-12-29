@@ -13,6 +13,8 @@
 //  build29938fix002
 //      1.对NNUnit.Util.ArxNet.TestLoaderArxNet.CanReloadUnderRuntimeVersion方法添加对异常的处理
 //      2.添加对对象为null的检查
+//  2012.12.29修改：
+//      1.2012-12-29单元测试(NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.CloseProject)改
 // ****************************************************************
 
 namespace NUnit.Util.ArxNet
@@ -405,11 +407,15 @@ namespace NUnit.Util.ArxNet
 		/// </summary>
 		public void UnloadProject()
 		{
-			string testFileName = TestFileName;
-
-            log.Info("Unloading project " + testFileName);
+            string testFileName = null;//2012-12-29单元测试加
 			try
 			{
+                /*2012-12-29单元测试改*/
+                testFileName = TestFileName;
+
+                log.Info("Unloading project " + testFileName);
+                /*2012-12-29单元测试改*/
+
 				events.FireProjectUnloading( testFileName );
 
 				if ( IsTestLoaded )

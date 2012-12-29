@@ -147,8 +147,19 @@ namespace NUnit.Gui.ArxNet.Tests
             NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
             TestLoaderArxNet loader = new TestLoaderArxNet();
             NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(form, loader);
-            //nUnitPresenterArxNet.NewProject();
-            nUnitPresenterArxNet.CloseProject();
+            nUnitPresenterArxNet.NewProject();
+            nUnitPresenterArxNet.AddAssembly();
+            DialogResult result = (DialogResult)nUnitPresenterArxNet.CloseProject();
+            CADApplication.ShowAlertDialog("DialogResult：" + result);
+        }
+
+        [Test]
+        [Category("CloseProject")]
+        public void CloseProject_form_loader_null()
+        {
+            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(null, null);
+            DialogResult result = (DialogResult)nUnitPresenterArxNet.CloseProject();
+            CADApplication.ShowAlertDialog("DialogResult：" + result);
         }
     }
 }
