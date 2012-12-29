@@ -161,5 +161,16 @@ namespace NUnit.Gui.ArxNet.Tests
             DialogResult result = (DialogResult)nUnitPresenterArxNet.CloseProject();
             CADApplication.ShowAlertDialog("DialogResult：" + result);
         }
+
+        //public void EditProject()
+        [Test]
+        [Category("EditProject")]
+        public void EditProject()
+        {
+            NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
+            TestLoaderArxNet loader = new TestLoaderArxNet();
+            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(form, loader);
+            nUnitPresenterArxNet.EditProject();
+        }
     }
 }
