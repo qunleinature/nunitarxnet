@@ -15,6 +15,8 @@
 // 1.单元测试改
 // 2012.12.29修改
 // 1.单元测试改
+// 2012.12.30修改
+// 1.单元测试改
 // ****************************************************************
 
 using System;
@@ -614,63 +616,87 @@ namespace NUnit.Gui.ArxNet
 
         public void EditProject()
         {
-            NUnitProject project = loader.TestProject;
-
-            string editorPath = GetProjectEditorPath();
-            if (!File.Exists(editorPath))
+            try//2012-12-30单元测试加
             {
-                string NL = Environment.NewLine;
-                string message =
-                    "Unable to locate the specified Project Editor:" + NL + NL + editorPath + NL + NL +
-                    (ServicesArxNet.UserSettings.GetSetting("Options.ProjectEditor.EditorPath") == null
-                        ? "Verify that nunit.editor.exe is properly installed in the NUnit bin directory."
-                        : "Verify that you have set the path to the editor correctly.");
+                if (loader == null) return;//2012-12-30单元测试加
 
-                if (Form != null)
-                    Form.MessageDisplay.Error(message);
-                else
-                    CADApplication.ShowAlertDialog(message);
+                NUnitProject project = loader.TestProject;
 
-                return;
-            }
+                if (project == null) return;
 
-            if (!NUnitProject.IsNUnitProjectFile(project.ProjectPath))
-            {
-                if (Form.MessageDisplay.Display(
-                    "The project has not yet been saved. In order to edit the project, it must first be saved. Click OK to save the project or Cancel to exit.",
-                    MessageBoxButtons.OKCancel) == DialogResult.OK)
+                string editorPath = GetProjectEditorPath();
+                if (!File.Exists(editorPath))
+                {
+                    string NL = Environment.NewLine;
+                    string message =
+                        "Unable to locate the specified Project Editor:" + NL + NL + editorPath + NL + NL +
+                        (ServicesArxNet.UserSettings.GetSetting("Options.ProjectEditor.EditorPath") == null
+                            ? "Verify that nunit.editor.exe is properly installed in the NUnit bin directory."
+                            : "Verify that you have set the path to the editor correctly.");
+
+                    if (Form != null)
+                        Form.MessageDisplay.Error(message);
+                    else
+                        CADApplication.ShowAlertDialog(message);
+
+                    return;
+                }
+
+                if (!NUnitProject.IsNUnitProjectFile(project.ProjectPath))
+                {
+                    if (Form.MessageDisplay.Display(
+                        "The project has not yet been saved. In order to edit the project, it must first be saved. Click OK to save the project or Cancel to exit.",
+                        MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    {
+                        project.Save();
+                    }
+                }
+                else if (!File.Exists(project.ProjectPath))
                 {
                     project.Save();
                 }
-            }
-            else if (!File.Exists(project.ProjectPath))
-            {
-                project.Save();
-            }
-            else if (project.IsDirty)
-            {
-                switch (Form.MessageDisplay.Ask(
-                    "There are unsaved changes. Do you want to save them before running the editor?",
-                    MessageBoxButtons.YesNoCancel))
+                else if (project.IsDirty)
                 {
-                    case DialogResult.Yes:
-                        project.Save();
-                        break;
+                    switch (Form.MessageDisplay.Ask(
+                        "There are unsaved changes. Do you want to save them before running the editor?",
+                        MessageBoxButtons.YesNoCancel))
+                    {
+                        case DialogResult.Yes:
+                            project.Save();
+                            break;
 
-                    case DialogResult.Cancel:
-                        return;
+                        case DialogResult.Cancel:
+                            return;
+                    }
+                }
+
+                // In case we tried to save project and failed
+                if (NUnitProject.IsNUnitProjectFile(project.ProjectPath) && File.Exists(project.ProjectPath))
+                {
+                    Process p = new Process();
+
+                    p.StartInfo.FileName = Quoted(editorPath);
+                    p.StartInfo.Arguments = Quoted(project.ProjectPath);
+                    p.Start();
                 }
             }
-
-            // In case we tried to save project and failed
-            if (NUnitProject.IsNUnitProjectFile(project.ProjectPath) && File.Exists(project.ProjectPath))
+            /*2012-12-30单元测试加*/
+            catch (CADException exception)
             {
-                Process p = new Process();
-
-                p.StartInfo.FileName = Quoted(editorPath);
-                p.StartInfo.Arguments = Quoted(project.ProjectPath);
-                p.Start();
+                if (Form != null)
+                    Form.MessageDisplay.Error("Unable to Edit the Project", exception);
+                else
+                    CADApplication.ShowAlertDialog("Unable to Edit the Project\n" + exception.Message);                
             }
+            catch (SystemException exception)
+            {
+                if (Form != null)
+                    Form.MessageDisplay.Error("Unable to Edit the Project", exception);
+                else
+                    CADApplication.ShowAlertDialog("Unable to Edit the Project\n" + exception.Message);                
+            }
+            /*2012-12-30单元测试加*/
+
         }
 
         #endregion

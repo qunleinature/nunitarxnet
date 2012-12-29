@@ -170,6 +170,16 @@ namespace NUnit.Gui.ArxNet.Tests
             NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
             TestLoaderArxNet loader = new TestLoaderArxNet();
             NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(form, loader);
+            nUnitPresenterArxNet.NewProject();
+            nUnitPresenterArxNet.AddAssembly();
+            nUnitPresenterArxNet.EditProject();
+        }
+
+        [Test]
+        [Category("EditProject")]
+        public void EditProject_form_loader_null()
+        {
+            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(null, null);
             nUnitPresenterArxNet.EditProject();
         }
     }
