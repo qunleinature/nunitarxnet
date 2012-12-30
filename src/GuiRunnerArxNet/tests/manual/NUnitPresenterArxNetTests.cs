@@ -201,5 +201,7 @@ namespace NUnit.Gui.ArxNet.Tests
             NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(null, null);
             nUnitPresenterArxNet.NewProject();
         }
+
+        // public void OpenProject()
     }
 }
