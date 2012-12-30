@@ -203,5 +203,14 @@ namespace NUnit.Gui.ArxNet.Tests
         }
 
         // public void OpenProject()
+        [Test]
+        [Category("OpenProject")]
+        public void OpenProject()
+        {
+            NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
+            TestLoaderArxNet loader = new TestLoaderArxNet();
+            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(form, loader);
+            nUnitPresenterArxNet.OpenProject();
+        }
     }
 }
