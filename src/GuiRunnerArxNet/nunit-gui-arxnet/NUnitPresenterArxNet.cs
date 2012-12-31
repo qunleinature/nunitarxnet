@@ -17,6 +17,8 @@
 // 1.单元测试改
 // 2012.12.30修改
 // 1.单元测试改
+// 2012.12.31修改
+// 1.单元测试改
 // ****************************************************************
 
 using System;
@@ -188,22 +190,46 @@ namespace NUnit.Gui.ArxNet
 
         public void OpenProject(string testFileName, string configName, string testName)
         {
-            if (loader.IsProjectLoaded && SaveProjectIfDirty() == DialogResult.Cancel)
-                return;
-
-            loader.LoadProject(testFileName, configName);
-            if (loader.IsProjectLoaded)
+            try//2012-12-31单元测试加
             {
-                NUnitProject testProject = loader.TestProject;
-                if (testProject.Configs.Count == 0)
-                    Form.MessageDisplay.Info("Loaded project contains no configuration data");
-                else if (testProject.ActiveConfig == null)
-                    Form.MessageDisplay.Info("Loaded project has no active configuration");
-                else if (testProject.ActiveConfig.Assemblies.Count == 0)
-                    Form.MessageDisplay.Info("Active configuration contains no assemblies");
-                else
-                    loader.LoadTest(testName);
+                if (loader == null) return;//2012-12-31单元测试加
+
+                if (loader.IsProjectLoaded && SaveProjectIfDirty() == DialogResult.Cancel)
+                    return;
+
+                loader.LoadProject(testFileName, configName);
+                if (loader.IsProjectLoaded)
+                {
+                    NUnitProject testProject = loader.TestProject;
+
+                    if (testProject == null) return;//2012-12-31单元测试加
+
+                    if (testProject.Configs.Count == 0)
+                        Form.MessageDisplay.Info("Loaded project contains no configuration data");
+                    else if (testProject.ActiveConfig == null)
+                        Form.MessageDisplay.Info("Loaded project has no active configuration");
+                    else if (testProject.ActiveConfig.Assemblies.Count == 0)
+                        Form.MessageDisplay.Info("Active configuration contains no assemblies");
+                    else
+                        loader.LoadTest(testName);
+                }
             }
+            /*2012-12-31单元测试加*/
+            catch (CADException exception)
+            {
+                if (Form != null)
+                    Form.MessageDisplay.Error("Unable to Open the Project", exception);
+                else
+                    CADApplication.ShowAlertDialog("Unable to Open the Project\n" + exception.Message);
+            }
+            catch (SystemException exception)
+            {
+                if (Form != null)
+                    Form.MessageDisplay.Error("Unable to Open the Project", exception);
+                else
+                    CADApplication.ShowAlertDialog("Unable to Open the Project\n" + exception.Message);
+            }
+            /*2012-12-31单元测试加*/
         }
 
         public void OpenProject(string testFileName)
@@ -718,7 +744,6 @@ namespace NUnit.Gui.ArxNet
                     CADApplication.ShowAlertDialog("Unable to Edit the Project\n" + exception.Message);                
             }
             /*2012-12-30单元测试加*/
-
         }
 
         #endregion
