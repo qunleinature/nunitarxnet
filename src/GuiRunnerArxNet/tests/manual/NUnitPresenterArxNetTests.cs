@@ -253,6 +253,29 @@ namespace NUnit.Gui.ArxNet.Tests
         {
             nUnitPresenterArxNet = NewPresenter(true);
             nUnitPresenterArxNet.ReloadProject();
-        }        
+        }
+
+        //public void SaveLastResult()
+        [Test]
+        [Category("SaveLastResult")]
+        public void SaveLastResult()
+        {
+            nUnitPresenterArxNet = NewPresenter(false);
+            nUnitPresenterArxNet.NewProject();
+            nUnitPresenterArxNet.AddAssembly();            
+            TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            loader.LoadTest();
+            loader.RunTests();
+
+            nUnitPresenterArxNet.SaveLastResult();
+        }
+
+        [Test]
+        [Category("SaveLastResult")]
+        public void SaveLastResult_form_loader_null()
+        {
+            nUnitPresenterArxNet = NewPresenter(true);
+            nUnitPresenterArxNet.SaveLastResult();
+        }
     }
 }

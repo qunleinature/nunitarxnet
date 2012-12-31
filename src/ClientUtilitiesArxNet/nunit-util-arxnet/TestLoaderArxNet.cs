@@ -1,4 +1,4 @@
-// ****************************************************************
+ï»¿// ****************************************************************
 // Copyright 2002-2011, Charlie Poole
 // This is free software licensed under the NUnit license. You may
 // obtain a copy of the license at http://nunit.org
@@ -6,15 +6,17 @@
 
 // ****************************************************************
 // Copyright 2012, Lei Qun
-// 2012.12.21ĞŞ¸Ä
-// 2012.12.25ĞŞ¸Ä£º
+// 2012.12.21ä¿®æ”¹
+// 2012.12.25ä¿®æ”¹ï¼š
 //  build29938bug002
-//      NUnit.Util.ArxNet.TestLoaderArxNet.CanReloadUnderRuntimeVersion¿Õ¶ÔÏó´íÎó
+//      NUnit.Util.ArxNet.TestLoaderArxNet.CanReloadUnderRuntimeVersionç©ºå¯¹è±¡é”™è¯¯
 //  build29938fix002
-//      1.¶ÔNNUnit.Util.ArxNet.TestLoaderArxNet.CanReloadUnderRuntimeVersion·½·¨Ìí¼Ó¶ÔÒì³£µÄ´¦Àí
-//      2.Ìí¼Ó¶Ô¶ÔÏóÎªnullµÄ¼ì²é
-//  2012.12.29ĞŞ¸Ä£º
-//      1.2012-12-29µ¥Ôª²âÊÔ(NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.CloseProject)¸Ä
+//      1.å¯¹NNUnit.Util.ArxNet.TestLoaderArxNet.CanReloadUnderRuntimeVersionæ–¹æ³•æ·»åŠ å¯¹å¼‚å¸¸çš„å¤„ç†
+//      2.æ·»åŠ å¯¹å¯¹è±¡ä¸ºnullçš„æ£€æŸ¥
+//  2012.12.29ä¿®æ”¹ï¼š
+//      1.2012-12-29å•å…ƒæµ‹è¯•(NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.CloseProject)æ”¹
+//  2013.1.1ä¿®æ”¹ï¼š
+//      1.2013-1-1å•å…ƒæµ‹è¯•(â€‹NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveLastResult)æ”¹
 // ****************************************************************
 
 namespace NUnit.Util.ArxNet
@@ -176,7 +178,7 @@ namespace NUnit.Util.ArxNet
 
 		public string TestFileName
 		{
-			get { return testProject.ProjectPath; }
+            get { return (testProject == null) ? null : testProject.ProjectPath; }//2013-1-1å•å…ƒæµ‹è¯•(â€‹NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveLastResult)æ”¹
 		}
 
 		public TestResult TestResult
@@ -407,14 +409,14 @@ namespace NUnit.Util.ArxNet
 		/// </summary>
 		public void UnloadProject()
 		{
-            string testFileName = null;//2012-12-29µ¥Ôª²âÊÔ¼Ó
+            string testFileName = null;//2012-12-29å•å…ƒæµ‹è¯•åŠ 
 			try
 			{
-                /*2012-12-29µ¥Ôª²âÊÔ¸Ä*/
+                /*2012-12-29å•å…ƒæµ‹è¯•æ”¹*/
                 testFileName = TestFileName;
 
                 log.Info("Unloading project " + testFileName);
-                /*2012-12-29µ¥Ôª²âÊÔ¸Ä*/
+                /*2012-12-29å•å…ƒæµ‹è¯•æ”¹*/
 
 				events.FireProjectUnloading( testFileName );
 
@@ -656,7 +658,7 @@ namespace NUnit.Util.ArxNet
 		/// asynchronously, we use an event to let ui components
 		/// know that the failure happened.
 		/// </summary>
-        ////ÔÚCAD»·¾³ÏÂÒì²½ÔËĞĞ²âÊÔ
+        ////åœ¨CADç¯å¢ƒä¸‹å¼‚æ­¥è¿è¡Œæµ‹è¯•
 		public void OnTestChanged( string testFileName )
 		{
             log.Info("Assembly changed: {0}", testFileName);
@@ -669,7 +671,7 @@ namespace NUnit.Util.ArxNet
 
                 if (lastFilter != null && ServicesArxNet.UserSettings.GetSetting("Options.TestLoader.RerunOnChange", false))
 					//testRunner.BeginRun( this, lastFilter );
-                    testRunner.Run(this, lastFilter);//Òì²½ÔËĞĞ
+                    testRunner.Run(this, lastFilter);//å¼‚æ­¥è¿è¡Œ
 			}
 		}
 		#endregion
@@ -687,7 +689,7 @@ namespace NUnit.Util.ArxNet
 		/// Run selected tests using a filter
 		/// </summary>
 		/// <param name="filter">The filter to be used</param>
-        //ÔÚCAD»·¾³ÏÂÒì²½ÔËĞĞ²âÊÔ
+        //åœ¨CADç¯å¢ƒä¸‹å¼‚æ­¥è¿è¡Œæµ‹è¯•
 		public void RunTests( ITestFilter filter )
 		{
 			if ( !Running )
@@ -697,7 +699,8 @@ namespace NUnit.Util.ArxNet
 
 				this.lastFilter = filter;
 				//testRunner.BeginRun( this, filter );
-                testRunner.Run(this, filter);//Òì²½ÔËĞĞ
+                if (testRunner != null)//2013-1-1å•å…ƒæµ‹è¯•(â€‹NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveLastResult)æ”¹
+                    testRunner.Run(this, filter);//å¼‚æ­¥è¿è¡Œ
 			}
 		}
 
@@ -723,7 +726,8 @@ namespace NUnit.Util.ArxNet
 
 		public void SaveLastResult( string fileName )
 		{
-			new XmlResultWriter( fileName ).SaveTestResult(this.testResult);
+            if (fileName != null && fileName.Trim() != "" && this.testResult != null)//2013-1-1å•å…ƒæµ‹è¯•(â€‹NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveLastResult)åŠ 
+			    new XmlResultWriter( fileName ).SaveTestResult(this.testResult);
         }
         #endregion
 
@@ -759,7 +763,7 @@ namespace NUnit.Util.ArxNet
             }
 		}
 
-        //ÔÚCAD»·¾³ÏÂµÄ²âÊÔ°üÊÇµ¥Ïß³Ì¡¢Òì²½
+        //åœ¨CADç¯å¢ƒä¸‹çš„æµ‹è¯•åŒ…æ˜¯å•çº¿ç¨‹ã€å¼‚æ­¥
 		private TestPackage MakeTestPackage( string testName )
 		{
 			TestPackage package = TestProject.ActiveConfig.MakeTestPackage();
@@ -770,11 +774,11 @@ namespace NUnit.Util.ArxNet
             package.Settings["AutoNamespaceSuites"] = settings.GetSetting("Options.TestLoader.AutoNamespaceSuites", true);
             package.Settings["ShadowCopyFiles"] = settings.GetSetting("Options.TestLoader.ShadowCopyFiles", true);
 
-            package.Settings["ProcessModel"] = ProcessModel.Single;//µ¥½ø³Ì
+            package.Settings["ProcessModel"] = ProcessModel.Single;//å•è¿›ç¨‹
 
-            package.Settings["DomainUsage"] = DomainUsage.None;//ÎŞÓ¦ÓÃÓò
+            package.Settings["DomainUsage"] = DomainUsage.None;//æ— åº”ç”¨åŸŸ
 
-            package.Settings["UseThreadedRunner"] = false;//ÎŞÏß³Ì
+            package.Settings["UseThreadedRunner"] = false;//æ— çº¿ç¨‹
 
             if (!package.Settings.Contains("WorkDirectory"))
                 package.Settings["WorkDirectory"] = Environment.CurrentDirectory;

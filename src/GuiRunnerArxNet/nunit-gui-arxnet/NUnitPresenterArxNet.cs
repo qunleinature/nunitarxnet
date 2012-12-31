@@ -19,6 +19,8 @@
 // 1.单元测试改
 // 2012.12.31修改
 // 1.单元测试改
+// 2013.1.1修改
+// 1.单元测试改
 // ****************************************************************
 
 using System;
@@ -599,6 +601,9 @@ namespace NUnit.Gui.ArxNet
         {
             try
             {
+                if (loader == null) return;//2013-1-1单元测试加
+                if (loader.TestResult == null) return;//2013-1-1单元测试加
+
                 //TODO: Save all results
                 SaveFileDialog dlg = new SaveFileDialog();
                 dlg.Title = "Save Test Results as XML";
