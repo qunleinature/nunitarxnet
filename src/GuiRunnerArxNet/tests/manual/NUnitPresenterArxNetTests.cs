@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 using Autodesk.AutoCAD.Runtime;
 using Autodesk.AutoCAD.EditorInput;
@@ -26,17 +27,47 @@ namespace NUnit.Gui.ArxNet.Tests
     [TestFixture]
     public class NUnitPresenterArxNetTests
     {
+        NUnitPresenterArxNet nUnitPresenterArxNet = null;
+
+        private NUnitPresenterArxNet NewPresenter(bool form_loader_null)
+        {
+            NUnitPresenterArxNet presenter = null;
+
+            if (form_loader_null)
+            {
+                presenter = new NUnitPresenterArxNet(null, null);
+            }
+            else
+            {
+                NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
+                TestLoaderArxNet loader = new TestLoaderArxNet();
+                presenter = new NUnitPresenterArxNet(form, loader);
+            }
+
+            return presenter;
+        }
+
+        [SetUp]
+        public void SetUp()
+        {
+            
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            
+        }
+
         //public void AddAssembly(string configName)
         [Test]
         [Category("AddAssembly")]
         public void AddAssembly()
         {
-            NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
-            TestLoaderArxNet loader = new TestLoaderArxNet();
-            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(form, loader);
+            nUnitPresenterArxNet = NewPresenter(false);
             nUnitPresenterArxNet.NewProject();
             nUnitPresenterArxNet.AddAssembly();
-            loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
             ProjectConfig config = loader.TestProject.ActiveConfig;
             if (config.Assemblies !=null && config.Assemblies.Count > 0)
             {
@@ -51,7 +82,7 @@ namespace NUnit.Gui.ArxNet.Tests
         [Category("AddAssembly")]
         public void AddAssembly_form_loader_null()
         {
-            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(null, null);
+            nUnitPresenterArxNet = NewPresenter(true);
             nUnitPresenterArxNet.AddAssembly();
         }
 
@@ -60,14 +91,12 @@ namespace NUnit.Gui.ArxNet.Tests
         [Category("AddToProject")]
         public void AddToProject()
         {
-            NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
-            TestLoaderArxNet loader = new TestLoaderArxNet();
-            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(form, loader);
+            nUnitPresenterArxNet = NewPresenter(false);
             nUnitPresenterArxNet.NewProject();
             ServicesArxNet.UserSettings.SaveSetting("Options.TestLoader.VisualStudioSupport", true);
             nUnitPresenterArxNet.AddToProject("Debug");
 
-            loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
             NUnitProject project = loader.TestProject;
             ProjectConfig config = project.Configs[project.Configs.Count - 1];
             if (config.Assemblies !=null && config.Assemblies.Count > 0)
@@ -85,7 +114,7 @@ namespace NUnit.Gui.ArxNet.Tests
         [Category("AddToProject")]
         public void AddToProject_form_loader_null()
         {
-            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(null, null);
+            nUnitPresenterArxNet = NewPresenter(true);
             nUnitPresenterArxNet.AddToProject();
         }
 
@@ -94,14 +123,11 @@ namespace NUnit.Gui.ArxNet.Tests
         [Category("AddVSProject")]
         public void AddVSProject()
         {
-            NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
-            TestLoaderArxNet loader = new TestLoaderArxNet();
-            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(form, loader);
+            nUnitPresenterArxNet = NewPresenter(false);
             nUnitPresenterArxNet.NewProject();            
             nUnitPresenterArxNet.AddVSProject();
 
-            //loader.TestProject.Add(vsProject);
-            loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
             NUnitProject project = loader.TestProject;
             ProjectConfig config = project.Configs[project.Configs.Count - 1];
             CADApplication.ShowAlertDialog("添加的VS项目文件：" + config.ConfigurationFilePath);
@@ -112,7 +138,7 @@ namespace NUnit.Gui.ArxNet.Tests
         [Category("AddVSProject")]
         public void AddVSProject_form_loader_null()
         {
-            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(null, null);
+            nUnitPresenterArxNet = NewPresenter(true);
             nUnitPresenterArxNet.AddVSProject();
         }
 
@@ -121,9 +147,7 @@ namespace NUnit.Gui.ArxNet.Tests
         [Category("SaveProjectIfDirty")]
         public void SaveProjectIfDirty()
         {
-            NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
-            TestLoaderArxNet loader = new TestLoaderArxNet();
-            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(form, loader);
+            nUnitPresenterArxNet = NewPresenter(false);
             nUnitPresenterArxNet.NewProject();
             nUnitPresenterArxNet.AddAssembly();
             DialogResult result = (DialogResult)UnitTestHelper.CallNonPublicMethod(nUnitPresenterArxNet, "SaveProjectIfDirty", null);
@@ -134,7 +158,7 @@ namespace NUnit.Gui.ArxNet.Tests
         [Category("SaveProjectIfDirty")]
         public void SaveProjectIfDirty_form_loader_null()
         {
-            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(null, null);
+            nUnitPresenterArxNet = NewPresenter(true);
             DialogResult result = (DialogResult)UnitTestHelper.CallNonPublicMethod(nUnitPresenterArxNet, "SaveProjectIfDirty", null);
             CADApplication.ShowAlertDialog("DialogResult：" + result);
         }
@@ -144,9 +168,7 @@ namespace NUnit.Gui.ArxNet.Tests
         [Category("CloseProject")]
         public void CloseProject()
         {
-            NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
-            TestLoaderArxNet loader = new TestLoaderArxNet();
-            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(form, loader);
+            nUnitPresenterArxNet = NewPresenter(false);
             nUnitPresenterArxNet.NewProject();
             nUnitPresenterArxNet.AddAssembly();
             DialogResult result = (DialogResult)nUnitPresenterArxNet.CloseProject();
@@ -157,7 +179,7 @@ namespace NUnit.Gui.ArxNet.Tests
         [Category("CloseProject")]
         public void CloseProject_form_loader_null()
         {
-            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(null, null);
+            nUnitPresenterArxNet = NewPresenter(true);
             DialogResult result = (DialogResult)nUnitPresenterArxNet.CloseProject();
             CADApplication.ShowAlertDialog("DialogResult：" + result);
         }
@@ -167,9 +189,7 @@ namespace NUnit.Gui.ArxNet.Tests
         [Category("EditProject")]
         public void EditProject()
         {
-            NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
-            TestLoaderArxNet loader = new TestLoaderArxNet();
-            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(form, loader);
+            nUnitPresenterArxNet = NewPresenter(false);
             nUnitPresenterArxNet.NewProject();
             nUnitPresenterArxNet.AddAssembly();
             nUnitPresenterArxNet.EditProject();
@@ -179,7 +199,7 @@ namespace NUnit.Gui.ArxNet.Tests
         [Category("EditProject")]
         public void EditProject_form_loader_null()
         {
-            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(null, null);
+            nUnitPresenterArxNet = NewPresenter(true);
             nUnitPresenterArxNet.EditProject();
         }
 
@@ -188,9 +208,7 @@ namespace NUnit.Gui.ArxNet.Tests
         [Category("NewProject")]
         public void NewProject()
         {
-            NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
-            TestLoaderArxNet loader = new TestLoaderArxNet();
-            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(form, loader);
+            nUnitPresenterArxNet = NewPresenter(false);
             nUnitPresenterArxNet.NewProject();
         }
 
@@ -198,7 +216,7 @@ namespace NUnit.Gui.ArxNet.Tests
         [Category("NewProject")]
         public void NewProject_form_loader_null()
         {
-            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(null, null);
+            nUnitPresenterArxNet = NewPresenter(true);
             nUnitPresenterArxNet.NewProject();
         }
 
@@ -207,9 +225,7 @@ namespace NUnit.Gui.ArxNet.Tests
         [Category("OpenProject")]
         public void OpenProject()
         {
-            NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
-            TestLoaderArxNet loader = new TestLoaderArxNet();
-            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(form, loader);
+            nUnitPresenterArxNet = NewPresenter(false);
             nUnitPresenterArxNet.OpenProject();
         }
 
@@ -217,7 +233,7 @@ namespace NUnit.Gui.ArxNet.Tests
         [Category("OpenProject")]
         public void OpenProject_form_loader_null()
         {
-            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(null, null);
+            nUnitPresenterArxNet = NewPresenter(true);
             nUnitPresenterArxNet.OpenProject();
         }
 
@@ -226,9 +242,7 @@ namespace NUnit.Gui.ArxNet.Tests
         [Category("ReloadProject")]
         public void ReloadProject()
         {
-            NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
-            TestLoaderArxNet loader = new TestLoaderArxNet();
-            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(form, loader);
+            nUnitPresenterArxNet = NewPresenter(false);
             nUnitPresenterArxNet.NewProject();
             nUnitPresenterArxNet.ReloadProject();
         }
@@ -237,19 +251,8 @@ namespace NUnit.Gui.ArxNet.Tests
         [Category("ReloadProject")]
         public void ReloadProject_form_loader_null()
         {
-            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(null, null);
+            nUnitPresenterArxNet = NewPresenter(true);
             nUnitPresenterArxNet.ReloadProject();
-        }
-
-        //public void RemoveWatcher()
-        [Test]
-        [Category("RemoveWatcher")]
-        public void RemoveWatcher()
-        {
-            NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
-            TestLoaderArxNet loader = new TestLoaderArxNet();
-            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(form, loader);
-            nUnitPresenterArxNet.RemoveWatcher();
-        }
+        }        
     }
 }
