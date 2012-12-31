@@ -220,5 +220,17 @@ namespace NUnit.Gui.ArxNet.Tests
             NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(null, null);
             nUnitPresenterArxNet.OpenProject();
         }
+
+        //public void ReloadProject()
+        [Test]
+        [Category("ReloadProject")]
+        public void ReloadProject()
+        {
+            NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
+            TestLoaderArxNet loader = new TestLoaderArxNet();
+            NUnitPresenterArxNet nUnitPresenterArxNet = new NUnitPresenterArxNet(form, loader);
+            nUnitPresenterArxNet.NewProject();
+            nUnitPresenterArxNet.ReloadProject();
+        }
     }
 }

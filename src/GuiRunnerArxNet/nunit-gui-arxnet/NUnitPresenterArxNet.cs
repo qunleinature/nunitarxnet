@@ -643,19 +643,42 @@ namespace NUnit.Gui.ArxNet
 
         public void ReloadProject()
         {
-            NUnitProject project = loader.TestProject;
+            try//2012-12-31单元测试加
+            {
+                if (loader == null) return;//2012-12-31单元测试加
 
-            bool wrapper = project.IsAssemblyWrapper;
-            string projectPath = project.ProjectPath;
-            string activeConfigName = project.ActiveConfigName;
+                NUnitProject project = loader.TestProject;
 
-            // Unload first to avoid message asking about saving
-            loader.UnloadProject();
+                if (project == null) return;//2012-12-31单元测试加
 
-            if (wrapper)
-                OpenProject(projectPath);
-            else
-                OpenProject(projectPath, activeConfigName, null);
+                bool wrapper = project.IsAssemblyWrapper;
+                string projectPath = project.ProjectPath;
+                string activeConfigName = project.ActiveConfigName;
+
+                // Unload first to avoid message asking about saving
+                loader.UnloadProject();
+
+                if (wrapper)
+                    OpenProject(projectPath);
+                else
+                    OpenProject(projectPath, activeConfigName, null);
+            }
+            /*2012-12-31单元测试加*/
+            catch (CADException exception)
+            {
+                if (Form != null)
+                    Form.MessageDisplay.Error("Unable to Reload the Project", exception);
+                else
+                    CADApplication.ShowAlertDialog("Unable to Reload the Project\n" + exception.Message);
+            }
+            catch (SystemException exception)
+            {
+                if (Form != null)
+                    Form.MessageDisplay.Error("Unable to Reload the Project", exception);
+                else
+                    CADApplication.ShowAlertDialog("Unable to Reload the Project\n" + exception.Message);
+            }
+            /*2012-12-31单元测试加*/
         }
 
         #endregion
