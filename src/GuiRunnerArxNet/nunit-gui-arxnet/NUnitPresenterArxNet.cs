@@ -21,6 +21,7 @@
 // 1.单元测试改
 // 2013.1.1修改
 // 1.单元测试NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProject改
+// 2.单元测试NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProjectAs改
 // ****************************************************************
 
 using System;
@@ -553,27 +554,46 @@ namespace NUnit.Gui.ArxNet
 
         public void SaveProjectAs()
         {
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Title = "Save Test Project";
-            dlg.Filter = "NUnit Test Project (*.nunit)|*.nunit|All Files (*.*)|*.*";
-            string path = NUnitProject.ProjectPathFromFile(loader.TestProject.ProjectPath);
-            if (CanWriteProjectFile(path))
-                dlg.FileName = path;
-            dlg.DefaultExt = "nunit";
-            dlg.ValidateNames = true;
-            dlg.OverwritePrompt = true;
-
-            while (dlg.ShowDialog(Form) == DialogResult.OK)
+            try//2013-1-1单元测试NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProjectAs加
             {
-                if (!CanWriteProjectFile(dlg.FileName))
-                    Form.MessageDisplay.Info(string.Format("File {0} is write-protected. Select another file name.", dlg.FileName));
-                else
+                SaveFileDialog dlg = new SaveFileDialog();
+                dlg.Title = "Save Test Project";
+                dlg.Filter = "NUnit Test Project (*.nunit)|*.nunit|All Files (*.*)|*.*";
+                string path = NUnitProject.ProjectPathFromFile(loader.TestProject.ProjectPath);
+                if (CanWriteProjectFile(path))
+                    dlg.FileName = path;
+                dlg.DefaultExt = "nunit";
+                dlg.ValidateNames = true;
+                dlg.OverwritePrompt = true;
+
+                while (dlg.ShowDialog(Form) == DialogResult.OK)
                 {
-                    loader.TestProject.Save(dlg.FileName);
-                    ReloadProject();
-                    return;
+                    if (!CanWriteProjectFile(dlg.FileName))
+                        Form.MessageDisplay.Info(string.Format("File {0} is write-protected. Select another file name.", dlg.FileName));
+                    else
+                    {
+                        loader.TestProject.Save(dlg.FileName);
+                        ReloadProject();
+                        return;
+                    }
                 }
             }
+            /*2013-1-1单元测试加*/
+            catch (CADException exception)
+            {
+                if (Form != null)
+                    Form.MessageDisplay.Error("Unable to Save Project", exception);
+                else
+                    CADApplication.ShowAlertDialog("Unable to Save Project\n" + exception.Message);
+            }
+            catch (SystemException exception)
+            {
+                if (Form != null)
+                    Form.MessageDisplay.Error("Unable to Save Project", exception);
+                else
+                    CADApplication.ShowAlertDialog("Unable to Save Project\n" + exception.Message);
+            }
+            /*2013-1-1单元测试加*/
         }
 
         private DialogResult SaveProjectIfDirty()
