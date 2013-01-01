@@ -20,7 +20,7 @@
 // 2012.12.31修改
 // 1.单元测试改
 // 2013.1.1修改
-// 1.单元测试改
+// 1.单元测试NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProject改
 // ****************************************************************
 
 using System;
@@ -519,12 +519,36 @@ namespace NUnit.Gui.ArxNet
 
         public void SaveProject()
         {
-            if (Path.IsPathRooted(loader.TestProject.ProjectPath) &&
-                 NUnitProject.IsNUnitProjectFile(loader.TestProject.ProjectPath) &&
-                 CanWriteProjectFile(loader.TestProject.ProjectPath))
-                loader.TestProject.Save();
-            else
-                SaveProjectAs();
+            try//2013-1-1单元测试NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProject加
+            {
+                if (loader == null) return;//2013-1-1单元测试加
+                if (loader.TestProject == null) return;//2013-1-1单元测试加
+
+                if (Path.IsPathRooted(loader.TestProject.ProjectPath) &&
+                     NUnitProject.IsNUnitProjectFile(loader.TestProject.ProjectPath) &&
+                     CanWriteProjectFile(loader.TestProject.ProjectPath))
+                    loader.TestProject.Save();
+                else
+                    SaveProjectAs();
+            }
+            /*2013-1-1单元测试加*/
+            catch (CADException exception)
+            {
+                if (Form != null)
+                    Form.MessageDisplay.Error("Unable to Save Project", exception);
+                else
+                    CADApplication.ShowAlertDialog("Unable to Save Project\n" + exception.Message);
+
+            }
+            catch (SystemException exception)
+            {
+                if (Form != null)
+                    Form.MessageDisplay.Error("Unable to Save Project", exception);
+                else
+                    CADApplication.ShowAlertDialog("Unable to Save Project\n" + exception.Message);
+            }
+            /*2013-1-1单元测试加*/
+
         }
 
         public void SaveProjectAs()
