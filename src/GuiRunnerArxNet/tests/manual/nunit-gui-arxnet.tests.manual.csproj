@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppEntryArxNetTests.cs" />
+    <Compile Include="NUnitFormArxNetTests.cs" />
     <Compile Include="NUnitPresenterArxNetTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

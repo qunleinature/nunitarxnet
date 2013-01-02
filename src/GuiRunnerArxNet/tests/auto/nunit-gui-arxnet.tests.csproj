@@ -98,6 +98,7 @@
   <ItemGroup>
     <Compile Include="CommandLineArxNetTests.cs" />
     <Compile Include="ExceptionDetailsFormArxNetTests.cs" />
+    <Compile Include="NUnitFormArxNetTests.cs" />
     <Compile Include="NUnitPresenterArxNetTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecentFileMenuHandlerArxNetTests.cs" />
