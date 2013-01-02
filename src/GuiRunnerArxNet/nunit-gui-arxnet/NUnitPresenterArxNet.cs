@@ -556,6 +556,9 @@ namespace NUnit.Gui.ArxNet
         {
             try//2013-1-1单元测试NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProjectAs加
             {
+                if (loader == null) return;//2013-1-1单元测试加
+                if (loader.TestProject == null) return;//2013-1-1单元测试加
+
                 SaveFileDialog dlg = new SaveFileDialog();
                 dlg.Title = "Save Test Project";
                 dlg.Filter = "NUnit Test Project (*.nunit)|*.nunit|All Files (*.*)|*.*";

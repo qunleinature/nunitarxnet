@@ -302,7 +302,15 @@ namespace NUnit.Gui.ArxNet.Tests
         public void SaveProjectAs()
         {
             nUnitPresenterArxNet = NewPresenter(false);
-            //nUnitPresenterArxNet.NewProject();
+            nUnitPresenterArxNet.NewProject();
+            nUnitPresenterArxNet.SaveProjectAs();
+        }
+
+        [Test]
+        [Category("SaveProjectAs")]
+        public void SaveProjectAs_form_loader_null()
+        {
+            nUnitPresenterArxNet = NewPresenter(true);
             nUnitPresenterArxNet.SaveProjectAs();
         }
     }
