@@ -154,9 +154,7 @@ namespace NUnit.Gui.ArxNet
         private MenuItem openLogDirectoryMenuItem;
         private ExpandingLabel suiteName;
 		private System.Windows.Forms.MenuItem addAssemblyMenuItem;
-
-        //private Document prevActiveDocument;//前一CAD活动文档 
-
+                
 		#endregion
 		
 		#region Construction and Disposal

@@ -13,13 +13,15 @@ namespace NUnit.Gui.ArxNet.Tests
 {
     public class NUnitFormArxNetTests
     {
+        NUnitFormArxNet nUnitFormArxNet = null;
+
         //Construction
 		//public NUnitFormArxNet( GuiOptions guiOptions ) : base("NUnit")
         [Test]
         public void Constructor()
         {
             GuiOptions expectedGuiOptions = new GuiOptions(new string[0]);
-            NUnitFormArxNet nUnitFormArxNet = new NUnitFormArxNet(expectedGuiOptions);
+            nUnitFormArxNet = new NUnitFormArxNet(expectedGuiOptions);
             Assert.That(nUnitFormArxNet, Is.Not.Null);
             //private GuiOptions guiOptions;
             GuiOptions actualGuiOptions = UnitTestHelper.GetNonPublicField(nUnitFormArxNet, "guiOptions") as GuiOptions;
@@ -39,6 +41,16 @@ namespace NUnit.Gui.ArxNet.Tests
             //private TestLoaderArxNet TestLoader
             TestLoaderArxNet expectedLoader = UnitTestHelper.GetNonPublicProperty(nUnitFormArxNet, "TestLoader") as TestLoaderArxNet;
             Assert.That(actualLoader, Is.EqualTo(expectedLoader));
+        }
+
+        //protected override void Dispose( bool disposing )
+        [Test]
+        public void Dispose()
+        {
+            GuiOptions expectedGuiOptions = new GuiOptions(new string[0]);
+            nUnitFormArxNet = new NUnitFormArxNet(expectedGuiOptions);
+            nUnitFormArxNet.Dispose();
+
         }
     }
 }
