@@ -77,6 +77,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -84,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ServiceManagerSetUpFixture.cs" />
+    <Compile Include="SettingsGroupArxNetTests.cs" />
     <Compile Include="TestEventCatcher.cs" />
     <Compile Include="TestLoaderArxNetAssemblyTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

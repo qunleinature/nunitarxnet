@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ServicesArxNet.cs" />
+    <Compile Include="SettingsGroupArxNet.cs" />
     <Compile Include="TestLoaderArxNet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
