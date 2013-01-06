@@ -53,10 +53,26 @@ namespace NUnit.Util.ArxNet.Tests
 			Assert.IsNull( testGroup.GetSetting( "NAME" ), "NAME not removed" );
 		}
 
+        [Test]
+        public void TopLevelSettings_storage_null()
+        {
+            testGroup_storage_null.SaveSetting("X", 5);
+            testGroup_storage_null.SaveSetting("NAME", "Charlie");
+            Assert.IsNull(testGroup_storage_null.GetSetting("X"));
+            Assert.IsNull(testGroup_storage_null.GetSetting("NAME"));
+
+            testGroup_storage_null.RemoveSetting("X");
+            Assert.IsNull(testGroup_storage_null.GetSetting("X"), "X not removed");
+            Assert.IsNull(testGroup_storage_null.GetSetting("NAME"));
+
+            testGroup_storage_null.RemoveSetting("NAME");
+            Assert.IsNull(testGroup_storage_null.GetSetting("NAME"), "NAME not removed");
+        }
+
 		[Test]
 		public void SubGroupSettings()
 		{
-			SettingsGroup subGroup = new SettingsGroup( testGroup.Storage );
+			SettingsGroupArxNet subGroup = new SettingsGroupArxNet( testGroup.Storage );
 			Assert.IsNotNull( subGroup );
 			Assert.IsNotNull( subGroup.Storage );
 
@@ -73,6 +89,26 @@ namespace NUnit.Util.ArxNet.Tests
 			Assert.IsNull( subGroup.GetSetting( "NAME" ), "NAME not removed" );
 		}
 
+        [Test]
+        public void SubGroupSettings_storage_null()
+        {
+            SettingsGroupArxNet subGroup = new SettingsGroupArxNet(testGroup_storage_null.Storage);
+            Assert.IsNotNull(subGroup);
+            Assert.IsNull(subGroup.Storage);
+
+            subGroup.SaveSetting("X", 5);
+            subGroup.SaveSetting("NAME", "Charlie");
+            Assert.IsNull(subGroup.GetSetting("X"));
+            Assert.IsNull(subGroup.GetSetting("NAME"));
+
+            subGroup.RemoveSetting("X");
+            Assert.IsNull(subGroup.GetSetting("X"), "X not removed");
+            Assert.IsNull(subGroup.GetSetting("NAME"));
+
+            subGroup.RemoveSetting("NAME");
+            Assert.IsNull(subGroup.GetSetting("NAME"), "NAME not removed");
+        }
+
 		[Test]
 		public void TypeSafeSettings()
 		{
@@ -84,6 +120,18 @@ namespace NUnit.Util.ArxNet.Tests
 			Assert.AreEqual( "17", testGroup.GetSetting( "Y" ) );
 			Assert.AreEqual( "Charlie", testGroup.GetSetting( "NAME" ) );
 		}
+
+        [Test]
+        public void TypeSafeSettings_storage_null()
+        {
+            testGroup_storage_null.SaveSetting("X", 5);
+            testGroup_storage_null.SaveSetting("Y", "17");
+            testGroup_storage_null.SaveSetting("NAME", "Charlie");
+
+            Assert.IsNull(testGroup_storage_null.GetSetting("X"));
+            Assert.IsNull(testGroup_storage_null.GetSetting("Y"));
+            Assert.IsNull(testGroup_storage_null.GetSetting("NAME"));
+        }
 
 		[Test]
 		public void DefaultSettings()
@@ -98,6 +146,20 @@ namespace NUnit.Util.ArxNet.Tests
 			Assert.AreEqual( "Charlie", testGroup.GetSetting( "NAME", "Charlie" ) );
 			Assert.AreEqual( "Fred", testGroup.GetSetting( "NAME", "Fred" ) );
 		}
+
+        [Test]
+        public void DefaultSettings_storage_null()
+        {
+            Assert.IsNull(testGroup_storage_null.GetSetting("X"));
+            Assert.IsNull(testGroup_storage_null.GetSetting("NAME"));
+
+            Assert.AreEqual(5, testGroup_storage_null.GetSetting("X", 5));
+            Assert.AreEqual(6, testGroup_storage_null.GetSetting("X", 6));
+            Assert.AreEqual("7", testGroup_storage_null.GetSetting("X", "7"));
+
+            Assert.AreEqual("Charlie", testGroup_storage_null.GetSetting("NAME", "Charlie"));
+            Assert.AreEqual("Fred", testGroup_storage_null.GetSetting("NAME", "Fred"));
+        }
 
 		[Test]
 		public void BadSetting()

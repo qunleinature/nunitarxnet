@@ -265,6 +265,8 @@ namespace NUnit.Util.ArxNet
 		/// <param name="settingName">Name of the setting to remove</param>
 		public void RemoveSetting( string settingName )
 		{
+            if (storage == null) return;//2013-1-6Ìí¼Ó
+
 			storage.RemoveSetting( settingName );
 
 			if ( Changed != null )
@@ -277,6 +279,8 @@ namespace NUnit.Util.ArxNet
 		/// <param name="GroupName"></param>
 		public void RemoveGroup( string groupName )
 		{
+            if (storage == null) return;//2013-1-6Ìí¼Ó
+
 			storage.RemoveGroup( groupName );
 		}
 
