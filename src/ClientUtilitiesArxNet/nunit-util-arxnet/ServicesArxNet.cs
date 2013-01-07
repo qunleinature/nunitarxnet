@@ -7,6 +7,8 @@
 // ****************************************************************
 // Copyright 2012, Lei Qun
 // 2012.12.21修改：TestLoader改为TestLoaderArxNet类
+// 2013.1.7修改：
+//  1.改为调用NUnit.Util.ArxNet.SettingsService类
 // ****************************************************************
 
 using System;
@@ -76,7 +78,7 @@ namespace NUnit.Util.ArxNet
 				// Temporary fix needed to run TestDomain tests in test AppDomain
 				// TODO: Figure out how to set up the test domain correctly
 				if ( userSettings == null )
-					userSettings = new SettingsService();
+					userSettings = new SettingsServiceArxNet();
 
 				return userSettings; 
 			}

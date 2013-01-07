@@ -47,7 +47,7 @@ namespace NUnit.Util.ArxNet.Tests
 		}
 	}
 
-    class DummySettingsService : SettingsGroup, NUnit.Core.IService
+    class DummySettingsService : SettingsGroupArxNet, NUnit.Core.IService
     {
         public DummySettingsService()
         {

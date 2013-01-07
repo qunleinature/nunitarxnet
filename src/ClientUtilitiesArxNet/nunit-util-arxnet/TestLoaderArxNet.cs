@@ -592,9 +592,15 @@ namespace NUnit.Util.ArxNet
 
                 return true;
             }
-            catch//build29938fix002
+            catch (Exception exception)//build29938fix002
             {
-                throw;//build29938fix002
+                /*build29938fix002*/
+                string fileName = TestFileName;
+                log.Error("Failed to reload tests", exception);
+                lastException = exception;
+                events.FireProjectLoadFailed(fileName, exception);
+                return false;
+                /*build29938fix002*/
             }
         }
 
