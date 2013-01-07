@@ -26,5 +26,13 @@ namespace NUnit.Gui.ArxNet.Tests
             object[] args = new object[] { true };
             UnitTestHelper.CallNonPublicMethod(nUnitFormArxNet, "Dispose", args);
         }
+
+        [Test]
+        public void ShowModalDialog()
+        {
+            GuiOptions guiOptions = new GuiOptions(new string[0]);
+            nUnitFormArxNet = new NUnitFormArxNet(guiOptions);
+            nUnitFormArxNet.ShowDialog();
+        }
     }
 }

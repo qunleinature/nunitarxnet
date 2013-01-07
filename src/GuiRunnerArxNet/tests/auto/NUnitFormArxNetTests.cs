@@ -41,6 +41,7 @@ namespace NUnit.Gui.ArxNet.Tests
             //private TestLoaderArxNet TestLoader
             TestLoaderArxNet expectedLoader = UnitTestHelper.GetNonPublicProperty(nUnitFormArxNet, "TestLoader") as TestLoaderArxNet;
             Assert.That(actualLoader, Is.EqualTo(expectedLoader));
-        }        
+        }
+        
     }
 }
