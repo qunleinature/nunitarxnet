@@ -109,16 +109,16 @@ namespace NUnit.Gui.ArxNet
             catch (CADException exception)
             {
                 if (Form != null)
-                    Form.MessageDisplay.Error("Unable to Gett the New Project", exception);
+                    Form.MessageDisplay.Error("Unable to Get the New Project", exception);
                 else
-                    CADApplication.ShowAlertDialog("Unable to Gett the New Project\n" + exception.Message);
+                    CADApplication.ShowAlertDialog("Unable to Get the New Project\n" + exception.Message);
             }
             catch (SystemException exception)
             {
                 if (Form != null)
-                    Form.MessageDisplay.Error("Unable to Gett the New Project", exception);
+                    Form.MessageDisplay.Error("Unable to Get the New Project", exception);
                 else
-                    CADApplication.ShowAlertDialog("Unable to Gett the New Project\n" + exception.Message);
+                    CADApplication.ShowAlertDialog("Unable to Get the New Project\n" + exception.Message);
             }
             /*2012-12-30单元测试加*/
 

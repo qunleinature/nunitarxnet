@@ -7,6 +7,8 @@
 // ****************************************************************
 // Copyright 2012, Lei Qun 
 // 2012.12.21修改:改Services为ServicesArxNet
+// 2013.1.8修改：
+//  1.NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试改
 // ****************************************************************
 
 using System;
@@ -22,6 +24,7 @@ using NUnit.Util;
 using NUnit.Core;
 using NUnit.UiKit;
 using NUnit.Util.ArxNet;
+using NUnit.Gui.ArxNet;
 
 namespace NUnit.UiKit.ArxNet
 {
@@ -214,25 +217,34 @@ namespace NUnit.UiKit.ArxNet
 
 		protected override void OnLoad(EventArgs e)
 		{
-			if ( !this.DesignMode )
-			{
-				this.settings = ServicesArxNet.UserSettings;
-				TextDisplayTabSettings tabSettings = new TextDisplayTabSettings();
-				tabSettings.LoadSettings( settings );
+            try//2013-1-8:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加
+            {
+                if (!this.DesignMode)
+                {
+                    this.settings = ServicesArxNet.UserSettings;
+                    TextDisplayTabSettings tabSettings = new TextDisplayTabSettings();
+                    tabSettings.LoadSettings(settings);
 
-				UpdateTabPages();
+                    UpdateTabPages();
 
-				Subscribe( ServicesArxNet.TestLoader.Events );
-				ServicesArxNet.UserSettings.Changed += new SettingsEventHandler(UserSettings_Changed);
+                    Subscribe(ServicesArxNet.TestLoader.Events);
+                    ServicesArxNet.UserSettings.Changed += new SettingsEventHandler(UserSettings_Changed);
 
-				ITestEvents events = ServicesArxNet.TestLoader.Events;
-				errorDisplay.Subscribe( events );
-				notRunTree.Subscribe( events );
+                    ITestEvents events = ServicesArxNet.TestLoader.Events;
+                    errorDisplay.Subscribe(events);
+                    notRunTree.Subscribe(events);
 
-				displayController.Subscribe( events );
-			}
+                    displayController.Subscribe(events);
+                }
 
-			base.OnLoad (e);
+                base.OnLoad(e);
+            }
+            catch (SystemException exception)
+            {
+                NUnitFormArxNet form = this.ParentForm as NUnitFormArxNet;
+                form.MessageDisplay.Error("ResultTabsArxNet unable to Load", exception);                
+            }
+            /*2013-1-8:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加*/
 		}
 
 		private void UpdateTabPages()

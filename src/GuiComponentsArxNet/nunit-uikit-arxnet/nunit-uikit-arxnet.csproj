@@ -48,6 +48,10 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit-gui-runner-arxnet, Version=0.0.2.13067, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\bin\Debug\lib\nunit-gui-runner-arxnet.dll</HintPath>
+    </Reference>
     <Reference Include="nunit-util-arxnet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\bin\Debug\lib\nunit-util-arxnet.dll</HintPath>
