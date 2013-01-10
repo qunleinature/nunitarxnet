@@ -221,14 +221,15 @@ namespace NUnit.UiKit.ArxNet
             {
                 try//2013-1-8:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
                 {
-                
+                    if (ServicesArxNet.TestLoader == null) return;//2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+                                    
                     this.settings = ServicesArxNet.UserSettings;
                     TextDisplayTabSettings tabSettings = new TextDisplayTabSettings();
                     tabSettings.LoadSettings(settings);
 
                     UpdateTabPages();
 
-                    if (ServicesArxNet.TestLoader == null) return;
+                    
 
                     Subscribe(ServicesArxNet.TestLoader.Events);
                     ServicesArxNet.UserSettings.Changed += new SettingsEventHandler(UserSettings_Changed);
