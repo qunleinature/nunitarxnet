@@ -21,6 +21,7 @@ using NUnit.Core;
 using NUnit.Util;
 using NUnit.UiKit;
 using NUnit.Util.ArxNet;
+using NUnit.Gui.ArxNet;
 
 namespace NUnit.UiKit.ArxNet
 {
@@ -219,19 +220,32 @@ namespace NUnit.UiKit.ArxNet
 
 		protected override void OnLoad(EventArgs e)
 		{
-			if ( !this.DesignMode )
-			{
-				this.ShowCheckBoxes = 
-					ServicesArxNet.UserSettings.GetSetting( "Options.ShowCheckBoxes", false );
-				Initialize( ServicesArxNet.TestLoader as TestLoaderArxNet);
-				ServicesArxNet.UserSettings.Changed += new SettingsEventHandler(UserSettings_Changed);
-			}
+            try//2013-1-8:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加
+            {
+                if (!this.DesignMode)
+                {
+                    if (ServicesArxNet.TestLoader == null) return;//2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加
 
-			base.OnLoad (e);
+                    this.ShowCheckBoxes =
+                        ServicesArxNet.UserSettings.GetSetting("Options.ShowCheckBoxes", false);
+                    Initialize(ServicesArxNet.TestLoader as TestLoaderArxNet);
+                    ServicesArxNet.UserSettings.Changed += new SettingsEventHandler(UserSettings_Changed);
+                }
+
+                base.OnLoad(e);
+            }
+            catch (SystemException exception)
+            {
+                NUnitFormArxNet form = this.ParentForm as NUnitFormArxNet;
+                form.MessageDisplay.Error("TestTreeArxNet unable to Load", exception);
+            }
+            /*2013-1-8:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加*/
 		}
 
 		public void Initialize(TestLoaderArxNet loader) 
 		{
+            if (loader == null) return;//2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加
+
 			this.tests.Initialize(loader, loader.Events);
 			this.loader = loader;
 			loader.Events.TestLoaded += new NUnit.Util.TestEventHandler(events_TestLoaded);

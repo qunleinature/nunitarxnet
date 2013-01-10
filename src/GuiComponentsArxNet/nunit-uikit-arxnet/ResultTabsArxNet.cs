@@ -219,7 +219,7 @@ namespace NUnit.UiKit.ArxNet
 		{
             if (!this.DesignMode)
             {
-                try//2013-1-8:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+                try//2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
                 {
                     if (ServicesArxNet.TestLoader == null) return;//2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
                                     
@@ -247,7 +247,7 @@ namespace NUnit.UiKit.ArxNet
                     NUnitFormArxNet form = this.ParentForm as NUnitFormArxNet;
                     form.MessageDisplay.Error("ResultTabsArxNet unable to Load", exception);                
                 }
-                /*2013-1-8:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”*/
+                /*2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”*/
             }
 		}
 
