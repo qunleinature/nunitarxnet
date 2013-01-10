@@ -241,7 +241,8 @@ namespace NUnit.UiKit.ArxNet
                     displayController.Subscribe(events);                
 
                     base.OnLoad(e);
-                }           
+                }
+                /*2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”*/
                 catch (SystemException exception)
                 {
                     NUnitFormArxNet form = this.ParentForm as NUnitFormArxNet;

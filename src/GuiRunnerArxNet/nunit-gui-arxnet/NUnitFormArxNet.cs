@@ -1491,24 +1491,33 @@ namespace NUnit.Gui.ArxNet
 
 		private void SubscribeToTestEvents()
 		{
-			ITestEvents events = TestLoader.Events;
+            try//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+            {
+                ITestEvents events = TestLoader.Events;
 
-			events.RunStarting += new TestEventHandler( OnRunStarting );
-			events.RunFinished += new TestEventHandler( OnRunFinished );
+                events.RunStarting += new TestEventHandler(OnRunStarting);
+                events.RunFinished += new TestEventHandler(OnRunFinished);
 
-			events.ProjectLoaded	+= new TestEventHandler( OnTestProjectLoaded );
-			events.ProjectLoadFailed+= new TestEventHandler( OnProjectLoadFailure );
-			events.ProjectUnloading += new TestEventHandler( OnTestProjectUnloading );
-			events.ProjectUnloaded	+= new TestEventHandler( OnTestProjectUnloaded );
+                events.ProjectLoaded += new TestEventHandler(OnTestProjectLoaded);
+                events.ProjectLoadFailed += new TestEventHandler(OnProjectLoadFailure);
+                events.ProjectUnloading += new TestEventHandler(OnTestProjectUnloading);
+                events.ProjectUnloaded += new TestEventHandler(OnTestProjectUnloaded);
 
-			events.TestLoading		+= new TestEventHandler( OnTestLoadStarting );
-			events.TestLoaded		+= new TestEventHandler( OnTestLoaded );
-			events.TestLoadFailed	+= new TestEventHandler( OnTestLoadFailure );
-			events.TestUnloading	+= new TestEventHandler( OnTestUnloadStarting );
-			events.TestUnloaded		+= new TestEventHandler( OnTestUnloaded );
-			events.TestReloading	+= new TestEventHandler( OnReloadStarting );
-			events.TestReloaded		+= new TestEventHandler( OnTestChanged );
-			events.TestReloadFailed	+= new TestEventHandler( OnTestLoadFailure );
+                events.TestLoading += new TestEventHandler(OnTestLoadStarting);
+                events.TestLoaded += new TestEventHandler(OnTestLoaded);
+                events.TestLoadFailed += new TestEventHandler(OnTestLoadFailure);
+                events.TestUnloading += new TestEventHandler(OnTestUnloadStarting);
+                events.TestUnloaded += new TestEventHandler(OnTestUnloaded);
+                events.TestReloading += new TestEventHandler(OnReloadStarting);
+                events.TestReloaded += new TestEventHandler(OnTestChanged);
+                events.TestReloadFailed += new TestEventHandler(OnTestLoadFailure);
+            }
+            /*2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”*/
+            catch (SystemException exception)
+            {
+                this.MessageDisplay.Error("SubscribeToTestEvents unable to Run", exception);
+            }
+            /*2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”*/
 		}
 
 		private void InitializeControls()
