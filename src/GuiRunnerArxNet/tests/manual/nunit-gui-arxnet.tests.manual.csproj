@@ -49,6 +49,10 @@
     <Reference Include="nunit-gui-runner-arxnet">
       <HintPath>..\..\..\..\bin\Debug\lib\nunit-gui-runner-arxnet.dll</HintPath>
     </Reference>
+    <Reference Include="nunit-uikit-arxnet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\bin\Debug\lib\nunit-uikit-arxnet.dll</HintPath>
+    </Reference>
     <Reference Include="nunit-util-arxnet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\bin\Debug\lib\nunit-util-arxnet.dll</HintPath>

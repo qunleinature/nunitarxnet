@@ -29,6 +29,12 @@ namespace NUnit.UiKit.ArxNet
 
 		public static void Display( Form owner, SettingsPage page )
 		{
+            /*2013-1-12:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”*/
+            if (owner == null) return;
+            if (owner.Site == null) return;
+            if (owner.Site.Container == null) return;
+            /*2013-1-12:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”*/
+
 			using( SimpleSettingsDialogArxNet dialog = new SimpleSettingsDialogArxNet() )
 			{
 				owner.Site.Container.Add( dialog );

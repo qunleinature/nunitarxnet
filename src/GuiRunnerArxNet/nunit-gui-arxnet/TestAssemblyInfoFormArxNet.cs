@@ -30,45 +30,55 @@ namespace NUnit.Gui.ArxNet
     {
         protected override void OnLoad(EventArgs e)
         {
-            this.Text = "Test Assemblies";
-            this.TextBox.WordWrap = false;
-            //this.TextBox.ContentsResized += new ContentsResizedEventHandler(TextBox_ContentsResized);
-            this.TextBox.Font = new System.Drawing.Font(FontFamily.GenericMonospace, 8.25F);
-
-            base.OnLoad(e);
-
-            Process p = Process.GetCurrentProcess();
-            int currentProcessId = p.Id;
-            string currentDomainName = "";
-
-            AppendProcessInfo(
-			      currentProcessId, 
-			      Path.GetFileName(Assembly.GetEntryAssembly().Location), 
-			      RuntimeFramework.CurrentFramework );
-
-            if (ServicesArxNet.TestLoader == null) return;//build29938fix
-            if (ServicesArxNet.TestLoader.AssemblyInfo == null) return;////build29938fix
-
-            foreach (TestAssemblyInfo info in ServicesArxNet.TestLoader.AssemblyInfo)
+            try//2013-1-12:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加
             {
-                if (info.ProcessId != currentProcessId)
+                if (ServicesArxNet.TestLoader == null) return;//build29938fix
+                if (ServicesArxNet.TestLoader.AssemblyInfo == null) return;////build29938fix
+
+                this.Text = "Test Assemblies";
+                this.TextBox.WordWrap = false;
+                //this.TextBox.ContentsResized += new ContentsResizedEventHandler(TextBox_ContentsResized);
+                this.TextBox.Font = new System.Drawing.Font(FontFamily.GenericMonospace, 8.25F);
+
+                base.OnLoad(e);
+
+                Process p = Process.GetCurrentProcess();
+                int currentProcessId = p.Id;
+                string currentDomainName = "";
+
+                AppendProcessInfo(
+                      currentProcessId,
+                      Path.GetFileName(Assembly.GetEntryAssembly().Location),
+                      RuntimeFramework.CurrentFramework);
+
+                foreach (TestAssemblyInfo info in ServicesArxNet.TestLoader.AssemblyInfo)
                 {
-                    this.TextBox.AppendText("\r\n");
-                    AppendProcessInfo(info);
-                    currentProcessId = info.ProcessId;
+                    if (info.ProcessId != currentProcessId)
+                    {
+                        this.TextBox.AppendText("\r\n");
+                        AppendProcessInfo(info);
+                        currentProcessId = info.ProcessId;
+                    }
+
+                    if (info.DomainName != currentDomainName)
+                    {
+                        AppendDomainInfo(info);
+                        currentDomainName = info.DomainName;
+                    }
+
+                    AppendAssemblyInfo(info);
                 }
 
-                if (info.DomainName != currentDomainName)
-                {
-                    AppendDomainInfo(info);
-                    currentDomainName = info.DomainName;
-                }
-
-                AppendAssemblyInfo(info);
+                TextBox.Select(0, 0);
+                TextBox.ScrollToCaret();
             }
-			
-			TextBox.Select(0,0);
-			TextBox.ScrollToCaret();
+            /*2013-1-12:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加*/
+            catch (SystemException exception)
+            {
+                IMessageDisplay messageDisplay = new MessageDisplay("nunit");
+                messageDisplay.Error("TestAssemblyInfoFormArxNet unable to Load", exception);
+            }
+            /*2013-1-12:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加*/
         }
 
         private void AppendProcessInfo(TestAssemblyInfo info)

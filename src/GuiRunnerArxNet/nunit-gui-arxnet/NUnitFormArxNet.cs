@@ -1247,7 +1247,11 @@ namespace NUnit.Gui.ArxNet
 
 		private void addConfigurationMenuItem_Click( object sender, System.EventArgs e )
 		{
-            if (TestProject == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+            /*2013-1-12:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”*/
+            if (TestProject == null) return;            
+            if (this.Site == null) return;
+            if (this.Site.Container == null) return;
+            /*2013-1-12:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”*/
 
 			using( AddConfigurationDialog dlg = new AddConfigurationDialog( TestProject ) )
 			{
@@ -1260,7 +1264,11 @@ namespace NUnit.Gui.ArxNet
 
 		private void editConfigurationsMenuItem_Click( object sender, System.EventArgs e )
 		{
-            if (TestProject == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+            /*2013-1-12:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”*/            
+            if (TestProject == null) return;
+            if (this.Site == null) return;
+            if (this.Site.Container == null) return;
+            /*2013-1-12:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”*/
 
 			using( ConfigurationEditor editor = new ConfigurationEditor( TestProject ) )
 			{
@@ -1352,7 +1360,11 @@ namespace NUnit.Gui.ArxNet
 
 		private void exceptionDetailsMenuItem_Click(object sender, System.EventArgs e)
 		{
-            if (TestLoader == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+            /*2013-1-12:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”*/            
+            if (TestLoader == null) return;
+            if (this.Site == null) return;
+            if (this.Site.Container == null) return;
+            /*2013-1-12:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”*/
 
 			using( ExceptionDetailsForm details = new ExceptionDetailsForm( TestLoader.LastException ) )
 			{
@@ -1399,6 +1411,11 @@ namespace NUnit.Gui.ArxNet
 		/// </summary>
 		private void aboutMenuItem_Click(object sender, System.EventArgs e)
 		{
+            /*2013-1-12:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”*/
+            if (this.Site == null) return;
+            if (this.Site.Container == null) return;
+            /*2013-1-12:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”*/
+
 			using( AboutBox aboutBox = new AboutBox() )
 			{
 				this.Site.Container.Add( aboutBox );
