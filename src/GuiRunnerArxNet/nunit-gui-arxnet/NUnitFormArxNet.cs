@@ -11,6 +11,8 @@
 // 2012.12.20–ﬁ∏ƒ:ResultTabs±‰Œ™ResultTabsArxNet
 // 2012.12.23ÃÌº”£∫private void NUnitFormArxNet_Closed(object sender, FormClosedEventArgs e)
 // 2012.12.23–ﬁ∏ƒ£∫«Â¿Ìπ§◊˜∑≈‘⁄protected override void Dispose( bool disposing )÷–
+// 2013.1.11–ﬁ∏ƒ£∫
+//  1.NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘∏ƒ
 // ****************************************************************
 
 using System;
@@ -882,22 +884,38 @@ namespace NUnit.Gui.ArxNet
 
 		private bool IsProjectLoaded
 		{
-			get { return TestLoader.IsProjectLoaded; }
+			get 
+            {
+                if (TestLoader == null) return false;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+                return TestLoader.IsProjectLoaded; 
+            }
 		}
 
 		private NUnitProject TestProject
 		{
-			get { return TestLoader.TestProject; }
+			get 
+            {
+                if (TestLoader == null) return null;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+                return TestLoader.TestProject;
+            }
 		}
 
 		private bool IsTestLoaded
 		{
-			get { return TestLoader.IsTestLoaded; }
+			get
+            {
+                if (TestLoader == null) return false;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+                return TestLoader.IsTestLoaded; 
+            }
 		}
 
 		private bool IsTestRunning
 		{
-			get { return TestLoader.Running; }
+			get 
+            {
+                if (TestLoader == null) return false;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+                return TestLoader.Running; 
+            }
 		}
 		#endregion
 
@@ -907,6 +925,9 @@ namespace NUnit.Gui.ArxNet
 
 		private void fileMenu_Popup(object sender, System.EventArgs e)
 		{
+            if (TestLoader == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+            if (TestProject == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
 			newMenuItem.Enabled = !IsTestRunning;
 			openMenuItem.Enabled = !IsTestRunning;
 			closeMenuItem.Enabled = IsProjectLoaded && !IsTestRunning;
@@ -970,12 +991,16 @@ namespace NUnit.Gui.ArxNet
 
 		private void saveAsMenuItem_Click(object sender, System.EventArgs e)
 		{
+            if (TestProject == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
             presenter.SaveProjectAs();
             SetTitleBar(TestProject.Name);
 		}
 
         private void runtimeFrameworkMenuItem_Click(object sender, System.EventArgs e)
         {
+            if (TestLoader == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
             TestLoader.ReloadTest(((MenuItem)sender).Tag as RuntimeFramework);
         }
 
@@ -986,6 +1011,8 @@ namespace NUnit.Gui.ArxNet
 
 		private void reloadTestsMenuItem_Click(object sender, System.EventArgs e)
 		{
+            if (TestLoader == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
 			TestLoader.ReloadTest();
 		}
 
@@ -999,6 +1026,8 @@ namespace NUnit.Gui.ArxNet
 		#region View Menu
 		private void viewMenu_Popup(object sender, System.EventArgs e)
 		{
+            if (TestLoader == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
 			assemblyDetailsMenuItem.Enabled = this.TestLoader.IsTestLoaded;
 		}
 
@@ -1143,11 +1172,15 @@ namespace NUnit.Gui.ArxNet
 
 		private void increaseFixedFontMenuItem_Click(object sender, System.EventArgs e)
 		{
+            if (fixedFont == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
 			applyFixedFont( new Font( fixedFont.FontFamily, fixedFont.SizeInPoints * 1.2f, fixedFont.Style ) );		
 		}
 
 		private void decreaseFixedFontMenuItem_Click(object sender, System.EventArgs e)
 		{
+            if (fixedFont == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
 			applyFixedFont( new Font( fixedFont.FontFamily, fixedFont.SizeInPoints / 1.2f, fixedFont.Style ) );		
 		}
 
@@ -1172,6 +1205,9 @@ namespace NUnit.Gui.ArxNet
 		/// </summary>
 		private void projectMenu_Popup(object sender, System.EventArgs e)
 		{
+            if (TestLoader == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+            if (TestProject == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
 			int index = 0;
 			configMenuItem.MenuItems.Clear();
 
@@ -1199,6 +1235,8 @@ namespace NUnit.Gui.ArxNet
 
 		private void configMenuItem_Click( object sender, EventArgs e )
 		{
+            if (TestProject == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
 			MenuItem item = (MenuItem)sender;
             if (!item.Checked)
             {
@@ -1209,6 +1247,8 @@ namespace NUnit.Gui.ArxNet
 
 		private void addConfigurationMenuItem_Click( object sender, System.EventArgs e )
 		{
+            if (TestProject == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
 			using( AddConfigurationDialog dlg = new AddConfigurationDialog( TestProject ) )
 			{
 				this.Site.Container.Add( dlg );
@@ -1220,6 +1260,8 @@ namespace NUnit.Gui.ArxNet
 
 		private void editConfigurationsMenuItem_Click( object sender, System.EventArgs e )
 		{
+            if (TestProject == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
 			using( ConfigurationEditor editor = new ConfigurationEditor( TestProject ) )
 			{
 				this.Site.Container.Add( editor );
@@ -1248,6 +1290,9 @@ namespace NUnit.Gui.ArxNet
 
         private void LoadOrReloadTestAsNeeded()
         {
+            if (TestLoader == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+            if (TestProject == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
             if (TestProject.HasChangesRequiringReload)
             {
                 if (TestProject.IsLoadable)
@@ -1293,6 +1338,8 @@ namespace NUnit.Gui.ArxNet
 
 		private void toolsMenu_Popup(object sender, System.EventArgs e)
 		{
+            if (TestLoader == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
             assemblyDetailsMenuItem.Enabled = IsTestLoaded;
 			saveXmlResultsMenuItem.Enabled = IsTestLoaded && TestLoader.TestResult != null;
 			exceptionDetailsMenuItem.Enabled = TestLoader.LastException != null;
@@ -1305,6 +1352,8 @@ namespace NUnit.Gui.ArxNet
 
 		private void exceptionDetailsMenuItem_Click(object sender, System.EventArgs e)
 		{
+            if (TestLoader == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
 			using( ExceptionDetailsForm details = new ExceptionDetailsForm( TestLoader.LastException ) )
 			{
 				this.Site.Container.Add( details );
@@ -1367,80 +1416,93 @@ namespace NUnit.Gui.ArxNet
 		/// </summary>
 		private void NUnitFormArxNet_Load(object sender, System.EventArgs e)
 		{
-			if ( !this.DesignMode )
-			{
-				// TODO: Can these controls add their menus themselves?
-				this.viewMenu.MenuItems.Add(3, resultTabs.TabsMenu);
-				this.viewMenu.MenuItems.Add(4, testTree.TreeMenu);
+            if (!this.DesignMode)
+            {
+                try//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+                {
+                    if (recentFilesService == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+                    if (TestLoader == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”                    
 
-				EnableRunCommand( false );
-				EnableStopCommand( false );
+                    // TODO: Can these controls add their menus themselves?
+                    this.viewMenu.MenuItems.Add(3, resultTabs.TabsMenu);
+                    this.viewMenu.MenuItems.Add(4, testTree.TreeMenu);
 
-				recentProjectsMenuHandler = new RecentFileMenuHandler( recentProjectsMenu, recentFilesService );
-                recentProjectsMenuHandler.CheckFilesExist = userSettings.GetSetting("Gui.RecentProjects.CheckFilesExist", true);
+                    EnableRunCommand(false);
+                    EnableStopCommand(false);
 
-				LoadFormSettings();
-				SubscribeToTestEvents();
-				InitializeControls();
+                    recentProjectsMenuHandler = new RecentFileMenuHandler(recentProjectsMenu, recentFilesService);
+                    recentProjectsMenuHandler.CheckFilesExist = userSettings.GetSetting("Gui.RecentProjects.CheckFilesExist", true);
 
-				// Force display  so that any "Loading..." or error 
-				// message overlays the main form.
-				this.Show();
-				this.Invalidate();
-				this.Update();
+                    LoadFormSettings();
+                    SubscribeToTestEvents();
+                    InitializeControls();
 
-				// Load test specified on command line or
-				// the most recent one if options call for it
-				if ( guiOptions.ParameterCount != 0 )
-                    presenter.OpenProject((string)guiOptions.Parameters[0], guiOptions.config, guiOptions.fixture);
-				else if( userSettings.GetSetting( "Options.LoadLastProject", true ) && !guiOptions.noload )
-				{
-					foreach( RecentFileEntry entry in recentFilesService.Entries )
-					{
-						if ( entry != null && entry.Exists && entry.IsCompatibleCLRVersion )
-						{
-                            presenter.OpenProject(entry.Path, guiOptions.config, guiOptions.fixture);
-							break;
-						}
-					}
-				}
+                    // Force display  so that any "Loading..." or error 
+                    // message overlays the main form.
+                    this.Show();
+                    this.Invalidate();
+                    this.Update();
 
-				if ( guiOptions.include != null )
-				{
-					string[] categories = guiOptions.include.Split( ',' );
-					if ( categories.Length > 0 )
-						this.testTree.SelectCategories( categories, false );
-				}
-				else if ( guiOptions.exclude != null )
-				{
-					string[] categories = guiOptions.exclude.Split( ',' );
-					if ( categories.Length > 0 )
-						this.testTree.SelectCategories( categories, true );
-				}
+                    // Load test specified on command line or
+                    // the most recent one if options call for it
+                    if (guiOptions.ParameterCount != 0)
+                        presenter.OpenProject((string)guiOptions.Parameters[0], guiOptions.config, guiOptions.fixture);
+                    else if (userSettings.GetSetting("Options.LoadLastProject", true) && !guiOptions.noload)
+                    {
+                        foreach (RecentFileEntry entry in recentFilesService.Entries)
+                        {
+                            if (entry != null && entry.Exists && entry.IsCompatibleCLRVersion)
+                            {
+                                presenter.OpenProject(entry.Path, guiOptions.config, guiOptions.fixture);
+                                break;
+                            }
+                        }
+                    }
 
-				// Run loaded test automatically if called for
-				if ( TestLoader.IsTestLoaded )
-					if ( guiOptions.run || guiOptions.runselected )
-					{
-						// TODO: Temporary fix to avoid problem when /run is used 
-						// with ReloadOnRun turned on. Refactor TestLoader so
-						// we can just do a run without reload.
-						bool reload = ServicesArxNet.UserSettings.GetSetting("Options.TestLoader.ReloadOnRun", false);
-					
-						try
-						{
-							ServicesArxNet.UserSettings.SaveSetting("Options.TestLoader.ReloadOnRun", false);
-                            if (guiOptions.runselected)
-                                testTree.RunSelectedTests();
-                            else
-                                testTree.RunAllTests(false);
-						}
-						finally
-						{
-							ServicesArxNet.UserSettings.SaveSetting("Options.TestLoader.ReloadOnRun", reload);
-						}
-					}
-			}
+                    if (guiOptions.include != null)
+                    {
+                        string[] categories = guiOptions.include.Split(',');
+                        if (categories.Length > 0)
+                            this.testTree.SelectCategories(categories, false);
+                    }
+                    else if (guiOptions.exclude != null)
+                    {
+                        string[] categories = guiOptions.exclude.Split(',');
+                        if (categories.Length > 0)
+                            this.testTree.SelectCategories(categories, true);
+                    }
+
+                    // Run loaded test automatically if called for
+                    if (TestLoader.IsTestLoaded)
+                        if (guiOptions.run || guiOptions.runselected)
+                        {
+                            // TODO: Temporary fix to avoid problem when /run is used 
+                            // with ReloadOnRun turned on. Refactor TestLoader so
+                            // we can just do a run without reload.
+                            bool reload = ServicesArxNet.UserSettings.GetSetting("Options.TestLoader.ReloadOnRun", false);
+
+                            try
+                            {
+                                ServicesArxNet.UserSettings.SaveSetting("Options.TestLoader.ReloadOnRun", false);
+                                if (guiOptions.runselected)
+                                    testTree.RunSelectedTests();
+                                else
+                                    testTree.RunAllTests(false);
+                            }
+                            finally
+                            {
+                                ServicesArxNet.UserSettings.SaveSetting("Options.TestLoader.ReloadOnRun", reload);
+                            }
+                        }
+                }
+                /*2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”*/
+                catch (SystemException exception)
+                {
+                    this.MessageDisplay.Error("NUnitFormArxNet unable to Load", exception);
+                }
+                /*2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”*/
+
+            }
 		}
 
 		private void LoadFormSettings()
@@ -1493,6 +1555,8 @@ namespace NUnit.Gui.ArxNet
 		{
             try//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
             {
+                if (TestLoader == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
                 ITestEvents events = TestLoader.Events;
 
                 events.RunStarting += new TestEventHandler(OnRunStarting);
@@ -1523,6 +1587,8 @@ namespace NUnit.Gui.ArxNet
 		private void InitializeControls()
 		{
 			// ToDo: Migrate more ui elements to handle events on their own.
+            if (TestLoader == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
 			this.progressBar.Subscribe( TestLoader.Events );
 			this.statusBar.Subscribe( TestLoader.Events );
 		}
@@ -1600,6 +1666,8 @@ namespace NUnit.Gui.ArxNet
 		/// </summary>
 		private void NUnitFormArxNet_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
+            if (TestLoader == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
 			if ( IsTestRunning )
 			{
                 DialogResult dialogResult = MessageDisplay.Ask( 
@@ -1650,6 +1718,8 @@ namespace NUnit.Gui.ArxNet
 
 		private void CancelRun()
 		{
+            if (TestLoader == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
 			EnableStopCommand( false );
 
 			if ( IsTestRunning )
@@ -1692,6 +1762,9 @@ namespace NUnit.Gui.ArxNet
 
         private void OnTestProjectUnloading(object sender, TestEventArgs e)
 		{
+            if (TestLoader == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+            if (recentFilesService == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
             // Remove any watcher
             if (e.Name != null && File.Exists(e.Name))
             {
@@ -1719,6 +1792,8 @@ namespace NUnit.Gui.ArxNet
 
         private void OnProjectLoadFailure(object sender, TestEventArgs e)
         {
+            if (recentFilesService == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
             MessageDisplay.Error("Project Not Loaded", e.Exception);
 
             recentFilesService.Remove(e.Name);
@@ -1753,14 +1828,14 @@ namespace NUnit.Gui.ArxNet
 		/// </summary>
 		private void OnTestLoaded( object sender, TestEventArgs e )
 		{
+            if (TestLoader == null) return;////build29938fix
+
 			if ( longOpDisplay != null )
 			{
 				longOpDisplay.Dispose();
 				longOpDisplay = null;
 			}
-			EnableRunCommand( true );
-
-            if (TestLoader == null) return;////build29938fix
+			EnableRunCommand( true );            
 
 			if ( TestLoader.TestCount == 0 )
 			{
@@ -1793,6 +1868,8 @@ namespace NUnit.Gui.ArxNet
 		/// </summary>
 		private void OnTestChanged( object sender, TestEventArgs e )
 		{
+            if (TestProject == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
             SetTitleBar(TestProject.Name);
 
 			if ( longOpDisplay != null )
@@ -1852,6 +1929,8 @@ the version under which NUnit is currently running ({0}) or trying to load a 64-
 
 		private void OnRunFinished( object sender, TestEventArgs e )
 		{
+            if (TestLoader == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
 			EnableStopCommand( false );
 			EnableRunCommand( false );
 
@@ -1905,6 +1984,8 @@ the version under which NUnit is currently running ({0}) or trying to load a 64-
 
 		private void EnableRunCommand( bool enable )
 		{
+            if (TestLoader == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
 			runButton.Enabled = enable;
 			runAllMenuItem.Enabled = enable;
 			runSelectedMenuItem.Enabled = enable;

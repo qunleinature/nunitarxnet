@@ -222,6 +222,7 @@ namespace NUnit.UiKit.ArxNet
                 try//2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
                 {
                     if (ServicesArxNet.TestLoader == null) return;//2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+                    if (settings == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
                                     
                     this.settings = ServicesArxNet.UserSettings;
                     TextDisplayTabSettings tabSettings = new TextDisplayTabSettings();
@@ -254,6 +255,8 @@ namespace NUnit.UiKit.ArxNet
 
 		private void UpdateTabPages()
 		{
+            if (settings == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
 			errorsTabMenuItem.Checked = settings.GetSetting( "Gui.ResultTabs.DisplayErrorsTab", true );
 			notRunTabMenuItem.Checked = settings.GetSetting( "Gui.ResultTabs.DisplayNotRunTab", true );
 
@@ -284,11 +287,15 @@ namespace NUnit.UiKit.ArxNet
 
 		private void errorsTabMenuItem_Click(object sender, System.EventArgs e)
 		{
+            if (settings == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
 			settings.SaveSetting( "Gui.ResultTabs.DisplayErrorsTab", errorsTabMenuItem.Checked = !errorsTabMenuItem.Checked );
 		}
 
 		private void notRunTabMenuItem_Click(object sender, System.EventArgs e)
 		{
+            if (settings == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
 			settings.SaveSetting( "Gui.ResultTabs.DisplayNotRunTab", notRunTabMenuItem.Checked = !notRunTabMenuItem.Checked );
 		}
 
@@ -299,6 +306,8 @@ namespace NUnit.UiKit.ArxNet
 
 		private void tabControl_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
+            if (settings == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
 			if ( !updating )
 			{
 				int index = tabControl.SelectedIndex;
@@ -332,6 +341,8 @@ namespace NUnit.UiKit.ArxNet
 		}
 		private void OnTestReloaded(object sender, TestEventArgs args)
 		{
+            if (settings == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
+
 			if ( settings.GetSetting( "Options.TestLoader.ClearResultsOnReload", false ) )
 				this.Clear();
 		}
@@ -452,8 +463,8 @@ namespace NUnit.UiKit.ArxNet
 			}
 
 			private static Font GetFixedFont()
-			{
-				ISettings settings = ServicesArxNet.UserSettings;
+			{                
+				ISettings settings = ServicesArxNet.UserSettings;               
 
 				return settings == null 
                     ? new Font(FontFamily.GenericMonospace, 8.0f) 

@@ -620,16 +620,22 @@ namespace NUnit.UiKit.ArxNet
 
 		public void RunAllTests(bool ignoreTests)
 		{
+            if (loader == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加
+
 			tests.RunAllTests(ignoreTests);
 		}
 
 		public void RunSelectedTests()
 		{
+            if (loader == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加
+
 			tests.RunSelectedTests();
 		}
 
 		public void RunFailedTests()
 		{
+            if (loader == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加
+
 			tests.RunFailedTests();
 		}
 
