@@ -46,10 +46,15 @@ namespace NUnit.Gui.ArxNet
                 int currentProcessId = p.Id;
                 string currentDomainName = "";
 
-                AppendProcessInfo(
+                /*AppendProcessInfo(
                       currentProcessId,
                       Path.GetFileName(Assembly.GetEntryAssembly().Location),
-                      RuntimeFramework.CurrentFramework);
+                      RuntimeFramework.CurrentFramework);*/
+
+                AppendProcessInfo(
+                      currentProcessId,
+                      Path.GetFileName(Assembly.GetExecutingAssembly().Location),
+                      RuntimeFramework.CurrentFramework);//2013-1-12:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试改
 
                 foreach (TestAssemblyInfo info in ServicesArxNet.TestLoader.AssemblyInfo)
                 {
