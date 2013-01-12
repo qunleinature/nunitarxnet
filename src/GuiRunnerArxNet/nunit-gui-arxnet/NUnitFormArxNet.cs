@@ -1521,7 +1521,6 @@ namespace NUnit.Gui.ArxNet
 
             }
 		}
-
 		private void LoadFormSettings()
 		{
 			this.displayFormat = userSettings.GetSetting( "Gui.DisplayFormat", "Full" );
