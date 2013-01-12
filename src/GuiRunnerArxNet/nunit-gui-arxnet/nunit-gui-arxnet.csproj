@@ -138,6 +138,7 @@
     <Compile Include="NUnitPresenterArxNet.cs" />
     <Compile Include="OptionsDialogArxNet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecentFileMenuHandlerArxNet.cs" />
     <Compile Include="TestAssemblyInfoFormArxNet.cs">
       <SubType>Form</SubType>
     </Compile>

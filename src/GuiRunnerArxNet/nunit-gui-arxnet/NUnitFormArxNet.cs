@@ -53,7 +53,7 @@ namespace NUnit.Gui.ArxNet
         #region Instance variables
 
 		// Handlers for our recentFiles and recentProjects
-		private RecentFileMenuHandler recentProjectsMenuHandler;
+		private RecentFileMenuHandlerArxNet recentProjectsMenuHandler;
 
 		private RecentFiles recentFilesService;
 		private ISettings userSettings;
@@ -1447,7 +1447,7 @@ namespace NUnit.Gui.ArxNet
                     EnableRunCommand(false);
                     EnableStopCommand(false);
 
-                    recentProjectsMenuHandler = new RecentFileMenuHandler(recentProjectsMenu, recentFilesService);
+                    recentProjectsMenuHandler = new RecentFileMenuHandlerArxNet(recentProjectsMenu, recentFilesService);
                     recentProjectsMenuHandler.CheckFilesExist = userSettings.GetSetting("Gui.RecentProjects.CheckFilesExist", true);
 
                     LoadFormSettings();
