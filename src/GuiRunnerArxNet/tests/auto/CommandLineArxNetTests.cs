@@ -16,8 +16,7 @@ using System.Text;
 using NUnit.Framework;
 
 namespace NUnit.Gui.ArxNet.Tests
-{	
-
+{
 	[TestFixture]
 	public class CommandLineArxNetTests
 	{
