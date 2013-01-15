@@ -222,7 +222,6 @@ namespace NUnit.UiKit.ArxNet
                 try//2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
                 {
                     if (ServicesArxNet.TestLoader == null) return;//2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
-                    if (settings == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
                                     
                     this.settings = ServicesArxNet.UserSettings;
                     TextDisplayTabSettings tabSettings = new TextDisplayTabSettings();
