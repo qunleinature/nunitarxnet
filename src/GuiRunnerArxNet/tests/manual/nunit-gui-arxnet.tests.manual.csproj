@@ -89,6 +89,7 @@
     <Compile Include="AppEntryArxNetTests.cs" />
     <Compile Include="NUnitFormArxNetTests.cs" />
     <Compile Include="NUnitPresenterArxNetTests.cs" />
+    <Compile Include="OptionsDialogArxNetTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
