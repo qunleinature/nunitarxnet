@@ -53,7 +53,7 @@ namespace NUnit.Gui.ArxNet
 
                 AppendProcessInfo(
                       currentProcessId,
-                      Path.GetFileName(Assembly.GetExecutingAssembly().Location),
+                      Path.GetFileName(p.MainModule.FileName),
                       RuntimeFramework.CurrentFramework);//2013-1-12:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试改
 
                 foreach (TestAssemblyInfo info in ServicesArxNet.TestLoader.AssemblyInfo)
