@@ -227,9 +227,7 @@ namespace NUnit.UiKit.ArxNet
                     TextDisplayTabSettings tabSettings = new TextDisplayTabSettings();
                     tabSettings.LoadSettings(settings);
 
-                    UpdateTabPages();
-
-                    
+                    UpdateTabPages();                    
 
                     Subscribe(ServicesArxNet.TestLoader.Events);
                     ServicesArxNet.UserSettings.Changed += new SettingsEventHandler(UserSettings_Changed);
