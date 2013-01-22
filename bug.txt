@@ -14,3 +14,11 @@ build29938fix002
 	2.添加对对象为null的检查
 build:
 build39106 v0.0.2.39106-n2.6.0.11340-AC2012
+2013-1-22
+v0.0.2.38644-n2.6.0.11340-AC2012
+bug:
+build38644bug001
+	"Tests Not Run"无结果
+fix:
+build38644bug001
+	经测试正常显示
