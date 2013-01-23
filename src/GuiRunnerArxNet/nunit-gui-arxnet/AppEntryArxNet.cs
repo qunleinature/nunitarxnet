@@ -15,7 +15,9 @@
 //  2.public int NUnit.Gui.ArxNet.AppEntryArxNet.Main (string[] args)去掉static
 //  3.增加：static public bool nunitRunned = false;//nunit测试命令是否已运行过了
 // 2012.12.23修改
-//  1.NUnit.Gui.ArxNet.AppEntryArxNet改为调用NUnit.Util.ArxNet.SettingsService
+//  1.NUnit.Gui.ArxNet.AppEntryArxNet改为调用NUnit.Util.ArxNet.SettingsServiceArxNet
+// 2013.1.23修改
+//  1.NUnit.Gui.ArxNet.AppEntryArxNet改为调用NUnit.Gui.ArxNet.GuiOptionsArxNet
 // ****************************************************************
 
 using System;

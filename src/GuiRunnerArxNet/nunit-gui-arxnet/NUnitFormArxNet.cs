@@ -13,6 +13,8 @@
 // 2012.12.23修改：清理工作放在protected override void Dispose( bool disposing )中
 // 2013.1.11修改：
 //  1.NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试改
+// 2013.1.23修改
+//  1.改为调用NUnit.Gui.ArxNet.GuiOptionsArxNet
 // ****************************************************************
 
 using System;

@@ -7,8 +7,7 @@
 // ****************************************************************
 // Copyright 2012, Lei Qun
 // 2013.1.23修改
-//  1.NUnit.Gui.ArxNet.AppEntryArxNet改为调用NUnit.Gui.ArxNet.GuiOptionsArxNet
-//  2.修改GetHelpText方法
+//  1.修改GetHelpText方法
 // ****************************************************************
 
 namespace NUnit.Gui.ArxNet
@@ -82,7 +81,7 @@ namespace NUnit.Gui.ArxNet
 		public override string GetHelpText()//2013.1.23修改
 		{
 			return
-				"NUNIT\nargs:[inputfile] [options]\r\r" +
+				"命令:NUNIT\nargs:[inputfile] [options]\r\r" +
 				"Runs a set of NUnit tests from the console. You may specify\r" +
 				"an assembly or a project file of type .nunit as input.\r\r" +
 				"Options:\r" +
