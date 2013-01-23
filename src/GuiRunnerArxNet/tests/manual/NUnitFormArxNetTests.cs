@@ -24,7 +24,7 @@ namespace NUnit.Gui.ArxNet.Tests
         [Test]
         public void Dispose()
         {
-            GuiOptions expectedGuiOptions = new GuiOptions(new string[0]);
+            GuiOptionsArxNet expectedGuiOptions = new GuiOptionsArxNet(new string[0]);
             nUnitFormArxNet = new NUnitFormArxNet(expectedGuiOptions);
             object[] args = new object[] { true };
             UnitTestHelper.CallNonPublicMethod(nUnitFormArxNet, "Dispose", args);
@@ -46,7 +46,7 @@ namespace NUnit.Gui.ArxNet.Tests
             AppContainer c = new AppContainer();
             AmbientProperties ambient = new AmbientProperties();
             c.Services.AddService(typeof(AmbientProperties), ambient);            
-            GuiOptions guiOptions = new GuiOptions(new string[0]);            
+            GuiOptionsArxNet guiOptions = new GuiOptionsArxNet(new string[0]);            
             nUnitFormArxNet = new NUnitFormArxNet(guiOptions);
             c.Add(nUnitFormArxNet);
             nUnitFormArxNet.ShowDialog();
@@ -68,7 +68,7 @@ namespace NUnit.Gui.ArxNet.Tests
             AppContainer c = new AppContainer();
             AmbientProperties ambient = new AmbientProperties();
             c.Services.AddService(typeof(AmbientProperties), ambient);
-            GuiOptions guiOptions = new GuiOptions(new string[0]);
+            GuiOptionsArxNet guiOptions = new GuiOptionsArxNet(new string[0]);
             nUnitFormArxNet = new NUnitFormArxNet(guiOptions);
             c.Add(nUnitFormArxNet);
             nUnitFormArxNet.Show();

@@ -23,21 +23,21 @@ namespace NUnit.Gui.ArxNet.Tests
 		[Test]
 		public void NoParametersCount()
 		{
-			GuiOptions options = new GuiOptions(new string[] {});
+			GuiOptionsArxNet options = new GuiOptionsArxNet(new string[] {});
 			Assert.IsTrue(options.NoArgs);
 		}
 
 		[Test]
 		public void Help()
 		{
-			GuiOptions options = new GuiOptions(new string[] {"-help"});
+			GuiOptionsArxNet options = new GuiOptionsArxNet(new string[] {"-help"});
 			Assert.IsTrue(options.help);
 		}
 
 		[Test]
 		public void ShortHelp()
 		{
-			GuiOptions options = new GuiOptions(new string[] {"-?"});
+			GuiOptionsArxNet options = new GuiOptionsArxNet(new string[] {"-?"});
 			Assert.IsTrue(options.help);
 		}
 
@@ -45,21 +45,21 @@ namespace NUnit.Gui.ArxNet.Tests
 		public void AssemblyName()
 		{
 			string assemblyName = "nunit.tests.dll";
-			GuiOptions options = new GuiOptions(new string[]{ assemblyName });
+			GuiOptionsArxNet options = new GuiOptionsArxNet(new string[]{ assemblyName });
 			Assert.AreEqual(assemblyName, options.Parameters[0]);
 		}
 
 		[Test]
 		public void ValidateSuccessful()
 		{
-			GuiOptions options = new GuiOptions(new string[] { "nunit.tests.dll" });
+			GuiOptionsArxNet options = new GuiOptionsArxNet(new string[] { "nunit.tests.dll" });
 			Assert.IsTrue(options.Validate(), "command line should be valid");
 		}
 
 		[Test]
 		public void InvalidArgs()
 		{
-			GuiOptions options = new GuiOptions(new string[] { "-asembly:nunit.tests.dll" });
+			GuiOptionsArxNet options = new GuiOptionsArxNet(new string[] { "-asembly:nunit.tests.dll" });
 			Assert.IsFalse(options.Validate());
 		}
 
@@ -67,21 +67,21 @@ namespace NUnit.Gui.ArxNet.Tests
 		[Test] 
 		public void InvalidCommandLineParms()
 		{
-			GuiOptions parser = new GuiOptions(new String[]{"-garbage:TestFixture", "-assembly:Tests.dll"});
+			GuiOptionsArxNet parser = new GuiOptionsArxNet(new String[]{"-garbage:TestFixture", "-assembly:Tests.dll"});
 			Assert.IsFalse(parser.Validate());
 		}
 
 		[Test] 
 		public void NoNameValuePairs()
 		{
-			GuiOptions parser = new GuiOptions(new String[]{"TestFixture", "Tests.dll"});
+			GuiOptionsArxNet parser = new GuiOptionsArxNet(new String[]{"TestFixture", "Tests.dll"});
 			Assert.IsFalse(parser.Validate());
 		}
 
 		[Test]
 		public void HelpTextUsesCorrectDelimiterForPlatform()
 		{
-			string helpText = new GuiOptions(new String[] {"Tests.dll"} ).GetHelpText();
+			string helpText = new GuiOptionsArxNet(new String[] {"Tests.dll"} ).GetHelpText();
 			char delim = System.IO.Path.DirectorySeparatorChar == '/' ? '-' : '/';
 
 			string expected = string.Format( "{0}config=", delim );

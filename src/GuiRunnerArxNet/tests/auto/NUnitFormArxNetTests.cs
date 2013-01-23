@@ -16,15 +16,15 @@ namespace NUnit.Gui.ArxNet.Tests
         NUnitFormArxNet nUnitFormArxNet = null;
 
         //Construction
-		//public NUnitFormArxNet( GuiOptions guiOptions ) : base("NUnit")
+		//public NUnitFormArxNet( GuiOptionsArxNet guiOptions ) : base("NUnit")
         [Test]
         public void Constructor()
         {
-            GuiOptions expectedGuiOptions = new GuiOptions(new string[0]);
+            GuiOptionsArxNet expectedGuiOptions = new GuiOptionsArxNet(new string[0]);
             nUnitFormArxNet = new NUnitFormArxNet(expectedGuiOptions);
             Assert.That(nUnitFormArxNet, Is.Not.Null);
-            //private GuiOptions guiOptions;
-            GuiOptions actualGuiOptions = UnitTestHelper.GetNonPublicField(nUnitFormArxNet, "guiOptions") as GuiOptions;
+            //private GuiOptionsArxNet guiOptions;
+            GuiOptionsArxNet actualGuiOptions = UnitTestHelper.GetNonPublicField(nUnitFormArxNet, "guiOptions") as GuiOptionsArxNet;
             Assert.That(actualGuiOptions, Is.EqualTo(expectedGuiOptions));
             //private RecentFiles recentFilesService;
             RecentFiles expectedRecentFilesService = ServicesArxNet.RecentFiles;

@@ -32,7 +32,7 @@ namespace NUnit.Gui.ArxNet.Tests
             AppContainer c = new AppContainer();
             AmbientProperties ambient = new AmbientProperties();
             c.Services.AddService(typeof(AmbientProperties), ambient);
-            GuiOptions guiOptions = new GuiOptions(new string[0]);
+            GuiOptionsArxNet guiOptions = new GuiOptionsArxNet(new string[0]);
             NUnitFormArxNet owner = new NUnitFormArxNet(guiOptions);
             c.Add(owner);
             OptionsDialogArxNet.Display(owner);

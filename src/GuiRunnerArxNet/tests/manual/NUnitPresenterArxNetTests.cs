@@ -39,7 +39,7 @@ namespace NUnit.Gui.ArxNet.Tests
             }
             else
             {
-                NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
+                NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptionsArxNet(new string[0]));
                 TestLoaderArxNet loader = new TestLoaderArxNet();
                 presenter = new NUnitPresenterArxNet(form, loader);
             }

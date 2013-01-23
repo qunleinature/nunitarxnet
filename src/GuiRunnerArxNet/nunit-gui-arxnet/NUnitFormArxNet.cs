@@ -65,7 +65,7 @@ namespace NUnit.Gui.ArxNet
 		private System.Drawing.Font fixedFont;
 
 		// Our current run command line options
-		private GuiOptions guiOptions;
+		private GuiOptionsArxNet guiOptions;
 
         // Our 'presenter' - under development
         private NUnitPresenterArxNet presenter = null;
@@ -161,7 +161,7 @@ namespace NUnit.Gui.ArxNet
 		
 		#region Construction and Disposal
 
-		public NUnitFormArxNet( GuiOptions guiOptions ) : base("NUnit")
+		public NUnitFormArxNet( GuiOptionsArxNet guiOptions ) : base("NUnit")
 		{
 			InitializeComponent();
 

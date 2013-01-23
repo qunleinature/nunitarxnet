@@ -31,7 +31,7 @@ namespace NUnit.Gui.ArxNet.Tests
             }
             else
             {
-                NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptions(new string[0]));
+                NUnitFormArxNet form = new NUnitFormArxNet(new GuiOptionsArxNet(new string[0]));
                 TestLoaderArxNet loader = new TestLoaderArxNet();
                 presenter = new NUnitPresenterArxNet(form, loader);
             }
@@ -57,7 +57,7 @@ namespace NUnit.Gui.ArxNet.Tests
         [Test]
         public void ConstructorAndForm()
         {
-            NUnitFormArxNet expectedForm = new NUnitFormArxNet(new GuiOptions(new string[0]));
+            NUnitFormArxNet expectedForm = new NUnitFormArxNet(new GuiOptionsArxNet(new string[0]));
             TestLoaderArxNet expectedLoader = new TestLoaderArxNet();
             nUnitPresenterArxNet = new NUnitPresenterArxNet(expectedForm, expectedLoader);            
             Assert.That(nUnitPresenterArxNet.Form, Is.EqualTo(expectedForm));

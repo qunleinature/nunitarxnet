@@ -116,7 +116,7 @@ namespace NUnit.Gui.ArxNet
 
             log.Info("Starting NUnit GUI");
 
-            GuiOptions guiOptions = new GuiOptions(args);
+            GuiOptionsArxNet guiOptions = new GuiOptionsArxNet(args);
 
             GuiAttachedConsole attachedConsole = null;
             if (guiOptions.console)
