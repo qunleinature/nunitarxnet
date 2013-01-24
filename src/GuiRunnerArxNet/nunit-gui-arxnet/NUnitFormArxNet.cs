@@ -5,7 +5,7 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2012, Lei Qun
+// Copyright 2013, Lei Qun
 // 2012.8.24修改
 // 2012.12.20修改
 // 2012.12.20修改:ResultTabs变为ResultTabsArxNet
@@ -15,6 +15,8 @@
 //  1.NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试改
 // 2013.1.23修改
 //  1.改为调用NUnit.Gui.ArxNet.GuiOptionsArxNet
+// 2013.1.24修改
+//  1.改为调用NUnit.Gui.ArxNet.AboutBoxArxNet
 // ****************************************************************
 
 using System;
@@ -1418,7 +1420,7 @@ namespace NUnit.Gui.ArxNet
             if (this.Site.Container == null) return;
             /*2013-1-12:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加*/
 
-			using( AboutBox aboutBox = new AboutBox() )
+			using( AboutBoxArxNet aboutBox = new AboutBoxArxNet() )
 			{
 				this.Site.Container.Add( aboutBox );
 				aboutBox.ShowDialog();

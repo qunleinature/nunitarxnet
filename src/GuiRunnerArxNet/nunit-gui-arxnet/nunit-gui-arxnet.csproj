@@ -131,6 +131,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Compile Include="AboutBoxArxNet.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="AppEntryArxNet.cs" />
     <Compile Include="GuiOptionsArxNet.cs" />
     <Compile Include="NUnitFormArxNet.cs">
@@ -145,6 +148,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AboutBoxArxNet.resx">
+      <DependentUpon>AboutBoxArxNet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NUnitFormArxNet.resx">
       <DependentUpon>NUnitFormArxNet.cs</DependentUpon>
     </EmbeddedResource>
