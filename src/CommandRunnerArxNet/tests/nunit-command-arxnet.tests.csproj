@@ -64,8 +64,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\tests\nonamespace-assembly.dll</HintPath>
     </Reference>
-    <Reference Include="nunit-command-runner-arxnet">
-      <HintPath>..\..\..\bin\Debug\nunit-command-runner-arxnet.dll</HintPath>
+    <Reference Include="nunit-command-runner-arxnet, Version=0.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\bin\Debug\lib\nunit-command-runner-arxnet.dll</HintPath>
     </Reference>
     <Reference Include="nunit-console-runner, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -103,7 +104,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandLineTests.cs" />
+    <Compile Include="CommandLineTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

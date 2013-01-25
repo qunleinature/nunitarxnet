@@ -5,16 +5,15 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2013, Lei Qun
-// 2013.1.25：
-//  在NUnit2.6.2基础上修改
+//2012年1月16日，雷群修改
 // ****************************************************************
 
-namespace NUnit.CommandRunner.ArxNet.Tests//2013.1.25改
+namespace NUnit.CommandRunner.ArxNet.Tests
 {
 	using System;
 	using System.IO;
 	using System.Reflection;
+    using NUnit.Core;
 	using NUnit.Framework;
 
     using NUnit.CommandRunner.ArxNet;
@@ -43,7 +42,6 @@ namespace NUnit.CommandRunner.ArxNet.Tests//2013.1.25改
 		[TestCase( "xmlConsole", "xmlConsole")]
 		[TestCase( "labels", "labels")]
 		[TestCase( "noshadow", "noshadow" )]
-		[TestCase( "nothread", "nothread" )]
 		public void BooleanOptionAreRecognized( string fieldName, string option )
 		{
 			FieldInfo field = typeof(CommandOptionsArxNet).GetField( fieldName );
@@ -59,6 +57,25 @@ namespace NUnit.CommandRunner.ArxNet.Tests//2013.1.25改
 			options = new CommandOptionsArxNet( true, "/" + option );
 			Assert.AreEqual( true, (bool)field.GetValue( options ), "Didn't recognize /" + option );
 		}
+        
+        [Test]
+        public void NothreadOptionIsTrue()
+        {
+            FieldInfo field = typeof(CommandOptionsArxNet).GetField("nothread");
+            Assert.IsNotNull(field, "Field 'nothread' not found");
+            Assert.AreEqual(typeof(bool), field.FieldType, "Field 'nothread' is wrong type");
+
+            CommandOptionsArxNet options = new CommandOptionsArxNet("-nothread");
+            Assert.AreEqual(true, (bool)field.GetValue(options), "Field 'nothread' is not true");
+            options = new CommandOptionsArxNet("--nothread");
+            Assert.AreEqual(true, (bool)field.GetValue(options), "Field 'nothread' is not true");
+            options = new CommandOptionsArxNet(false, "/nothread");
+            Assert.AreEqual(true, (bool)field.GetValue(options), "Field 'nothread' is not true");
+            options = new CommandOptionsArxNet(true, "/nothread");
+            Assert.AreEqual(true, (bool)field.GetValue(options), "Field 'nothread' is not true");
+            options = new CommandOptionsArxNet();
+            Assert.AreEqual(true, (bool)field.GetValue(options), "Field 'nothread' is not true");
+        }
 
 		[TestCase( "fixture", "fixture" )]
 		[TestCase( "config", "config")]
@@ -71,8 +88,6 @@ namespace NUnit.CommandRunner.ArxNet.Tests//2013.1.25改
 		[TestCase( "exclude", "exclude" )]
         [TestCase("run", "run")]
         [TestCase("runlist", "runlist")]
-        [TestCase("basepath", "basepath")]
-        [TestCase("privatebinpath", "privatebinpath")]
 		public void StringOptionsAreRecognized( string fieldName, string option )
 		{
 			FieldInfo field = typeof(CommandOptionsArxNet).GetField( fieldName );
@@ -197,5 +212,44 @@ namespace NUnit.CommandRunner.ArxNet.Tests//2013.1.25改
 			expected = string.Format( "{0}out=", delim );
 			StringAssert.Contains( expected, helpText );
 		}
-	}
+
+        [TestCase("None")]
+        [TestCase("Single")]
+        [TestCase("Multiple")]
+        public void DomainOptionIsNone(string optionValue)
+        {
+            FieldInfo field = typeof(CommandOptionsArxNet).GetField("domain");
+
+            CommandOptionsArxNet options = new CommandOptionsArxNet("-domain=" + optionValue);
+            Assert.AreEqual(DomainUsage.None, (DomainUsage)field.GetValue(options), "Field 'domain' is not 'None'");
+            options = new CommandOptionsArxNet("--domain=" + optionValue);
+            Assert.AreEqual(DomainUsage.None, (DomainUsage)field.GetValue(options), "Field 'domain' is not 'None'");
+            options = new CommandOptionsArxNet(false, "/domain=" + optionValue);
+            Assert.AreEqual(DomainUsage.None, (DomainUsage)field.GetValue(options), "Field 'domain' is not 'None'");
+            options = new CommandOptionsArxNet(true, "/domain=" + optionValue);
+            Assert.AreEqual(DomainUsage.None, (DomainUsage)field.GetValue(options), "Field 'domain' is not 'None'");
+            options = new CommandOptionsArxNet();
+            Assert.AreEqual(DomainUsage.None, (DomainUsage)field.GetValue(options), "Field 'domain' is not 'None'");
+        }
+#if CLR_2_0 || CLR_4_0
+        [TestCase("Single")]
+        [TestCase("Separate")]
+        [TestCase("Multiple")]
+        public void ProcessOptionIsSingle(string optionValue)
+        {
+            FieldInfo field = typeof(CommandOptionsArxNet).GetField("process");
+
+            CommandOptionsArxNet options = new CommandOptionsArxNet("-process=" + optionValue);
+            Assert.AreEqual(ProcessModel.Single, (ProcessModel)field.GetValue(options), "Field 'process' is not 'None'");
+            options = new CommandOptionsArxNet("--process=" + optionValue);
+            Assert.AreEqual(ProcessModel.Single, (ProcessModel)field.GetValue(options), "Field 'process' is not 'None'");
+            options = new CommandOptionsArxNet(false, "/process=" + optionValue);
+            Assert.AreEqual(ProcessModel.Single, (ProcessModel)field.GetValue(options), "Field 'domain' is not 'None'");
+            options = new CommandOptionsArxNet(true, "/process=" + optionValue);
+            Assert.AreEqual(ProcessModel.Single, (ProcessModel)field.GetValue(options), "Field 'process' is not 'None'");
+            options = new CommandOptionsArxNet();
+            Assert.AreEqual(ProcessModel.Single, (ProcessModel)field.GetValue(options), "Field 'process' is not 'None'");
+        }
+#endif
+    }
 }

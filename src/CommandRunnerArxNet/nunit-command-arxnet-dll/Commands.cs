@@ -40,7 +40,7 @@ namespace NUnit.CommandRunner.ArxNet
             //
             // TODO: Add constructor logic here
             //
-        }
+        }        
 
         // Define Command "nunit-command"
         [CommandMethod("nunit-command", CommandFlags.Session)]
