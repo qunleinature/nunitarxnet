@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="true">
-  <TopNode>[0-1041]F:\lq\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.2-AC2012\samples\csharp\failures\cs-failures.csproj</TopNode>
-  <SelectedNode>[0-1041]F:\lq\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.2-AC2012\samples\csharp\failures\cs-failures.csproj</SelectedNode>
+  <TopNode>[0-1010]F:\lq\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.2-AC2012\samples\csharp\failures\cs-failures.csproj</TopNode>
+  <SelectedNode>[0-1010]F:\lq\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.2-AC2012\samples\csharp\failures\cs-failures.csproj</SelectedNode>
   <ExcludeCategories>false</ExcludeCategories>
   <Nodes>
-    <Node UniqueName="[0-1041]F:\lq\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.2-AC2012\samples\csharp\failures\cs-failures.csproj" Expanded="true" />
-    <Node UniqueName="[0-1048]F:\lq\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.2-AC2012\samples\csharp\failures\bin\Debug\cs-failures.dll" Expanded="true" />
-    <Node UniqueName="[0-1049]NUnit" Expanded="true" />
-    <Node UniqueName="[0-1050]NUnit.Samples" Expanded="true" />
-    <Node UniqueName="[0-1042]NUnit.Samples.SimpleCSharpTest" Expanded="true" />
+    <Node UniqueName="[0-1010]F:\lq\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.2-AC2012\samples\csharp\failures\cs-failures.csproj" Expanded="true" />
+    <Node UniqueName="[0-1017]F:\lq\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.2-AC2012\samples\csharp\failures\bin\Debug\cs-failures.dll" Expanded="true" />
+    <Node UniqueName="[0-1018]NUnit" Expanded="true" />
+    <Node UniqueName="[0-1019]NUnit.Samples" Expanded="true" />
+    <Node UniqueName="[0-1011]NUnit.Samples.SimpleCSharpTest" Expanded="true" />
   </Nodes>
 </VisualState>

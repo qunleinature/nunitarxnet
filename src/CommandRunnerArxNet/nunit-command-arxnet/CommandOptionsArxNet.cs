@@ -1,21 +1,20 @@
-ï»¿// ****************************************************************
+// ****************************************************************
 // This is free software licensed under the NUnit license. You
 // may obtain a copy of the license as well as information regarding
 // copyright ownership at http://nunit.org.
 // ****************************************************************
 
 // ****************************************************************
-//2012å¹´1æœˆ6æ—¥ï¼Œé›·ç¾¤ä¿®æ”¹
+// Copyright 2013, Lei Qun
+// 2013.1.25£º
+//  ÔÚNUnit2.6.2»ù´¡ÉÏÐÞ¸Ä
 // ****************************************************************
 
 namespace NUnit.CommandRunner.ArxNet
 {
-    using System;
-    using System.Reflection;
-    using System.Collections;
-    using System.Text;
-    using Codeblast;
-    using NUnit.Util;
+	using System;
+	using Codeblast;
+	using NUnit.Util;
     using NUnit.Core;
 
     using NUnit.ConsoleRunner;
@@ -24,58 +23,143 @@ namespace NUnit.CommandRunner.ArxNet
     using Autodesk.AutoCAD.EditorInput;
     using Autodesk.AutoCAD.ApplicationServices;
 
-    public class CommandOptionsArxNet : ConsoleOptions
-    {
-        private bool allowForwardSlash;
+	public class CommandOptionsArxNet : CommandLineOptions
+	{
+		[Option(Short="load", Description = "Test fixture or namespace to be loaded (Deprecated)")]
+		public string fixture;
 
-        public CommandOptionsArxNet( params string[] args ) : this( System.IO.Path.DirectorySeparatorChar != '/', args ) {}        
+		[Option(Description = "Name of the test case(s), fixture(s) or namespace(s) to run")]
+		public string run;
 
-        public CommandOptionsArxNet(bool allowForwardSlash, params string[] args) : base(allowForwardSlash, args)
+        [Option(Description = "Name of a file containing a list of the tests to run, one per line")]
+        public string runlist;
+
+		[Option(Description = "Project configuration (e.g.: Debug) to load")]
+		public string config;
+
+		[Option(Short="xml", Description = "Name of XML result file (Default: TestResult.xml)")]
+		public string result;
+
+		[Option(Description = "Display XML to the console (Deprecated)")]
+		public bool xmlConsole;
+
+        [Option(Short="noxml", Description = "Suppress XML result output")]
+        public bool noresult;
+
+		[Option(Short="out", Description = "File to receive test output")]
+		public string output;
+
+		[Option(Description = "File to receive test error output")]
+		public string err;
+
+        [Option(Description = "Work directory for output files")]
+        public string work;
+
+		[Option(Description = "Label each test in stdOut")]
+		public bool labels = false;
+
+        [Option(Description = "Set internal trace level: Off, Error, Warning, Info, Verbose")]
+        public InternalTraceLevel trace;
+
+		[Option(Description = "List of categories to include")]
+		public string include;
+
+		[Option(Description = "List of categories to exclude")]
+		public string exclude;
+
+#if CLR_2_0 || CLR_4_0
+        [Option(Description = "Framework version to be used for tests")]
+        public string framework;
+
+        [Option(Description = "Process model for tests: Single, Separate, Multiple")]
+		public ProcessModel process;
+#endif
+
+		[Option(Description = "AppDomain Usage for tests: None, Single, Multiple")]
+		public DomainUsage domain;
+
+        [Option(Description = "Apartment for running tests: MTA (Default), STA")]
+        public System.Threading.ApartmentState apartment = System.Threading.ApartmentState.Unknown;
+
+        [Option(Description = "Disable shadow copy when running in separate domain")]
+		public bool noshadow;
+
+		[Option (Description = "Disable use of a separate thread for tests")]
+		public bool nothread;
+
+		[Option(Description = "Base path to be used when loading the assemblies")]
+ 		public string basepath;
+ 
+ 		[Option(Description = "Additional directories to be probed when loading assemblies, separated by semicolons")]
+ 		public string privatebinpath;
+
+        [Option(Description = "Set timeout for each test case in milliseconds")]
+        public int timeout;
+
+		[Option(Description = "Wait for input before closing console window")]
+		public bool wait = false;
+
+		[Option(Description = "Do not display the logo")]
+		public bool nologo = false;
+
+		[Option(Description = "Do not display progress" )]
+		public bool nodots = false;
+
+        [Option(Description = "Stop after the first test failure or error")]
+        public bool stoponerror = false;
+
+        [Option(Description = "Erase any leftover cache files and exit")]
+        public bool cleanup;
+
+        [Option(Short = "?", Description = "Display help")]
+		public bool help = false;
+
+		public CommandOptionsArxNet( params string[] args ) : base( args ) 
         {
-            this.allowForwardSlash = allowForwardSlash;
+            /*2013.1.25¼Ó*/
             process = ProcessModel.Single;
             domain = DomainUsage.None;
             nothread = true;
+            /*2013.1.25¼Ó*/
         }
 
-        public override string GetHelpText()
+		public CommandOptionsArxNet( bool allowForwardSlash, params string[] args ) : base( allowForwardSlash, args ) 
         {
-            StringBuilder helpText = new StringBuilder();
-
-            Type t = this.GetType();
-            FieldInfo[] fields = t.GetFields(BindingFlags.Instance | BindingFlags.Public);
-            char optChar = allowForwardSlash ? '/' : '-';
-            foreach (FieldInfo field in fields)
-            {
-                if (!field.Name.Equals("process") && !field.Name.Equals("domain") && !field.Name.Equals("nothread"))
-                {                   
-                    object[] atts = field.GetCustomAttributes(typeof(OptionAttribute), true);
-                    if (atts.Length > 0)
-                    {
-                        OptionAttribute att = (OptionAttribute)atts[0];
-                        if (att.Description != null)
-                        {
-                            string valType = "";
-                            if (att.Value == null)
-                            {
-                                if (field.FieldType == typeof(float)) valType = "=FLOAT";
-                                else if (field.FieldType == typeof(string)) valType = "=STR";
-                                else if (field.FieldType != typeof(bool)) valType = "=X";
-                            }
-
-                            helpText.AppendFormat("{0}{1,-20}\t{2}", optChar, field.Name + valType, att.Description);
-                            if (att.Short != null)
-                                helpText.AppendFormat(" (Short format: {0}{1}{2})", optChar, att.Short, valType);
-                            helpText.Append(Environment.NewLine);
-                        }
-                    }
-                }
-            }
-            return helpText.ToString();
+            /*2013.1.25¼Ó*/
+            process = ProcessModel.Single;
+            domain = DomainUsage.None;
+            nothread = true;
+            /*2013.1.25¼Ó*/
         }
 
-        public override void Help()
-        {            
+		public bool Validate()
+		{
+			if(isInvalid) return false; 
+
+			if(NoArgs) return true; 
+
+			if(ParameterCount >= 1) return true; 
+
+			return false;
+		}
+
+//		protected override bool IsValidParameter(string parm)
+//		{
+//			return Services.ProjectLoadService.CanLoadProject( parm ) || PathUtils.IsAssemblyFileType( parm );
+//		}
+
+
+        public bool IsTestProject
+        {
+            get
+            {
+                return ParameterCount == 1 && Services.ProjectService.CanLoadProject((string)Parameters[0]);
+            }
+        }
+
+		public override void Help()
+		{
+            /*2013.1.25¸Ä*/
             Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
 
             ed.WriteMessage("\n");
@@ -93,6 +177,7 @@ namespace NUnit.CommandRunner.ArxNet
             ed.WriteMessage("\nOptions that take values may use an equal sign, a colon");
             ed.WriteMessage("\nor a space to separate the option from its value.");
             ed.WriteMessage("\n");
-        }
-    }
+            /*2013.1.25¸Ä*/
+		}        
+	}
 }

@@ -56,33 +56,40 @@
       <HintPath>..\..\..\lib\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="mock-assembly">
-      <HintPath>..\..\..\..\NUnit-2.6.0.11340\bin\Debug\tests\mock-assembly.dll</HintPath>
+    <Reference Include="mock-assembly, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\tests\mock-assembly.dll</HintPath>
     </Reference>
-    <Reference Include="nonamespace-assembly">
-      <HintPath>..\..\..\..\NUnit-2.6.0.11340\bin\Debug\tests\nonamespace-assembly.dll</HintPath>
+    <Reference Include="nonamespace-assembly, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\tests\nonamespace-assembly.dll</HintPath>
     </Reference>
     <Reference Include="nunit-command-runner-arxnet">
       <HintPath>..\..\..\bin\Debug\nunit-command-runner-arxnet.dll</HintPath>
     </Reference>
-    <Reference Include="nunit-console-runner">
-      <HintPath>..\..\..\..\NUnit-2.6.0.11340\bin\Debug\lib\nunit-console-runner.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.core">
-      <HintPath>..\..\..\..\NUnit-2.6.0.11340\bin\Debug\lib\nunit.core.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.core.interfaces">
-      <HintPath>..\..\..\..\NUnit-2.6.0.11340\bin\Debug\lib\nunit.core.interfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.core.tests">
-      <HintPath>..\..\..\..\NUnit-2.6.0.11340\bin\Debug\tests\nunit.core.tests.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=2.6.0.11340, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+    <Reference Include="nunit-console-runner, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\NUnit-2.6.0.11340\bin\Debug\framework\nunit.framework.dll</HintPath>
+      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\lib\nunit-console-runner.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.util">
-      <HintPath>..\..\..\..\NUnit-2.6.0.11340\bin\Debug\lib\nunit.util.dll</HintPath>
+    <Reference Include="nunit.core, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\lib\nunit.core.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.core.interfaces, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\lib\nunit.core.interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.core.tests, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\tests\nunit.core.tests.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\framework\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.util, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\lib\nunit.util.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -92,13 +99,11 @@
     <Reference Include="System.Xml" />
     <Reference Include="test-assembly, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\NUnit-2.6.0.11340\bin\Debug\tests\test-assembly.dll</HintPath>
+      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\tests\test-assembly.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandLineTests.cs" />
-    <Compile Include="CommandLineTests_MultipleAssemblies.cs" />
-    <Compile Include="CommandRunnerArxNetTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

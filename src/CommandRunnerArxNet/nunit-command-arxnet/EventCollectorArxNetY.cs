@@ -5,9 +5,7 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2013, Lei Qun
-// 2013.1.25：
-//  在NUnit2.6.2基础上修改
+//2012年1月6日，雷群修改
 // ****************************************************************
 
 using System;
@@ -28,16 +26,16 @@ using Autodesk.AutoCAD.ApplicationServices;
 namespace NUnit.CommandRunner.ArxNet
 {
 	/// <summary>
-	/// Summary description for EventCollector.
+	/// Summary description for EventCollectorArxNet.
 	/// </summary>
-	public class EventCollectorArxNet : MarshalByRefObject, EventListener
+	public class EventCollectorArxNet : EventCollector
 	{
 		private int testRunCount;
 		private int testIgnoreCount;
 		private int failureCount;
 		private int level;
 
-        private CommandOptionsArxNet options;//2013.1.25改
+		private CommandOptionsArxNet options;
 		private TextWriter outWriter;
 		private TextWriter errorWriter;
 
@@ -48,7 +46,7 @@ namespace NUnit.CommandRunner.ArxNet
 
 		private ArrayList unhandledExceptions = new ArrayList();
 
-        public EventCollectorArxNet(CommandOptionsArxNet options, TextWriter outWriter, TextWriter errorWriter)//2013.1.25改
+        public EventCollectorArxNet( CommandOptionsArxNet options, TextWriter outWriter, TextWriter errorWriter) : base(options, outWriter, errorWriter)
 		{
 			level = 0;
 			this.options = options;
@@ -61,36 +59,22 @@ namespace NUnit.CommandRunner.ArxNet
 				new UnhandledExceptionEventHandler(OnUnhandledException);
 		}
 
-		public bool HasExceptions
+		public new bool HasExceptions
 		{
 			get { return unhandledExceptions.Count > 0; }
 		}
 
-		public void WriteExceptions()
+		public new void WriteExceptions()
 		{
-            /*2013.1.25改*/
             Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
             ed.WriteMessage("\n");
             ed.WriteMessage("\nUnhandled exceptions:");
-            int index = 1;
-            foreach (string msg in unhandledExceptions)
+			int index = 1;
+			foreach( string msg in unhandledExceptions )
                 ed.WriteMessage("\n{0}) {1}", index++, msg);
-            /*2013.1.25改*/
-		}
+		}		
 
-		public void RunStarted(string name, int testCount)
-		{
-		}
-
-		public void RunFinished(TestResult result)
-		{
-		}
-
-        public void RunFinished(System.Exception exception)//2013.1.25改
-		{
-		}
-
-		public void TestFinished(TestResult testResult)
+		public new void TestFinished(TestResult testResult)
 		{
             Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
             switch( testResult.ResultState )
@@ -102,7 +86,7 @@ namespace NUnit.CommandRunner.ArxNet
 			        failureCount++;
     					
 			        if ( progress )
-                        ed.WriteMessage("F");//2013.1.25改
+                        ed.WriteMessage("F");
     					
 			        messages.Add( string.Format( "{0}) {1} :", failureCount, testResult.Test.TestName.FullName ) );
 			        messages.Add( testResult.Message.Trim( Environment.NewLine.ToCharArray() ) );
@@ -133,39 +117,39 @@ namespace NUnit.CommandRunner.ArxNet
     				testIgnoreCount++;
 					
 	    			if ( progress )
-                        ed.WriteMessage("N");//2013.1.25改
+                        ed.WriteMessage("N");
                     break;
 			}
 
 			currentTestName = string.Empty;
 		}
 
-		public void TestStarted(TestName testName)
+		public new void TestStarted(TestName testName)
 		{
-            currentTestName = testName.FullName;
+			currentTestName = testName.FullName;
 
-            if (options.labels)
-                outWriter.WriteLine("***** {0}", currentTestName);
+			if ( options.labels )
+				outWriter.WriteLine("***** {0}", currentTestName );
 
-            Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;//2013.1.25加
-            if (progress)
-                ed.WriteMessage(".");//2013.1.25改
+            Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
+			if ( progress )
+                ed.WriteMessage(".");
 		}
 
-		public void SuiteStarted(TestName testName)
+		public new void SuiteStarted(TestName testName)
 		{
-            if (level++ == 0)
-            {
-                messages = new StringCollection();
-                testRunCount = 0;
-                testIgnoreCount = 0;
-                failureCount = 0;
-                Trace.WriteLine("################################ UNIT TESTS ################################");
-                Trace.WriteLine("Running tests in '" + testName.FullName + "'...");
-            }            
+			if ( level++ == 0 )
+			{
+				messages = new StringCollection();
+				testRunCount = 0;
+				testIgnoreCount = 0;
+				failureCount = 0;
+				Trace.WriteLine( "################################ UNIT TESTS ################################" );
+				Trace.WriteLine( "Running tests in '" + testName.FullName + "'..." );
+			}
 		}
 
-		public void SuiteFinished(TestResult suiteResult) 
+		public new void SuiteFinished(TestResult suiteResult) 
 		{
 			if ( --level == 0) 
 			{
@@ -199,11 +183,12 @@ namespace NUnit.CommandRunner.ArxNet
 		{
 			if (e.ExceptionObject.GetType() != typeof(System.Threading.ThreadAbortException))
 			{
-                this.UnhandledException((System.Exception)e.ExceptionObject);//2013.1.25改
+				this.UnhandledException((System.Exception)e.ExceptionObject);
 			}
 		}
 
-        public void UnhandledException(System.Exception exception)//2013.1.25改
+
+		public new void UnhandledException( System.Exception exception )
 		{
 			// If we do labels, we already have a newline
 			unhandledExceptions.Add(currentTestName + " : " + exception.ToString());
@@ -216,7 +201,7 @@ namespace NUnit.CommandRunner.ArxNet
 			Trace.WriteLine(exception.ToString());
 		}
 
-		public void TestOutput( TestOutput output)
+		public new void TestOutput( TestOutput output)
 		{
 			switch ( output.Type )
 			{
@@ -227,11 +212,6 @@ namespace NUnit.CommandRunner.ArxNet
 					errorWriter.Write( output.Text );
 					break;
 			}
-		}
-
-		public override object InitializeLifetimeService()
-		{
-			return null;
 		}
 	}
 }

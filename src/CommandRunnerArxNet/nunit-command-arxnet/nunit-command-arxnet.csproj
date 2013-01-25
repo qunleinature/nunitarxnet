@@ -65,21 +65,21 @@
       <HintPath>..\..\..\lib\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="nunit-console-runner">
-      <HintPath>..\..\..\..\NUnit-2.6.0.11340\bin\Debug\lib\nunit-console-runner.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="nunit-console-runner, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\lib\nunit-console-runner.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.core">
-      <HintPath>..\..\..\..\NUnit-2.6.0.11340\bin\Debug\lib\nunit.core.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="nunit.core, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\lib\nunit.core.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.core.interfaces">
-      <HintPath>..\..\..\..\NUnit-2.6.0.11340\bin\Debug\lib\nunit.core.interfaces.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="nunit.core.interfaces, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\lib\nunit.core.interfaces.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.util">
-      <HintPath>..\..\..\..\NUnit-2.6.0.11340\bin\Debug\lib\nunit.util.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="nunit.util, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\lib\nunit.util.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -123,11 +123,19 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Compile Include="CommandOptionsArxNet.cs" />
-    <Compile Include="CommandUiArxNet.cs" />
-    <Compile Include="EventCollectorArxNet.cs" />
+    <Compile Include="CommandOptionsArxNet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CommandUiArxNet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EventCollectorArxNet.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RunnerArxNet.cs" />
+    <Compile Include="RunnerArxNet.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
