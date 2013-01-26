@@ -107,6 +107,7 @@
     <Compile Include="CommandLineTests.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CommandLineTests_MultipleAssemblies.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
