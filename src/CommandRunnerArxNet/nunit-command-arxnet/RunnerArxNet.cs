@@ -47,7 +47,7 @@ namespace NUnit.CommandRunner.ArxNet
 
             InternalTrace.Initialize("nunit-command_%p.log", level);//2013.1.25改
 
-            log.Info("NUnit-command-arxnet.dll starting");//2013.1.25改
+            log.Info("nunit-command-arxnet.dll starting");//2013.1.25改
 
 			if(!options.nologo)
 				WriteCopyright();
@@ -134,7 +134,7 @@ namespace NUnit.CommandRunner.ArxNet
                     ed.GetString(new PromptStringOptions("\n\nHit <enter> key to continue"));//2013.1.25改
 				}
 
-                log.Info("NUnit-command-arxnet.dll terminating");//2013.1.25改
+                log.Info("nunit-command-arxnet.dll terminating");//2013.1.25改
 			}
 
 		}
