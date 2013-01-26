@@ -121,15 +121,15 @@ namespace NUnit.CommandRunner.ArxNet.Tests//2013.1.25¸Ä
             Assert.AreEqual(typeof(DomainUsage), field.FieldType, "process 'domain' is wrong type");
 
             CommandOptionsArxNet options = new CommandOptionsArxNet();
-            Assert.AreEqual(DomainUsage.None, (DomainUsage)field.GetValue(options), "Field 'process' is not Single");
+            Assert.AreEqual(DomainUsage.None, (DomainUsage)field.GetValue(options), "Field 'domain' is not Single");
             options = new CommandOptionsArxNet("-domain:" + value);
-            Assert.AreEqual(DomainUsage.None, (DomainUsage)field.GetValue(options), "Field 'process' is not Single");
+            Assert.AreEqual(DomainUsage.None, (DomainUsage)field.GetValue(options), "Field 'domain' is not Single");
             options = new CommandOptionsArxNet("--domain" + value);
-            Assert.AreEqual(DomainUsage.None, (DomainUsage)field.GetValue(options), "Field 'process' is not Single");
+            Assert.AreEqual(DomainUsage.None, (DomainUsage)field.GetValue(options), "Field 'domain' is not Single");
             options = new CommandOptionsArxNet(false, "/domain" + value);
-            Assert.AreEqual(DomainUsage.None, (DomainUsage)field.GetValue(options), "Field 'process' is not Single");
+            Assert.AreEqual(DomainUsage.None, (DomainUsage)field.GetValue(options), "Field 'domain' is not Single");
             options = new CommandOptionsArxNet(true, "/domain" + value);
-            Assert.AreEqual(DomainUsage.None, (DomainUsage)field.GetValue(options), "Field 'process' is not Single");
+            Assert.AreEqual(DomainUsage.None, (DomainUsage)field.GetValue(options), "Field 'domain' is not Single");
         }
         /*2013.1.26¼Ó*/
 
