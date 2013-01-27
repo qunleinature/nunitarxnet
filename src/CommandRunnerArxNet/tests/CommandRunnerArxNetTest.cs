@@ -261,13 +261,11 @@ namespace NUnit.CommandRunner.ArxNet.Tests
 		{
             int n = 0;
 #if CLR_2_0 || CLR_4_0
-            string[] args = new string[arguments.Length + 4];
+            string[] args = new string[arguments.Length + 2];
             args[n++] = "-process:single";
 #else
-            string[] args = new string[arguments.Length + 3];
+            string[] args = new string[arguments.Length + 1];
 #endif
-            args[n++] = "-domain:None";
-            args[n++] = "-nothread";
             args[n++] = "-trace:Off";
             foreach (string arg in arguments)
                 args[n++] = arg;
