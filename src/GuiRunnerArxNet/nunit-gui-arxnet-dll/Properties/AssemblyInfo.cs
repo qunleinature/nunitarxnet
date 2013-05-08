@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyCompany("NUnit.org & LeiSoft")]
-[assembly: AssemblyProduct("NUnit")]
+[assembly: AssemblyProduct("NUnitArxNet")]
 [assembly: AssemblyCopyright("Copyright (C) 2013 Lei Qun.\r\nCopyright (C) 2002-2011 Charlie Poole.\r\nCopyright (C) 2002-2004 James W. Newkirk, Michael C. Two, Alexei A. Vorontsov.\r\nCopyright (C) 2000-2002 Philip Craig.\r\nAll Rights Reserved.")]
 [assembly: AssemblyTrademark("NUnit is a trademark of NUnit.org")]
 
@@ -25,4 +25,5 @@ using System.Runtime.InteropServices;
 //      修正版本号
 //      编译版本号
 //
-[assembly: AssemblyVersion("0.0.2.*")]
+[assembly: AssemblyVersion("0.0.3")]
+[assembly: AssemblyFileVersionAttribute("0.0.3")]
