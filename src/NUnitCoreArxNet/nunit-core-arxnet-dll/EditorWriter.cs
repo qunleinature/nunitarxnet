@@ -20,5 +20,6 @@ namespace NUnit.Core.ArxNet
 {
     public class EditorWriter : TextWriter
     {
+
     }
 }
