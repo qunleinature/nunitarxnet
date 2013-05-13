@@ -6,26 +6,27 @@
 
 // ****************************************************************
 // Copyright 2013, Lei Qun
-// 2012.5.9新建：EditorWriter类
+// 2012.5.13新建：测试EditorWriter类
 // ****************************************************************
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.IO;
-using System.Runtime.InteropServices;
 
-namespace NUnit.Core.ArxNet
+using NUnit.Framework;
+
+namespace NUnit.Core.ArxNet.Tests
 {
-    [Serializable, ComVisible(true)]
-    public class EditorWriter : TextWriter
+    [TestFixture]
+    public class EditorWriterTests
     {
-        //private static UnicodeEncoding m_encoding;
-
-        public override Encoding Encoding
+        //public override Encoding Encoding
+        [Test]
+        public void Get_Encoding()
         {
-            get { throw new NotImplementedException(); }
+            EditorWriter editorWriter = new EditorWriter();
+            Assert.That(editorWriter.Encoding, Is.Not.Null);
         }
     }
 }
