@@ -21,11 +21,19 @@ namespace NUnit.Core.ArxNet
     [Serializable, ComVisible(true)]
     public class EditorWriter : TextWriter
     {
-        //private static UnicodeEncoding m_encoding;
+        private static UnicodeEncoding m_encoding;
 
         public override Encoding Encoding
         {
-            get { throw new NotImplementedException(); }
+            get 
+            { 
+                //throw new NotImplementedException(); 
+                if (m_encoding == null)
+                {
+                    m_encoding = new UnicodeEncoding(false, false);
+                }
+                return m_encoding;
+            }
         }
     }
 }
