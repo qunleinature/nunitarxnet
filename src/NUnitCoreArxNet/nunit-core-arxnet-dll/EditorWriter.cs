@@ -36,16 +36,22 @@ namespace NUnit.Core.ArxNet
 
         public EditorWriter(Editor ed)
         {
-            //throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();            
             m_Encoding = new UnicodeEncoding(false, false);
-            m_Editor = ed;
+
+            //总保持当前活动Editor
+            Editor activeEditor = Application.DocumentManager.MdiActiveDocument.Editor;
+            if (ed !=null && ed == activeEditor)
+                m_Editor = ed;
+            else
+                m_Editor = activeEditor;
         }
 
         public override Encoding Encoding
         {
             get 
             { 
-                //throw new NotImplementedException(); 
+                //throw new NotImplementedException();
                 if (m_Encoding == null)
                 {
                     m_Encoding = new UnicodeEncoding(false, false);
@@ -59,12 +65,21 @@ namespace NUnit.Core.ArxNet
             get
             {
                 //throw new System.NotImplementedException();
-                if (m_Editor == null)
+                //总保持当前活动Editor
+                Editor activeEditor = Application.DocumentManager.MdiActiveDocument.Editor;
+                if (m_Editor == null || m_Editor != activeEditor)
                 {
-                    m_Editor = Application.DocumentManager.MdiActiveDocument.Editor;
+                    m_Editor = activeEditor;
                 }
                 return m_Editor;
             }
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            //throw new System.NotImplementedException();
+            m_Encoding = null;
+            m_Editor = null;
         }
     }
 }

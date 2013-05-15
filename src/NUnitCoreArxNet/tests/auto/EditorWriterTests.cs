@@ -19,6 +19,8 @@ using Autodesk.AutoCAD.ApplicationServices;
 
 using NUnit.Framework;
 
+using Com.Utility.UnitTest;
+
 namespace NUnit.Core.ArxNet.Tests
 {
     [TestFixture]
@@ -53,10 +55,24 @@ namespace NUnit.Core.ArxNet.Tests
         [Category("Constructor_Editor")]
         public void Constructor_EditorNotActive()
         {
-            Editor ed = Application.DocumentManager.Add(null).Editor;            
+            Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
+            Application.DocumentManager.Add(null);
+            //ed.WriteMessage("\n原窗口");
             EditorWriter editorWriter = new EditorWriter(ed);
             Assert.That(editorWriter, Is.Not.Null);
             ed = Application.DocumentManager.MdiActiveDocument.Editor;
+            Assert.That(editorWriter.Editor, Is.EqualTo(ed));
+            UnicodeEncoding encoding = new UnicodeEncoding(false, false);
+            Assert.That(editorWriter.Encoding.CodePage, Is.EqualTo(encoding.CodePage));
+        }
+
+        [Test]
+        [Category("Constructor_Editor")]
+        public void Constructor_EditorNull()
+        {
+            EditorWriter editorWriter = new EditorWriter(null);
+            Assert.That(editorWriter, Is.Not.Null);
+            Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
             Assert.That(editorWriter.Editor, Is.EqualTo(ed));
             UnicodeEncoding encoding = new UnicodeEncoding(false, false);
             Assert.That(editorWriter.Encoding.CodePage, Is.EqualTo(encoding.CodePage));
@@ -82,6 +98,20 @@ namespace NUnit.Core.ArxNet.Tests
             Assert.That(editorWriter.Encoding, Is.Not.Null);
             Assert.That(editorWriter.Encoding.CodePage, Is.EqualTo(encoding.CodePage));
 
+        }
+
+        //protected override void Dispose(bool disposing)
+        [Test]
+        public void Dispose_bool()
+        {
+            EditorWriter editorWriter = new EditorWriter();
+            UnitTestHelper.CallNonPublicMethod(editorWriter, "Dispose", true);
+            object obj = UnitTestHelper.GetNonPublicField(editorWriter, "m_Encoding");
+            UnicodeEncoding encoding = (obj != null) ? obj as UnicodeEncoding : null;
+            Assert.That(encoding, Is.Null);
+            obj = UnitTestHelper.GetNonPublicField(editorWriter, "m_Editor");
+            Editor ed = (obj != null) ? obj as Editor : null;
+            Assert.That(ed, Is.Null);
         }
     }
 }

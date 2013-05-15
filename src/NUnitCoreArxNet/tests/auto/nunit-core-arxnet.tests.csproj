@@ -66,6 +66,10 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Com.Utility.UnitTest, Version=0.0.4.30641, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Com.Utility\Com.Utility.UnitTest\0.0.4\Com.Utility.UnitTest\bin\Debug\Com.Utility.UnitTest.dll</HintPath>
+    </Reference>
     <Reference Include="nunit-core-arxnet">
       <HintPath>..\..\..\..\bin\Debug\lib\nunit-core-arxnet.dll</HintPath>
     </Reference>
