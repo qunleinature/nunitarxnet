@@ -24,7 +24,7 @@ namespace NUnit.Core.ArxNet
     [Serializable, ComVisible(true)]
     public class EditorWriter : TextWriter
     {
-        private static UnicodeEncoding m_Encoding;
+        private UnicodeEncoding m_Encoding;
         private Editor m_Editor;
 
         public EditorWriter()
