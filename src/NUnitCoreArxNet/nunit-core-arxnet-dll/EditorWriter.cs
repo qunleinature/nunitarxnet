@@ -47,6 +47,27 @@ namespace NUnit.Core.ArxNet
                 m_Editor = activeEditor;
         }
 
+        public override void Close()
+        {
+            //throw new System.NotImplementedException();
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            //throw new System.NotImplementedException();
+            m_Encoding = null;
+            m_Editor = null;
+            base.Dispose(disposing);
+        }
+
+        public override void Write(char value)
+        {
+            //throw new System.NotImplementedException();
+            Editor.WriteMessage("{0}", value);
+        }
+
         public override Encoding Encoding
         {
             get 
@@ -74,12 +95,6 @@ namespace NUnit.Core.ArxNet
                 return m_Editor;
             }
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            //throw new System.NotImplementedException();
-            m_Encoding = null;
-            m_Editor = null;
-        }
+        
     }
 }
