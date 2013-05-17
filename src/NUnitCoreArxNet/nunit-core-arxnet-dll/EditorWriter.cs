@@ -68,6 +68,36 @@ namespace NUnit.Core.ArxNet
             Editor.WriteMessage("{0}", value);
         }
 
+        public override void Write(string value)
+        {
+            //throw new System.NotImplementedException();
+            Editor.WriteMessage(value);
+        }
+
+        public override void Write(char[] buffer, int index, int count)
+        {
+            //throw new System.NotImplementedException();
+            if (buffer == null)
+            {
+                throw new ArgumentNullException("buffer", "字符串缓冲区不能为Null!");
+            }
+            if (index < 0)
+            {
+                throw new ArgumentOutOfRangeException("index", "字符串开始索引值不能小于0!");
+            }
+            if (count < 0)
+            {
+                throw new ArgumentOutOfRangeException("count", "字符串字符数不能小于0!");
+            }
+            if ((buffer.Length - index) < count)
+            {
+                throw new ArgumentException("字符串偏移长度非法!");
+            }
+            string str = new string(buffer);
+            string value = str.Substring(index, count);
+            Editor.WriteMessage(value);
+        }
+
         public override Encoding Encoding
         {
             get 

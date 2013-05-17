@@ -104,7 +104,60 @@ namespace NUnit.Core.ArxNet.Tests
             obj = UnitTestHelper.GetNonPublicField(editorWriter, "m_Editor");
             Editor ed = (obj != null) ? obj as Editor : null;
             Assert.That(ed, Is.Null);
-        }        
+        }
+
+        //public override void Write(char[] buffer, int index, int count)
+        [Test]
+        [Category("Write_chars_int_int")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Write_charsNull_int_int()
+        {
+            EditorWriter editorWriter = new EditorWriter();
+            editorWriter.Write(null, 7, 6);
+            editorWriter.Close();
+        }
+
+        [Test]
+        [Category("Write_chars_int_int")]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void Write_chars_intNegative_int()
+        {
+            EditorWriter editorWriter = new EditorWriter();
+            char[] buffer = new char[3];
+            buffer[0] = 't';
+            buffer[1] = 'r';
+            buffer[2] = 'y';
+            editorWriter.Write(buffer, -1, 3);
+            editorWriter.Close();
+        }
+
+        [Test]
+        [Category("Write_chars_int_int")]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void Write_chars_int_intNegative()
+        {
+            EditorWriter editorWriter = new EditorWriter();
+            char[] buffer = new char[3];
+            buffer[0] = 't';
+            buffer[1] = 'r';
+            buffer[2] = 'y';
+            editorWriter.Write(buffer, 0, -3);
+            editorWriter.Close();
+        }
+
+        [Test]
+        [Category("Write_chars_int_int")]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Write_chars_int_int_InvalidOffLen()
+        {
+            EditorWriter editorWriter = new EditorWriter();
+            char[] buffer = new char[3];
+            buffer[0] = 't';
+            buffer[1] = 'r';
+            buffer[2] = 'y';
+            editorWriter.Write(buffer, 1, 3);
+            editorWriter.Close();
+        }
 
         //public Editor Editor
         [Test]

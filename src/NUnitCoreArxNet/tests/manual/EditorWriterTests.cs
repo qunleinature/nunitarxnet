@@ -34,5 +34,26 @@ namespace NUnit.Core.ArxNet.Tests
             editorWriter.Write('A');
             editorWriter.Close();
         }
+
+        //public override void Write(string value)
+        [Test]
+        public void Write_string()
+        {
+            EditorWriter editorWriter = new EditorWriter();
+            editorWriter.Write("\nHello EditorWriter!");
+            editorWriter.Close();
+        }
+
+        //public override void Write(char[] buffer, int index, int count)
+        [Test]
+        public void Write_chars_int_int()
+        {
+            EditorWriter editorWriter = new EditorWriter();
+            char[] buffer = new char[20];
+            string str = "\nHello EditorWriter!";
+            str.CopyTo(0, buffer, 0, 20);
+            editorWriter.Write(buffer, 7, 6);
+            editorWriter.Close();
+        }
     }
 }
