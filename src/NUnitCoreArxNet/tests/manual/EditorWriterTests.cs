@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.ApplicationServices;
@@ -54,6 +55,37 @@ namespace NUnit.Core.ArxNet.Tests
             str.CopyTo(0, buffer, 0, 20);
             editorWriter.Write(buffer, 7, 6);
             editorWriter.Close();
+        }
+    }
+
+    [TestFixture]
+    public class ConsoleSetOutEditorWriterTests
+    {
+        private TextWriter m_StdOut;
+        private EditorWriter m_EditorWriter;
+
+        [TestFixtureSetUp]
+        public void Init()
+        {
+            m_StdOut = Console.Out;
+            m_EditorWriter = new EditorWriter();
+            Console.SetOut(m_EditorWriter);
+        }
+
+        [TestFixtureTearDown]
+        public void Cleanup()
+        {
+            Console.SetOut(m_StdOut);
+            m_EditorWriter.Close();
+            m_EditorWriter = null;
+        }
+
+        [Test]
+        public void ConsoleWriteLine()
+        {
+            Console.WriteLine("Console SetOut EditorWriter，Test Console WriteLine：");
+            Console.WriteLine();
+            
         }
     }
 }
