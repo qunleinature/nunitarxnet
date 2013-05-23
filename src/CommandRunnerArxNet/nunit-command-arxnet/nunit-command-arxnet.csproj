@@ -139,7 +139,9 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="ClassDiagram_nunit-command-arxnet.cd" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandOptionsArxNet.cs">
       <SubType>Code</SubType>

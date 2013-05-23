@@ -186,5 +186,13 @@ namespace NUnit.CommandRunner.ArxNet
             ed.WriteMessage("\n");
             /*2013.1.25改*/
 		}
+
+        /// <summary>
+        /// 初始化类
+        /// </summary>
+        public static void Init()
+        {
+            throw new System.NotImplementedException();
+        }
 	}
 }
