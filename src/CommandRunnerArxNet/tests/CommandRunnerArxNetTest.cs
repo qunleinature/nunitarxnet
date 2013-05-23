@@ -239,6 +239,13 @@ namespace NUnit.CommandRunner.ArxNet.Tests
 			StringAssert.Contains("NonExistingDirectory", output.ToString());
 		}
 
+        //public static void Init()
+        [Test]
+        public void RunnerArxNetInit()
+        {
+            NUnit.CommandRunner.ArxNet.RunnerArxNet.Init();
+        }
+
 		private int runFixture( Type type )
 		{
             return executeConsole(new string[] { AssemblyHelper.GetAssemblyPath(type), "-fixture:" + type.FullName, "-noxml" });

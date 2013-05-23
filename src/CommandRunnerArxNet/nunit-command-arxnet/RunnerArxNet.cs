@@ -17,6 +17,7 @@ using NUnit.Core;
 using NUnit.Util;
 
 using NUnit.ConsoleRunner;
+using NUnit.Core.ArxNet;
 
 using Autodesk.AutoCAD.Runtime;
 using Autodesk.AutoCAD.EditorInput;
@@ -30,6 +31,8 @@ namespace NUnit.CommandRunner.ArxNet
 	public class RunnerArxNet
 	{
 		static Logger log = InternalTrace.GetLogger(typeof(RunnerArxNet));
+        private static EditorWriter m_EditorWriter;
+        private static TextWriter m_SavedOut;
 
         /// <summary>
         /// AutoCad .net应用程序入口点
@@ -190,9 +193,12 @@ namespace NUnit.CommandRunner.ArxNet
         /// <summary>
         /// 初始化类
         /// </summary>
-        public static void Init()
+        public static void Init()//2013.5.24加
         {
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
+            m_EditorWriter = new EditorWriter();
+            m_SavedOut = Console.Out;
+            Console.SetOut(m_EditorWriter);
         }
 	}
 }
