@@ -68,7 +68,9 @@ namespace NUnit.CommandRunner.ArxNet
                         break;
                 }
 
+                RunnerArxNet.Init();//2013.5.25¼Ó                
                 RunnerArxNet.Main(args);
+                RunnerArxNet.CleanUp();//2013.5.25¼Ó
             }
             catch (Autodesk.AutoCAD.Runtime.Exception e)
             {
