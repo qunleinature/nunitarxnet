@@ -200,5 +200,33 @@ namespace NUnit.CommandRunner.ArxNet
             m_SavedOut = Console.Out;
             Console.SetOut(m_EditorWriter);
         }
+
+        /// <summary>
+        /// 清除类
+        /// </summary>
+        public static void CleanUp()//2013.5.25加
+        {
+            //throw new System.NotImplementedException();
+            //恢复输出流
+            if (m_SavedOut != null)
+            {
+                Console.SetOut(m_SavedOut);
+                m_SavedOut.Close();
+                m_SavedOut = null;
+            }
+            else//设置标准输出流
+            {
+                StreamWriter standardOutput = new StreamWriter(Console.OpenStandardOutput());
+                standardOutput.AutoFlush = true;
+                Console.SetOut(standardOutput);
+            }
+
+            //清除EditorWriter
+            if (m_EditorWriter != null)
+            {
+                m_EditorWriter.Close();
+                m_EditorWriter = null;
+            }
+        }
 	}
 }

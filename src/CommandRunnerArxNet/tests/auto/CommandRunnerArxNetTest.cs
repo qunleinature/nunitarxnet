@@ -237,14 +237,7 @@ namespace NUnit.CommandRunner.ArxNet.Tests
 			int returnCode = runFixture(typeof(SuccessTest), "-runlist=NonExistingDirectory\\NonExistingFile.txt");
 			Assert.AreEqual(CommandUiArxNet.INVALID_ARG, returnCode);
 			StringAssert.Contains("NonExistingDirectory", output.ToString());
-		}
-
-        //public static void Init()
-        [Test]
-        public void RunnerArxNetInit()
-        {
-            NUnit.CommandRunner.ArxNet.RunnerArxNet.Init();
-        }
+		}        
 
 		private int runFixture( Type type )
 		{
