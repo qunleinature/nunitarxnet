@@ -132,7 +132,7 @@ namespace NUnit.CommandRunner.ArxNet
             catch (Autodesk.AutoCAD.Runtime.Exception ex)
             {
                 //ed.WriteMessage("\nAutoCAD Exception:\n{0}", ex.ToString());
-                Console.WriteLine("\nAutoCAD Exception:\n{0}", ex.Message);//2013.5.25lq改
+                Console.WriteLine("AutoCAD Exception:\n{0}", ex.Message);//2013.5.25lq改
                 return CommandUiArxNet.UNEXPECTED_ERROR;
             }
             /*2013.1.25加*/
@@ -213,7 +213,7 @@ namespace NUnit.CommandRunner.ArxNet
             Console.WriteLine(string.Format("   OS Version: {0}", Environment.OSVersion));
             Console.WriteLine(string.Format("  CLR Version: {0} ( {1} )",
                 Environment.Version, framework.DisplayName));
-            Console.WriteLine(string.Format("\n ACAD Version: {0} ", Application.Version));//AutoCAD版本
+            Console.WriteLine(string.Format(" ACAD Version: {0} ", Application.Version));//AutoCAD版本
 
             Console.WriteLine();
             /*2013.5.25改*/

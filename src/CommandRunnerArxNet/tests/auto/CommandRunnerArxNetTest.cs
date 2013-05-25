@@ -270,10 +270,10 @@ namespace NUnit.CommandRunner.ArxNet.Tests
             foreach (string arg in arguments)
                 args[n++] = arg;
 
-            NUnit.CommandRunner.ArxNet.RunnerArxNet.Init();//2015.5.25lq加
+            //NUnit.CommandRunner.ArxNet.RunnerArxNet.Init();//2015.5.25lq加
             int resultCode = NUnit.CommandRunner.ArxNet.RunnerArxNet.Main(args);//2015.5.25lq改
             //return NUnit.CommandRunner.ArxNet.RunnerArxNet.Main(args);
-            NUnit.CommandRunner.ArxNet.RunnerArxNet.CleanUp();//2015.5.25lq加
+            //NUnit.CommandRunner.ArxNet.RunnerArxNet.CleanUp();//2015.5.25lq加
             return resultCode;//2015.5.25lq加
 		}
 	}
