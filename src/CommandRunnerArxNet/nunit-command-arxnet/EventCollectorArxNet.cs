@@ -10,6 +10,7 @@
 //  在NUnit2.6.2基础上修改
 // 2013.5.25：
 //  使用EditorWritor类在Editor输出
+//  线程中无法用Editor输出,添加一个StringWriter记录Editor输出
 // ****************************************************************
 
 using System;
@@ -50,6 +51,11 @@ namespace NUnit.CommandRunner.ArxNet
 
 		private ArrayList unhandledExceptions = new ArrayList();
 
+        /*2013-5-15lq加*/
+        private StringWriter editorStringWriter = null;//记录Editor输出
+        private bool redirectOutput, redirectError;
+        /*2013-5-15lq加*/
+
         public EventCollectorArxNet(CommandOptionsArxNet options, TextWriter outWriter, TextWriter errorWriter)//2013.1.25改
 		{
 			level = 0;
@@ -59,14 +65,31 @@ namespace NUnit.CommandRunner.ArxNet
 			this.currentTestName = string.Empty;
 			this.progress = !options.xmlConsole && !options.labels && !options.nodots;
 
+            /*2013-5-15lq加*/
+            redirectOutput = options.output != null && options.output != string.Empty;
+            redirectError = options.err != null && options.err != string.Empty;
+            editorStringWriter = new StringWriter();
+            /*2013-5-15lq加*/
+
 			AppDomain.CurrentDomain.UnhandledException += 
 				new UnhandledExceptionEventHandler(OnUnhandledException);
-		}
+		}        
 
 		public bool HasExceptions
 		{
 			get { return unhandledExceptions.Count > 0; }
 		}
+
+        /*2013-5-15lq加*/
+        public StringWriter EditorStringWriter
+        {
+            get
+            {
+                if (editorStringWriter == null) editorStringWriter = new StringWriter();
+                editorStringWriter.Flush();
+                return editorStringWriter;
+            }
+        }
 
 		public void WriteExceptions()
 		{
@@ -82,11 +105,11 @@ namespace NUnit.CommandRunner.ArxNet
             /*2013.1.25改*/
 
             /*2013.5.25lq改*/
-            Console.WriteLine();
-            Console.WriteLine("Unhandled exceptions:");
+            EditorStringWriter.WriteLine();
+            EditorStringWriter.WriteLine("Unhandled exceptions:");
             int index = 1;
             foreach (string msg in unhandledExceptions)
-                Console.WriteLine("{0}) {1}", index++, msg);
+                EditorStringWriter.WriteLine("{0}) {1}", index++, msg);
             /*2013.5.25lq改*/
 		}
 
@@ -115,7 +138,7 @@ namespace NUnit.CommandRunner.ArxNet
     					
 			        if ( progress )
                         //ed.WriteMessage("F");//2013.1.25改
-                        Console.Write("F");//2013.5.25lq改
+                        EditorStringWriter.Write("F");//2013.5.25lq改
     					
 			        messages.Add( string.Format( "{0}) {1} :", failureCount, testResult.Test.TestName.FullName ) );
 			        messages.Add( testResult.Message.Trim( Environment.NewLine.ToCharArray() ) );
@@ -147,7 +170,7 @@ namespace NUnit.CommandRunner.ArxNet
 					
 	    			if ( progress )
                         //ed.WriteMessage("N");//2013.1.25改
-                        Console.Write("N");//2013.5.25改
+                        EditorStringWriter.Write("N");//2013.5.25改
                     break;
 			}
 
@@ -159,12 +182,18 @@ namespace NUnit.CommandRunner.ArxNet
             currentTestName = testName.FullName;
 
             if (options.labels)
-                outWriter.WriteLine("***** {0}", currentTestName);
+            {
+                if (redirectOutput)
+                    outWriter.WriteLine("***** {0}", currentTestName);
+                else
+                    EditorStringWriter.WriteLine("***** {0}", currentTestName);
+            }
 
             //Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;//2013.1.25加
             if (progress)
-                //ed.WriteMessage(".");//2013.1.25改
-                Console.Write(".");//2013.5.25lq改
+            {
+                EditorStringWriter.Write(".");//2013.5.25lq改
+            }
 		}
 
 		public void SuiteStarted(TestName testName)
@@ -236,10 +265,16 @@ namespace NUnit.CommandRunner.ArxNet
 			switch ( output.Type )
 			{
 				case TestOutputType.Out:
-					outWriter.Write( output.Text );
+                    if (redirectOutput)
+					    outWriter.Write( output.Text );
+                    else
+                        EditorStringWriter.Write( output.Text );
 					break;
 				case TestOutputType.Error:
-					errorWriter.Write( output.Text );
+                    if (redirectError)
+					    errorWriter.Write( output.Text );
+                    else
+                        EditorStringWriter.Write(output.Text);
 					break;
 			}
 		}

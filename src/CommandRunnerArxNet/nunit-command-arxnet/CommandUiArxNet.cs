@@ -10,6 +10,7 @@
 //  在NUnit2.6.2基础上修改
 // 2013.5.25：
 //  使用EditorWritor类在Editor输出
+//  线程中无法用Editor输出,用StringWriter记录Editor输出
 // ****************************************************************
 
 using System.Diagnostics;
@@ -159,7 +160,7 @@ namespace NUnit.CommandRunner.ArxNet
                     /*2013.1.25加*/
                     //if (!redirectOutput) ed.WriteMessage("\n" + outWriter.ToString());
                     //if (!redirectError) ed.WriteMessage("\n" + errorWriter.ToString());
-                    /*2013.1.25加*/
+                    /*2013.1.25加*/                   
 				}
 				finally
 				{
@@ -176,6 +177,10 @@ namespace NUnit.CommandRunner.ArxNet
 					Console.SetOut( savedOut );
 					Console.SetError( savedError );
 				}
+
+                /*2013.5.25lq加*/
+                Console.Write(collector.EditorStringWriter.ToString());//2013-5-25加，Editor输出StringWriter记录
+                /*2013.5.25lq加*/
 
                 //ed.WriteMessage("\n");//2013.1.25改
                 Console.WriteLine();//2013.5.25lq改
