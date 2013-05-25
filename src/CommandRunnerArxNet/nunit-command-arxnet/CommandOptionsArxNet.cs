@@ -8,6 +8,8 @@
 // Copyright 2013, Lei Qun
 // 2013.1.25：
 //  在NUnit2.6.2基础上修改
+// 2013.5.25：
+//  使用EditorWritor类在Editor输出
 // ****************************************************************
 
 namespace NUnit.CommandRunner.ArxNet
@@ -160,8 +162,9 @@ namespace NUnit.CommandRunner.ArxNet
 		public override void Help()
 		{
             /*2013.1.25改*/
-            Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
+            //Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
 
+            /*
             ed.WriteMessage("\n");
             ed.WriteMessage("\nNUNIT-COMMAND");
             ed.WriteMessage("\nargs:[inputfiles] [options]");
@@ -176,8 +179,26 @@ namespace NUnit.CommandRunner.ArxNet
             ed.WriteMessage("\n");
             ed.WriteMessage("\nOptions that take values may use an equal sign, a colon");
             ed.WriteMessage("\nor a space to separate the option from its value.");
-            ed.WriteMessage("\n");
+            ed.WriteMessage("\n");*/
             /*2013.1.25改*/
+
+            /*2013.5.25改*/
+            Console.WriteLine();
+            Console.WriteLine("NUNIT-COMMAND");
+            Console.WriteLine("args:[inputfiles] [options]");
+            Console.WriteLine();
+            Console.WriteLine("Runs a set of NUnit tests from the AutoCad command lines.");
+            Console.WriteLine();
+            Console.WriteLine("You may specify one or more assemblies or a single");
+            Console.WriteLine("project file of type .nunit.");
+            Console.WriteLine();
+            Console.WriteLine("Options:");
+            base.Help();
+            Console.WriteLine();
+            Console.WriteLine("Options that take values may use an equal sign, a colon");
+            Console.WriteLine("or a space to separate the option from its value.");
+            Console.WriteLine();
+            /*2013.5.25改*/
 		}        
 	}
 }

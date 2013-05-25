@@ -146,10 +146,10 @@ namespace NUnit.CommandRunner.ArxNet
 			{
 				if(options.wait)
 				{
-                    //ed.GetString(new PromptStringOptions("\n\nHit <enter> key to continue"));//2013.1.25改
-                    Console.Out.WriteLine("\nHit <enter> key to continue");//2013.1.25lq改
+                    //Console.Out.WriteLine("\nHit <enter> key to continue");
                     //Console.ReadLine();
-                    m_EditorWriter.Editor.GetString("");//2013.5.25lq改
+                    //ed.GetString(new PromptStringOptions("\n\nHit <enter> key to continue"));//2013.1.25改/
+                    m_EditorWriter.Editor.GetString(new PromptStringOptions("\n\nHit <enter> key to continue"));//2013.5.25lq改
 				}
 
                 log.Info("nunit-command-arxnet.dll terminating");//2013.1.25改

@@ -8,6 +8,8 @@
 // Copyright 2013, Lei Qun
 // 2013.1.25：
 //  在NUnit2.6.2基础上修改
+// 2013.5.25：
+//  使用EditorWritor类在Editor输出
 // ****************************************************************
 
 using System;
@@ -69,13 +71,23 @@ namespace NUnit.CommandRunner.ArxNet
 		public void WriteExceptions()
 		{
             /*2013.1.25改*/
+            /*
             Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
             ed.WriteMessage("\n");
             ed.WriteMessage("\nUnhandled exceptions:");
             int index = 1;
             foreach (string msg in unhandledExceptions)
                 ed.WriteMessage("\n{0}) {1}", index++, msg);
+            */
             /*2013.1.25改*/
+
+            /*2013.5.25lq改*/
+            Console.WriteLine();
+            Console.WriteLine("Unhandled exceptions:");
+            int index = 1;
+            foreach (string msg in unhandledExceptions)
+                Console.WriteLine("{0}) {1}", index++, msg);
+            /*2013.5.25lq改*/
 		}
 
 		public void RunStarted(string name, int testCount)
@@ -92,7 +104,7 @@ namespace NUnit.CommandRunner.ArxNet
 
 		public void TestFinished(TestResult testResult)
 		{
-            Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
+            //Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
             switch( testResult.ResultState )
             {
                 case ResultState.Error:
@@ -102,7 +114,8 @@ namespace NUnit.CommandRunner.ArxNet
 			        failureCount++;
     					
 			        if ( progress )
-                        ed.WriteMessage("F");//2013.1.25改
+                        //ed.WriteMessage("F");//2013.1.25改
+                        Console.Write("F");//2013.5.25lq改
     					
 			        messages.Add( string.Format( "{0}) {1} :", failureCount, testResult.Test.TestName.FullName ) );
 			        messages.Add( testResult.Message.Trim( Environment.NewLine.ToCharArray() ) );
@@ -133,7 +146,8 @@ namespace NUnit.CommandRunner.ArxNet
     				testIgnoreCount++;
 					
 	    			if ( progress )
-                        ed.WriteMessage("N");//2013.1.25改
+                        //ed.WriteMessage("N");//2013.1.25改
+                        Console.Write("N");//2013.5.25改
                     break;
 			}
 
@@ -147,9 +161,10 @@ namespace NUnit.CommandRunner.ArxNet
             if (options.labels)
                 outWriter.WriteLine("***** {0}", currentTestName);
 
-            Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;//2013.1.25加
+            //Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;//2013.1.25加
             if (progress)
-                ed.WriteMessage(".");//2013.1.25改
+                //ed.WriteMessage(".");//2013.1.25改
+                Console.Write(".");//2013.5.25lq改
 		}
 
 		public void SuiteStarted(TestName testName)

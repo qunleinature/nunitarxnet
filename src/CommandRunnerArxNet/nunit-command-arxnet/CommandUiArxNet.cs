@@ -8,6 +8,8 @@
 // Copyright 2013, Lei Qun
 // 2013.1.25：
 //  在NUnit2.6.2基础上修改
+// 2013.5.25：
+//  使用EditorWritor类在Editor输出
 // ****************************************************************
 
 using System.Diagnostics;
@@ -47,7 +49,7 @@ namespace NUnit.CommandRunner.ArxNet
 		{
 		}
 
-        public int Execute(CommandOptionsArxNet options)//2013.1.25改
+        public int Execute(CommandOptionsArxNet options)//2013.1.25改//2013.5.25lq改
 		{
             this.workDir = options.work;
             if (workDir == null || workDir == string.Empty)
@@ -59,7 +61,8 @@ namespace NUnit.CommandRunner.ArxNet
                     Directory.CreateDirectory(workDir);
             }
 
-            TextWriter outWriter = new StringWriter();//2013.1.25改
+            //TextWriter outWriter = new StringWriter();//2013.1.25改
+            TextWriter outWriter = Console.Out;//2013.5.25lq改
 			bool redirectOutput = options.output != null && options.output != string.Empty;
 			if ( redirectOutput )
 			{
@@ -68,7 +71,8 @@ namespace NUnit.CommandRunner.ArxNet
 				outWriter = outStreamWriter;
 			}
 
-            TextWriter errorWriter = new StringWriter();//2013.1.25改
+            //TextWriter errorWriter = new StringWriter();//2013.1.25改
+            TextWriter errorWriter = Console.Error;//2013.5.25lq改
 			bool redirectError = options.err != null && options.err != string.Empty;
 			if ( redirectError )
 			{
@@ -91,14 +95,19 @@ namespace NUnit.CommandRunner.ArxNet
                 ? (RuntimeFramework)package.Settings["RuntimeFramework"]
                 : RuntimeFramework.CurrentFramework;
 
-            Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;//2013.1.25加
+            //Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;//2013.1.25加
 
 #if CLR_2_0 || CLR_4_0
-            ed.WriteMessage("\nProcessModel: {0}    DomainUsage: {1}", processModel, domainUsage);//2013.1.25改
+            //ed.WriteMessage("\nProcessModel: {0}    DomainUsage: {1}", processModel, domainUsage);//2013.1.25改
 
-            ed.WriteMessage("\nExecution Runtime: {0}", framework);//2013.1.25改
+            //ed.WriteMessage("\nExecution Runtime: {0}", framework);//2013.1.25改
+
+            Console.WriteLine("ProcessModel: {0}    DomainUsage: {1}", processModel, domainUsage);//2013.5.25lq改
+
+            Console.WriteLine("Execution Runtime: {0}", framework);//2013.5.25lq改
 #else
             /*2013.1.25改*/
+            /*
             ed.WriteMessage("\nDomainUsage: {0}", domainUsage);
 
             if (processModel != ProcessModel.Default && processModel != ProcessModel.Single)
@@ -106,7 +115,18 @@ namespace NUnit.CommandRunner.ArxNet
 
             if (!RuntimeFramework.CurrentFramework.Supports(framework))
                 ed.WriteMessage("\nWarning: Ignoring project setting 'runtimeFramework={0}'", framework);
+            */
             /*2013.1.25改*/
+
+            /*2013.5.25lq改*/
+            Console.WriteLine("DomainUsage: {0}", domainUsage);
+
+            if (processModel != ProcessModel.Default && processModel != ProcessModel.Single)
+                Console.WriteLine("Warning: Ignoring project setting 'processModel={0}'", processModel);
+
+            if (!RuntimeFramework.CurrentFramework.Supports(framework))
+                Console.WriteLine("Warning: Ignoring project setting 'runtimeFramework={0}'", framework);
+            /*2013.5.25lq改*/
 #endif
 
             using (TestRunner testRunner = new DefaultTestRunnerFactory().MakeTestRunner(package))
@@ -116,7 +136,8 @@ namespace NUnit.CommandRunner.ArxNet
                 if (testRunner.Test == null)
 				{
 					testRunner.Unload();
-                    ed.WriteMessage("\nUnable to locate fixture {0}", options.fixture);//2013.1.25改
+                    //ed.WriteMessage("\nUnable to locate fixture {0}", options.fixture);//2013.1.25改
+                    Console.Error.WriteLine("Unable to locate fixture {0}", options.fixture);//2013.5.25lq改
 					return FIXTURE_NOT_FOUND;
 				}
 
@@ -136,8 +157,8 @@ namespace NUnit.CommandRunner.ArxNet
 				{
 					result = testRunner.Run( collector, testFilter, false, LoggingThreshold.Off );
                     /*2013.1.25加*/
-                    if (!redirectOutput) ed.WriteMessage("\n" + outWriter.ToString());
-                    if (!redirectError) ed.WriteMessage("\n" + errorWriter.ToString());
+                    //if (!redirectOutput) ed.WriteMessage("\n" + outWriter.ToString());
+                    //if (!redirectError) ed.WriteMessage("\n" + errorWriter.ToString());
                     /*2013.1.25加*/
 				}
 				finally
@@ -156,7 +177,8 @@ namespace NUnit.CommandRunner.ArxNet
 					Console.SetError( savedError );
 				}
 
-                ed.WriteMessage("\n");//2013.1.25改
+                //ed.WriteMessage("\n");//2013.1.25改
+                Console.WriteLine();//2013.5.25lq改
 
                 int returnCode = UNEXPECTED_ERROR;
 
@@ -167,7 +189,8 @@ namespace NUnit.CommandRunner.ArxNet
 
                     if (options.xmlConsole)
                     {
-                        ed.WriteMessage("\n" + xmlOutput);//2013.1.25改
+                        //ed.WriteMessage("\n" + xmlOutput);//2013.1.25改
+                        Console.WriteLine(xmlOutput);//2013.5.25lq改
                     }
                     else
                     {
@@ -177,8 +200,10 @@ namespace NUnit.CommandRunner.ArxNet
 
                         if (options.stoponerror && (hasErrors || summary.NotRunnable > 0))
                         {
-                            ed.WriteMessage("\nTest run was stopped after first error, as requested.");//2013.1.25改
-                            ed.WriteMessage("\n");//2013.1.25改
+                            //ed.WriteMessage("\nTest run was stopped after first error, as requested.");//2013.1.25改
+                            //ed.WriteMessage("\n");//2013.1.25改
+                            Console.WriteLine("Test run was stopped after first error, as requested.");//2013.5.25lq改
+                            Console.WriteLine();//2013.5.25lq改
                         }
 
                         if (hasErrors)
@@ -213,6 +238,7 @@ namespace NUnit.CommandRunner.ArxNet
 			}
 		}
 
+        /*2013.5.25lq改*/
         /*2013.1.25改*/
         internal static bool CreateTestFilter(CommandOptionsArxNet options, out TestFilter testFilter)
 		{
@@ -220,11 +246,12 @@ namespace NUnit.CommandRunner.ArxNet
 
 			SimpleNameFilter nameFilter = new SimpleNameFilter();
 
-            Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;//2013.1.25加
+            //Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;//2013.1.25加
 
 			if (options.run != null && options.run != string.Empty)
 			{
-                ed.WriteMessage("\nSelected test(s): " + options.run);//2013.1.25改
+                //ed.WriteMessage("\nSelected test(s): " + options.run);//2013.1.25改
+                Console.WriteLine("Selected test(s): " + options.run);//2013.5.25lq改
 
 				foreach (string name in TestNameParser.Parse(options.run))
 					nameFilter.Add(name);
@@ -234,7 +261,8 @@ namespace NUnit.CommandRunner.ArxNet
 
 			if (options.runlist != null && options.runlist != string.Empty)
 			{
-                ed.WriteMessage("\nRun list: " + options.runlist);//2013.1.25改
+                //ed.WriteMessage("\nRun list: " + options.runlist);//2013.1.25改
+                Console.WriteLine("Run list: " + options.runlist);//2013.5.25lq改
 				
 				try
 				{
@@ -256,7 +284,8 @@ namespace NUnit.CommandRunner.ArxNet
                 { 
                     if (e is FileNotFoundException || e is DirectoryNotFoundException)
                     {
-                        ed.WriteMessage("\nUnable to locate file: " + options.runlist);//2013.1.25改
+                        //ed.WriteMessage("\nUnable to locate file: " + options.runlist);//2013.1.25改
+                        Console.WriteLine("Unable to locate file: " + options.runlist);//2013.5.25lq改
                         return false;
                     }
                     throw;
@@ -269,7 +298,8 @@ namespace NUnit.CommandRunner.ArxNet
 			if (options.include != null && options.include != string.Empty)
 			{
 				TestFilter includeFilter = new CategoryExpression(options.include).Filter;
-                ed.WriteMessage("\nIncluded categories: " + includeFilter.ToString());//2013.1.25改
+                //ed.WriteMessage("\nIncluded categories: " + includeFilter.ToString());//2013.1.25改
+                Console.WriteLine("Included categories: " + includeFilter.ToString());//2013.5.25lq改
 
 				if (testFilter.IsEmpty)
 					testFilter = includeFilter;
@@ -280,7 +310,8 @@ namespace NUnit.CommandRunner.ArxNet
 			if (options.exclude != null && options.exclude != string.Empty)
 			{
 				TestFilter excludeFilter = new NotFilter(new CategoryExpression(options.exclude).Filter);
-                ed.WriteMessage("\nExcluded categories: " + excludeFilter.ToString());//2013.1.25改
+                //ed.WriteMessage("\nExcluded categories: " + excludeFilter.ToString());//2013.1.25改
+                Console.WriteLine("Excluded categories: " + excludeFilter.ToString());//2013.5.25lq改
 
 				if (testFilter.IsEmpty)
 					testFilter = excludeFilter;
@@ -296,6 +327,7 @@ namespace NUnit.CommandRunner.ArxNet
 			return true;
 		}
         /*2013.1.25改*/
+        /*2013.5.25lq改*/
 
 		#region Helper Methods
         // TODO: See if this can be unified with the Gui's MakeTestPackage
@@ -394,28 +426,41 @@ namespace NUnit.CommandRunner.ArxNet
 		}
 
 		private static void WriteSummaryReport( ResultSummarizer summary )
-		{
+		{            
             /*2013.1.25改*/
-            Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
-            ed.WriteMessage(
-                "\nTests run: {0}, Errors: {1}, Failures: {2}, Inconclusive: {3}, Time: {4} seconds",
+            //Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
+            //ed.WriteMessage(
+                //"\nTests run: {0}, Errors: {1}, Failures: {2}, Inconclusive: {3}, Time: {4} seconds",
+                //summary.TestsRun, summary.Errors, summary.Failures, summary.Inconclusive, summary.Time);
+            //ed.WriteMessage(
+                //"\n  Not run: {0}, Invalid: {1}, Ignored: {2}, Skipped: {3}",
+                //summary.TestsNotRun, summary.NotRunnable, summary.Ignored, summary.Skipped);
+            //ed.WriteMessage("\n");
+
+            /*2013.5.25lq改*/
+            Console.WriteLine(
+                "Tests run: {0}, Errors: {1}, Failures: {2}, Inconclusive: {3}, Time: {4} seconds",
                 summary.TestsRun, summary.Errors, summary.Failures, summary.Inconclusive, summary.Time);
-            ed.WriteMessage(
-                "\n  Not run: {0}, Invalid: {1}, Ignored: {2}, Skipped: {3}",
+            Console.WriteLine(
+                "  Not run: {0}, Invalid: {1}, Ignored: {2}, Skipped: {3}",
                 summary.TestsNotRun, summary.NotRunnable, summary.Ignored, summary.Skipped);
-            ed.WriteMessage("\n");
-            /*2013.1.25改*/
+            Console.WriteLine();
+
         }
 
         private void WriteErrorsAndFailuresReport(TestResult result)
         {
             reportIndex = 0;
             /*2013.1.25改*/
-            Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
-            ed.WriteMessage("\nErrors and Failures:");
+            //Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
+            //ed.WriteMessage("\nErrors and Failures:");
+            //WriteErrorsAndFailures(result);
+            //ed.WriteMessage("\n");
+
+            /*2013.5.25lq改*/
+            Console.WriteLine("Errors and Failures:");
             WriteErrorsAndFailures(result);
-            ed.WriteMessage("\n");
-            /*2013.1.25改*/
+            Console.WriteLine();
         }
 
         private void WriteErrorsAndFailures(TestResult result)
@@ -442,11 +487,15 @@ namespace NUnit.CommandRunner.ArxNet
         {
             reportIndex = 0;
             /*2013.1.25改*/
-            Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
-            ed.WriteMessage("\nTests Not Run:");
+            //Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
+            //ed.WriteMessage("\nTests Not Run:");
+            //WriteNotRunResults(result);
+            //ed.WriteMessage("\n");
+
+            /*2013.5.25lq改*/
+            Console.WriteLine("Tests Not Run:");
             WriteNotRunResults(result);
-            ed.WriteMessage("\n");
-            /*2013.1.25改*/        
+            Console.WriteLine();
         }
 
 	    private int reportIndex = 0;
@@ -465,16 +514,21 @@ namespace NUnit.CommandRunner.ArxNet
                 ? string.Format("{0} {1}", result.FailureSite, result.ResultState)
                 : result.ResultState.ToString();
 
-            Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;//2013.1.25加
-            ed.WriteMessage("\n{0}) {1} : {2}", ++reportIndex, status, result.FullName);//2013.1.25改
+            //Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;//2013.1.25加
+            //ed.WriteMessage("\n{0}) {1} : {2}", ++reportIndex, status, result.FullName);//2013.1.25改
+            Console.WriteLine("{0}) {1} : {2}", ++reportIndex, status, result.FullName);//2013.5.25lq改
 
             if (result.Message != null && result.Message != string.Empty)
-                ed.WriteMessage("\n   {0}", result.Message);//2013.1.25改
+                //ed.WriteMessage("\n   {0}", result.Message);//2013.1.25改
+                Console.WriteLine("   {0}", result.Message);//2013.5.25lq改
 
             if (result.StackTrace != null && result.StackTrace != string.Empty)
-                ed.WriteMessage("\n" + (result.IsFailure
+                //ed.WriteMessage("\n" + (result.IsFailure
+                    //? StackTraceFilter.Filter(result.StackTrace)
+                    //: result.StackTrace + Environment.NewLine));//2013.1.25改
+                Console.WriteLine(result.IsFailure
                     ? StackTraceFilter.Filter(result.StackTrace)
-                    : result.StackTrace + Environment.NewLine));//2013.1.25改
+                    : result.StackTrace + Environment.NewLine);//2013.5.25lq改
         }
 	    #endregion
 	}
