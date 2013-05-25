@@ -62,17 +62,17 @@
     <CodeAnalysisRuleDirectories>;E:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.core, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+    <Reference Include="nunit.core, Version=2.6.2.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\NUnit-2.6.0.11340\bin\Debug\lib\nunit.core.dll</HintPath>
+      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\lib\nunit.core.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.core.interfaces, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+    <Reference Include="nunit.core.interfaces, Version=2.6.2.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\NUnit-2.6.0.11340\bin\Debug\lib\nunit.core.interfaces.dll</HintPath>
+      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\lib\nunit.core.interfaces.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.util, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+    <Reference Include="nunit.util, Version=2.6.2.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\NUnit-2.6.0.11340\bin\Debug\lib\nunit.util.dll</HintPath>
+      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\lib\nunit.util.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />

@@ -62,8 +62,9 @@
     <CodeAnalysisRuleDirectories>;E:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="mock-assembly">
-      <HintPath>..\..\..\..\NUnit-2.6.0.11340\bin\Debug\tests\mock-assembly.dll</HintPath>
+    <Reference Include="mock-assembly, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\tests\mock-assembly.dll</HintPath>
     </Reference>
     <Reference Include="nunit-uikit-arxnet">
       <HintPath>..\..\..\bin\Debug\lib\nunit-uikit-arxnet.dll</HintPath>
@@ -71,20 +72,24 @@
     <Reference Include="nunit-util-arxnet">
       <HintPath>..\..\..\bin\Debug\lib\nunit-util-arxnet.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.core">
-      <HintPath>..\..\..\..\NUnit-2.6.0.11340\bin\Debug\lib\nunit.core.dll</HintPath>
+    <Reference Include="nunit.core, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\lib\nunit.core.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.core.interfaces">
-      <HintPath>..\..\..\..\NUnit-2.6.0.11340\bin\Debug\lib\nunit.core.interfaces.dll</HintPath>
+    <Reference Include="nunit.core.interfaces, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\lib\nunit.core.interfaces.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="nunit.uikit">
-      <HintPath>..\..\..\..\NUnit-2.6.0.11340\bin\Debug\lib\nunit.uikit.dll</HintPath>
+    <Reference Include="nunit.uikit, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\lib\nunit.uikit.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.util">
-      <HintPath>..\..\..\..\NUnit-2.6.0.11340\bin\Debug\lib\nunit.util.dll</HintPath>
+    <Reference Include="nunit.util, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\lib\nunit.util.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

@@ -114,11 +114,35 @@ namespace NUnit.Util.ArxNet
 		/// </summary>
 		private bool reloadPending = false;
 
+        /*2013.5.25lq加*/
+        /// <summary>
+        /// Trace setting to use for running tests
+        /// </summary>
+        private bool tracing;
+
+        /// <summary>
+        /// LoggingThreshold to use for running tests
+        /// </summary>
+        private LoggingThreshold logLevel;
+        /*2013.5.25lq加*/
+
 		/// <summary>
 		/// The last filter used for a run - used to 
 		/// rerun tests when a change occurs
 		/// </summary>
 		private ITestFilter lastFilter = null;
+
+        /*2013.5.25lq加*/
+        /// <summary>
+        /// The last trace setting used for a run
+        /// </summary>
+        private bool lastTracing;
+
+        /// <summary>
+        /// Last logging level used for a run
+        /// </summary>
+        private LoggingThreshold lastLogLevel;
+        /*2013.5.25lq加*/
 
         /// <summary>
         /// The runtime framework being used for the currently
@@ -160,6 +184,13 @@ namespace NUnit.Util.ArxNet
 		{
 			get { return loadedTest != null; }
 		}
+
+        /*2013.5.25lq加*/
+        public ITest LoadedTest
+        {
+            get { return testRunner == null ? null : testRunner.Test; }
+        }
+        /*2013.5.25lq加*/
 
 		public bool Running
 		{
@@ -205,6 +236,21 @@ namespace NUnit.Util.ArxNet
         {
             get { return currentFramework; }
         }
+
+        /*2013.5.25lq加*/
+        public bool IsTracingEnabled
+        {
+            get { return tracing; }
+            set { tracing = value; }
+        }
+
+        public LoggingThreshold LoggingThreshold
+        {
+            get { return logLevel; }
+            set { logLevel = value; }
+        }
+        /*2013.5.25lq加*/
+
 		#endregion
 
 		#region EventListener Handlers
@@ -664,7 +710,7 @@ namespace NUnit.Util.ArxNet
 		/// asynchronously, we use an event to let ui components
 		/// know that the failure happened.
 		/// </summary>
-        ////在CAD环境下异步运行测试
+        ////在CAD环境下异步单线程运行测试
 		public void OnTestChanged( string testFileName )
 		{
             log.Info("Assembly changed: {0}", testFileName);
@@ -677,8 +723,10 @@ namespace NUnit.Util.ArxNet
 
                 if (lastFilter != null && ServicesArxNet.UserSettings.GetSetting("Options.TestLoader.RerunOnChange", false))
 					//testRunner.BeginRun( this, lastFilter );
-                    testRunner.Run(this, lastFilter);//异步运行
-			}
+                    //testRunner.Run(this, lastFilter);//单线程运行测试
+                    //testRunner.BeginRun(this, lastFilter, lastTracing, lastLogLevel);
+                    testRunner.Run(this, lastFilter, lastTracing, lastLogLevel);//单线程运行测试,2013.5.25lq改                
+            }
 		}
 		#endregion
 
@@ -695,19 +743,25 @@ namespace NUnit.Util.ArxNet
 		/// Run selected tests using a filter
 		/// </summary>
 		/// <param name="filter">The filter to be used</param>
-        //在CAD环境下异步运行测试
+        //在CAD环境下单线程运行测试
 		public void RunTests( ITestFilter filter )
 		{
-			if ( !Running )
+            /*2013.5.25lq改*/
+            if ( !Running  && LoadedTest != null)
 			{
-                if (reloadPending || ServicesArxNet.UserSettings.GetSetting("Options.TestLoader.ReloadOnRun", false))
+                if (reloadPending || Services.UserSettings.GetSetting("Options.TestLoader.ReloadOnRun", false))
 					ReloadTest();
 
-				this.lastFilter = filter;
-				//testRunner.BeginRun( this, filter );
-                if (testRunner != null)//2013-1-1单元测试(​NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveLastResult)改
-                    testRunner.Run(this, filter);//异步运行
+                // Save args for automatic rerun
+                this.lastFilter = filter;
+                this.lastTracing = tracing;
+                this.lastLogLevel = logLevel;
+
+                //testRunner.BeginRun(this, filter, tracing, logLevel);
+                testRunner.Run(this, filter, tracing, logLevel);//单线程运行测试
 			}
+            /*2013.5.25lq改*/
+
 		}
 
 		/// <summary>

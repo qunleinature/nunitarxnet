@@ -8,6 +8,8 @@
 // Copyright 2013, Lei Qun
 // 2013.1.25：
 //  在NUnit2.6.2基础上修改
+// 2013.5.25：
+//  使用EditorWritor类在Editor输出
 // ****************************************************************
 
 using System;
@@ -31,8 +33,9 @@ namespace NUnit.CommandRunner.ArxNet
 	public class RunnerArxNet
 	{
 		static Logger log = InternalTrace.GetLogger(typeof(RunnerArxNet));
-        private static EditorWriter m_EditorWriter;
-        private static TextWriter m_SavedOut;
+        private static EditorWriter m_EditorWriter = null;
+        private static TextWriter m_SavedOut = null;
+        private static TextWriter m_SavedError = null;
 
         /// <summary>
         /// AutoCad .net应用程序入口点
@@ -61,19 +64,22 @@ namespace NUnit.CommandRunner.ArxNet
                 return CommandUiArxNet.OK;//2013.1.25改
 			}
 
-            Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;//2013.1.25加
+            //Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;//2013.1.25加
 
             if (options.cleanup)
             {
                 log.Info("Performing cleanup of shadow copy cache");
                 DomainManager.DeleteShadowCopyPath();
-                ed.WriteMessage("\nShadow copy cache emptied");//2013.1.25改
+                //ed.WriteMessage("\nShadow copy cache emptied");//2013.1.25改
+                Console.WriteLine("Shadow copy cache emptied");//2013.5.25lq改
                 return CommandUiArxNet.OK;//2013.1.25改
             }
 
             if (options.NoArgs) 
 			{				
-                ed.WriteMessage("\nfatal error: no inputs specified");//2013.1.25改
+                //ed.WriteMessage("\nfatal error: no inputs specified");//2013.1.25改
+                //Console.WriteLine("fatal error: no inputs specified");//2013.5.25lq改
+                Console.Error.WriteLine("fatal error: no inputs specified");//2013.5.25lq改
                 options.Help();
                 return CommandUiArxNet.OK;//2013.1.25改
 			}
@@ -81,7 +87,9 @@ namespace NUnit.CommandRunner.ArxNet
 			if(!options.Validate())
 			{
                 foreach (string arg in options.InvalidArguments)
-                    ed.WriteMessage("\nfatal error: invalid argument: {0}", arg);//2013.1.25改
+                    //ed.WriteMessage("\nfatal error: invalid argument: {0}", arg);//2013.1.25改
+                    //Console.WriteLine("fatal error: invalid argument: {0}", arg);//2013.5.25lq改
+                    Console.Error.WriteLine("fatal error: invalid argument: {0}", arg);//2013.5.25lq改
                 options.Help();
                 return CommandUiArxNet.INVALID_ARG;//2013.1.25改
 			}
@@ -103,7 +111,8 @@ namespace NUnit.CommandRunner.ArxNet
             {
                 if (!Services.ProjectService.CanLoadProject(parm) && !PathUtils.IsAssemblyFileType(parm))
                 {
-                    ed.WriteMessage("\nFile type not known: {0}", parm);//2013.1.25改
+                    //ed.WriteMessage("\nFile type not known: {0}", parm);//2013.1.25改
+                    Console.WriteLine("File type not known: {0}", parm);//2013.5.25lq改
                     return CommandUiArxNet.INVALID_ARG;//2013.1.25改
                 }
             }
@@ -115,26 +124,32 @@ namespace NUnit.CommandRunner.ArxNet
 			}
 			catch( FileNotFoundException ex )
 			{
-                ed.WriteMessage("\n" + ex.Message);//2013.1.25改
+                //ed.WriteMessage("\n" + ex.Message);//2013.1.25改
+                Console.WriteLine(ex.Message);//2013.5.25lq改
                 return CommandUiArxNet.FILE_NOT_FOUND;//2013.1.25改
 			}
             /*2013.1.25加*/
             catch (Autodesk.AutoCAD.Runtime.Exception ex)
             {
-                ed.WriteMessage("\nAutoCAD Exception:\n{0}", ex.ToString());
+                //ed.WriteMessage("\nAutoCAD Exception:\n{0}", ex.ToString());
+                Console.WriteLine("\nAutoCAD Exception:\n{0}", ex.Message);//2013.5.25lq改
                 return CommandUiArxNet.UNEXPECTED_ERROR;
             }
             /*2013.1.25加*/
             catch (System.Exception ex)//2013.1.25改
 			{
-                ed.WriteMessage("\nUnhandled Exception:\n{0}", ex.ToString());//2013.1.25改
+                //ed.WriteMessage("\nUnhandled Exception:\n{0}", ex.ToString());//2013.1.25改
+                Console.WriteLine("Unhandled Exception:\n{0}", ex.ToString());//2013.5.25改
                 return CommandUiArxNet.UNEXPECTED_ERROR;//2013.1.25改
 			}
 			finally
 			{
 				if(options.wait)
 				{
-                    ed.GetString(new PromptStringOptions("\n\nHit <enter> key to continue"));//2013.1.25改
+                    //ed.GetString(new PromptStringOptions("\n\nHit <enter> key to continue"));//2013.1.25改
+                    Console.Out.WriteLine("\nHit <enter> key to continue");//2013.1.25lq改
+                    //Console.ReadLine();
+                    m_EditorWriter.Editor.GetString("");//2013.5.25lq改
 				}
 
                 log.Info("nunit-command-arxnet.dll terminating");//2013.1.25改
@@ -171,22 +186,37 @@ namespace NUnit.CommandRunner.ArxNet
                 if (configText != "")
                     versionText += string.Format(" ({0})", configText);
             }
-
+            
             /*2013.1.25改*/
-            Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
+            //Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
 
-            ed.WriteMessage(String.Format("\n{0} version {1}", productName, versionText));
-            ed.WriteMessage("\n" + copyrightText);
-            ed.WriteMessage("\n");
+            //ed.WriteMessage(String.Format("\n{0} version {1}", productName, versionText));
+            //ed.WriteMessage("\n" + copyrightText);
+            //ed.WriteMessage("\n");
 
-            ed.WriteMessage("\nRuntime Environment - ");
-            RuntimeFramework framework = RuntimeFramework.CurrentFramework;
-            ed.WriteMessage(string.Format("\n   OS Version: {0}", Environment.OSVersion));
-            ed.WriteMessage(string.Format("\n  CLR Version: {0} ( {1} )",
+            //ed.WriteMessage("\nRuntime Environment - ");
+            /*2013.5.25改*/
+            Console.WriteLine(String.Format("{0} version {1}", productName, versionText));
+            Console.WriteLine(copyrightText);
+            Console.WriteLine();
+
+            Console.WriteLine("Runtime Environment - ");
+            /*2013.5.25改*/
+            RuntimeFramework framework = RuntimeFramework.CurrentFramework;            
+            //ed.WriteMessage(string.Format("\n   OS Version: {0}", Environment.OSVersion));
+            //ed.WriteMessage(string.Format("\n  CLR Version: {0} ( {1} )",
+                //Environment.Version, framework.DisplayName));
+            //ed.WriteMessage(string.Format("\n ACAD Version: {0} ", Application.Version));//AutoCAD版本
+
+            //ed.WriteMessage("\n");
+            /*2013.5.25改*/
+            Console.WriteLine(string.Format("   OS Version: {0}", Environment.OSVersion));
+            Console.WriteLine(string.Format("  CLR Version: {0} ( {1} )",
                 Environment.Version, framework.DisplayName));
-            ed.WriteMessage(string.Format("\n ACAD Version: {0} ", Application.Version));//AutoCAD版本
+            Console.WriteLine(string.Format("\n ACAD Version: {0} ", Application.Version));//AutoCAD版本
 
-            ed.WriteMessage("\n");
+            Console.WriteLine();
+            /*2013.5.25改*/
             /*2013.1.25改*/
 		}
 
@@ -198,7 +228,9 @@ namespace NUnit.CommandRunner.ArxNet
             //throw new System.NotImplementedException();
             m_EditorWriter = new EditorWriter();
             m_SavedOut = Console.Out;
+            m_SavedError = Console.Error;
             Console.SetOut(m_EditorWriter);
+            Console.SetError(m_EditorWriter);
         }
 
         /// <summary>
@@ -207,12 +239,22 @@ namespace NUnit.CommandRunner.ArxNet
         public static void CleanUp()//2013.5.25加
         {
             //throw new System.NotImplementedException();
+            //恢复错误输出流
+            if (m_SavedError != null)
+            {
+                Console.SetError(m_SavedError);
+            }
+            else//设置标准错误输出流
+            {
+                StreamWriter standardError = new StreamWriter(Console.OpenStandardError());
+                standardError.AutoFlush = true;
+                Console.SetError(standardError);
+            }
+
             //恢复输出流
             if (m_SavedOut != null)
             {
                 Console.SetOut(m_SavedOut);
-                m_SavedOut.Close();
-                m_SavedOut = null;
             }
             else//设置标准输出流
             {

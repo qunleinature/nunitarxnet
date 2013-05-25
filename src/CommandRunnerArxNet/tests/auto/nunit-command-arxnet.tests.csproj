@@ -92,11 +92,11 @@
     </Reference>
     <Reference Include="mock-assembly, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\tests\mock-assembly.dll</HintPath>
+      <HintPath>..\..\..\..\..\NUnit-2.6.2\bin\Debug\tests\mock-assembly.dll</HintPath>
     </Reference>
     <Reference Include="nonamespace-assembly, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\tests\nonamespace-assembly.dll</HintPath>
+      <HintPath>..\..\..\..\..\NUnit-2.6.2\bin\Debug\tests\nonamespace-assembly.dll</HintPath>
     </Reference>
     <Reference Include="nunit-command-runner-arxnet, Version=0.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

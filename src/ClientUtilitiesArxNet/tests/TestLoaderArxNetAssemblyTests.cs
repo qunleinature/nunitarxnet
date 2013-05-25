@@ -329,8 +329,8 @@ namespace NUnit.Util.ArxNet.Tests
             loader1.LoadProject(assembly);
             if (loader1.IsProjectLoaded && loader1.TestProject.IsLoadable)
                 loader1.LoadTest();
-            
-            loader1.RunTests();
+
+            loader1.RunTests(TestFilter.Empty);
         }
 
         #endregion
