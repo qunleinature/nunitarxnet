@@ -49,16 +49,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nunit-gui-arxnet.tests", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nunit-gui-arxnet.tests.manual", "src\GuiRunnerArxNet\tests\manual\nunit-gui-arxnet.tests.manual.csproj", "{829BDE95-A0E4-4CE7-B7DB-8D8F234721DC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items (2)", "Solution Items (2)", "{5CC507F3-CDB8-4104-BDDD-06747413C1C3}"
-	ProjectSection(SolutionItems) = preProject
-		bug.txt = bug.txt
-		..\NUnit-2.6.0.11340\src\nunit.snk = ..\NUnit-2.6.0.11340\src\nunit.snk
-		..\NUnit-2.6.2\src\nunit.snk = ..\NUnit-2.6.2\src\nunit.snk
-		..\NUnit-2.6.0.11340\NUnitTests.config = ..\NUnit-2.6.0.11340\NUnitTests.config
-		readme.txt = readme.txt
-		bin\Debug\tests\TestOptions.txt = bin\Debug\tests\TestOptions.txt
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{A785FC02-6044-4864-BE24-4593CAD23A97}"
 	ProjectSection(SolutionItems) = preProject
 		..\NUnit-2.6.2\scripts\nunit.build.targets = ..\NUnit-2.6.2\scripts\nunit.build.targets
