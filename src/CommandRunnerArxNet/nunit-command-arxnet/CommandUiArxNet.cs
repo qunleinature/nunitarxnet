@@ -23,11 +23,13 @@ namespace NUnit.CommandRunner.ArxNet
 	using System.Xml;
 	using System.Resources;
 	using System.Text;
+
 	using NUnit.Core;
 	using NUnit.Core.Filters;
 	using NUnit.Util;
-
     using NUnit.ConsoleRunner;
+
+    using NUnit.Util.ArxNet;
 
     using Autodesk.AutoCAD.Runtime;
     using Autodesk.AutoCAD.EditorInput;
@@ -130,7 +132,7 @@ namespace NUnit.CommandRunner.ArxNet
             /*2013.5.25lq¸Ä*/
 #endif
 
-            using (TestRunner testRunner = new DefaultTestRunnerFactory().MakeTestRunner(package))
+            using (TestRunner testRunner = new DefaultTestRunnerFactoryArxNet().MakeTestRunner(package))
 			{
                 testRunner.Load(package);
 

@@ -1,7 +1,7 @@
 // ****************************************************************
-// Copyright 2002-2003, Charlie Poole
-// This is free software licensed under the NUnit license. You may
-// obtain a copy of the license at http://nunit.org
+// This is free software licensed under the NUnit license. You
+// may obtain a copy of the license as well as information regarding
+// copyright ownership at http://nunit.org.
 // ****************************************************************
 
 // ****************************************************************
@@ -9,8 +9,6 @@
 // 2013.1.6修改：
 //  1.NUnit.Util.SettingsGroup改为NUnit.Util.ArxNet.SettingsGroupArxNet类
 //  2.添加对storage为null的处理
-// 2013.5.27修改：
-//  1.在nunit2.6.2基础上修改
 // ****************************************************************
 
 namespace NUnit.Util.ArxNet

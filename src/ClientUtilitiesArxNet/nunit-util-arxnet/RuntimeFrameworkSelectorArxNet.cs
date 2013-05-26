@@ -7,7 +7,7 @@
 // ****************************************************************
 // Copyright 2012, Lei Qun
 // 2013.5.27修改：
-//  1.Services改为ServicesArxNet?...?
+//  1.Services改为ServicesArxNet
 // ****************************************************************
 
 using System;
@@ -54,7 +54,7 @@ namespace NUnit.Util.ArxNet
 
             if (targetVersion == RuntimeFramework.DefaultVersion)
             {
-                if (Services.UserSettings.GetSetting("Options.TestLoader.RuntimeSelectionEnabled", true))
+                if (ServicesArxNet.UserSettings.GetSetting("Options.TestLoader.RuntimeSelectionEnabled", true))
                     foreach (string assembly in package.Assemblies)
                     {
                         using (AssemblyReader reader = new AssemblyReader(assembly))
@@ -72,7 +72,7 @@ namespace NUnit.Util.ArxNet
                     targetVersion = RuntimeFramework.CurrentFramework.ClrVersion;
 
                 RuntimeFramework checkFramework = new RuntimeFramework(targetRuntime, targetVersion);
-                if (!checkFramework.IsAvailable || !Services.TestAgency.IsRuntimeVersionSupported(targetVersion))
+                if (!checkFramework.IsAvailable || !ServicesArxNet.TestAgency.IsRuntimeVersionSupported(targetVersion))
                 {
                     log.Debug("Preferred version {0} is not installed or this NUnit installation does not support it", targetVersion);
                     if (targetVersion < currentFramework.FrameworkVersion)

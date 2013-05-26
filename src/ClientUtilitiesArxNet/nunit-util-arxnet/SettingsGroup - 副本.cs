@@ -4,16 +4,7 @@
 // obtain a copy of the license at http://nunit.org
 // ****************************************************************
 
-// ****************************************************************
-// Copyright 2012, Lei Qun
-// 2013.1.6修改：
-//  1.NUnit.Util.SettingsGroup改为NUnit.Util.ArxNet.SettingsGroupArxNet类
-//  2.添加对storage为null的处理
-// 2013.5.27修改：
-//  1.在nunit2.6.2基础上修改
-// ****************************************************************
-
-namespace NUnit.Util.ArxNet
+namespace NUnit.Util
 {
 	using System;
     using System.Drawing;
@@ -25,7 +16,7 @@ namespace NUnit.Util.ArxNet
 	/// of user or system settings. All storge of settings
 	/// is delegated to a SettingsStorage.
 	/// </summary>
-	public class SettingsGroupArxNet : ISettings, IDisposable
+	public class SettingsGroup : ISettings, IDisposable
 	{
 		#region Instance Fields
 		protected ISettingsStorage storage;
@@ -37,7 +28,7 @@ namespace NUnit.Util.ArxNet
 		/// Construct a settings group.
 		/// </summary>
 		/// <param name="storage">Storage for the group settings</param>
-		public SettingsGroupArxNet( ISettingsStorage storage )
+		public SettingsGroup( ISettingsStorage storage )
 		{
 			this.storage = storage;
 		}
@@ -46,7 +37,7 @@ namespace NUnit.Util.ArxNet
 		/// Protected constructor for use by derived classes that
 		/// set the storage themselves or don't use a storage.
 		/// </summary>
-		protected SettingsGroupArxNet()
+		protected SettingsGroup()
 		{
 		}
 		#endregion
@@ -74,8 +65,6 @@ namespace NUnit.Util.ArxNet
 		/// <returns>Value of the setting or null</returns>
 		public object GetSetting( string settingName )
 		{
-            if (storage == null) return null;//2013-1-6添加
-
 			return storage.GetSetting( settingName );
 		}
 
@@ -267,8 +256,6 @@ namespace NUnit.Util.ArxNet
 		/// <param name="settingName">Name of the setting to remove</param>
 		public void RemoveSetting( string settingName )
 		{
-            if (storage == null) return;//2013-1-6添加
-
 			storage.RemoveSetting( settingName );
 
 			if ( Changed != null )
@@ -281,8 +268,6 @@ namespace NUnit.Util.ArxNet
 		/// <param name="GroupName"></param>
 		public void RemoveGroup( string groupName )
 		{
-            if (storage == null) return;//2013-1-6添加
-
 			storage.RemoveGroup( groupName );
 		}
 
@@ -293,8 +278,6 @@ namespace NUnit.Util.ArxNet
 		/// <param name="settingValue">Value to be saved</param>
 		public void SaveSetting( string settingName, object settingValue )
 		{
-            if (storage == null) return;//2013-1-6添加
-
 			object oldValue = storage.GetSetting( settingName );
 
 			// Avoid signaling "changes" when there is not really a change

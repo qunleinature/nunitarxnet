@@ -11,6 +11,8 @@
 //  2.从NUnit.Util.ArxNet.SettingsGroupArxNet类继承
 //  3.NUnit.Util.LegacySettingsConverter改为NUnit.Util.ArxNet.LegacySettingsConverterArxNet类
 //  4.从NUnit.Util.ArxNet.SettingsGroupArxNet类继承
+//  2013.5.27修改：
+//      1.在nunit2.6.2基础上修改
 // ****************************************************************
 
 using System;

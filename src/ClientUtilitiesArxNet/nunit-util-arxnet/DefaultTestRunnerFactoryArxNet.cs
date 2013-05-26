@@ -20,10 +20,10 @@ namespace NUnit.Util.ArxNet
     /// runner for a given package to be loaded and run either in a 
     /// separate process or within the same process. 
     /// </summary>
-    public class DefaultTestRunnerFactory : InProcessTestRunnerFactory, ITestRunnerFactory
+    public class DefaultTestRunnerFactoryArxNet : InProcessTestRunnerFactory, ITestRunnerFactory
     {
 #if CLR_2_0 || CLR_4_0
-        private RuntimeFrameworkSelector selector = new RuntimeFrameworkSelector();//RuntimeFrameworkSelectorArxNet    
+        private RuntimeFrameworkSelectorArxNet selector = new RuntimeFrameworkSelectorArxNet();//RuntimeFrameworkSelectorArxNet    
         
         /// <summary>
         /// Returns a test runner based on the settings in a TestPackage.
@@ -35,7 +35,8 @@ namespace NUnit.Util.ArxNet
         /// <returns>A TestRunner</returns>
         public override TestRunner MakeTestRunner(TestPackage package)
         {
-            ProcessModel processModel = GetTargetProcessModel(package);
+            //ProcessModel processModel = GetTargetProcessModel(package);
+            ProcessModel processModel = ProcessModel.Single;//2013.5.27lq改，在CAD环境下的测试包是单进程
 
             switch (processModel)
             {
@@ -74,13 +75,18 @@ namespace NUnit.Util.ArxNet
 
         private ProcessModel GetTargetProcessModel(TestPackage package)
         {
+            /*2013.5.13lq改*/
+            //在CAD环境下的测试包是单进程
+            ProcessModel processModel = ProcessModel.Single;
+            /*
             RuntimeFramework currentFramework = RuntimeFramework.CurrentFramework;
             RuntimeFramework targetFramework = selector.SelectRuntimeFramework(package);
-
+            
             ProcessModel processModel = (ProcessModel)package.GetSetting("ProcessModel", ProcessModel.Default);
             if (processModel == ProcessModel.Default)
                 if (!currentFramework.Supports(targetFramework))
                     processModel = ProcessModel.Separate;
+             */ 
             return processModel;
         }
 #endif

@@ -4,34 +4,25 @@
 // obtain a copy of the license at http://nunit.org
 // ****************************************************************
 
-// ****************************************************************
-// Copyright 2012, Lei Qun
-// 2013.1.7修改：
-//  1.NUnit.Util.SettingsService改为NUnit.Util.ArxNet.SettingsServiceArxNet类
-//  2.从NUnit.Util.ArxNet.SettingsGroupArxNet类继承
-//  3.NUnit.Util.LegacySettingsConverter改为NUnit.Util.ArxNet.LegacySettingsConverterArxNet类
-//  4.从NUnit.Util.ArxNet.SettingsGroupArxNet类继承
-// ****************************************************************
-
 using System;
 using System.IO;
 using Microsoft.Win32;
 using NUnit.Core;
 
-namespace NUnit.Util.ArxNet
+namespace NUnit.Util
 {
 	/// <summary>
 	/// Summary description for UserSettingsService.
 	/// </summary>
-	public class SettingsServiceArxNet : SettingsGroupArxNet, NUnit.Core.IService
+	public class SettingsService : SettingsGroup, NUnit.Core.IService
 	{
 		static readonly string settingsFileName = "NUnitSettings.xml";
 
         private bool writeable;
 
-        public SettingsServiceArxNet() : this(true) { }
+        public SettingsService() : this(true) { }
 
-		public SettingsServiceArxNet(bool writeable)
+		public SettingsService(bool writeable)
 		{
             this.writeable = writeable;
 #if CLR_2_0 || CLR_4_0
@@ -75,18 +66,18 @@ namespace NUnit.Util.ArxNet
 			{
 				using( ISettingsStorage legacyStorage = new RegistrySettingsStorage( key ) )
 				{
-					new LegacySettingsConverterArxNet( legacyStorage, storage ).Convert();
+					new LegacySettingsConverter( legacyStorage, storage ).Convert();
 				}
 
 				storage.SaveSettings();
 			}
 		}
 
-		private class LegacySettingsConverterArxNet : SettingsGroupArxNet
+		private class LegacySettingsConverter : SettingsGroup
 		{
 			private ISettingsStorage legacy;
 
-			public LegacySettingsConverterArxNet( ISettingsStorage legacy, ISettingsStorage current )
+			public LegacySettingsConverter( ISettingsStorage legacy, ISettingsStorage current )
 				: base( current )
 			{
 				this.legacy = legacy;
