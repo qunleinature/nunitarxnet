@@ -3,12 +3,19 @@
 // This is free software licensed under the NUnit license. You may
 // obtain a copy of the license at http://nunit.org
 // ****************************************************************
+
+// ****************************************************************
+// Copyright 2012, Lei Qun
+// 2013.5.27修改：
+//  1.IRuntimeFrameworkSelector改为IRuntimeFrameworkSelectorArxNet
+// ****************************************************************
+
 using System;
 using NUnit.Core;
 
-namespace NUnit.Util
+namespace NUnit.Util.ArxNet
 {
-    interface IRuntimeFrameworkSelector
+    interface IRuntimeFrameworkSelectorArxNet
     {
         /// <summary>
         /// Selects a target runtime framework for a TestPackage based on

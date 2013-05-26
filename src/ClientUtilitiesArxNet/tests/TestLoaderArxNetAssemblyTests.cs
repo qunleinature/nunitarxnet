@@ -249,6 +249,7 @@ namespace NUnit.Util.ArxNet.Tests
 
         // TODO: Should wrapper project be unloaded on failure?
 
+        /*
         [Test]
         public void RunTest()
         {                        
@@ -281,12 +282,12 @@ namespace NUnit.Util.ArxNet.Tests
             Assert.AreEqual(typeof(SimpleTestRunner), testRunner.GetType());
 
             loader.RunTests();
-            /*do
-            {
+            //do
+            //{
                 // TODO: Find a more robust way of handling this
-                Thread.Sleep(500);
-            }
-            while (!catcher.GotRunFinished);*/
+                //Thread.Sleep(500);
+            //}
+            //while (!catcher.GotRunFinished);
 
             Assert.AreEqual(TestAction.ProjectLoading, ((TestEventArgs)catcher.Events[0]).Action);
             Assert.AreEqual(TestAction.ProjectLoaded, ((TestEventArgs)catcher.Events[1]).Action);
@@ -294,7 +295,7 @@ namespace NUnit.Util.ArxNet.Tests
             Assert.AreEqual(TestAction.TestLoaded, ((TestEventArgs)catcher.Events[3]).Action);
             Assert.AreEqual(TestAction.RunStarting, ((TestEventArgs)catcher.Events[4]).Action);
 
-            int eventCount = 4 /* for loading */+ 2 * (MockAssembly.Nodes - MockAssembly.Explicit);
+            int eventCount = 4 + 2 * (MockAssembly.Nodes - MockAssembly.Explicit);
             if (eventCount != catcher.Events.Count)
                 foreach (TestEventArgs e in catcher.Events)
                     Console.WriteLine(e.Action);
@@ -318,6 +319,7 @@ namespace NUnit.Util.ArxNet.Tests
             Assert.AreEqual(MockAssembly.ResultCount, nTests);
             Assert.AreEqual(MockAssembly.TestsRun, nRun);
         }
+        */
 
         #region temp
 

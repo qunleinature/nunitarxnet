@@ -17,8 +17,6 @@
 //      1.2012-12-29单元测试(NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.CloseProject)改
 //  2013.1.1修改：
 //      1.2013-1-1单元测试(?NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveLastResult)改
-//  2013.5.27修改：
-//      1.在nunit2.6.2基础上修改
 // ****************************************************************
 
 namespace NUnit.Util.ArxNet
@@ -809,7 +807,7 @@ namespace NUnit.Util.ArxNet
             }
 		}
 
-        //在CAD环境下的测试包是单进程、无应用域、不用线程
+        //在CAD环境下的测试包是单线程、异步
 		private TestPackage MakeTestPackage( string testName )
 		{
 			TestPackage package = TestProject.ActiveConfig.MakeTestPackage();
@@ -824,7 +822,25 @@ namespace NUnit.Util.ArxNet
 
             package.Settings["DomainUsage"] = DomainUsage.None;//无应用域
 
-            package.Settings["UseThreadedRunner"] = false;//不用线程         
+            if (processModel != ProcessModel.Default &&     // Ignore default setting
+                !package.Settings.Contains("ProcessModel")) // Ignore global setting if package has a setting
+            {
+                package.Settings["ProcessModel"] = processModel;
+            }
+            
+            package.Settings["UseThreadedRunner"] = false;//无线程
+
+            // NOTE: This code ignores DomainUsage.None because TestLoader
+            // is only called from the GUI and the GUI can't support that setting.
+            // TODO: Move this logic to the GUI if TestLoader is used more widely
+            if (domainUsage != DomainUsage.Default &&       // Ignore default setting
+                domainUsage != DomainUsage.None &&          // Ignore DomainUsage.None in Gui
+                (processModel != ProcessModel.Multiple ||
+                    domainUsage != DomainUsage.Multiple) && // Both process and domain may not be multiple
+                !package.Settings.Contains("DomainUsage"))  // Ignore global setting if package has a setting
+            {
+                package.Settings["DomainUsage"] = domainUsage;
+            }
             
             if (!package.Settings.Contains("WorkDirectory"))
                 package.Settings["WorkDirectory"] = Environment.CurrentDirectory;

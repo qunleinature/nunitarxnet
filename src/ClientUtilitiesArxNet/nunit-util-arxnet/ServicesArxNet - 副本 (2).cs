@@ -8,7 +8,7 @@
 // Copyright 2012, Lei Qun
 // 2012.12.21修改：TestLoader改为TestLoaderArxNet类
 // 2013.1.7修改：
-//  1.改为调用NUnit.Util.ArxNet.SettingsServiceArxNet类
+//  1.改为调用NUnit.Util.ArxNet.SettingsService类
 // 2013.5.27修改：
 //  1.在nunit2.6.2基础上修改
 // ****************************************************************
@@ -106,13 +106,13 @@ namespace NUnit.Util.ArxNet
 
 		#region TestLoader
 #if CLR_2_0 || CLR_4_0
-        private static TestLoaderArxNet loader;
-        public static TestLoaderArxNet TestLoader
+		private static TestLoader loader;
+		public static TestLoader TestLoader
 		{
 			get
 			{
 				if ( loader == null )
-                    loader = (TestLoaderArxNet)ServiceManager.Services.GetService(typeof(TestLoaderArxNet));
+					loader = (TestLoader)ServiceManager.Services.GetService( typeof( TestLoader ) );
 
 				return loader;
 			}

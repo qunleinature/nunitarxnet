@@ -1,4 +1,4 @@
-// ****************************************************************
+ï»¿// ****************************************************************
 // This is free software licensed under the NUnit license. You
 // may obtain a copy of the license as well as information regarding
 // copyright ownership at http://nunit.org.
@@ -6,19 +6,17 @@
 
 // ****************************************************************
 // Copyright 2012, Lei Qun
-// 2012.12.21ĞŞ¸Ä
-// 2012.12.25ĞŞ¸Ä£º
+// 2012.12.21ä¿®æ”¹
+// 2012.12.25ä¿®æ”¹ï¼š
 //  build29938bug002
-//      NUnit.Util.ArxNet.TestLoaderArxNet.CanReloadUnderRuntimeVersion¿Õ¶ÔÏó´íÎó
+//      NUnit.Util.ArxNet.TestLoaderArxNet.CanReloadUnderRuntimeVersionç©ºå¯¹è±¡é”™è¯¯
 //  build29938fix002
-//      1.¶ÔNNUnit.Util.ArxNet.TestLoaderArxNet.CanReloadUnderRuntimeVersion·½·¨Ìí¼Ó¶ÔÒì³£µÄ´¦Àí
-//      2.Ìí¼Ó¶Ô¶ÔÏóÎªnullµÄ¼ì²é
-//  2012.12.29ĞŞ¸Ä£º
-//      1.2012-12-29µ¥Ôª²âÊÔ(NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.CloseProject)¸Ä
-//  2013.1.1ĞŞ¸Ä£º
-//      1.2013-1-1µ¥Ôª²âÊÔ(?NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveLastResult)¸Ä
-//  2013.5.27ĞŞ¸Ä£º
-//      1.ÔÚnunit2.6.2»ù´¡ÉÏĞŞ¸Ä
+//      1.å¯¹NNUnit.Util.ArxNet.TestLoaderArxNet.CanReloadUnderRuntimeVersionæ–¹æ³•æ·»åŠ å¯¹å¼‚å¸¸çš„å¤„ç†
+//      2.æ·»åŠ å¯¹å¯¹è±¡ä¸ºnullçš„æ£€æŸ¥
+//  2012.12.29ä¿®æ”¹ï¼š
+//      1.2012-12-29å•å…ƒæµ‹è¯•(NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.CloseProject)æ”¹
+//  2013.1.1ä¿®æ”¹ï¼š
+//      1.2013-1-1å•å…ƒæµ‹è¯•(â€‹NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveLastResult)æ”¹
 // ****************************************************************
 
 namespace NUnit.Util.ArxNet
@@ -29,6 +27,7 @@ namespace NUnit.Util.ArxNet
 	using System.Diagnostics;
 	using System.Threading;
 	using System.Configuration;
+
 	using NUnit.Core;
 	using NUnit.Core.Filters;
     using NUnit.Util;
@@ -47,7 +46,7 @@ namespace NUnit.Util.ArxNet
 	/// of the large number of events it supports. However, it has
 	/// no dependencies on ui components and can be used independently.
 	/// </summary>
-	public class TestLoaderArxNet : MarshalByRefObject, NUnit.Core.EventListener, ITestLoader, IService
+	public class TestLoaderArxNet : MarshalByRefObject, EventListener, ITestLoader, IService
 	{
         static Logger log = InternalTrace.GetLogger(typeof(TestLoaderArxNet));
 
@@ -56,12 +55,12 @@ namespace NUnit.Util.ArxNet
 		/// <summary>
 		/// Our event dispatching helper object
 		/// </summary>
-		private TestEventDispatcher events;
+		private TestEventDispatcher events = null;
 
         /// <summary>
         /// Our TestRunnerFactory
         /// </summary>
-        private ITestRunnerFactory factory;
+        private ITestRunnerFactory factory = null;
 
 		/// <summary>
 		/// Loads and executes tests. Non-null when
@@ -77,7 +76,7 @@ namespace NUnit.Util.ArxNet
 		/// <summary>
 		/// The currently loaded test, returned by the testrunner
 		/// </summary>
-        //private ITest loadedTest = null;
+		private ITest loadedTest = null;
 
 		/// <summary>
 		/// The test name that was specified when loading
@@ -87,12 +86,12 @@ namespace NUnit.Util.ArxNet
 		/// <summary>
 		/// The currently executing test
 		/// </summary>
-		private string currentTestName;
+		private string currentTestName = null;
 
         /// <summary>
         /// The currently set runtime framework
         /// </summary>
-        private RuntimeFramework currentRuntime;
+        private RuntimeFramework currentRuntime = null;
 
 		/// <summary>
 		/// Result of the last test run
@@ -107,7 +106,7 @@ namespace NUnit.Util.ArxNet
 		/// <summary>
 		/// Watcher fires when the assembly changes
 		/// </summary>
-		private IAssemblyWatcher watcher;
+		private IAssemblyWatcher watcher = null;
 
 		/// <summary>
 		/// Assembly changed during a test and
@@ -115,6 +114,7 @@ namespace NUnit.Util.ArxNet
 		/// </summary>
 		private bool reloadPending = false;
 
+        /*2013.5.25lqåŠ */
         /// <summary>
         /// Trace setting to use for running tests
         /// </summary>
@@ -124,13 +124,15 @@ namespace NUnit.Util.ArxNet
         /// LoggingThreshold to use for running tests
         /// </summary>
         private LoggingThreshold logLevel;
+        /*2013.5.25lqåŠ */
 
 		/// <summary>
 		/// The last filter used for a run - used to 
 		/// rerun tests when a change occurs
 		/// </summary>
-		private ITestFilter lastFilter;
+		private ITestFilter lastFilter = null;
 
+        /*2013.5.25lqåŠ */
         /// <summary>
         /// The last trace setting used for a run
         /// </summary>
@@ -140,6 +142,7 @@ namespace NUnit.Util.ArxNet
         /// Last logging level used for a run
         /// </summary>
         private LoggingThreshold lastLogLevel;
+        /*2013.5.25lqåŠ */
 
         /// <summary>
         /// The runtime framework being used for the currently
@@ -179,13 +182,15 @@ namespace NUnit.Util.ArxNet
 
 		public bool IsTestLoaded
 		{
-			get { return testRunner != null && testRunner.Test != null; }
+			get { return loadedTest != null; }
 		}
 
+        /*2013.5.25lqåŠ */
         public ITest LoadedTest
         {
             get { return testRunner == null ? null : testRunner.Test; }
         }
+        /*2013.5.25lqåŠ */
 
 		public bool Running
 		{
@@ -204,7 +209,7 @@ namespace NUnit.Util.ArxNet
 
 		public string TestFileName
 		{
-            get { return (testProject == null) ? null : testProject.ProjectPath; }//2013-1-1µ¥Ôª²âÊÔ(?NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveLastResult)¸Ä
+            get { return (testProject == null) ? null : testProject.ProjectPath; }//2013-1-1å•å…ƒæµ‹è¯•(â€‹NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveLastResult)æ”¹
 		}
 
 		public TestResult TestResult
@@ -219,12 +224,12 @@ namespace NUnit.Util.ArxNet
 
 		public IList AssemblyInfo
 		{
-			get { return testRunner == null ? new TestAssemblyInfo[0] : testRunner.AssemblyInfo; }
+			get { return testRunner == null ? null : testRunner.AssemblyInfo; }
 		}
 
 		public int TestCount
 		{
-			get { return LoadedTest == null ? 0 : LoadedTest.TestCount; }
+			get { return loadedTest == null ? 0 : loadedTest.TestCount; }
 		}
 
         public RuntimeFramework CurrentFramework
@@ -232,6 +237,7 @@ namespace NUnit.Util.ArxNet
             get { return currentFramework; }
         }
 
+        /*2013.5.25lqåŠ */
         public bool IsTracingEnabled
         {
             get { return tracing; }
@@ -243,6 +249,7 @@ namespace NUnit.Util.ArxNet
             get { return logLevel; }
             set { logLevel = value; }
         }
+        /*2013.5.25lqåŠ */
 
 		#endregion
 
@@ -448,14 +455,14 @@ namespace NUnit.Util.ArxNet
 		/// </summary>
 		public void UnloadProject()
 		{
-            string testFileName = null;//2012-12-29µ¥Ôª²âÊÔ¼Ó
+            string testFileName = null;//2012-12-29å•å…ƒæµ‹è¯•åŠ 
 			try
 			{
-                /*2012-12-29µ¥Ôª²âÊÔ¸Ä*/
+                /*2012-12-29å•å…ƒæµ‹è¯•æ”¹*/
                 testFileName = TestFileName;
 
                 log.Info("Unloading project " + testFileName);
-                /*2012-12-29µ¥Ôª²âÊÔ¸Ä*/
+                /*2012-12-29å•å…ƒæµ‹è¯•æ”¹*/
 
 				events.FireProjectUnloading( testFileName );
 
@@ -515,6 +522,7 @@ namespace NUnit.Util.ArxNet
 
                 bool loaded = testRunner.Load(package);
 
+				loadedTest = testRunner.Test;
 				loadedTestName = testName;
 				testResult = null;
 				reloadPending = false;
@@ -529,7 +537,7 @@ namespace NUnit.Util.ArxNet
                         : RuntimeFramework.CurrentFramework;
 
                     testProject.HasChangesRequiringReload = false;
-                    events.FireTestLoaded(TestFileName, LoadedTest);
+                    events.FireTestLoaded(TestFileName, loadedTest);
                 }
                 else
                 {
@@ -588,6 +596,7 @@ namespace NUnit.Util.ArxNet
                     testRunner.Dispose();
 					testRunner = null;
 
+					loadedTest = null;
 					loadedTestName = null;
 					testResult = null;
 					reloadPending = false;
@@ -622,16 +631,13 @@ namespace NUnit.Util.ArxNet
                 /*build29938fix002*/
                 if (AssemblyInfo == null) return false;
                 /*build29938fix002*/
-                if (AssemblyInfo.Count == 0)
-                return false;
 
+                foreach (TestAssemblyInfo info in AssemblyInfo)
+                    if (info.ImageRuntimeVersion > version)
+                        return false;
 
-            foreach (TestAssemblyInfo info in AssemblyInfo)
-                if (info == null || info.ImageRuntimeVersion > version)
-                    return false;
-
-            return true;
-        }
+                return true;
+            }
             catch (Exception exception)//build29938fix002
             {
                 /*build29938fix002*/
@@ -672,6 +678,7 @@ namespace NUnit.Util.ArxNet
                         ? package.Settings["RuntimeFramework"] as RuntimeFramework
                         : RuntimeFramework.CurrentFramework;
 
+                loadedTest = testRunner.Test;
                 currentRuntime = framework;
 				reloadPending = false;
 
@@ -679,7 +686,7 @@ namespace NUnit.Util.ArxNet
                     InstallWatcher();
 
                 testProject.HasChangesRequiringReload = false;
-                events.FireTestReloaded(TestFileName, LoadedTest);
+                events.FireTestReloaded(TestFileName, loadedTest);
 
                 log.Info("Reload complete");
 			}
@@ -703,7 +710,7 @@ namespace NUnit.Util.ArxNet
 		/// asynchronously, we use an event to let ui components
 		/// know that the failure happened.
 		/// </summary>
-        ////ÔÚCAD»·¾³ÏÂÒì²½µ¥Ïß³ÌÔËĞĞ²âÊÔ
+        ////åœ¨CADç¯å¢ƒä¸‹å¼‚æ­¥å•çº¿ç¨‹è¿è¡Œæµ‹è¯•
 		public void OnTestChanged( string testFileName )
 		{
             log.Info("Assembly changed: {0}", testFileName);
@@ -716,23 +723,30 @@ namespace NUnit.Util.ArxNet
 
                 if (lastFilter != null && ServicesArxNet.UserSettings.GetSetting("Options.TestLoader.RerunOnChange", false))
 					//testRunner.BeginRun( this, lastFilter );
-                    //testRunner.Run(this, lastFilter);//µ¥Ïß³ÌÔËĞĞ²âÊÔ
+                    //testRunner.Run(this, lastFilter);//å•çº¿ç¨‹è¿è¡Œæµ‹è¯•
                     //testRunner.BeginRun(this, lastFilter, lastTracing, lastLogLevel);
-                    testRunner.Run(this, lastFilter, lastTracing, lastLogLevel);//µ¥Ïß³ÌÔËĞĞ²âÊÔ,2013.5.25lq¸Ä                
+                    testRunner.Run(this, lastFilter, lastTracing, lastLogLevel);//å•çº¿ç¨‹è¿è¡Œæµ‹è¯•,2013.5.25lqæ”¹                
             }
 		}
 		#endregion
 
 		#region Methods for Running Tests
+		/// <summary>
+		/// Run all the tests
+		/// </summary>
+		public void RunTests()
+		{
+			RunTests( TestFilter.Empty );
+		}
 
 		/// <summary>
 		/// Run selected tests using a filter
 		/// </summary>
 		/// <param name="filter">The filter to be used</param>
-        //ÔÚCAD»·¾³ÏÂµ¥Ïß³ÌÔËĞĞ²âÊÔ
+        //åœ¨CADç¯å¢ƒä¸‹å•çº¿ç¨‹è¿è¡Œæµ‹è¯•
 		public void RunTests( ITestFilter filter )
 		{
-            /*2013.5.25lq¸Ä*/
+            /*2013.5.25lqæ”¹*/
             if ( !Running  && LoadedTest != null)
 			{
                 if (reloadPending || Services.UserSettings.GetSetting("Options.TestLoader.ReloadOnRun", false))
@@ -744,9 +758,9 @@ namespace NUnit.Util.ArxNet
                 this.lastLogLevel = logLevel;
 
                 //testRunner.BeginRun(this, filter, tracing, logLevel);
-                testRunner.Run(this, filter, tracing, logLevel);//µ¥Ïß³ÌÔËĞĞ²âÊÔ
+                testRunner.Run(this, filter, tracing, logLevel);//å•çº¿ç¨‹è¿è¡Œæµ‹è¯•
 			}
-            /*2013.5.25lq¸Ä*/
+            /*2013.5.25lqæ”¹*/
 
 		}
 
@@ -764,7 +778,7 @@ namespace NUnit.Util.ArxNet
 		public IList GetCategories() 
 		{
 			CategoryManager categoryManager = new CategoryManager();
-			categoryManager.AddAllCategories( this.LoadedTest );
+			categoryManager.AddAllCategories( this.loadedTest );
 			ArrayList list = new ArrayList( categoryManager.Categories );
 			list.Sort();
 			return list;
@@ -772,7 +786,7 @@ namespace NUnit.Util.ArxNet
 
 		public void SaveLastResult( string fileName )
 		{
-            if (fileName != null && fileName.Trim() != "" && this.testResult != null)//2013-1-1µ¥Ôª²âÊÔ(?NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveLastResult)¼Ó
+            if (fileName != null && fileName.Trim() != "" && this.testResult != null)//2013-1-1å•å…ƒæµ‹è¯•(â€‹NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveLastResult)åŠ 
 			    new XmlResultWriter( fileName ).SaveTestResult(this.testResult);
         }
         #endregion
@@ -809,29 +823,26 @@ namespace NUnit.Util.ArxNet
             }
 		}
 
-        //ÔÚCAD»·¾³ÏÂµÄ²âÊÔ°üÊÇµ¥½ø³Ì¡¢ÎŞÓ¦ÓÃÓò¡¢²»ÓÃÏß³Ì
+        //åœ¨CADç¯å¢ƒä¸‹çš„æµ‹è¯•åŒ…æ˜¯å•çº¿ç¨‹ã€å¼‚æ­¥
 		private TestPackage MakeTestPackage( string testName )
 		{
 			TestPackage package = TestProject.ActiveConfig.MakeTestPackage();
 			package.TestName = testName;
 
-            ISettings userSettings = ServicesArxNet.UserSettings;
-            package.Settings["MergeAssemblies"] = userSettings.GetSetting("Options.TestLoader.MergeAssemblies", false);
-            package.Settings["AutoNamespaceSuites"] = userSettings.GetSetting("Options.TestLoader.AutoNamespaceSuites", true);
-            package.Settings["ShadowCopyFiles"] = userSettings.GetSetting("Options.TestLoader.ShadowCopyFiles", true);
+            ISettings settings = ServicesArxNet.UserSettings;
+            package.Settings["MergeAssemblies"] = settings.GetSetting("Options.TestLoader.MergeAssemblies", false);
+            package.Settings["AutoNamespaceSuites"] = settings.GetSetting("Options.TestLoader.AutoNamespaceSuites", true);
+            package.Settings["ShadowCopyFiles"] = settings.GetSetting("Options.TestLoader.ShadowCopyFiles", true);
 
-            package.Settings["ProcessModel"] = ProcessModel.Single;//µ¥½ø³Ì
+            package.Settings["ProcessModel"] = ProcessModel.Single;//å•è¿›ç¨‹
 
-            package.Settings["DomainUsage"] = DomainUsage.None;//ÎŞÓ¦ÓÃÓò
+            package.Settings["DomainUsage"] = DomainUsage.None;//æ— åº”ç”¨åŸŸ
 
-            package.Settings["UseThreadedRunner"] = false;//²»ÓÃÏß³Ì         
-            
+            package.Settings["UseThreadedRunner"] = false;//æ— çº¿ç¨‹
+
             if (!package.Settings.Contains("WorkDirectory"))
                 package.Settings["WorkDirectory"] = Environment.CurrentDirectory;
-
-            //if (NUnitConfiguration.ApartmentState != System.Threading.ApartmentState.Unknown)
-            //    package.Settings["ApartmentState"] = NUnitConfiguration.ApartmentState;
-
+			
             return package;
 		}
 		#endregion

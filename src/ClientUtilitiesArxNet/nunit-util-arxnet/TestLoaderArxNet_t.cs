@@ -1,27 +1,10 @@
 // ****************************************************************
-// This is free software licensed under the NUnit license. You
-// may obtain a copy of the license as well as information regarding
-// copyright ownership at http://nunit.org.
+// Copyright 2002-2011, Charlie Poole
+// This is free software licensed under the NUnit license. You may
+// obtain a copy of the license at http://nunit.org
 // ****************************************************************
 
-// ****************************************************************
-// Copyright 2012, Lei Qun
-// 2012.12.21修改
-// 2012.12.25修改：
-//  build29938bug002
-//      NUnit.Util.ArxNet.TestLoaderArxNet.CanReloadUnderRuntimeVersion空对象错误
-//  build29938fix002
-//      1.对NNUnit.Util.ArxNet.TestLoaderArxNet.CanReloadUnderRuntimeVersion方法添加对异常的处理
-//      2.添加对对象为null的检查
-//  2012.12.29修改：
-//      1.2012-12-29单元测试(NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.CloseProject)改
-//  2013.1.1修改：
-//      1.2013-1-1单元测试(?NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveLastResult)改
-//  2013.5.27修改：
-//      1.在nunit2.6.2基础上修改
-// ****************************************************************
-
-namespace NUnit.Util.ArxNet
+namespace NUnit.Util
 {
 	using System;
 	using System.IO;
@@ -31,7 +14,6 @@ namespace NUnit.Util.ArxNet
 	using System.Configuration;
 	using NUnit.Core;
 	using NUnit.Core.Filters;
-    using NUnit.Util;
 
 	/// <summary>
 	/// TestLoader handles interactions between a test runner and a 
@@ -47,9 +29,9 @@ namespace NUnit.Util.ArxNet
 	/// of the large number of events it supports. However, it has
 	/// no dependencies on ui components and can be used independently.
 	/// </summary>
-	public class TestLoaderArxNet : MarshalByRefObject, NUnit.Core.EventListener, ITestLoader, IService
+	public class TestLoader : MarshalByRefObject, NUnit.Core.EventListener, ITestLoader, IService
 	{
-        static Logger log = InternalTrace.GetLogger(typeof(TestLoaderArxNet));
+        static Logger log = InternalTrace.GetLogger(typeof(TestLoader));
 
 		#region Instance Variables
 
@@ -152,16 +134,16 @@ namespace NUnit.Util.ArxNet
 
 		#region Constructors
 
-		public TestLoaderArxNet()
+		public TestLoader()
 			: this( new TestEventDispatcher() ) { }
 
-		public TestLoaderArxNet(TestEventDispatcher eventDispatcher)
+		public TestLoader(TestEventDispatcher eventDispatcher)
 			: this(eventDispatcher, new AssemblyWatcher()) { }
 
-		public TestLoaderArxNet(IAssemblyWatcher assemblyWatcher)
+		public TestLoader(IAssemblyWatcher assemblyWatcher)
 			: this(new TestEventDispatcher(), assemblyWatcher) { }
 
-		public TestLoaderArxNet(TestEventDispatcher eventDispatcher, IAssemblyWatcher assemblyWatcher)
+		public TestLoader(TestEventDispatcher eventDispatcher, IAssemblyWatcher assemblyWatcher)
 		{
 			this.events = eventDispatcher;
 			this.watcher = assemblyWatcher;
@@ -204,7 +186,7 @@ namespace NUnit.Util.ArxNet
 
 		public string TestFileName
 		{
-            get { return (testProject == null) ? null : testProject.ProjectPath; }//2013-1-1单元测试(?NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveLastResult)改
+			get { return testProject.ProjectPath; }
 		}
 
 		public TestResult TestResult
@@ -350,7 +332,7 @@ namespace NUnit.Util.ArxNet
 			{
 				events.FireProjectLoading( "New Project" );
 
-				OnProjectLoad( ServicesArxNet.ProjectService.NewProject() );
+				OnProjectLoad( Services.ProjectService.NewProject() );
 			}
 			catch( Exception exception )
 			{
@@ -396,7 +378,7 @@ namespace NUnit.Util.ArxNet
                 log.Info("Loading project {0}, {1} config", filePath, configName == null ? "default" : configName);
                 events.FireProjectLoading(filePath);
 
-				NUnitProject newProject = ServicesArxNet.ProjectService.LoadProject( filePath );
+				NUnitProject newProject = Services.ProjectService.LoadProject( filePath );
 				if ( configName != null ) 
 				{
 					newProject.SetActiveConfig( configName );
@@ -431,7 +413,7 @@ namespace NUnit.Util.ArxNet
                 log.Info("Loading multiple assemblies as new project");
 				events.FireProjectLoading( "New Project" );
 
-				NUnitProject newProject = ServicesArxNet.ProjectService.WrapAssemblies( assemblies );
+				NUnitProject newProject = Services.ProjectService.WrapAssemblies( assemblies );
 
 				OnProjectLoad( newProject );
 			}
@@ -448,15 +430,11 @@ namespace NUnit.Util.ArxNet
 		/// </summary>
 		public void UnloadProject()
 		{
-            string testFileName = null;//2012-12-29单元测试加
+			string testFileName = TestFileName;
+
+            log.Info("Unloading project " + testFileName);
 			try
 			{
-                /*2012-12-29单元测试改*/
-                testFileName = TestFileName;
-
-                log.Info("Unloading project " + testFileName);
-                /*2012-12-29单元测试改*/
-
 				events.FireProjectUnloading( testFileName );
 
 				if ( IsTestLoaded )
@@ -519,7 +497,7 @@ namespace NUnit.Util.ArxNet
 				testResult = null;
 				reloadPending = false;
 			
-				if ( ServicesArxNet.UserSettings.GetSetting( "Options.TestLoader.ReloadOnChange", true ) )
+				if ( Services.UserSettings.GetSetting( "Options.TestLoader.ReloadOnChange", true ) )
 					InstallWatcher( );
 
                 if (loaded)
@@ -610,38 +588,17 @@ namespace NUnit.Util.ArxNet
         /// </summary>
         public bool CanReloadUnderRuntimeVersion(Version version)
         {
-            try//build29938fix002
-            {
-                /*build29938fix002*/
-                if (ServicesArxNet.TestAgency == null) return false;
-                /*build29938fix002*/
-
-                if (!ServicesArxNet.TestAgency.IsRuntimeVersionSupported(version))
-                    return false;
-
-                /*build29938fix002*/
-                if (AssemblyInfo == null) return false;
-                /*build29938fix002*/
-                if (AssemblyInfo.Count == 0)
+            if (!Services.TestAgency.IsRuntimeVersionSupported(version))
                 return false;
 
+            if (AssemblyInfo.Count == 0)
+                return false;
 
             foreach (TestAssemblyInfo info in AssemblyInfo)
                 if (info == null || info.ImageRuntimeVersion > version)
                     return false;
 
             return true;
-        }
-            catch (Exception exception)//build29938fix002
-            {
-                /*build29938fix002*/
-                string fileName = TestFileName;
-                log.Error("Failed to reload tests", exception);
-                lastException = exception;
-                events.FireProjectLoadFailed(fileName, exception);
-                return false;
-                /*build29938fix002*/
-            }
         }
 
 		/// <summary>
@@ -675,7 +632,7 @@ namespace NUnit.Util.ArxNet
                 currentRuntime = framework;
 				reloadPending = false;
 
-                if (ServicesArxNet.UserSettings.GetSetting("Options.TestLoader.ReloadOnChange", true))
+                if (Services.UserSettings.GetSetting("Options.TestLoader.ReloadOnChange", true))
                     InstallWatcher();
 
                 testProject.HasChangesRequiringReload = false;
@@ -703,7 +660,6 @@ namespace NUnit.Util.ArxNet
 		/// asynchronously, we use an event to let ui components
 		/// know that the failure happened.
 		/// </summary>
-        ////在CAD环境下异步单线程运行测试
 		public void OnTestChanged( string testFileName )
 		{
             log.Info("Assembly changed: {0}", testFileName);
@@ -714,12 +670,9 @@ namespace NUnit.Util.ArxNet
 			{
 				ReloadTest();
 
-                if (lastFilter != null && ServicesArxNet.UserSettings.GetSetting("Options.TestLoader.RerunOnChange", false))
-					//testRunner.BeginRun( this, lastFilter );
-                    //testRunner.Run(this, lastFilter);//单线程运行测试
-                    //testRunner.BeginRun(this, lastFilter, lastTracing, lastLogLevel);
-                    testRunner.Run(this, lastFilter, lastTracing, lastLogLevel);//单线程运行测试,2013.5.25lq改                
-            }
+                if (lastFilter != null && Services.UserSettings.GetSetting("Options.TestLoader.RerunOnChange", false))
+					testRunner.BeginRun( this, lastFilter, lastTracing, lastLogLevel );
+			}
 		}
 		#endregion
 
@@ -729,11 +682,9 @@ namespace NUnit.Util.ArxNet
 		/// Run selected tests using a filter
 		/// </summary>
 		/// <param name="filter">The filter to be used</param>
-        //在CAD环境下单线程运行测试
 		public void RunTests( ITestFilter filter )
 		{
-            /*2013.5.25lq改*/
-            if ( !Running  && LoadedTest != null)
+			if ( !Running  && LoadedTest != null)
 			{
                 if (reloadPending || Services.UserSettings.GetSetting("Options.TestLoader.ReloadOnRun", false))
 					ReloadTest();
@@ -743,11 +694,8 @@ namespace NUnit.Util.ArxNet
                 this.lastTracing = tracing;
                 this.lastLogLevel = logLevel;
 
-                //testRunner.BeginRun(this, filter, tracing, logLevel);
-                testRunner.Run(this, filter, tracing, logLevel);//单线程运行测试
+                testRunner.BeginRun(this, filter, tracing, logLevel);
 			}
-            /*2013.5.25lq改*/
-
 		}
 
 		/// <summary>
@@ -772,8 +720,7 @@ namespace NUnit.Util.ArxNet
 
 		public void SaveLastResult( string fileName )
 		{
-            if (fileName != null && fileName.Trim() != "" && this.testResult != null)//2013-1-1单元测试(?NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveLastResult)加
-			    new XmlResultWriter( fileName ).SaveTestResult(this.testResult);
+			new XmlResultWriter( fileName ).SaveTestResult(this.testResult);
         }
         #endregion
 
@@ -809,23 +756,37 @@ namespace NUnit.Util.ArxNet
             }
 		}
 
-        //在CAD环境下的测试包是单进程、无应用域、不用线程
 		private TestPackage MakeTestPackage( string testName )
 		{
 			TestPackage package = TestProject.ActiveConfig.MakeTestPackage();
 			package.TestName = testName;
 
-            ISettings userSettings = ServicesArxNet.UserSettings;
+            ISettings userSettings = Services.UserSettings;
             package.Settings["MergeAssemblies"] = userSettings.GetSetting("Options.TestLoader.MergeAssemblies", false);
             package.Settings["AutoNamespaceSuites"] = userSettings.GetSetting("Options.TestLoader.AutoNamespaceSuites", true);
             package.Settings["ShadowCopyFiles"] = userSettings.GetSetting("Options.TestLoader.ShadowCopyFiles", true);
 
-            package.Settings["ProcessModel"] = ProcessModel.Single;//单进程
+            ProcessModel processModel = (ProcessModel)userSettings.GetSetting("Options.TestLoader.ProcessModel", ProcessModel.Default);
+            DomainUsage domainUsage = (DomainUsage)userSettings.GetSetting("Options.TestLoader.DomainUsage", DomainUsage.Default);
 
-            package.Settings["DomainUsage"] = DomainUsage.None;//无应用域
+            if (processModel != ProcessModel.Default &&     // Ignore default setting
+                !package.Settings.Contains("ProcessModel")) // Ignore global setting if package has a setting
+            {
+                package.Settings["ProcessModel"] = processModel;
+            }
 
-            package.Settings["UseThreadedRunner"] = false;//不用线程         
-            
+            // NOTE: This code ignores DomainUsage.None because TestLoader
+            // is only called from the GUI and the GUI can't support that setting.
+            // TODO: Move this logic to the GUI if TestLoader is used more widely
+            if (domainUsage != DomainUsage.Default &&       // Ignore default setting
+                domainUsage != DomainUsage.None &&          // Ignore DomainUsage.None in Gui
+                (processModel != ProcessModel.Multiple ||
+                    domainUsage != DomainUsage.Multiple) && // Both process and domain may not be multiple
+                !package.Settings.Contains("DomainUsage"))  // Ignore global setting if package has a setting
+            {
+                package.Settings["DomainUsage"] = domainUsage;
+            }
+
             if (!package.Settings.Contains("WorkDirectory"))
                 package.Settings["WorkDirectory"] = Environment.CurrentDirectory;
 

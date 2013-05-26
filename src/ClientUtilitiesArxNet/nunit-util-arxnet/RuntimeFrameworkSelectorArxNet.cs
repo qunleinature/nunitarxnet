@@ -19,7 +19,7 @@ using NUnit.Util;
 
 namespace NUnit.Util.ArxNet
 {
-    public class RuntimeFrameworkSelectorArxNet// : //NUnit.Util.iru//IRuntimeFrameworkSelector
+    public class RuntimeFrameworkSelectorArxNet : IRuntimeFrameworkSelectorArxNet
     {
         static Logger log = InternalTrace.GetLogger(typeof(RuntimeFrameworkSelector));
 

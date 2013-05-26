@@ -1,16 +1,14 @@
 // ****************************************************************
-// Copyright 2007, Charlie Poole
-// This is free software licensed under the NUnit license. You may
-// obtain a copy of the license at http://nunit.org
+// This is free software licensed under the NUnit license. You
+// may obtain a copy of the license as well as information regarding
+// copyright ownership at http://nunit.org.
 // ****************************************************************
 
 // ****************************************************************
 // Copyright 2012, Lei Qun
 // 2012.12.21修改：TestLoader改为TestLoaderArxNet类
 // 2013.1.7修改：
-//  1.改为调用NUnit.Util.ArxNet.SettingsServiceArxNet类
-// 2013.5.27修改：
-//  1.在nunit2.6.2基础上修改
+//  1.改为调用NUnit.Util.ArxNet.SettingsService类
 // ****************************************************************
 
 using System;
@@ -80,7 +78,7 @@ namespace NUnit.Util.ArxNet
 				// Temporary fix needed to run TestDomain tests in test AppDomain
 				// TODO: Figure out how to set up the test domain correctly
 				if ( userSettings == null )
-                    userSettings = new SettingsServiceArxNet();
+					userSettings = new SettingsServiceArxNet();
 
 				return userSettings; 
 			}

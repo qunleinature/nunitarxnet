@@ -256,6 +256,7 @@ namespace NUnit.Gui.ArxNet.Tests
         }
 
         //public void SaveLastResult()
+        /*
         [Test]
         [Category("SaveLastResult")]
         public void SaveLastResult()
@@ -269,7 +270,7 @@ namespace NUnit.Gui.ArxNet.Tests
 
             nUnitPresenterArxNet.SaveLastResult();
         }
-
+        */
         [Test]
         [Category("SaveLastResult")]
         public void SaveLastResult_form_loader_null()
