@@ -25,8 +25,7 @@ namespace NUnit.Gui.ArxNet.Tests
         public void Main()
         {
             string[] args = new string[0];
-            AppEntryArxNet appEntryArxNet = new AppEntryArxNet();
-            int result = appEntryArxNet.Main(args);
+            int result = AppEntryArxNet.Main(args);
             Assert.That(result, Is.EqualTo(0));
         }
 

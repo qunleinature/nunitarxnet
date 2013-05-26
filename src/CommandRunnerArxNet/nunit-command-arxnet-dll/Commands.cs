@@ -48,10 +48,9 @@ namespace NUnit.CommandRunner.ArxNet
         {
             // Put your command code here
             //Application.ShowAlertDialog("nunit-command");
+            Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
             try
-            {
-                Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
-
+            { 
                 PromptStringOptions opt = new PromptStringOptions("args:");
                 opt.AllowSpaces = true;
                 PromptResult res = ed.GetString(opt);
@@ -74,11 +73,13 @@ namespace NUnit.CommandRunner.ArxNet
             }
             catch (Autodesk.AutoCAD.Runtime.Exception e)
             {
-                Application.ShowAlertDialog(e.Message);
+                //Application.ShowAlertDialog(e.Message);
+                ed.WriteMessage(e.Message);
             }
             catch (System.Exception e)
             {
-                Application.ShowAlertDialog(e.Message);
+                //Application.ShowAlertDialog(e.Message);
+                ed.WriteMessage(e.Message);
             }
         }
 

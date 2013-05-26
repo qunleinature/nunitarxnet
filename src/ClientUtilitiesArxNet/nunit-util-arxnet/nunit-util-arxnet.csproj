@@ -84,6 +84,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultTestRunnerFactoryArxNet.cs" />
+    <Compile Include="RuntimeFrameworkSelectorArxNet.cs" />
     <Compile Include="ServicesArxNet.cs" />
     <Compile Include="ServicesArxNet\SettingsServiceArxNet.cs" />
     <Compile Include="SettingsGroupArxNet.cs" />

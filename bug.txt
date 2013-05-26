@@ -22,3 +22,14 @@ build38644bug001
 fix:
 build38644bug001
 	经测试正常显示
+20113-5-26
+版本号
+nunit-command-arxnet.dll
+v0.0.3.2580β-n2.6.2.12296-AC2012
+bug:
+build0032580βbug001
+	Unhandled Exception:System.NullReferenceException: 未将对象引用设置到对象的实例。
+	在 NUnit.Util.SettingsGroup.GetSetting(String settingName)
+	情况：上一个命令加载nunit-gui-arxnet.tests.manual.dll，设置变量异常。
+	原因：控制台命令变量生命周期为程序运行时间，CAD命令为插件加载时间，设置变量两次命令之间保留，没有自动重新设置初始值（对象一般为null）。
+	解决：每次命令之前设置变量设初值。
