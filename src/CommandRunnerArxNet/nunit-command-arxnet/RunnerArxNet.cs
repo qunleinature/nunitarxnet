@@ -56,7 +56,7 @@ namespace NUnit.CommandRunner.ArxNet
             CommandOptionsArxNet options = new CommandOptionsArxNet(args);//2013.1.25¸Ä
 
             // Create SettingsService early so we know the trace level right at the start
-            SettingsService settingsService = new SettingsService();
+            SettingsServiceArxNet settingsService = new SettingsServiceArxNet();
             InternalTraceLevel level = (InternalTraceLevel)settingsService.GetSetting("Options.InternalTraceLevel", InternalTraceLevel.Default);
             if (options.trace != InternalTraceLevel.Default)
                 level = options.trace;
@@ -109,7 +109,7 @@ namespace NUnit.CommandRunner.ArxNet
 			ServiceManagerArxNet.Services.AddService( new DomainManagerArxNet() );
 			//ServiceManagerArxNet.Services.AddService( new RecentFilesService() );
 			ServiceManagerArxNet.Services.AddService( new ProjectService() );
-			//ServiceManagerArxNet.Services.AddService( new TestLoader() );
+			//ServiceManagerArxNet.Services.AddService( new TestLoaderArxNet() );
 			ServiceManagerArxNet.Services.AddService( new AddinRegistry() );
 			ServiceManagerArxNet.Services.AddService( new AddinManager() );
             ServiceManagerArxNet.Services.AddService( new TestAgency() );

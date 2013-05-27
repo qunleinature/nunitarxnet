@@ -21,7 +21,7 @@ namespace NUnit.Util.ArxNet
 {
     public class RuntimeFrameworkSelectorArxNet : IRuntimeFrameworkSelectorArxNet
     {
-        static Logger log = InternalTrace.GetLogger(typeof(RuntimeFrameworkSelector));
+        static Logger log = InternalTrace.GetLogger(typeof(RuntimeFrameworkSelectorArxNet));
 
         /// <summary>
         /// Selects a target runtime framework for a TestPackage based on

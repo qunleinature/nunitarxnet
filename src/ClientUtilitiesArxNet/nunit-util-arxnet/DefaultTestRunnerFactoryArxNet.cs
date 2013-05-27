@@ -7,7 +7,7 @@
 // ****************************************************************
 // Copyright 2012, Lei Qun
 // 2013.5.27修改：
-//  1.selector改为RuntimeFrameworkSelectorArxNet?...?
+//  1.selector改为RuntimeFrameworkSelectorArxNet
 // ****************************************************************
 
 using System;

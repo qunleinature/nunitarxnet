@@ -4,21 +4,13 @@
 // copyright ownership at http://nunit.org.
 // ****************************************************************
 
-// ****************************************************************
-// Copyright 2012, Lei Qun
-// 2013.1.23修改
-//  1.修改GetHelpText方法
-// 2013.5.28：
-//  1.在NUnit2.6.2基础上修改
-// ****************************************************************
-
-namespace NUnit.Gui.ArxNet
+namespace NUnit.Gui
 {
 	using System;
 	using System.Text;
 	using Codeblast;
 
-	public class GuiOptionsArxNet : CommandLineOptions
+	public class GuiOptions : CommandLineOptions
 	{
 		[Option(Description = "Fixture to test")]
 		public string fixture;
@@ -53,7 +45,7 @@ namespace NUnit.Gui.ArxNet
 		[Option(Short="?", Description = "Display help")]
 		public bool help = false;
 
-		public GuiOptionsArxNet(String[] args) : base(args) { }
+		public GuiOptions(String[] args) : base(args) { }
 
 		private bool HasInclude 
 		{
@@ -80,10 +72,10 @@ namespace NUnit.Gui.ArxNet
 			return NoArgs || ParameterCount <= 1;
 		}
 
-		public override string GetHelpText()//2013.1.23修改
+		public override string GetHelpText()
 		{
 			return
-				"命令:NUNIT\nargs:[inputfile] [options]\r\r" +
+				"NUNIT [inputfile] [options]\r\r" +
 				"Runs a set of NUnit tests from the console. You may specify\r" +
 				"an assembly or a project file of type .nunit as input.\r\r" +
 				"Options:\r" +
