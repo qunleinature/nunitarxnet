@@ -34,6 +34,9 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using System.Reflection;
+using System.Collections;
+
 using NUnit.UiKit;
 using NUnit.Util;
 using NUnit.Core;
@@ -59,17 +62,50 @@ namespace NUnit.Gui.ArxNet
     /// </summary>
     public class AppEntryArxNet
     {
-        static Logger log = InternalTrace.GetLogger(typeof(AppEntryArxNet));
+        static internal Logger log = InternalTrace.GetLogger(typeof(AppEntryArxNet));
         private static EditorWriter m_EditorWriter = null;
         private static TextWriter m_SavedOut = null;
         private static TextWriter m_SavedError = null;
-        
+
+        //static public bool nunitRunned = false;//nunit测试命令是否已运行过了
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         public static int Main(string[] args)
         {
+            /*if (nunitRunned)
+            {
+                Type type;
+                FieldInfo field;
+                //利用反射将含静态成员的类复位
+                //ServiceManagerArxNet类复位
+                type = typeof(ServiceManagerArxNet);
+                field = type.GetField("services", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(ServiceManagerArxNet.Services, new ArrayList());
+                field = type.GetField("serviceIndex", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(ServiceManagerArxNet.Services, new Hashtable());
+                //ServicesArxNet类复位
+                type = typeof(ServicesArxNet);
+                field = type.GetField("addinManager", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(null, null);
+                field = type.GetField("addinRegistry", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(null, null);
+                field = type.GetField("agency", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(null, null);
+                field = type.GetField("domainManager", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(null, null);
+                field = type.GetField("loader", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(null, null);
+                field = type.GetField("projectService", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(null, null);
+                field = type.GetField("recentFiles", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(null, null);
+                field = type.GetField("userSettings", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField);
+                field.SetValue(null, null);                
+            }*/
+
             // Create SettingsService early so we know the trace level right at the start
             SettingsServiceArxNet settingsService = new SettingsServiceArxNet();
             InternalTrace.Initialize("nunit-gui_%p.log", (InternalTraceLevel)settingsService.GetSetting("Options.InternalTraceLevel", InternalTraceLevel.Default));
@@ -118,7 +154,7 @@ namespace NUnit.Gui.ArxNet
 
             try
             {
-                // Add Standard Services to ServiceManager
+                // Add Standard Services to ServiceManagerArxNet
                 log.Info("Adding Services");
                 ServiceManagerArxNet.Services.AddService(settingsService);
                 ServiceManagerArxNet.Services.AddService(new DomainManagerArxNet());
@@ -154,13 +190,16 @@ namespace NUnit.Gui.ArxNet
             try
             {
                 log.Info("Starting Gui Application");
+                //FormsApplication.Run(form);
                 Document doc = CADApplication.DocumentManager.MdiActiveDocument;
                 CADApplication.ShowModelessDialog(doc.Window.Handle, form);                
+                //CADApplication.ShowModalDialog(form);
+                //CADApplication.ShowModelessDialog(form);
                 //log.Info("Application Exit");
             }
             catch (SystemException ex)
             {
-                log.Error("Gui Application threw an excepion", ex );
+                log.Error("Gui Application threw an excepion", ex);
 
                 //2012.12.23改
                 log.Info("Stopping Services");

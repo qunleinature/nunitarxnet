@@ -19,15 +19,15 @@ namespace NUnit.Gui.ArxNet.Tests
         public void ShowDialog()
         {
             SettingsServiceArxNet settingsService = new SettingsServiceArxNet();
-            ServiceManager.Services.AddService(settingsService);
-            ServiceManager.Services.AddService(new DomainManager());
-            ServiceManager.Services.AddService(new RecentFilesService());
-            ServiceManager.Services.AddService(new ProjectService());
-            ServiceManager.Services.AddService(new TestLoaderArxNet(new GuiTestEventDispatcherArxNet()));
-            ServiceManager.Services.AddService(new AddinRegistry());
-            ServiceManager.Services.AddService(new AddinManager());
-            ServiceManager.Services.AddService(new TestAgency());
-            ServiceManager.Services.InitializeServices();
+            ServiceManagerArxNet.Services.AddService(settingsService);
+            ServiceManagerArxNet.Services.AddService(new DomainManagerArxNet());
+            ServiceManagerArxNet.Services.AddService(new RecentFilesService());
+            ServiceManagerArxNet.Services.AddService(new ProjectService());
+            ServiceManagerArxNet.Services.AddService(new TestLoaderArxNet(new GuiTestEventDispatcherArxNet()));
+            ServiceManagerArxNet.Services.AddService(new AddinRegistry());
+            ServiceManagerArxNet.Services.AddService(new AddinManager());
+            ServiceManagerArxNet.Services.AddService(new TestAgency());
+            ServiceManagerArxNet.Services.InitializeServices();
             AppContainer c = new AppContainer();
             AmbientProperties ambient = new AmbientProperties();
             c.Services.AddService(typeof(AmbientProperties), ambient);

@@ -326,7 +326,7 @@ namespace NUnit.Util.ArxNet.Tests
         //[Test]
         public void RunTestTry()
         {
-            ServiceManager.Services.AddService(new TestLoaderArxNet(new GuiTestEventDispatcher()));
+            ServiceManagerArxNet.Services.AddService(new TestLoaderArxNet(new GuiTestEventDispatcher()));
             ITestLoader loader1 = ServicesArxNet.TestLoader;             
             loader1.LoadProject(assembly);
             if (loader1.IsProjectLoaded && loader1.TestProject.IsLoadable)

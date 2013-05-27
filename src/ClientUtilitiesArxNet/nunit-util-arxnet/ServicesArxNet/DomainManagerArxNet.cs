@@ -44,7 +44,7 @@ namespace NUnit.Util.ArxNet
 			{
 				if ( shadowCopyPath == null )
 				{
-                    shadowCopyPath = Services.UserSettings.GetSetting("Options.TestLoader.ShadowCopyPath", "");
+                    shadowCopyPath = ServicesArxNet.UserSettings.GetSetting("Options.TestLoader.ShadowCopyPath", "");
                     if (shadowCopyPath == "")
                         shadowCopyPath = PathUtils.Combine(Path.GetTempPath(), "nunit20", "ShadowCopyCache");
 					else
@@ -61,7 +61,7 @@ namespace NUnit.Util.ArxNet
         public static void Init()
         {
             shadowCopyPath = null;
-            log = InternalTrace.GetLogger(typeof(DomainManager));
+            log = InternalTrace.GetLogger(typeof(DomainManagerArxNet));
         }
 
 		#region Create and Unload Domains
@@ -90,7 +90,7 @@ namespace NUnit.Util.ArxNet
                     appBase = testFile.DirectoryName;
 
                 if (configFile == null || configFile == string.Empty)
-                    configFile = Services.ProjectService.CanLoadProject(testFile.Name)
+                    configFile = ServicesArxNet.ProjectService.CanLoadProject(testFile.Name)
                         ? Path.GetFileNameWithoutExtension(testFile.Name) + ".config"
                         : testFile.Name + ".config";
             }
@@ -153,14 +153,14 @@ namespace NUnit.Util.ArxNet
             	runnerDomain = AppDomain.CreateDomain(domainName, evidence, setup);
 
             // Set PrincipalPolicy for the domain if called for in the settings
-            if ( Services.UserSettings.GetSetting("Options.TestLoader.SetPrincipalPolicy", false ))
-                runnerDomain.SetPrincipalPolicy((PrincipalPolicy)Services.UserSettings.GetSetting(
+            if ( ServicesArxNet.UserSettings.GetSetting("Options.TestLoader.SetPrincipalPolicy", false ))
+                runnerDomain.SetPrincipalPolicy((PrincipalPolicy)ServicesArxNet.UserSettings.GetSetting(
                     "Options.TestLoader.PrincipalPolicy", PrincipalPolicy.UnauthenticatedPrincipal));
 
 			// HACK: Only pass down our AddinRegistry one level so that tests of NUnit
 			// itself start without any addins defined.
 			if ( !IsTestDomain( AppDomain.CurrentDomain ) )
-				runnerDomain.SetData("AddinRegistry", Services.AddinRegistry);
+				runnerDomain.SetData("AddinRegistry", ServicesArxNet.AddinRegistry);
 
             // Inject DomainInitializer into the remote domain - there are other
             // approaches, but this works for all CLR versions.

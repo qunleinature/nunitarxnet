@@ -63,7 +63,9 @@ namespace NUnit.Gui.ArxNet
         private static EditorWriter m_EditorWriter = null;
         private static TextWriter m_SavedOut = null;
         private static TextWriter m_SavedError = null;
-        
+
+        //static public bool nunitRunned = false;//nunit测试命令是否已运行过了
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

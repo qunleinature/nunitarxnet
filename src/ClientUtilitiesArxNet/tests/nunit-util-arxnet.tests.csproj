@@ -97,7 +97,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ServiceManagerSetUpFixture.cs" />
+    <Compile Include="ServiceManagerArxNetSetUpFixture.cs" />
     <Compile Include="SettingsGroupArxNetTests.cs" />
     <Compile Include="TestEventCatcher.cs" />
     <Compile Include="TestLoaderArxNetAssemblyTests.cs" />

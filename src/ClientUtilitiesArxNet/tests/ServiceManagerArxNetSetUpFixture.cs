@@ -27,15 +27,15 @@ namespace NUnit.Util.ArxNet.Tests
 	/// touching the backup storage.
 	/// </summary>
 	[SetUpFixture]
-	public class ServiceManagerSetUpFixture
+	public class ServiceManagerArxNetSetUpFixture
 	{
 		[SetUp]
 		public void CreateServicesForTestDomain()
 		{
-			ServiceManager.Services.AddService( new DummySettingsService() );
-			ServiceManager.Services.AddService( new DomainManager() );
-            ServiceManager.Services.AddService( new ProjectService() );
-			ServiceManager.Services.AddService( new TestAgency( "TestDomain_TestAgency", 0 ) );
+			ServiceManagerArxNet.Services.AddService( new DummySettingsService() );
+			ServiceManagerArxNet.Services.AddService( new DomainManagerArxNet() );
+            ServiceManagerArxNet.Services.AddService( new ProjectService() );
+			ServiceManagerArxNet.Services.AddService( new TestAgency( "TestDomain_TestAgency", 0 ) );
 			ServicesArxNet.TestAgency.Start();
 		}
 
@@ -43,7 +43,7 @@ namespace NUnit.Util.ArxNet.Tests
 		public void ClearServices()
 		{
 			ServicesArxNet.TestAgency.Stop();
-			ServiceManager.Services.ClearServices();
+			ServiceManagerArxNet.Services.ClearServices();
 		}
 	}
 

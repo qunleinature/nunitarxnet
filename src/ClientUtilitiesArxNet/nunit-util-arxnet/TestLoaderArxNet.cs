@@ -735,7 +735,7 @@ namespace NUnit.Util.ArxNet
             /*2013.5.25lq¸Ä*/
             if ( !Running  && LoadedTest != null)
 			{
-                if (reloadPending || Services.UserSettings.GetSetting("Options.TestLoader.ReloadOnRun", false))
+                if (reloadPending || ServicesArxNet.UserSettings.GetSetting("Options.TestLoader.ReloadOnRun", false))
 					ReloadTest();
 
                 // Save args for automatic rerun
