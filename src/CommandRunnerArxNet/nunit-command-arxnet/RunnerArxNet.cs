@@ -10,16 +10,21 @@
 //  在NUnit2.6.2基础上修改
 // 2013.5.25：
 //  使用EditorWritor类在Editor输出
+// 2013.5.27：
+//  1.ServiceManager改为ServiceManagerArxNet
+//  2.Init方法增加ServiceManagerArxNet初始化
 // ****************************************************************
 
 using System;
 using System.IO;
 using System.Reflection;
+
 using NUnit.Core;
 using NUnit.Util;
 
 using NUnit.ConsoleRunner;
 using NUnit.Core.ArxNet;
+using NUnit.Util.ArxNet;
 
 using Autodesk.AutoCAD.Runtime;
 using Autodesk.AutoCAD.EditorInput;
@@ -95,17 +100,17 @@ namespace NUnit.CommandRunner.ArxNet
 			}
 
 			// Add Standard Services to ServiceManager
-			ServiceManager.Services.AddService( settingsService );
-			ServiceManager.Services.AddService( new DomainManager() );
-			//ServiceManager.Services.AddService( new RecentFilesService() );
-			ServiceManager.Services.AddService( new ProjectService() );
-			//ServiceManager.Services.AddService( new TestLoader() );
-			ServiceManager.Services.AddService( new AddinRegistry() );
-			ServiceManager.Services.AddService( new AddinManager() );
-            ServiceManager.Services.AddService( new TestAgency() );
+			ServiceManagerArxNet.Services.AddService( settingsService );
+			ServiceManagerArxNet.Services.AddService( new DomainManager() );
+			//ServiceManagerArxNet.Services.AddService( new RecentFilesService() );
+			ServiceManagerArxNet.Services.AddService( new ProjectService() );
+			//ServiceManagerArxNet.Services.AddService( new TestLoader() );
+			ServiceManagerArxNet.Services.AddService( new AddinRegistry() );
+			ServiceManagerArxNet.Services.AddService( new AddinManager() );
+            ServiceManagerArxNet.Services.AddService( new TestAgency() );
 
 			// Initialize Services
-			ServiceManager.Services.InitializeServices();
+			ServiceManagerArxNet.Services.InitializeServices();
 
             foreach (string parm in options.Parameters)
             {
@@ -226,6 +231,8 @@ namespace NUnit.CommandRunner.ArxNet
         public static void Init()//2013.5.24加
         {
             //throw new System.NotImplementedException();
+            ServiceManagerArxNet.Init();
+
             m_EditorWriter = new EditorWriter();
             m_SavedOut = Console.Out;
             m_SavedError = Console.Error;

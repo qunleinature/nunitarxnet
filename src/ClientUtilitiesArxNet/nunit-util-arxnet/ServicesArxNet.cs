@@ -33,7 +33,7 @@ namespace NUnit.Util.ArxNet
 			get 
 			{
 				if (addinManager == null )
-					addinManager = (AddinManager)ServiceManager.Services.GetService( typeof( AddinManager ) );
+					addinManager = (AddinManager)ServiceManagerArxNet.Services.GetService( typeof( AddinManager ) );
 
 				return addinManager; 
 			}
@@ -47,7 +47,7 @@ namespace NUnit.Util.ArxNet
 			get 
 			{
 				if (addinRegistry == null)
-					addinRegistry = (IAddinRegistry)ServiceManager.Services.GetService( typeof( IAddinRegistry ) );
+					addinRegistry = (IAddinRegistry)ServiceManagerArxNet.Services.GetService( typeof( IAddinRegistry ) );
                 
 				return addinRegistry;
 			}
@@ -61,7 +61,7 @@ namespace NUnit.Util.ArxNet
 			get
 			{
 				if ( domainManager == null )
-					domainManager = (DomainManager)ServiceManager.Services.GetService( typeof( DomainManager ) );
+					domainManager = (DomainManager)ServiceManagerArxNet.Services.GetService( typeof( DomainManager ) );
 
 				return domainManager;
 			}
@@ -75,7 +75,7 @@ namespace NUnit.Util.ArxNet
 			get 
 			{ 
 				if ( userSettings == null )
-					userSettings = (ISettings)ServiceManager.Services.GetService( typeof( ISettings ) );
+					userSettings = (ISettings)ServiceManagerArxNet.Services.GetService( typeof( ISettings ) );
 
 				// Temporary fix needed to run TestDomain tests in test AppDomain
 				// TODO: Figure out how to set up the test domain correctly
@@ -96,7 +96,7 @@ namespace NUnit.Util.ArxNet
 			get
 			{
 				if ( recentFiles == null )
-					recentFiles = (RecentFiles)ServiceManager.Services.GetService( typeof( RecentFiles ) );
+					recentFiles = (RecentFiles)ServiceManagerArxNet.Services.GetService( typeof( RecentFiles ) );
 
 				return recentFiles;
 			}
@@ -112,7 +112,7 @@ namespace NUnit.Util.ArxNet
 			get
 			{
 				if ( loader == null )
-                    loader = (TestLoaderArxNet)ServiceManager.Services.GetService(typeof(TestLoaderArxNet));
+                    loader = (TestLoaderArxNet)ServiceManagerArxNet.Services.GetService(typeof(TestLoaderArxNet));
 
 				return loader;
 			}
@@ -127,7 +127,7 @@ namespace NUnit.Util.ArxNet
 			get
 			{
 				if ( agency == null )
-					agency = (TestAgency)ServiceManager.Services.GetService( typeof( TestAgency ) );
+					agency = (TestAgency)ServiceManagerArxNet.Services.GetService( typeof( TestAgency ) );
 
 				// Temporary fix needed to run ProcessRunner tests in test AppDomain
 				// TODO: Figure out how to set up the test domain correctly
@@ -150,7 +150,7 @@ namespace NUnit.Util.ArxNet
 			{
 				if ( projectService == null )
 					projectService = (ProjectService)
-						ServiceManager.Services.GetService( typeof( ProjectService ) );
+						ServiceManagerArxNet.Services.GetService( typeof( ProjectService ) );
 
 				return projectService;
 			}

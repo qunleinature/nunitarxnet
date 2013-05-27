@@ -88,6 +88,8 @@
     <Compile Include="InterfacesArxNet\IRuntimeFrameworkSelectorArxNet.cs" />
     <Compile Include="RuntimeFrameworkSelectorArxNet.cs" />
     <Compile Include="ServicesArxNet.cs" />
+    <Compile Include="ServicesArxNet\DomainManagerArxNet.cs" />
+    <Compile Include="ServicesArxNet\ServiceManagerArxNet.cs" />
     <Compile Include="ServicesArxNet\SettingsServiceArxNet.cs" />
     <Compile Include="SettingsGroupArxNet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
