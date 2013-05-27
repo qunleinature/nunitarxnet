@@ -42,6 +42,7 @@ namespace NUnit.CommandRunner.ArxNet
 	public class RunnerArxNet
 	{
 		static Logger log = InternalTrace.GetLogger(typeof(RunnerArxNet));
+        /*2013.5.27lq¼Ó*/
         private static EditorWriter m_EditorWriter = null;
         private static TextWriter m_SavedOut = null;
         private static TextWriter m_SavedError = null;

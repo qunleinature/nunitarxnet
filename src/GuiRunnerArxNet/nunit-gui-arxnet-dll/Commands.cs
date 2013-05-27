@@ -67,7 +67,9 @@ namespace NUnit.Gui.ArxNet
                 }
 
                 //NUnit.Gui.ArxNet.AppEntryArxNet.Main(args);
+                AppEntryArxNet.Init();
                 AppEntryArxNet.Main(args);
+                //AppEntryArxNet.CleanUp();
             }
             catch (Autodesk.AutoCAD.Runtime.Exception e)
             {

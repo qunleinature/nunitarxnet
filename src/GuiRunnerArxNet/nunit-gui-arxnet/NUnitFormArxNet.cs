@@ -17,6 +17,9 @@
 //  1.改为调用NUnit.Gui.ArxNet.GuiOptionsArxNet
 // 2013.1.24修改
 //  1.改为调用NUnit.Gui.ArxNet.AboutBoxArxNet
+// 2013.5.27：
+//  1.Services改为ServicesArxNet
+//  2.ServiceManager改为ServiceManagerArxNet
 // ****************************************************************
 
 using System;
@@ -191,14 +194,16 @@ namespace NUnit.Gui.ArxNet
             log.Info("Application Exit");
 
             log.Info("Stopping Services");
-            ServiceManager.Services.StopAllServices();
-            ServiceManager.Services.ClearServices();
+            ServiceManagerArxNet.Services.StopAllServices();
+            ServiceManagerArxNet.Services.ClearServices();
 
             log.Info("Exiting NUnit GUI");
             InternalTrace.Close();
 
-            if (AppEntryArxNet.nunitRunned == false) AppEntryArxNet.nunitRunned = true;
+            //if (AppEntryArxNet.nunitRunned == false) AppEntryArxNet.nunitRunned = true;
             //2012.12.23改
+
+            AppEntryArxNet.CleanUp();//2013.5.27lq加
 		}
 
 		#endregion
@@ -2029,7 +2034,7 @@ the version under which NUnit is currently running ({0}) or trying to load a 64-
             log.Info("Application Exit");
 
             log.Info("Stopping Services");
-            ServiceManager.Services.StopAllServices();
+            ServiceManagerArxNet.Services.StopAllServices();
 
             log.Info("Exiting NUnit GUI");
             InternalTrace.Close();
