@@ -4,15 +4,6 @@
 // copyright ownership at http://nunit.org.
 // ****************************************************************
 
-// ****************************************************************
-// Copyright 2012, Lei Qun
-// 2012.8.24修改
-// 2012.12.20修改
-// 2012.12.20修改:ResultTabs变为ResultTabsArxNet
-// 2013.5.27：
-//  1.在NUnit2.6.2基础上修改
-// ****************************************************************
-
 using System;
 using System.Drawing;
 using System.Collections;
@@ -25,28 +16,16 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 
-using Autodesk.AutoCAD.Runtime;
-using Autodesk.AutoCAD.EditorInput;
-using Autodesk.AutoCAD.ApplicationServices;
-
-using FormsApplication = System.Windows.Forms.Application;
-using CADApplication = Autodesk.AutoCAD.ApplicationServices.Application;
-using SystemException = System.Exception;
-using CADException = Autodesk.AutoCAD.Runtime.Exception;
-
-namespace NUnit.Gui.ArxNet
+namespace NUnit.Gui
 {
 	using NUnit.Core;
 	using NUnit.Util;
 	using NUnit.UiKit;
 	using CP.Windows.Forms;
-	using NUnit.Gui;
-	using NUnit.Util.ArxNet;
-	using NUnit.UiKit.ArxNet;
 
-	public class NUnitFormArxNet : NUnitFormBase
+	public class NUnitForm : NUnitFormBase
 	{
-        static Logger log = InternalTrace.GetLogger(typeof(NUnitFormArxNet));
+        static Logger log = InternalTrace.GetLogger(typeof(NUnitForm));
         
         #region Instance variables
 
@@ -63,10 +42,10 @@ namespace NUnit.Gui.ArxNet
 		private System.Drawing.Font fixedFont;
 
 		// Our current run command line options
-        private GuiOptionsArxNet guiOptions;
+		private GuiOptions guiOptions;
 
         // Our 'presenter' - under development
-        private NUnitPresenterArxNet presenter;
+        private NUnitPresenter presenter;
 
 		private System.ComponentModel.IContainer components;
 
@@ -74,7 +53,7 @@ namespace NUnit.Gui.ArxNet
 		public System.Windows.Forms.Splitter treeSplitter;
 		public System.Windows.Forms.Panel rightPanel;
 
-		private TestTreeArxNet testTree;
+		private TestTree testTree;
 
 		public System.Windows.Forms.GroupBox groupBox1;
 		public System.Windows.Forms.Button runButton;
@@ -82,7 +61,7 @@ namespace NUnit.Gui.ArxNet
 		public NUnit.UiKit.TestProgressBar progressBar;
 		private CP.Windows.Forms.ExpandingLabel runCount;
 
-        public NUnit.UiKit.ArxNet.ResultTabsArxNet resultTabs;
+		public NUnit.UiKit.ResultTabs resultTabs;
 
 		public NUnit.UiKit.StatusBar statusBar;
 
@@ -159,17 +138,15 @@ namespace NUnit.Gui.ArxNet
 		
 		#region Construction and Disposal
 
-        public NUnitFormArxNet(GuiOptionsArxNet guiOptions)
-            : base("NUnit")
+		public NUnitForm( GuiOptions guiOptions ) : base("NUnit")
 		{
 			InitializeComponent();
 
 			this.guiOptions = guiOptions;
-			this.recentFilesService = ServicesArxNet.RecentFiles;
-			this.userSettings = ServicesArxNet.UserSettings;
+			this.recentFilesService = Services.RecentFiles;
+			this.userSettings = Services.UserSettings;
 
-            this.presenter = new NUnitPresenterArxNet(this, TestLoader);
-
+            this.presenter = new NUnitPresenter(this, TestLoader);
 		}
 
 		protected override void Dispose( bool disposing )
@@ -182,14 +159,6 @@ namespace NUnit.Gui.ArxNet
 				}
 			}
 			base.Dispose( disposing );
-
-            AppEntryArxNet.log.Info("Application Exit");
-
-            AppEntryArxNet.log.Info("Stopping Services");
-            ServiceManager.Services.StopAllServices();
-
-            AppEntryArxNet.log.Info("Exiting NUnit GUI");
-            InternalTrace.Close();
 		}
 
 		#endregion
@@ -202,7 +171,7 @@ namespace NUnit.Gui.ArxNet
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NUnitFormArxNet));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NUnitForm));
             this.statusBar = new NUnit.UiKit.StatusBar();
             this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
             this.fileMenu = new System.Windows.Forms.MenuItem();
@@ -272,9 +241,9 @@ namespace NUnit.Gui.ArxNet
             this.stopButton = new System.Windows.Forms.Button();
             this.runButton = new System.Windows.Forms.Button();
             this.progressBar = new NUnit.UiKit.TestProgressBar();
-            this.resultTabs = new NUnit.UiKit.ArxNet.ResultTabsArxNet();
+            this.resultTabs = new NUnit.UiKit.ResultTabs();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.testTree = new NUnit.UiKit.ArxNet.TestTreeArxNet();
+            this.testTree = new NUnit.UiKit.TestTree();
             this.leftPanel = new System.Windows.Forms.Panel();
             this.rightPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -818,7 +787,7 @@ namespace NUnit.Gui.ArxNet
             this.testTree.ShowCheckBoxes = false;
             this.testTree.Size = new System.Drawing.Size(240, 407);
             this.testTree.TabIndex = 0;
-            this.testTree.SelectedTestsChanged += new NUnit.UiKit.ArxNet.SelectedTestsChangedEventHandler(this.testTree_SelectedTestsChanged);
+            this.testTree.SelectedTestsChanged += new NUnit.UiKit.SelectedTestsChangedEventHandler(this.testTree_SelectedTestsChanged);
             // 
             // leftPanel
             // 
@@ -829,7 +798,7 @@ namespace NUnit.Gui.ArxNet
             this.leftPanel.Size = new System.Drawing.Size(240, 407);
             this.leftPanel.TabIndex = 4;
             // 
-            // NUnitFormArxNet
+            // NUnitForm
             // 
             this.ClientSize = new System.Drawing.Size(744, 431);
             this.Controls.Add(this.rightPanel);
@@ -839,12 +808,11 @@ namespace NUnit.Gui.ArxNet
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Menu = this.mainMenu;
             this.MinimumSize = new System.Drawing.Size(160, 32);
-            this.Name = "NUnitFormArxNet";
+            this.Name = "NUnitForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "NUnit";
-            this.Closing += new System.ComponentModel.CancelEventHandler(this.NUnitFormArxNet_Closing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NUnitFormArxNet_Closed);
-            this.Load += new System.EventHandler(this.NUnitFormArxNet_Load);
+            this.Load += new System.EventHandler(this.NUnitForm_Load);
+            this.Closing += new System.ComponentModel.CancelEventHandler(this.NUnitForm_Closing);
             this.rightPanel.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -857,7 +825,7 @@ namespace NUnit.Gui.ArxNet
 
         #region Public Properties
 
-        public NUnitPresenterArxNet Presenter
+        public NUnitPresenter Presenter
         {
             get { return presenter; }
         }
@@ -866,13 +834,13 @@ namespace NUnit.Gui.ArxNet
 
         #region Properties used internally
 
-        private TestLoaderArxNet _testLoader;
-        private TestLoaderArxNet TestLoader
+        private TestLoader _testLoader;
+		private TestLoader TestLoader
 		{
 			get
 			{ 
 				if ( _testLoader == null )
-                    _testLoader = ServicesArxNet.TestLoader;
+					_testLoader = Services.TestLoader;
 				return _testLoader;
 			}
 		}
@@ -1369,7 +1337,7 @@ namespace NUnit.Gui.ArxNet
 		/// <summary>
 		/// Get saved options when form loads
 		/// </summary>
-		private void NUnitFormArxNet_Load(object sender, System.EventArgs e)
+		private void NUnitForm_Load(object sender, System.EventArgs e)
 		{
 			if ( !this.DesignMode )
 			{
@@ -1433,11 +1401,11 @@ namespace NUnit.Gui.ArxNet
 						// TODO: Temporary fix to avoid problem when /run is used 
 						// with ReloadOnRun turned on. Refactor TestLoader so
 						// we can just do a run without reload.
-						bool reload = ServicesArxNet.UserSettings.GetSetting("Options.TestLoader.ReloadOnRun", false);
+						bool reload = Services.UserSettings.GetSetting("Options.TestLoader.ReloadOnRun", false);
 					
 						try
 						{
-							ServicesArxNet.UserSettings.SaveSetting("Options.TestLoader.ReloadOnRun", false);
+							Services.UserSettings.SaveSetting("Options.TestLoader.ReloadOnRun", false);
                             if (guiOptions.runselected)
                                 testTree.RunSelectedTests();
                             else
@@ -1445,7 +1413,7 @@ namespace NUnit.Gui.ArxNet
 						}
 						finally
 						{
-							ServicesArxNet.UserSettings.SaveSetting("Options.TestLoader.ReloadOnRun", reload);
+							Services.UserSettings.SaveSetting("Options.TestLoader.ReloadOnRun", reload);
 						}
 					}
 			}
@@ -1597,7 +1565,7 @@ namespace NUnit.Gui.ArxNet
 		///	we should cancel it. Then unload the 
 		///	test and save the latest form position.
 		/// </summary>
-		private void NUnitFormArxNet_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+		private void NUnitForm_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
 			if ( IsTestRunning )
 			{
@@ -1668,7 +1636,7 @@ namespace NUnit.Gui.ArxNet
 			}
 		}
 
-		private void testTree_SelectedTestsChanged(object sender, NUnit.UiKit.ArxNet.SelectedTestsChangedEventArgs e)
+		private void testTree_SelectedTestsChanged(object sender, SelectedTestsChangedEventArgs e)
 		{
 			if (!IsTestRunning) 
 			{
@@ -1868,7 +1836,7 @@ namespace NUnit.Gui.ArxNet
                 TestLoader.SaveLastResult(resultPath);
                 log.Debug("Saved result to {0}", resultPath);
             }
-            catch (SystemException ex)
+            catch (Exception ex)
             {
                 log.Warning("Unable to save result to {0}\n{1}", resultPath, ex.ToString());
             }
@@ -1915,17 +1883,6 @@ namespace NUnit.Gui.ArxNet
 		}
 
 		#endregion	
-
-        private void NUnitFormArxNet_Closed(object sender, FormClosedEventArgs e)
-        {
-            /*AppEntryArxNet.log.Info("Application Exit");
-
-            AppEntryArxNet.log.Info("Stopping Services");
-            ServiceManager.ServicesArxNet.StopAllServices();            
-
-            AppEntryArxNet.log.Info("Exiting NUnit GUI");
-            InternalTrace.Close();*/
-        }
 	}
 }
 

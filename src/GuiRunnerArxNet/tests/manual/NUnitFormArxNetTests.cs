@@ -16,6 +16,7 @@ using Com.Utility.UnitTest;
 
 namespace NUnit.Gui.ArxNet.Tests
 {
+    [TestFixture]
     public class NUnitFormArxNetTests
     {
         NUnitFormArxNet nUnitFormArxNet = null;

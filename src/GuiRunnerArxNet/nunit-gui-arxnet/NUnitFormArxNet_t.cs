@@ -9,8 +9,6 @@
 // 2012.8.24修改
 // 2012.12.20修改
 // 2012.12.20修改:ResultTabs变为ResultTabsArxNet
-// 2013.5.27：
-//  1.在NUnit2.6.2基础上修改
 // ****************************************************************
 
 using System;
@@ -63,7 +61,7 @@ namespace NUnit.Gui.ArxNet
 		private System.Drawing.Font fixedFont;
 
 		// Our current run command line options
-        private GuiOptionsArxNet guiOptions;
+		private GuiOptions guiOptions;
 
         // Our 'presenter' - under development
         private NUnitPresenterArxNet presenter;
@@ -82,7 +80,7 @@ namespace NUnit.Gui.ArxNet
 		public NUnit.UiKit.TestProgressBar progressBar;
 		private CP.Windows.Forms.ExpandingLabel runCount;
 
-        public NUnit.UiKit.ArxNet.ResultTabsArxNet resultTabs;
+		public NUnit.UiKit.ResultTabs resultTabs;
 
 		public NUnit.UiKit.StatusBar statusBar;
 
@@ -159,8 +157,7 @@ namespace NUnit.Gui.ArxNet
 		
 		#region Construction and Disposal
 
-        public NUnitFormArxNet(GuiOptionsArxNet guiOptions)
-            : base("NUnit")
+		public NUnitFormArxNet( GuiOptions guiOptions ) : base("NUnit")
 		{
 			InitializeComponent();
 
@@ -272,7 +269,7 @@ namespace NUnit.Gui.ArxNet
             this.stopButton = new System.Windows.Forms.Button();
             this.runButton = new System.Windows.Forms.Button();
             this.progressBar = new NUnit.UiKit.TestProgressBar();
-            this.resultTabs = new NUnit.UiKit.ArxNet.ResultTabsArxNet();
+            this.resultTabs = new NUnit.UiKit.ResultTabs();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.testTree = new NUnit.UiKit.ArxNet.TestTreeArxNet();
             this.leftPanel = new System.Windows.Forms.Panel();

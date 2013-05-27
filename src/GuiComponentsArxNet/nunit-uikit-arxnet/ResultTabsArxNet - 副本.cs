@@ -12,13 +12,11 @@
 // ****************************************************************
 
 using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Windows.Forms;
-using NUnit.Util;
-using NUnit.Core;
 using CP.Windows.Forms;
 using System.Diagnostics;
 
@@ -204,16 +202,6 @@ namespace NUnit.UiKit.ArxNet
 
 		}
 		#endregion
-
-        public bool IsTracingEnabled
-        {
-            get { return displayController.IsTracingEnabled; }
-        }
-
-        public LoggingThreshold MaximumLogLevel
-        {
-            get { return displayController.MaximumLogLevel; }
-        }
 	
 		public void Clear()
 		{
@@ -227,19 +215,19 @@ namespace NUnit.UiKit.ArxNet
 			get { return tabsMenu; }
 		}
 
-        protected override void OnLoad(EventArgs e)
-        {
+		protected override void OnLoad(EventArgs e)
+		{
             if (!this.DesignMode)
             {
                 try//2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
                 {
                     if (ServicesArxNet.TestLoader == null) return;//2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
-
+                                    
                     this.settings = ServicesArxNet.UserSettings;
                     TextDisplayTabSettings tabSettings = new TextDisplayTabSettings();
                     tabSettings.LoadSettings(settings);
 
-                    UpdateTabPages();
+                    UpdateTabPages();                    
 
                     Subscribe(ServicesArxNet.TestLoader.Events);
                     ServicesArxNet.UserSettings.Changed += new SettingsEventHandler(UserSettings_Changed);
@@ -248,6 +236,7 @@ namespace NUnit.UiKit.ArxNet
                     errorDisplay.Subscribe(events);
                     notRunTree.Subscribe(events);
 
+                    displayController.Subscribe(events);                
 
                     base.OnLoad(e);
                 }
@@ -255,11 +244,11 @@ namespace NUnit.UiKit.ArxNet
                 catch (SystemException exception)
                 {
                     NUnitFormArxNet form = this.ParentForm as NUnitFormArxNet;
-                    form.MessageDisplay.Error("ResultTabsArxNet unable to Load", exception);
+                    form.MessageDisplay.Error("ResultTabsArxNet unable to Load", exception);                
                 }
                 /*2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”*/
             }
-        }
+		}
 
 		private void UpdateTabPages()
 		{
@@ -384,10 +373,10 @@ namespace NUnit.UiKit.ArxNet
             tabControl.ItemSize = new Size(tabControl.ItemSize.Width, this.Font.Height + 7);
         }
 
-		private class TextDisplayController
+		private class TextDisplayController : TestObserver
 		{
 			private TabControl tabControl;
-			List<TextDisplayTabPage> tabPages = new List<TextDisplayTabPage>();
+			ArrayList tabPages = new ArrayList();
 
 			public TextDisplayController(TabControl tabControl)
 			{			
@@ -395,36 +384,7 @@ namespace NUnit.UiKit.ArxNet
 				ServicesArxNet.UserSettings.Changed += new SettingsEventHandler(UserSettings_Changed);
 			}
 
-            public bool IsTracingEnabled
-            {
-                get
-                {
-                    foreach (TextDisplayTabPage page in tabPages)
-                        if (page.Display.Content.Trace)
-                            return true;
-
-                    return false;
-                }
-            }
-
-            public LoggingThreshold MaximumLogLevel
-            {
-                get
-                {
-                    LoggingThreshold logLevel = LoggingThreshold.Off;
-
-                    foreach (TextDisplayTabPage page in tabPages)
-                    {
-                        LoggingThreshold level = page.Display.Content.LogLevel;
-                        if (level > logLevel)
-                            logLevel = level;
-                    }
-
-                    return logLevel;
-                }
-            }
-
-            public void Clear()
+			public void Clear()
 			{
 				foreach( TextDisplayTabPage page in tabPages )
 					page.Display.Clear();
@@ -434,8 +394,8 @@ namespace NUnit.UiKit.ArxNet
 			{
 				TextDisplayTabSettings tabSettings = new TextDisplayTabSettings();
 				tabSettings.LoadSettings();
-                List <TextDisplayTabPage> oldPages = tabPages;
-				tabPages = new List<TextDisplayTabPage>();
+				ArrayList oldPages = tabPages;
+				tabPages = new ArrayList();
 				Font displayFont = GetFixedFont();
 
 				foreach( TextDisplayTabSettings.TabInfo tabInfo in tabSettings.Tabs )
@@ -451,10 +411,7 @@ namespace NUnit.UiKit.ArxNet
 							}
 
 						if ( thePage == null )
-						{
 							thePage = new TextDisplayTabPage( tabInfo );
-							thePage.Display.Subscribe(ServicesArxNet.TestLoader.Events);
-						}
 
 						thePage.DisplayFont = displayFont;
 
@@ -492,23 +449,32 @@ namespace NUnit.UiKit.ArxNet
 									case "Title":
 										page.Text = (string)ServicesArxNet.UserSettings.GetSetting( settingName );
 										break;
-                                    case "Content":
-                                        page.Display.Content.LoadSettings(tabName);
-                                        break;
-                                }
+									case "Content":
+										page.Display.Content = 
+											(TextDisplayContent)ServicesArxNet.UserSettings.GetSetting( settingName );
+										break;
+								}
 							}
 					}
 				}
 			}
 
 			private static Font GetFixedFont()
-			{
+			{                
 				ISettings settings = ServicesArxNet.UserSettings;               
 
 				return settings == null 
                     ? new Font(FontFamily.GenericMonospace, 8.0f) 
                     : settings.GetSetting("Gui.FixedFont", new Font(FontFamily.GenericMonospace, 8.0f));
 			}
+
+			#region TestObserver Members
+			public void Subscribe(ITestEvents events)
+			{
+				foreach( TextDisplayTabPage page in tabPages )
+					page.Display.Subscribe(events);
+			}
+			#endregion
 		}
 	}
 }

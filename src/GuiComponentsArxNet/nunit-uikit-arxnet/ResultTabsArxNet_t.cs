@@ -227,39 +227,39 @@ namespace NUnit.UiKit.ArxNet
 			get { return tabsMenu; }
 		}
 
-        protected override void OnLoad(EventArgs e)
-        {
-            if (!this.DesignMode)
-            {
+		protected override void OnLoad(EventArgs e)
+		{
+			if ( !this.DesignMode )
+			{
                 try//2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
                 {
                     if (ServicesArxNet.TestLoader == null) return;//2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”
-
+                                    
                     this.settings = ServicesArxNet.UserSettings;
-                    TextDisplayTabSettings tabSettings = new TextDisplayTabSettings();
-                    tabSettings.LoadSettings(settings);
+				TextDisplayTabSettings tabSettings = new TextDisplayTabSettings();
+				tabSettings.LoadSettings( settings );
 
-                    UpdateTabPages();
+				UpdateTabPages();
 
                     Subscribe(ServicesArxNet.TestLoader.Events);
                     ServicesArxNet.UserSettings.Changed += new SettingsEventHandler(UserSettings_Changed);
 
                     ITestEvents events = ServicesArxNet.TestLoader.Events;
-                    errorDisplay.Subscribe(events);
-                    notRunTree.Subscribe(events);
+				errorDisplay.Subscribe( events );
+				notRunTree.Subscribe( events );
+			}
 
-
-                    base.OnLoad(e);
-                }
+			base.OnLoad (e);
+		}
                 /*2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”*/
                 catch (SystemException exception)
                 {
                     NUnitFormArxNet form = this.ParentForm as NUnitFormArxNet;
-                    form.MessageDisplay.Error("ResultTabsArxNet unable to Load", exception);
+                    form.MessageDisplay.Error("ResultTabsArxNet unable to Load", exception);                
                 }
                 /*2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”*/
             }
-        }
+		}
 
 		private void UpdateTabPages()
 		{

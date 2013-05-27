@@ -4,13 +4,6 @@
 // obtain a copy of the license at http://nunit.org
 // ****************************************************************
 
-// ****************************************************************
-// Copyright 2012, Lei Qun 
-// 2012.12.21修改:改Services为ServicesArxNet
-// 2013.1.8修改：
-//  1.NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试改
-// ****************************************************************
-
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,20 +15,14 @@ using NUnit.Core;
 using CP.Windows.Forms;
 using System.Diagnostics;
 
-using NUnit.Util;
-using NUnit.Core;
-using NUnit.UiKit;
-using NUnit.Util.ArxNet;
-using NUnit.Gui.ArxNet;
-
-namespace NUnit.UiKit.ArxNet
+namespace NUnit.UiKit
 {
 	/// <summary>
 	/// Summary description for ResultTabs.
 	/// </summary>
-	public class ResultTabsArxNet : System.Windows.Forms.UserControl, TestObserver
+	public class ResultTabs : System.Windows.Forms.UserControl, TestObserver
 	{
-		static Logger log = InternalTrace.GetLogger(typeof(ResultTabsArxNet));
+		static Logger log = InternalTrace.GetLogger(typeof(ResultTabs));
 
 		private ISettings settings;
 		private bool updating = false;
@@ -58,7 +45,7 @@ namespace NUnit.UiKit.ArxNet
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
-		public ResultTabsArxNet()
+		public ResultTabs()
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
@@ -227,44 +214,29 @@ namespace NUnit.UiKit.ArxNet
 			get { return tabsMenu; }
 		}
 
-        protected override void OnLoad(EventArgs e)
-        {
-            if (!this.DesignMode)
-            {
-                try//2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加
-                {
-                    if (ServicesArxNet.TestLoader == null) return;//2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加
+		protected override void OnLoad(EventArgs e)
+		{
+			if ( !this.DesignMode )
+			{
+				this.settings = Services.UserSettings;
+				TextDisplayTabSettings tabSettings = new TextDisplayTabSettings();
+				tabSettings.LoadSettings( settings );
 
-                    this.settings = ServicesArxNet.UserSettings;
-                    TextDisplayTabSettings tabSettings = new TextDisplayTabSettings();
-                    tabSettings.LoadSettings(settings);
+				UpdateTabPages();
 
-                    UpdateTabPages();
+				Subscribe( Services.TestLoader.Events );
+				Services.UserSettings.Changed += new SettingsEventHandler(UserSettings_Changed);
 
-                    Subscribe(ServicesArxNet.TestLoader.Events);
-                    ServicesArxNet.UserSettings.Changed += new SettingsEventHandler(UserSettings_Changed);
+				ITestEvents events = Services.TestLoader.Events;
+				errorDisplay.Subscribe( events );
+				notRunTree.Subscribe( events );
+			}
 
-                    ITestEvents events = ServicesArxNet.TestLoader.Events;
-                    errorDisplay.Subscribe(events);
-                    notRunTree.Subscribe(events);
-
-
-                    base.OnLoad(e);
-                }
-                /*2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加*/
-                catch (SystemException exception)
-                {
-                    NUnitFormArxNet form = this.ParentForm as NUnitFormArxNet;
-                    form.MessageDisplay.Error("ResultTabsArxNet unable to Load", exception);
-                }
-                /*2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加*/
-            }
-        }
+			base.OnLoad (e);
+		}
 
 		private void UpdateTabPages()
 		{
-            if (settings == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加
-
 			errorsTabMenuItem.Checked = settings.GetSetting( "Gui.ResultTabs.DisplayErrorsTab", true );
 			notRunTabMenuItem.Checked = settings.GetSetting( "Gui.ResultTabs.DisplayNotRunTab", true );
 
@@ -295,27 +267,21 @@ namespace NUnit.UiKit.ArxNet
 
 		private void errorsTabMenuItem_Click(object sender, System.EventArgs e)
 		{
-            if (settings == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加
-
 			settings.SaveSetting( "Gui.ResultTabs.DisplayErrorsTab", errorsTabMenuItem.Checked = !errorsTabMenuItem.Checked );
 		}
 
 		private void notRunTabMenuItem_Click(object sender, System.EventArgs e)
 		{
-            if (settings == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加
-
 			settings.SaveSetting( "Gui.ResultTabs.DisplayNotRunTab", notRunTabMenuItem.Checked = !notRunTabMenuItem.Checked );
 		}
 
 		private void textOutputMenuItem_Click(object sender, System.EventArgs e)
 		{
-			SimpleSettingsDialogArxNet.Display( this.FindForm(), new TextOutputSettingsPage("Text Output") );
+			SimpleSettingsDialog.Display( this.FindForm(), new TextOutputSettingsPage("Text Output") );
 		}
 
 		private void tabControl_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-            if (settings == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加
-
 			if ( !updating )
 			{
 				int index = tabControl.SelectedIndex;
@@ -349,8 +315,6 @@ namespace NUnit.UiKit.ArxNet
 		}
 		private void OnTestReloaded(object sender, TestEventArgs args)
 		{
-            if (settings == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加
-
 			if ( settings.GetSetting( "Options.TestLoader.ClearResultsOnReload", false ) )
 				this.Clear();
 		}
@@ -392,7 +356,7 @@ namespace NUnit.UiKit.ArxNet
 			public TextDisplayController(TabControl tabControl)
 			{			
 				this.tabControl = tabControl;
-				ServicesArxNet.UserSettings.Changed += new SettingsEventHandler(UserSettings_Changed);
+				Services.UserSettings.Changed += new SettingsEventHandler(UserSettings_Changed);
 			}
 
             public bool IsTracingEnabled
@@ -453,7 +417,7 @@ namespace NUnit.UiKit.ArxNet
 						if ( thePage == null )
 						{
 							thePage = new TextDisplayTabPage( tabInfo );
-							thePage.Display.Subscribe(ServicesArxNet.TestLoader.Events);
+							thePage.Display.Subscribe(Services.TestLoader.Events);
 						}
 
 						thePage.DisplayFont = displayFont;
@@ -490,7 +454,7 @@ namespace NUnit.UiKit.ArxNet
 								switch(propName)
 								{
 									case "Title":
-										page.Text = (string)ServicesArxNet.UserSettings.GetSetting( settingName );
+										page.Text = (string)Services.UserSettings.GetSetting( settingName );
 										break;
                                     case "Content":
                                         page.Display.Content.LoadSettings(tabName);
@@ -503,7 +467,7 @@ namespace NUnit.UiKit.ArxNet
 
 			private static Font GetFixedFont()
 			{
-				ISettings settings = ServicesArxNet.UserSettings;               
+				ISettings settings = Services.UserSettings;
 
 				return settings == null 
                     ? new Font(FontFamily.GenericMonospace, 8.0f) 

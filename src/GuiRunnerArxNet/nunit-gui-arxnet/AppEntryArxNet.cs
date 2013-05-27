@@ -59,7 +59,7 @@ namespace NUnit.Gui.ArxNet
     /// </summary>
     public class AppEntryArxNet
     {
-        static Logger log = InternalTrace.GetLogger(typeof(AppEntryArxNet));
+        internal static Logger log = InternalTrace.GetLogger(typeof(AppEntryArxNet));
         private static EditorWriter m_EditorWriter = null;
         private static TextWriter m_SavedOut = null;
         private static TextWriter m_SavedError = null;
@@ -154,8 +154,7 @@ namespace NUnit.Gui.ArxNet
             try
             {
                 log.Info("Starting Gui Application");
-                Document doc = CADApplication.DocumentManager.MdiActiveDocument;
-                CADApplication.ShowModelessDialog(doc.Window.Handle, form);                
+                CADApplication.ShowModelessDialog(form);               
                 //log.Info("Application Exit");
             }
             catch (SystemException ex)
