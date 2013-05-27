@@ -352,7 +352,7 @@ namespace NUnit.CommandRunner.ArxNet
 			if (options.IsTestProject)
 			{
 				NUnitProject project = 
-					Services.ProjectService.LoadProject(parameters[0]);
+					ServicesArxNet.ProjectService.LoadProject(parameters[0]);
 
 				string configName = options.config;
 				if (configName != null)
@@ -409,7 +409,7 @@ namespace NUnit.CommandRunner.ArxNet
             if (domainUsage == DomainUsage.None)
             {
                 // Make sure that addins are available
-                CoreExtensions.Host.AddinRegistry = Services.AddinRegistry;
+                CoreExtensions.Host.AddinRegistry = ServicesArxNet.AddinRegistry;
             }
 
             package.Settings["ShadowCopyFiles"] = !options.noshadow;

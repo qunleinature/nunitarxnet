@@ -13,6 +13,10 @@
 // 2013.5.27：
 //  1.ServiceManager改为ServiceManagerArxNet
 //  2.Init方法增加ServiceManagerArxNet初始化
+//  3.DomainManager改为DomainManagerArxNet
+//  4.Init方法增加DomainManagerArxNet初始化
+//  5.Services改为ServicesArxNet
+//  6.Init方法增加ServicesArxNet初始化
 // ****************************************************************
 
 using System;
@@ -74,7 +78,7 @@ namespace NUnit.CommandRunner.ArxNet
             if (options.cleanup)
             {
                 log.Info("Performing cleanup of shadow copy cache");
-                DomainManager.DeleteShadowCopyPath();
+                DomainManagerArxNet.DeleteShadowCopyPath();
                 //ed.WriteMessage("\nShadow copy cache emptied");//2013.1.25改
                 Console.WriteLine("Shadow copy cache emptied");//2013.5.25lq改
                 return CommandUiArxNet.OK;//2013.1.25改
@@ -101,7 +105,7 @@ namespace NUnit.CommandRunner.ArxNet
 
 			// Add Standard Services to ServiceManager
 			ServiceManagerArxNet.Services.AddService( settingsService );
-			ServiceManagerArxNet.Services.AddService( new DomainManager() );
+			ServiceManagerArxNet.Services.AddService( new DomainManagerArxNet() );
 			//ServiceManagerArxNet.Services.AddService( new RecentFilesService() );
 			ServiceManagerArxNet.Services.AddService( new ProjectService() );
 			//ServiceManagerArxNet.Services.AddService( new TestLoader() );
@@ -114,7 +118,7 @@ namespace NUnit.CommandRunner.ArxNet
 
             foreach (string parm in options.Parameters)
             {
-                if (!Services.ProjectService.CanLoadProject(parm) && !PathUtils.IsAssemblyFileType(parm))
+                if (!ServicesArxNet.ProjectService.CanLoadProject(parm) && !PathUtils.IsAssemblyFileType(parm))
                 {
                     //ed.WriteMessage("\nFile type not known: {0}", parm);//2013.1.25改
                     Console.WriteLine("File type not known: {0}", parm);//2013.5.25lq改
@@ -231,7 +235,11 @@ namespace NUnit.CommandRunner.ArxNet
         public static void Init()//2013.5.24加
         {
             //throw new System.NotImplementedException();
+            log = InternalTrace.GetLogger(typeof(RunnerArxNet));
+
             ServiceManagerArxNet.Init();
+            DomainManagerArxNet.Init();
+            ServicesArxNet.Init();
 
             m_EditorWriter = new EditorWriter();
             m_SavedOut = Console.Out;

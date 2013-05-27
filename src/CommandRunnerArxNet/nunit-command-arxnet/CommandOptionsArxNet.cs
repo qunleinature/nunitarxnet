@@ -10,16 +10,20 @@
 //  在NUnit2.6.2基础上修改
 // 2013.5.25：
 //  使用EditorWritor类在Editor输出
+// 2013.5.27：
+//  1.Services改为ServicesArxNet
 // ****************************************************************
 
 namespace NUnit.CommandRunner.ArxNet
 {
 	using System;
 	using Codeblast;
+
 	using NUnit.Util;
     using NUnit.Core;
-
     using NUnit.ConsoleRunner;
+
+    using NUnit.Util.ArxNet;
 
     using Autodesk.AutoCAD.Runtime;
     using Autodesk.AutoCAD.EditorInput;
@@ -147,7 +151,7 @@ namespace NUnit.CommandRunner.ArxNet
 
 //		protected override bool IsValidParameter(string parm)
 //		{
-//			return Services.ProjectLoadService.CanLoadProject( parm ) || PathUtils.IsAssemblyFileType( parm );
+//			return ServicesArxNet.ProjectLoadService.CanLoadProject( parm ) || PathUtils.IsAssemblyFileType( parm );
 //		}
 
 
@@ -155,7 +159,7 @@ namespace NUnit.CommandRunner.ArxNet
         {
             get
             {
-                return ParameterCount == 1 && Services.ProjectService.CanLoadProject((string)Parameters[0]);
+                return ParameterCount == 1 && ServicesArxNet.ProjectService.CanLoadProject((string)Parameters[0]);
             }
         }
 

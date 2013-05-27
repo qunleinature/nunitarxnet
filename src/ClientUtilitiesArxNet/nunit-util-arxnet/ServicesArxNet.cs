@@ -11,6 +11,7 @@
 //  1.改为调用NUnit.Util.ArxNet.SettingsServiceArxNet类
 // 2013.5.27修改：
 //  1.在nunit2.6.2基础上修改
+//  2.增加Init方法，初始化静态成员
 // ****************************************************************
 
 using System;
@@ -55,13 +56,13 @@ namespace NUnit.Util.ArxNet
 		#endregion
 
 		#region DomainManager
-		private static DomainManager domainManager;
-		public static DomainManager DomainManager
+		private static DomainManagerArxNet domainManager;
+        public static DomainManagerArxNet DomainManager
 		{
 			get
 			{
 				if ( domainManager == null )
-					domainManager = (DomainManager)ServiceManagerArxNet.Services.GetService( typeof( DomainManager ) );
+                    domainManager = (DomainManagerArxNet)ServiceManagerArxNet.Services.GetService(typeof(DomainManagerArxNet));
 
 				return domainManager;
 			}
@@ -156,5 +157,19 @@ namespace NUnit.Util.ArxNet
 			}
 		}
 		#endregion
+
+        /*2013-5-27lq加*/
+        //初始化静态成员
+        public static void Init()
+        {
+            addinManager = null;
+            addinRegistry = null;
+            domainManager = null;
+            userSettings = null;
+            recentFiles = null;
+            loader = null;
+            agency = null;
+            projectService = null;
+        }
 	}
 }
