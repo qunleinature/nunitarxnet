@@ -12,6 +12,9 @@
 // 2013.5.27修改：
 //  1.在nunit2.6.2基础上修改
 //  2.增加Init方法，初始化静态成员
+// 2013-5-29修改：
+//  1.改AddinManager为AddinManagerArxNet
+//  2.改ProjectService为ProjectServiceArxNet
 // ****************************************************************
 
 using System;
@@ -28,13 +31,13 @@ namespace NUnit.Util.ArxNet
 	public class ServicesArxNet
 	{
 		#region AddinManager
-		private static AddinManager addinManager;
-		public static AddinManager AddinManager
+		private static AddinManagerArxNet addinManager;
+		public static AddinManagerArxNet AddinManager
 		{
 			get 
 			{
 				if (addinManager == null )
-					addinManager = (AddinManager)ServiceManagerArxNet.Services.GetService( typeof( AddinManager ) );
+					addinManager = (AddinManagerArxNet)ServiceManagerArxNet.Services.GetService( typeof( AddinManagerArxNet ) );
 
 				return addinManager; 
 			}
@@ -144,14 +147,14 @@ namespace NUnit.Util.ArxNet
 		#endregion
 
 		#region ProjectLoader
-		private static ProjectService projectService;
-		public static ProjectService ProjectService
+		private static ProjectServiceArxNet projectService;
+		public static ProjectServiceArxNet ProjectService
 		{
 			get
 			{
 				if ( projectService == null )
-					projectService = (ProjectService)
-						ServiceManagerArxNet.Services.GetService( typeof( ProjectService ) );
+					projectService = (ProjectServiceArxNet)
+						ServiceManagerArxNet.Services.GetService( typeof( ProjectServiceArxNet ) );
 
 				return projectService;
 			}

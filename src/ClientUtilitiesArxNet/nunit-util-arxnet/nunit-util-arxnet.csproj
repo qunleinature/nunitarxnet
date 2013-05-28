@@ -90,7 +90,9 @@
     <Compile Include="ProcessRunnerArxNet.cs" />
     <Compile Include="RuntimeFrameworkSelectorArxNet.cs" />
     <Compile Include="ServicesArxNet.cs" />
+    <Compile Include="ServicesArxNet\AddinManagerArxNet.cs" />
     <Compile Include="ServicesArxNet\DomainManagerArxNet.cs" />
+    <Compile Include="ServicesArxNet\ProjectServiceArxNet.cs" />
     <Compile Include="ServicesArxNet\ServiceManagerArxNet.cs" />
     <Compile Include="ServicesArxNet\SettingsServiceArxNet.cs" />
     <Compile Include="SettingsGroupArxNet.cs" />

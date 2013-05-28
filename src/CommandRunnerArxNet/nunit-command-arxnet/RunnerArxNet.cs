@@ -17,6 +17,9 @@
 //  4.Init方法增加DomainManagerArxNet初始化
 //  5.Services改为ServicesArxNet
 //  6.Init方法增加ServicesArxNet初始化
+// 2013.5.29：
+//  1.改AddinManager为AddinManagerArxNet
+//  2.改ProjectService为ProjectServiceArxNet
 // ****************************************************************
 
 using System;
@@ -108,10 +111,10 @@ namespace NUnit.CommandRunner.ArxNet
 			ServiceManagerArxNet.Services.AddService( settingsService );
 			ServiceManagerArxNet.Services.AddService( new DomainManagerArxNet() );
 			//ServiceManagerArxNet.Services.AddService( new RecentFilesService() );
-			ServiceManagerArxNet.Services.AddService( new ProjectService() );
+			ServiceManagerArxNet.Services.AddService( new ProjectServiceArxNet() );
 			//ServiceManagerArxNet.Services.AddService( new TestLoaderArxNet() );
 			ServiceManagerArxNet.Services.AddService( new AddinRegistry() );
-			ServiceManagerArxNet.Services.AddService( new AddinManager() );
+			ServiceManagerArxNet.Services.AddService( new AddinManagerArxNet() );
             ServiceManagerArxNet.Services.AddService( new TestAgency() );
 
 			// Initialize Services

@@ -25,6 +25,9 @@
 //  4.使用EditorWritor类在Editor输出
 //  5.增加Init、CleanUp方法
 //  6.在NUnit2.6.2基础上修改
+// 2013.5.29：
+//  1.改AddinManager为AddinManagerArxNet
+//  2.改ProjectService为ProjectServiceArxNet
 // ****************************************************************
 
 using System;
@@ -123,10 +126,10 @@ namespace NUnit.Gui.ArxNet
                 ServiceManagerArxNet.Services.AddService(settingsService);
                 ServiceManagerArxNet.Services.AddService(new DomainManagerArxNet());
                 ServiceManagerArxNet.Services.AddService(new RecentFilesService());
-                ServiceManagerArxNet.Services.AddService(new ProjectService());
+                ServiceManagerArxNet.Services.AddService(new ProjectServiceArxNet());
                 ServiceManagerArxNet.Services.AddService(new TestLoaderArxNet(new GuiTestEventDispatcherArxNet()));
                 ServiceManagerArxNet.Services.AddService(new AddinRegistry());
-                ServiceManagerArxNet.Services.AddService(new AddinManager());
+                ServiceManagerArxNet.Services.AddService(new AddinManagerArxNet());
                 ServiceManagerArxNet.Services.AddService(new TestAgency());
 
                 // Initialize Services

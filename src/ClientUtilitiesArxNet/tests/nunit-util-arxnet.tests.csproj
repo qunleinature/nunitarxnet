@@ -95,9 +95,15 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="test-utilities, Version=2.6.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\tests\test-utilities.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DomainManagerArxNetTests.cs" />
+    <Compile Include="NUnitProjectArxNetLoad.cs" />
+    <Compile Include="NUnitProjectArxNetXml.cs" />
     <Compile Include="PathUtilArxNetTests.cs" />
     <Compile Include="ServiceManagerArxNetSetUpFixture.cs" />
     <Compile Include="SettingsGroupArxNetTests.cs" />
