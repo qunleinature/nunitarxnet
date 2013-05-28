@@ -8,6 +8,9 @@
 // Copyright 2012, Lei Qun
 // 2013.5.27修改：
 //  1.selector改为RuntimeFrameworkSelectorArxNet
+// 2013.5.29修改：
+//  1.改ProcessRunner为ProcessRunnerArxNet
+//  2.CAD环境下测试包是单进程、无应用域
 // ****************************************************************
 
 using System;
@@ -35,8 +38,10 @@ namespace NUnit.Util.ArxNet
         /// <returns>A TestRunner</returns>
         public override TestRunner MakeTestRunner(TestPackage package)
         {
-            //ProcessModel processModel = GetTargetProcessModel(package);
-            ProcessModel processModel = ProcessModel.Single;//2013.5.27lq改，在CAD环境下的测试包是单进程
+            package.Settings["ProcessModel"] = ProcessModel.Single;//2013.5.29lq改，单进程
+            package.Settings["DomainUsage"] = DomainUsage.None;//2013.5.29lq改，无应用域
+            
+            ProcessModel processModel = GetTargetProcessModel(package);
 
             switch (processModel)
             {
@@ -45,7 +50,7 @@ namespace NUnit.Util.ArxNet
                     return new MultipleTestProcessRunner();
                 case ProcessModel.Separate:
                     package.Settings.Remove("ProcessModel");
-                    return new ProcessRunner();
+                    return new ProcessRunnerArxNet();
                 default:
                     return base.MakeTestRunner(package);
             }
@@ -53,6 +58,9 @@ namespace NUnit.Util.ArxNet
 
         public override bool CanReuse(TestRunner runner, TestPackage package)
         {
+            package.Settings["ProcessModel"] = ProcessModel.Single;//2013.5.29lq改，单进程
+            package.Settings["DomainUsage"] = DomainUsage.None;//2013.5.29lq改，无应用域
+
             RuntimeFramework currentFramework = RuntimeFramework.CurrentFramework;
             RuntimeFramework targetFramework = selector.SelectRuntimeFramework(package);
 
@@ -66,7 +74,7 @@ namespace NUnit.Util.ArxNet
                 case ProcessModel.Multiple:
                     return runner is MultipleTestProcessRunner;
                 case ProcessModel.Separate:
-                    ProcessRunner processRunner = runner as ProcessRunner;
+                    ProcessRunnerArxNet processRunner = runner as ProcessRunnerArxNet;
                     return processRunner != null && processRunner.RuntimeFramework == targetFramework;
                 default:
                     return base.CanReuse(runner, package);
@@ -74,11 +82,7 @@ namespace NUnit.Util.ArxNet
         }
 
         private ProcessModel GetTargetProcessModel(TestPackage package)
-        {
-            /*2013.5.13lq改*/
-            //在CAD环境下的测试包是单进程
-            ProcessModel processModel = ProcessModel.Single;
-            /*
+        {                        
             RuntimeFramework currentFramework = RuntimeFramework.CurrentFramework;
             RuntimeFramework targetFramework = selector.SelectRuntimeFramework(package);
             
@@ -86,7 +90,6 @@ namespace NUnit.Util.ArxNet
             if (processModel == ProcessModel.Default)
                 if (!currentFramework.Supports(targetFramework))
                     processModel = ProcessModel.Separate;
-             */ 
             return processModel;
         }
 #endif

@@ -78,6 +78,7 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -86,6 +87,7 @@
   <ItemGroup>
     <Compile Include="DefaultTestRunnerFactoryArxNet.cs" />
     <Compile Include="InterfacesArxNet\IRuntimeFrameworkSelectorArxNet.cs" />
+    <Compile Include="ProcessRunnerArxNet.cs" />
     <Compile Include="RuntimeFrameworkSelectorArxNet.cs" />
     <Compile Include="ServicesArxNet.cs" />
     <Compile Include="ServicesArxNet\DomainManagerArxNet.cs" />
