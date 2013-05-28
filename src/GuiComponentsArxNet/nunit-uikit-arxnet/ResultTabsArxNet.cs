@@ -9,6 +9,10 @@
 // 2012.12.21修改:改Services为ServicesArxNet
 // 2013.1.8修改：
 //  1.NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试改
+// 2013.5.28修改：
+//  1.在nunit2.6.2基础上修改
+//  2.ErrorDisplay改为ErrorDisplayArxNet
+//  3.NotRunTree改为NotRunTreeArxNet
 // ****************************************************************
 
 using System;
@@ -17,16 +21,16 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Windows.Forms;
-using NUnit.Util;
-using NUnit.Core;
-using CP.Windows.Forms;
-using System.Diagnostics;
 
 using NUnit.Util;
 using NUnit.Core;
 using NUnit.UiKit;
+
 using NUnit.Util.ArxNet;
 using NUnit.Gui.ArxNet;
+
+using CP.Windows.Forms;
+using System.Diagnostics;
 
 namespace NUnit.UiKit.ArxNet
 {
@@ -48,9 +52,9 @@ namespace NUnit.UiKit.ArxNet
 		private MenuItem textOutputMenuItem;
 
 		private System.Windows.Forms.TabPage errorTab;
-		private NUnit.UiKit.ErrorDisplay errorDisplay;
+		private NUnit.UiKit.ArxNet.ErrorDisplayArxNet errorDisplay;
 		private System.Windows.Forms.TabPage notRunTab;
-		private NUnit.UiKit.NotRunTree notRunTree;
+		private NUnit.UiKit.ArxNet.NotRunTreeArxNet notRunTree;
 		private System.Windows.Forms.TabControl tabControl;
 		private System.Windows.Forms.MenuItem copyDetailMenuItem;
 		/// <summary> 
@@ -125,9 +129,9 @@ namespace NUnit.UiKit.ArxNet
 		{
 			this.tabControl = new System.Windows.Forms.TabControl();
 			this.errorTab = new System.Windows.Forms.TabPage();
-			this.errorDisplay = new NUnit.UiKit.ErrorDisplay();
+			this.errorDisplay = new NUnit.UiKit.ArxNet.ErrorDisplayArxNet();
 			this.notRunTab = new System.Windows.Forms.TabPage();
-			this.notRunTree = new NUnit.UiKit.NotRunTree();
+			this.notRunTree = new NUnit.UiKit.ArxNet.NotRunTreeArxNet();
 			this.copyDetailMenuItem = new System.Windows.Forms.MenuItem();
 			this.tabControl.SuspendLayout();
 			this.errorTab.SuspendLayout();

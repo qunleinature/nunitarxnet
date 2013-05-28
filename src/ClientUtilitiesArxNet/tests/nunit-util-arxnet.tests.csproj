@@ -97,11 +97,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainManagerArxNetTests.cs" />
+    <Compile Include="PathUtilArxNetTests.cs" />
     <Compile Include="ServiceManagerArxNetSetUpFixture.cs" />
     <Compile Include="SettingsGroupArxNetTests.cs" />
     <Compile Include="TestEventCatcher.cs" />
     <Compile Include="TestLoaderArxNetAssemblyTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestLoaderArxNetWatcherTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram_TestLoaderArxNetAssemblyTests.cd" />

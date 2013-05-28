@@ -11,6 +11,8 @@
 // 2012.12.20修改:ResultTabs变为ResultTabsArxNet
 // 2013.5.27：
 //  1.在NUnit2.6.2基础上修改
+// 2013.5.28：
+//  1.改TestProgressBar为TestProgressBarArxNet
 // ****************************************************************
 
 using System;
@@ -79,7 +81,7 @@ namespace NUnit.Gui.ArxNet
 		public System.Windows.Forms.GroupBox groupBox1;
 		public System.Windows.Forms.Button runButton;
         private System.Windows.Forms.Button stopButton;
-		public NUnit.UiKit.TestProgressBar progressBar;
+		public NUnit.UiKit.ArxNet.TestProgressBarArxNet progressBar;
 		private CP.Windows.Forms.ExpandingLabel runCount;
 
         public NUnit.UiKit.ArxNet.ResultTabsArxNet resultTabs;
@@ -271,7 +273,7 @@ namespace NUnit.Gui.ArxNet
             this.runCount = new CP.Windows.Forms.ExpandingLabel();
             this.stopButton = new System.Windows.Forms.Button();
             this.runButton = new System.Windows.Forms.Button();
-            this.progressBar = new NUnit.UiKit.TestProgressBar();
+            this.progressBar = new NUnit.UiKit.ArxNet.TestProgressBarArxNet();
             this.resultTabs = new NUnit.UiKit.ArxNet.ResultTabsArxNet();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.testTree = new NUnit.UiKit.ArxNet.TestTreeArxNet();
