@@ -166,6 +166,15 @@
     <Compile Include="OptionsDialogArxNet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecentFileMenuHandlerArxNet.cs" />
+    <Compile Include="SettingsPagesArxNet\GuiSettingsPageArxNet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SettingsPagesArxNet\TestResultSettingsPageArxNet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SettingsPagesArxNet\TreeSettingsPageArxNet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="TestAssemblyInfoFormArxNet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +185,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NUnitFormArxNet.resx">
       <DependentUpon>NUnitFormArxNet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsPagesArxNet\TestResultSettingsPageArxNet.resx">
+      <DependentUpon>TestResultSettingsPageArxNet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsPagesArxNet\TreeSettingsPageArxNet.resx">
+      <DependentUpon>TreeSettingsPageArxNet.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

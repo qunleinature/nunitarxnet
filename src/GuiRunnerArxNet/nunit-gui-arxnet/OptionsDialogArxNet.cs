@@ -7,6 +7,12 @@
 // ****************************************************************
 // Copyright 2012, Lei Qun
 // 2012.12.21修改:调用TabbedSettingsDialogArxNet类,TreeBasedSettingsDialogArxNet类
+// 2013.5.29修改
+//   1.改GuiSettingsPage为GuiSettingsPageArxNet
+// 2013.5.30修改
+//   1.改TextOutputSettingsPage为TextOutputSettingsPageArxNet
+//   2.改TreeSettingsPage为TreeSettingsPageArxNet
+//   3.改TestResultSettingsPage为TestResultSettingsPageArxNet
 // ****************************************************************
 
 #define TREE_BASED
@@ -18,6 +24,8 @@ using NUnit.Util;
 using NUnit.UiKit;
 using NUnit.Gui;
 using NUnit.Gui.SettingsPages;
+
+using NUnit.Gui.ArxNet.SettingsPagesArxNet;
 using NUnit.Util.ArxNet;
 using NUnit.UiKit.ArxNet;
 
@@ -32,10 +40,10 @@ namespace NUnit.Gui.ArxNet
 		public static void Display( Form owner )
 		{
 			TreeBasedSettingsDialogArxNet.Display( owner,
-				new GuiSettingsPage("Gui.General"),
-				new TreeSettingsPage("Gui.Tree Display"),
-				new TestResultSettingsPage("Gui.Test Results"),
-				new TextOutputSettingsPage("Gui.Text Output"),
+				new GuiSettingsPageArxNet("Gui.General"),
+				new TreeSettingsPageArxNet("Gui.Tree Display"),
+				new TestResultSettingsPageArxNet("Gui.Test Results"),
+				new TextOutputSettingsPageArxNet("Gui.Text Output"),
                 new ProjectEditorSettingsPage("Gui.Project Editor"),
                 new TestLoaderSettingsPage("Test Loader.Assembly Isolation"),
 				new AssemblyReloadSettingsPage("Test Loader.Assembly Reload"),
@@ -48,16 +56,16 @@ namespace NUnit.Gui.ArxNet
 		public static void Display( Form owner )
 		{
 			TabbedSettingsDialogArxNet.Display( owner,
-				new GuiSettingsPage("General"),
-				new TreeSettingsPage("Tree"),
-				new TestResultSettingsPage("Results"),
-				new TextOutputSettingsPage("Text Output"),
+				new GuiSettingsPageArxNet("General"),
+				new TreeSettingsPageArxNet("Tree"),
+				new TestResultSettingsPageArxNet("Results"),
+				new TextOutputSettingsPageArxNet("Text Output"),
 				new TestLoaderSettingsPage("Test Load"),
 				new AssemblyReloadSettingsPage("Reload"),
 				new VisualStudioSettingsPage("Visual Studio"));
 		}
 #endif
 
-		private OptionsDialogArxNet() { }
+        private OptionsDialogArxNet() { }
 	}
 }

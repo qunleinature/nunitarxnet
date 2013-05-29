@@ -115,6 +115,9 @@
     <Compile Include="SettingsDialogBaseArxNet.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SettingsPageArxNet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="SimpleSettingsDialogArxNet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +128,9 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextOutputSettingsPageArxNet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="TreeBasedSettingsDialogArxNet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TestTreeArxNet.resx">
       <DependentUpon>TestTreeArxNet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TextOutputSettingsPageArxNet.resx">
+      <DependentUpon>TextOutputSettingsPageArxNet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TreeBasedSettingsDialogArxNet.resx">
       <DependentUpon>TreeBasedSettingsDialogArxNet.cs</DependentUpon>

@@ -7,6 +7,8 @@
 // ****************************************************************
 // Copyright 2012, Lei Qun 
 // 2012.12.21修改:改Services为ServicesArxNet
+// 2013.5.30修改
+//   1.改SettingsPage为SettingsPageArxNet
 // ****************************************************************
 
 using System;
@@ -133,7 +135,7 @@ namespace NUnit.UiKit.ArxNet
 		#region Public Methods
 		public void ApplySettings()
 		{
-			foreach( SettingsPage page in pageList )
+			foreach( SettingsPageArxNet page in pageList )
 				if ( page.SettingsLoaded )
 					page.ApplySettings();
 		}
@@ -170,7 +172,7 @@ namespace NUnit.UiKit.ArxNet
 		{
 			get
 			{
-				foreach( SettingsPage page in pageList )
+				foreach( SettingsPageArxNet page in pageList )
 					if ( page.SettingsLoaded && page.HasChangesRequiringReload )
 						return true;
 
@@ -182,26 +184,26 @@ namespace NUnit.UiKit.ArxNet
 		#region Nested SettingsPageCollection Class
 		public class SettingsPageCollection : CollectionBase
 		{
-			public void Add( SettingsPage page )
+			public void Add( SettingsPageArxNet page )
 			{
 				this.InnerList.Add( page );
 			}
 
-			public void AddRange( params SettingsPage[] pages )
+			public void AddRange( params SettingsPageArxNet[] pages )
 			{
 				this.InnerList.AddRange( pages );
 			}
 
-			public SettingsPage this[int index]
+			public SettingsPageArxNet this[int index]
 			{
-				get { return (SettingsPage)InnerList[index]; }
+				get { return (SettingsPageArxNet)InnerList[index]; }
 			}
 
-			public SettingsPage this[string key]
+			public SettingsPageArxNet this[string key]
 			{
 				get
 				{
-					foreach( SettingsPage page in InnerList )
+					foreach( SettingsPageArxNet page in InnerList )
 						if ( page.Key == key )
 							return page;
 

@@ -26,7 +26,7 @@ namespace NUnit.UiKit.ArxNet
 		protected System.Windows.Forms.TabControl tabControl1;
 		private System.ComponentModel.IContainer components = null;
 
-		public static void Display( Form owner, params SettingsPage[] pages )
+		public static void Display( Form owner, params SettingsPageArxNet[] pages )
 		{
             /*2013-1-12:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”*/
             if (owner == null) return;
@@ -114,7 +114,7 @@ namespace NUnit.UiKit.ArxNet
 
 		private void TabbedSettingsDialog_Load(object sender, System.EventArgs e)
 		{
-			foreach( SettingsPage page in SettingsPages )
+			foreach( SettingsPageArxNet page in SettingsPages )
 			{
 				TabPage tabPage = new TabPage(page.Title);
 				tabPage.Controls.Add( page );

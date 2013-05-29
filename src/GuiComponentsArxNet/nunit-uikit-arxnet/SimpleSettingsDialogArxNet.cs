@@ -27,7 +27,7 @@ namespace NUnit.UiKit.ArxNet
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.ComponentModel.IContainer components = null;
 
-		public static void Display( Form owner, SettingsPage page )
+		public static void Display( Form owner, SettingsPageArxNet page )
 		{
             /*2013-1-12:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog≤‚ ‘º”*/
             if (owner == null) return;
@@ -121,7 +121,7 @@ namespace NUnit.UiKit.ArxNet
 
 		private void SimpleSettingsDialog_Load(object sender, System.EventArgs e)
 		{
-			SettingsPage page = this.SettingsPages[0];
+			SettingsPageArxNet page = this.SettingsPages[0];
 			this.panel1.Controls.Add( page );
 			this.Text = page.Title;
 		}

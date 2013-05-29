@@ -29,9 +29,9 @@ namespace NUnit.UiKit.ArxNet
 		private System.Windows.Forms.ImageList imageList1;
 		private System.Windows.Forms.GroupBox groupBox1;
 
-		private SettingsPage current;
+		private SettingsPageArxNet current;
 
-		public static void Display( Form owner, params SettingsPage[] pages )
+		public static void Display( Form owner, params SettingsPageArxNet[] pages )
 		{
             /*2013-1-12:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog²âÊÔ¼Ó*/
             if (owner == null) return;
@@ -151,7 +151,7 @@ namespace NUnit.UiKit.ArxNet
 
 		private void TreeBasedSettingsDialog_Load(object sender, System.EventArgs e)
 		{
-			foreach( SettingsPage page in SettingsPages )
+			foreach( SettingsPageArxNet page in SettingsPages )
 				AddBranchToTree( treeView1.Nodes, page.Key );
 
 			if ( treeView1.VisibleCount >= treeView1.GetNodeCount( true ) )
@@ -244,7 +244,7 @@ namespace NUnit.UiKit.ArxNet
 		private void treeView1_AfterSelect(object sender, System.Windows.Forms.TreeViewEventArgs e)
 		{
 			string key = e.Node.FullPath;
-			SettingsPage page = SettingsPages[key];
+			SettingsPageArxNet page = SettingsPages[key];
             ServicesArxNet.UserSettings.SaveSetting("Gui.Settings.InitialPage", key);
 
 			if ( page != null && page != current )

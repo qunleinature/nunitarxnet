@@ -313,7 +313,7 @@ namespace NUnit.UiKit.ArxNet
 
 		private void textOutputMenuItem_Click(object sender, System.EventArgs e)
 		{
-			SimpleSettingsDialogArxNet.Display( this.FindForm(), new TextOutputSettingsPage("Text Output") );
+			SimpleSettingsDialogArxNet.Display( this.FindForm(), new TextOutputSettingsPageArxNet("Text Output") );
 		}
 
 		private void tabControl_SelectedIndexChanged(object sender, System.EventArgs e)

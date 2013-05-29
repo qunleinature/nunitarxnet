@@ -13,6 +13,8 @@
 //  1.在NUnit2.6.2基础上修改
 // 2013.5.28：
 //  1.改TestProgressBar为TestProgressBarArxNet
+// 2013.5.28：
+//  1.改OptionsDialog为OptionsDialogArxNet
 // ****************************************************************
 
 using System;
@@ -1320,7 +1322,7 @@ namespace NUnit.Gui.ArxNet
 
 		private void settingsMenuItem_Click(object sender, System.EventArgs e)
 		{
-			OptionsDialog.Display( this );
+			OptionsDialogArxNet.Display( this );
 		}
 
 		private void assemblyDetailsMenuItem_Click(object sender, System.EventArgs e)

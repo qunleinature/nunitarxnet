@@ -3,17 +3,32 @@
 // This is free software licensed under the NUnit license. You may
 // obtain a copy of the license at http://nunit.org
 // ****************************************************************
+
+// ****************************************************************
+// Copyright 2012, Lei Qun
+// 2013.5.29修改：
+//  1.在nunit2.6.2基础上修改
+//  2.NUnit.Gui.SettingsPages.GuiSettingsPage改为NUnit.Gui.ArxNet.SettingsPagesArxNet.GuiSettingsPageArxNet类
+//  3.改RecentFilesService为RecentFilesServiceArxNet
+//  4.改Services为ServicesArxNet
+// 2013.5.30修改：
+//  1.改SettingsPage为SettingsPageArxNet
+// ****************************************************************
+
 using System;
 using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+
 using NUnit.Util;
 using NUnit.UiKit;
 
-namespace NUnit.Gui.SettingsPages
+using NUnit.Util.ArxNet;
+
+namespace NUnit.Gui.ArxNet.SettingsPagesArxNet
 {
-	public class GuiSettingsPage : NUnit.UiKit.SettingsPage
+	public class GuiSettingsPageArxNet : NUnit.UiKit.ArxNet.SettingsPageArxNet
 	{
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.GroupBox groupBox1;
@@ -29,7 +44,7 @@ namespace NUnit.Gui.SettingsPages
         private CheckBox checkFilesExistCheckBox;
 		private System.ComponentModel.IContainer components = null;
 
-		public GuiSettingsPage(string key) : base(key)
+		public GuiSettingsPageArxNet(string key) : base(key)
 		{
 			// This call is required by the Windows Form Designer.
 			InitializeComponent();
@@ -216,7 +231,7 @@ namespace NUnit.Gui.SettingsPages
 					break;
 			}
 
-			recentFilesCountTextBox.Text = Services.RecentFiles.MaxFiles.ToString();
+			recentFilesCountTextBox.Text = ServicesArxNet.RecentFiles.MaxFiles.ToString();
             checkFilesExistCheckBox.Checked = settings.GetSetting("Gui.RecentProjects.CheckFilesExist", true);
 			loadLastProjectCheckBox.Checked = settings.GetSetting( "Options.LoadLastProject", true );
 		}
@@ -233,7 +248,7 @@ namespace NUnit.Gui.SettingsPages
 		{
 			if ( recentFilesCountTextBox.Text.Length == 0 )
 			{
-				recentFilesCountTextBox.Text = Services.RecentFiles.MaxFiles.ToString();
+				recentFilesCountTextBox.Text = ServicesArxNet.RecentFiles.MaxFiles.ToString();
 				recentFilesCountTextBox.SelectAll();
 				e.Cancel = true;
 			}
@@ -245,11 +260,11 @@ namespace NUnit.Gui.SettingsPages
 				{
 					int count = int.Parse( recentFilesCountTextBox.Text );
 
-					if ( count < RecentFilesService.MinSize ||
-						count > RecentFilesService.MaxSize )
+					if ( count < RecentFilesServiceArxNet.MinSize ||
+						count > RecentFilesServiceArxNet.MaxSize )
 					{
 						errmsg = string.Format( "Number of files must be from {0} to {1}", 
-							RecentFilesService.MinSize, RecentFilesService.MaxSize );
+							RecentFilesServiceArxNet.MinSize, RecentFilesServiceArxNet.MaxSize );
 					}
 				}
 				catch
@@ -269,7 +284,7 @@ namespace NUnit.Gui.SettingsPages
 		private void recentFilesCountTextBox_Validated(object sender, System.EventArgs e)
 		{
 			int count = int.Parse( recentFilesCountTextBox.Text );
-			Services.RecentFiles.MaxFiles = count;
+			ServicesArxNet.RecentFiles.MaxFiles = count;
             if (count == 0)
                 loadLastProjectCheckBox.Checked = false;
 		}
