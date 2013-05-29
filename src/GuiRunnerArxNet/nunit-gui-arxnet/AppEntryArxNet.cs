@@ -28,6 +28,7 @@
 // 2013.5.29：
 //  1.改AddinManager为AddinManagerArxNet
 //  2.改ProjectService为ProjectServiceArxNet
+//  3.改RecentFilesService为RecentFilesServiceArxNet
 // ****************************************************************
 
 using System;
@@ -125,7 +126,7 @@ namespace NUnit.Gui.ArxNet
                 log.Info("Adding Services");
                 ServiceManagerArxNet.Services.AddService(settingsService);
                 ServiceManagerArxNet.Services.AddService(new DomainManagerArxNet());
-                ServiceManagerArxNet.Services.AddService(new RecentFilesService());
+                ServiceManagerArxNet.Services.AddService(new RecentFilesServiceArxNet());
                 ServiceManagerArxNet.Services.AddService(new ProjectServiceArxNet());
                 ServiceManagerArxNet.Services.AddService(new TestLoaderArxNet(new GuiTestEventDispatcherArxNet()));
                 ServiceManagerArxNet.Services.AddService(new AddinRegistry());

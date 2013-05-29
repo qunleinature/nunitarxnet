@@ -103,8 +103,11 @@
   <ItemGroup>
     <Compile Include="DomainManagerArxNetTests.cs" />
     <Compile Include="NUnitProjectArxNetLoad.cs" />
+    <Compile Include="NUnitProjectArxNetSave.cs" />
+    <Compile Include="NUnitProjectArxNetTests.cs" />
     <Compile Include="NUnitProjectArxNetXml.cs" />
     <Compile Include="PathUtilArxNetTests.cs" />
+    <Compile Include="RecentFilesArxNetTests.cs" />
     <Compile Include="ServiceManagerArxNetSetUpFixture.cs" />
     <Compile Include="SettingsGroupArxNetTests.cs" />
     <Compile Include="TestEventCatcher.cs" />

@@ -7,6 +7,8 @@
 // ****************************************************************
 // Copyright 2012, Lei Qun
 // 2012.12.19修改
+// 2013.5.29修改
+//   1.改ProjectService为ProjectServiceArxNet
 // ****************************************************************
 
 using System;
@@ -34,7 +36,7 @@ namespace NUnit.Util.ArxNet.Tests
 		{
 			ServiceManagerArxNet.Services.AddService( new DummySettingsService() );
 			ServiceManagerArxNet.Services.AddService( new DomainManagerArxNet() );
-            ServiceManagerArxNet.Services.AddService( new ProjectService() );
+            ServiceManagerArxNet.Services.AddService( new ProjectServiceArxNet() );
 			ServiceManagerArxNet.Services.AddService( new TestAgency( "TestDomain_TestAgency", 0 ) );
 			ServicesArxNet.TestAgency.Start();
 		}
