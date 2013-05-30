@@ -124,6 +124,9 @@
     <Compile Include="TabbedSettingsDialogArxNet.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="TestSuiteTreeViewArxNet.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="TestTreeArxNet.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -134,6 +137,7 @@
     <Compile Include="TreeBasedSettingsDialogArxNet.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="VisualStateArxNet.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -173,6 +177,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TabbedSettingsDialogArxNet.resx">
       <DependentUpon>TabbedSettingsDialogArxNet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestSuiteTreeViewArxNet.resx">
+      <DependentUpon>TestSuiteTreeViewArxNet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TestTreeArxNet.resx">
       <DependentUpon>TestTreeArxNet.cs</DependentUpon>
