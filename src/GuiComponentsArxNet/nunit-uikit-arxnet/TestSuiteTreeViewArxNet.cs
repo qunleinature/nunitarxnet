@@ -10,6 +10,8 @@
 //  2.NUnit.UiKit.TestSuiteTreeView改为NUnit.UiKit.ArxNet.TestSuiteTreeViewArxNet类
 //  3.改Services为ServicesArxNet
 //  4.改VisualState为VisualStateArxNet
+//  5.改TestSuiteTreeNode为TestSuiteTreeNodeArxNet
+//  6.改TestPropertiesDialog为TestPropertiesDialogArxNet
 // ****************************************************************
 
 using System;
@@ -81,7 +83,7 @@ namespace NUnit.UiKit.ArxNet
 		/// <summary>
 		/// The TestNode on which a right click was done
 		/// </summary>
-		private TestSuiteTreeNode explicitlySelectedNode;
+		private TestSuiteTreeNodeArxNet explicitlySelectedNode;
 
 		/// <summary>
 		/// Whether the browser supports running tests,
@@ -97,7 +99,7 @@ namespace NUnit.UiKit.ArxNet
 		/// <summary>
 		/// The properties dialog if displayed
 		/// </summary>
-		private TestPropertiesDialog propertiesDialog;
+		private TestPropertiesDialogArxNet propertiesDialog;
 
 		/// <summary>
 		/// Source of events that the tree responds to and
@@ -299,7 +301,7 @@ namespace NUnit.UiKit.ArxNet
 		{
 			get 
 			{ 
-				TestSuiteTreeNode node = (TestSuiteTreeNode)SelectedNode;
+				TestSuiteTreeNodeArxNet node = (TestSuiteTreeNodeArxNet)SelectedNode;
 				return node == null ? null : node.Test;
 			}
 		}
@@ -355,7 +357,7 @@ namespace NUnit.UiKit.ArxNet
 		{
 			get 
 			{
-				TestSuiteTreeNode node = (TestSuiteTreeNode)SelectedNode;
+				TestSuiteTreeNodeArxNet node = (TestSuiteTreeNodeArxNet)SelectedNode;
 				return node == null ? null : node.Result; 
 			}
 		}
@@ -377,15 +379,15 @@ namespace NUnit.UiKit.ArxNet
 		public event CheckedTestChangedHandler CheckedTestChanged;
 		public event EventHandler CheckBoxesChanged;
 
-		public TestSuiteTreeNode this[string uniqueName]
+		public TestSuiteTreeNodeArxNet this[string uniqueName]
 		{
-			get { return treeMap[uniqueName] as TestSuiteTreeNode; }
+			get { return treeMap[uniqueName] as TestSuiteTreeNodeArxNet; }
 		}
 
 		/// <summary>
 		/// Test node corresponding to a test
 		/// </summary>
-		private TestSuiteTreeNode this[ITest test]
+		private TestSuiteTreeNodeArxNet this[ITest test]
 		{
 			get { return FindNode( test ); }
 		}
@@ -393,7 +395,7 @@ namespace NUnit.UiKit.ArxNet
 		/// <summary>
 		/// Test node corresponding to a TestResultInfo
 		/// </summary>
-		private TestSuiteTreeNode this[TestResult result]
+		private TestSuiteTreeNodeArxNet this[TestResult result]
 		{
 			get	{ return FindNode( result.Test ); }
 		}
@@ -482,13 +484,13 @@ namespace NUnit.UiKit.ArxNet
 			{
 				CheckPropertiesDialog();
 				TreeNode theNode = GetNodeAt( e.X, e.Y );
-				explicitlySelectedNode = theNode as TestSuiteTreeNode;
+				explicitlySelectedNode = theNode as TestSuiteTreeNodeArxNet;
 			}
 //			else if (e.Button == MouseButtons.Left )
 //			{
 //				if ( Control.ModifierKeys == Keys.Control )
 //				{
-//					TestSuiteTreeNode theNode = GetNodeAt( e.X, e.Y ) as TestSuiteTreeNode;
+//					TestSuiteTreeNodeArxNet theNode = GetNodeAt( e.X, e.Y ) as TestSuiteTreeNodeArxNet;
 //					if ( theNode != null )
 //						theNode.IsSelected = true;
 //				}
@@ -508,7 +510,7 @@ namespace NUnit.UiKit.ArxNet
 		{
 			this.ContextMenu.MenuItems.Clear();
 
-			TestSuiteTreeNode targetNode = explicitlySelectedNode != null ? explicitlySelectedNode : (TestSuiteTreeNode)SelectedNode;
+			TestSuiteTreeNodeArxNet targetNode = explicitlySelectedNode != null ? explicitlySelectedNode : (TestSuiteTreeNodeArxNet)SelectedNode;
 			if ( targetNode == null )
 				return;
 	
@@ -527,7 +529,7 @@ namespace NUnit.UiKit.ArxNet
                 this.ContextMenu.MenuItems.Add("-");
 			}
 
-            TestSuiteTreeNode theoryNode = targetNode.GetTheoryNode();
+            TestSuiteTreeNodeArxNet theoryNode = targetNode.GetTheoryNode();
             if (theoryNode != null)
             {
                 MenuItem failedAssumptionsMenuItem = new MenuItem("Show Failed Assumptions", new EventHandler(failedAssumptionsMenuItem_Click));
@@ -568,7 +570,7 @@ namespace NUnit.UiKit.ArxNet
 		/// </summary>
 		private void expandMenuItem_Click(object sender, System.EventArgs e)
 		{
-			TestSuiteTreeNode targetNode = explicitlySelectedNode != null ? explicitlySelectedNode : (TestSuiteTreeNode)SelectedNode;
+			TestSuiteTreeNodeArxNet targetNode = explicitlySelectedNode != null ? explicitlySelectedNode : (TestSuiteTreeNodeArxNet)SelectedNode;
 			if ( targetNode != null )
 				targetNode.Expand();
 		}
@@ -578,7 +580,7 @@ namespace NUnit.UiKit.ArxNet
 		/// </summary>
 		private void collapseMenuItem_Click(object sender, System.EventArgs e)
 		{
-			TestSuiteTreeNode targetNode = explicitlySelectedNode != null ? explicitlySelectedNode : (TestSuiteTreeNode)SelectedNode;
+			TestSuiteTreeNodeArxNet targetNode = explicitlySelectedNode != null ? explicitlySelectedNode : (TestSuiteTreeNodeArxNet)SelectedNode;
 			if ( targetNode != null )
 				targetNode.Collapse();
 		}
@@ -603,8 +605,8 @@ namespace NUnit.UiKit.ArxNet
 
         private void failedAssumptionsMenuItem_Click(object sender, System.EventArgs e)
         {
-            TestSuiteTreeNode targetNode = explicitlySelectedNode != null ? explicitlySelectedNode : (TestSuiteTreeNode)SelectedNode;
-            TestSuiteTreeNode theoryNode = targetNode != null ? targetNode.GetTheoryNode() : null;
+            TestSuiteTreeNodeArxNet targetNode = explicitlySelectedNode != null ? explicitlySelectedNode : (TestSuiteTreeNodeArxNet)SelectedNode;
+            TestSuiteTreeNodeArxNet theoryNode = targetNode != null ? targetNode.GetTheoryNode() : null;
             if (theoryNode != null)
             {
                 MenuItem item = (MenuItem)sender;
@@ -669,7 +671,7 @@ namespace NUnit.UiKit.ArxNet
 
 		private void propertiesMenuItem_Click( object sender, System.EventArgs e)
 		{
-			TestSuiteTreeNode targetNode = explicitlySelectedNode != null ? explicitlySelectedNode : (TestSuiteTreeNode)SelectedNode;
+			TestSuiteTreeNodeArxNet targetNode = explicitlySelectedNode != null ? explicitlySelectedNode : (TestSuiteTreeNodeArxNet)SelectedNode;
 			if ( targetNode != null )
 				ShowPropertiesDialog( targetNode );
 		}
@@ -747,7 +749,7 @@ namespace NUnit.UiKit.ArxNet
 
 		private void TestSuiteTreeView_DoubleClick(object sender, System.EventArgs e)
 		{
-			TestSuiteTreeNode node = SelectedNode as TestSuiteTreeNode;
+			TestSuiteTreeNodeArxNet node = SelectedNode as TestSuiteTreeNodeArxNet;
 			if ( runCommandSupported && runCommandEnabled && node.Nodes.Count == 0 && node.Included )
 			{
 				runCommandEnabled = false;
@@ -790,7 +792,7 @@ namespace NUnit.UiKit.ArxNet
 		/// </summary>
 		public void ClearAllResults()
 		{
-			foreach ( TestSuiteTreeNode rootNode in Nodes )
+			foreach ( TestSuiteTreeNodeArxNet rootNode in Nodes )
 				rootNode.ClearResults();
 		}
 
@@ -853,7 +855,7 @@ namespace NUnit.UiKit.ArxNet
 		/// <param name="test">Test suite to be loaded</param>
 		public void Reload( TestNode test )
 		{
-            TestResult result = ((TestSuiteTreeNode)Nodes[0]).Result;
+            TestResult result = ((TestSuiteTreeNodeArxNet)Nodes[0]).Result;
             VisualStateArxNet visualState = new VisualStateArxNet(this);
 
             Load(test);
@@ -887,7 +889,7 @@ namespace NUnit.UiKit.ArxNet
 
 		public void Accept(TestSuiteTreeNodeVisitor visitor) 
 		{
-			foreach(TestSuiteTreeNode node in Nodes) 
+			foreach(TestSuiteTreeNodeArxNet node in Nodes) 
 			{
 				node.Accept(visitor);
 			}
@@ -909,7 +911,7 @@ namespace NUnit.UiKit.ArxNet
 		/// <param name="result">The result of the test</param>
 		public void SetTestResult(TestResult result)
 		{
-			TestSuiteTreeNode node = this[result];
+			TestSuiteTreeNodeArxNet node = this[result];
             if (node == null)
             {
                 Debug.WriteLine("Test not found in tree: " + result.Test.TestName.UniqueName);
@@ -932,7 +934,7 @@ namespace NUnit.UiKit.ArxNet
 		public void HideTests()
 		{
 			this.BeginUpdate();
-			foreach( TestSuiteTreeNode node in Nodes )
+			foreach( TestSuiteTreeNodeArxNet node in Nodes )
 				HideTestsUnderNode( node );
 			this.EndUpdate();
 		}
@@ -942,12 +944,12 @@ namespace NUnit.UiKit.ArxNet
 			ShowPropertiesDialog( this[ test ] );
 		}
 
-		private void ShowPropertiesDialog( TestSuiteTreeNode node )
+		private void ShowPropertiesDialog( TestSuiteTreeNodeArxNet node )
 		{
 			if ( propertiesDialog == null )
 			{
 				Form owner = this.FindForm();
-				propertiesDialog = new TestPropertiesDialog( node );
+				propertiesDialog = new TestPropertiesDialogArxNet( node );
 				propertiesDialog.Owner = owner;
                 propertiesDialog.Font = owner.Font;
 				propertiesDialog.StartPosition = FormStartPosition.Manual;
@@ -993,7 +995,7 @@ namespace NUnit.UiKit.ArxNet
             if (Nodes.Count > 0)
             {
                 runCommandEnabled = false;
-                RunTests(new ITest[] { ((TestSuiteTreeNode)Nodes[0]).Test }, ignoreCategories);
+                RunTests(new ITest[] { ((TestSuiteTreeNodeArxNet)Nodes[0]).Test }, ignoreCategories);
             }
 		}
 
@@ -1032,7 +1034,7 @@ namespace NUnit.UiKit.ArxNet
 
 			if ( tests.Length == 1 )
 			{
-				TestSuiteTreeNode rootNode = (TestSuiteTreeNode)Nodes[0];
+				TestSuiteTreeNodeArxNet rootNode = (TestSuiteTreeNodeArxNet)Nodes[0];
 				if ( tests[0] == rootNode.Test )
 					return CategoryFilter;
 			}
@@ -1066,9 +1068,9 @@ namespace NUnit.UiKit.ArxNet
 		/// <param name="rootTest">The test for which a node is to be built</param>
 		/// <param name="highlight">If true, highlight the text for this node in the tree</param>
 		/// <returns>A newly constructed TestNode, possibly with descendant nodes</returns>
-		private TestSuiteTreeNode AddTreeNodes( IList nodes, TestNode rootTest, bool highlight )
+		private TestSuiteTreeNodeArxNet AddTreeNodes( IList nodes, TestNode rootTest, bool highlight )
 		{
-			TestSuiteTreeNode node = new TestSuiteTreeNode( rootTest );
+			TestSuiteTreeNodeArxNet node = new TestSuiteTreeNodeArxNet( rootTest );
 			//			if ( highlight ) node.ForeColor = Color.Blue;
 			AddToMap( node );
 
@@ -1083,9 +1085,9 @@ namespace NUnit.UiKit.ArxNet
 			return node;
 		}
 
-		private TestSuiteTreeNode AddTreeNodes( IList nodes, TestResult rootResult, bool highlight )
+		private TestSuiteTreeNodeArxNet AddTreeNodes( IList nodes, TestResult rootResult, bool highlight )
 		{
-			TestSuiteTreeNode node = new TestSuiteTreeNode( rootResult );
+			TestSuiteTreeNodeArxNet node = new TestSuiteTreeNodeArxNet( rootResult );
 			AddToMap( node );
 
 			nodes.Add( node );
@@ -1101,7 +1103,7 @@ namespace NUnit.UiKit.ArxNet
 			return node;
 		}
 
-		private void AddToMap( TestSuiteTreeNode node )
+		private void AddToMap( TestSuiteTreeNodeArxNet node )
 		{
 			string key = node.Test.TestName.UniqueName;
 
@@ -1116,9 +1118,9 @@ namespace NUnit.UiKit.ArxNet
 			}
 		}
 
-		private void RemoveFromMap( TestSuiteTreeNode node )
+		private void RemoveFromMap( TestSuiteTreeNodeArxNet node )
 		{
-			foreach( TestSuiteTreeNode child in node.Nodes )
+			foreach( TestSuiteTreeNodeArxNet child in node.Nodes )
 				RemoveFromMap( child );
 			treeMap.Remove( node.Test.TestName.UniqueName );
 		}
@@ -1127,7 +1129,7 @@ namespace NUnit.UiKit.ArxNet
 		/// Remove a node from the tree itself and the hashtable
 		/// </summary>
 		/// <param name="node">Node to remove</param>
-		private void RemoveNode( TestSuiteTreeNode node )
+		private void RemoveNode( TestSuiteTreeNodeArxNet node )
 		{
 			if ( explicitlySelectedNode == node )
 				explicitlySelectedNode = null;
@@ -1147,7 +1149,7 @@ namespace NUnit.UiKit.ArxNet
 		/// Helper collapses all fixtures under a node
 		/// </summary>
 		/// <param name="node">Node under which to collapse fixtures</param>
-		private void HideTestsUnderNode( TestSuiteTreeNode node )
+		private void HideTestsUnderNode( TestSuiteTreeNodeArxNet node )
 		{
             if (node.Test.IsSuite)
             {
@@ -1157,7 +1159,7 @@ namespace NUnit.UiKit.ArxNet
                 {
                     node.Expand();
 
-                    foreach (TestSuiteTreeNode child in node.Nodes)
+                    foreach (TestSuiteTreeNodeArxNet child in node.Nodes)
                         HideTestsUnderNode(child);
                 }
             }
@@ -1203,9 +1205,9 @@ namespace NUnit.UiKit.ArxNet
 			SelectedNode.EnsureVisible();
 		}
 
-		private TestSuiteTreeNode FindNode( ITest test )
+		private TestSuiteTreeNodeArxNet FindNode( ITest test )
 		{
-			TestSuiteTreeNode node = treeMap[test.TestName.UniqueName] as TestSuiteTreeNode;
+			TestSuiteTreeNodeArxNet node = treeMap[test.TestName.UniqueName] as TestSuiteTreeNodeArxNet;
 
             if (node == null)
                 node = FindNodeByName(test.TestName.FullName);
@@ -1213,14 +1215,14 @@ namespace NUnit.UiKit.ArxNet
             return node;
 		}
 
-        private TestSuiteTreeNode FindNodeByName( string fullName )
+        private TestSuiteTreeNodeArxNet FindNodeByName( string fullName )
         {
             foreach( string uname in treeMap.Keys )
             {
                 int rbrack = uname.IndexOf(']');
                 string name = rbrack >=0 ? uname.Substring(rbrack+1) : uname;
                 if ( name == fullName )
-                    return treeMap[uname] as TestSuiteTreeNode;
+                    return treeMap[uname] as TestSuiteTreeNodeArxNet;
             }
 
             return null;
@@ -1256,7 +1258,7 @@ namespace NUnit.UiKit.ArxNet
 
     internal class ClearCheckedNodesVisitor : TestSuiteTreeNodeVisitor
 	{
-		public override void Visit(TestSuiteTreeNode node)
+		public override void Visit(TestSuiteTreeNodeArxNet node)
 		{
 			node.Checked = false;
 		}
@@ -1269,7 +1271,7 @@ namespace NUnit.UiKit.ArxNet
 
     internal class CheckFailedNodesVisitor : TestSuiteTreeNodeVisitor 
 	{
-		public override void Visit(TestSuiteTreeNode node)
+		public override void Visit(TestSuiteTreeNodeArxNet node)
 		{
 			if (!node.Test.IsSuite && node.HasResult && 
                 (node.Result.ResultState == ResultState.Failure || 
@@ -1297,7 +1299,7 @@ namespace NUnit.UiKit.ArxNet
 			get { return tests.ToArray(); }
 		}
 
-		public override void Visit(TestSuiteTreeNode node)
+		public override void Visit(TestSuiteTreeNodeArxNet node)
 		{
 			if (!node.Test.IsSuite && node.HasResult && 
                     (node.Result.ResultState == ResultState.Failure || 
@@ -1321,7 +1323,7 @@ namespace NUnit.UiKit.ArxNet
 			this.filter = filter;
 		}
 
-		public override void Visit( TestSuiteTreeNode node )
+		public override void Visit( TestSuiteTreeNodeArxNet node )
 		{
 			node.Included = filter.Pass( node.Test );
 		}
@@ -1388,7 +1390,7 @@ namespace NUnit.UiKit.ArxNet
 			FindCheckedNodes( treeView.Nodes, true );
 		}
 
-		private void FindCheckedNodes( TestSuiteTreeNode node, bool topLevel )
+		private void FindCheckedNodes( TestSuiteTreeNodeArxNet node, bool topLevel )
 		{
 			if ( node.Checked )
 			{
@@ -1401,7 +1403,7 @@ namespace NUnit.UiKit.ArxNet
 
 		private void FindCheckedNodes( TreeNodeCollection nodes, bool topLevel )
 		{
-			foreach( TestSuiteTreeNode node in nodes )
+			foreach( TestSuiteTreeNodeArxNet node in nodes )
 				FindCheckedNodes( node, topLevel );
 		}
     }

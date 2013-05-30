@@ -9,6 +9,7 @@
 //  1.在nunit2.6.2基础上修改
 //  2.NUnit.UiKit.TestSuiteTreeView改为NUnit.UiKit.ArxNet.TestSuiteTreeViewArxNet类
 //  3.改TestSuiteTreeView为TestSuiteTreeViewArxNet
+//  4.改TestSuiteTreeNode为TestSuiteTreeNodeArxNet
 // ****************************************************************
 
 using System;
@@ -77,10 +78,10 @@ namespace NUnit.UiKit.ArxNet
 		public VisualStateArxNet( TestSuiteTreeViewArxNet treeView )
 		{
 			this.ShowCheckBoxes = treeView.CheckBoxes;
-			this.TopNode = ((TestSuiteTreeNode)treeView.TopNode).Test.TestName.UniqueName;
-			this.SelectedNode = ((TestSuiteTreeNode)treeView.SelectedNode).Test.TestName.UniqueName;
+			this.TopNode = ((TestSuiteTreeNodeArxNet)treeView.TopNode).Test.TestName.UniqueName;
+			this.SelectedNode = ((TestSuiteTreeNodeArxNet)treeView.SelectedNode).Test.TestName.UniqueName;
 			this.Nodes = new List<VisualTreeNode>();
-            ProcessTreeNodes( (TestSuiteTreeNode)treeView.Nodes[0] );
+            ProcessTreeNodes( (TestSuiteTreeNodeArxNet)treeView.Nodes[0] );
 
 			if ( !treeView.CategoryFilter.IsEmpty )
 			{
@@ -95,16 +96,16 @@ namespace NUnit.UiKit.ArxNet
 			}
 		}
 
-        private void ProcessTreeNodes(TestSuiteTreeNode node)
+        private void ProcessTreeNodes(TestSuiteTreeNodeArxNet node)
         {
             if (IsInteresting(node))
                 this.Nodes.Add(new VisualTreeNode(node));
 
-            foreach (TestSuiteTreeNode childNode in node.Nodes)
+            foreach (TestSuiteTreeNodeArxNet childNode in node.Nodes)
                 ProcessTreeNodes(childNode);
         }
 
-        private bool IsInteresting(TestSuiteTreeNode node)
+        private bool IsInteresting(TestSuiteTreeNodeArxNet node)
         {
             return node.IsExpanded || node.Checked;
         }
@@ -132,7 +133,7 @@ namespace NUnit.UiKit.ArxNet
 
             foreach (VisualTreeNode visualNode in this.Nodes)
             {
-                TestSuiteTreeNode treeNode = treeView[visualNode.UniqueName];
+                TestSuiteTreeNodeArxNet treeNode = treeView[visualNode.UniqueName];
                 if (treeNode != null)
                 {
                     if (treeNode.IsExpanded != visualNode.Expanded)
@@ -144,14 +145,14 @@ namespace NUnit.UiKit.ArxNet
 
             if (this.SelectedNode != null)
             {
-                TestSuiteTreeNode treeNode = treeView[this.SelectedNode];
+                TestSuiteTreeNodeArxNet treeNode = treeView[this.SelectedNode];
                 if (treeNode != null)
                     treeView.SelectedNode = treeNode;
             }
 
             if (this.TopNode != null)
             {
-                TestSuiteTreeNode treeNode = treeView[this.TopNode];
+                TestSuiteTreeNodeArxNet treeNode = treeView[this.TopNode];
                 if (treeNode != null)
                     treeView.TopNode = treeNode;
             }
@@ -187,7 +188,7 @@ namespace NUnit.UiKit.ArxNet
 
 		public VisualTreeNode() { }
 
-		public VisualTreeNode( TestSuiteTreeNode treeNode )
+		public VisualTreeNode( TestSuiteTreeNodeArxNet treeNode )
 		{
 			this.UniqueName = treeNode.Test.TestName.UniqueName;
 			this.Expanded = treeNode.IsExpanded;

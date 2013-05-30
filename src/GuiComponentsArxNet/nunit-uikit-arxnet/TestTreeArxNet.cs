@@ -7,6 +7,9 @@
 // ****************************************************************
 // Copyright 2012, Lei Qun 
 // 2012.12.21修改
+// 2013.5.31修改：
+//  1.改Services为ServicesArxNet
+//  2.改TestSuiteTreeView为TestSuiteTreeViewArxNet
 // ****************************************************************
 
 using System;
@@ -49,7 +52,7 @@ namespace NUnit.UiKit.ArxNet
 		private System.Windows.Forms.Panel categoryPanel;
 		private System.Windows.Forms.Panel treePanel;
 		private System.Windows.Forms.Panel buttonPanel;
-		private NUnit.UiKit.TestSuiteTreeView tests;
+		private NUnit.UiKit.ArxNet.TestSuiteTreeViewArxNet tests;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.ListBox availableList;
 		private System.Windows.Forms.GroupBox selectedCategories;
@@ -361,7 +364,7 @@ namespace NUnit.UiKit.ArxNet
             this.testPage = new System.Windows.Forms.TabPage();
             this.testPanel = new System.Windows.Forms.Panel();
             this.treePanel = new System.Windows.Forms.Panel();
-            this.tests = new NUnit.UiKit.TestSuiteTreeView();
+            this.tests = new NUnit.UiKit.ArxNet.TestSuiteTreeViewArxNet();
             this.buttonPanel = new System.Windows.Forms.Panel();
             this.checkFailedButton = new System.Windows.Forms.Button();
             this.clearAllButton = new System.Windows.Forms.Button();

@@ -124,6 +124,13 @@
     <Compile Include="TabbedSettingsDialogArxNet.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="TestPropertiesDialogArxNet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestPropertiesDialogArxNet.designer.cs">
+      <DependentUpon>TestPropertiesDialogArxNet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TestSuiteTreeNodeArxNet.cs" />
     <Compile Include="TestSuiteTreeViewArxNet.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -177,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TabbedSettingsDialogArxNet.resx">
       <DependentUpon>TabbedSettingsDialogArxNet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestPropertiesDialogArxNet.resx">
+      <DependentUpon>TestPropertiesDialogArxNet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TestSuiteTreeViewArxNet.resx">
       <DependentUpon>TestSuiteTreeViewArxNet.cs</DependentUpon>

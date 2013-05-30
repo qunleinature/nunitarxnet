@@ -112,7 +112,10 @@
     <Compile Include="ErrorDisplayArxNetTests.cs" />
     <Compile Include="ProgressBarArxNetTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestSuiteTreeNodeArxNetTests.cs" />
+    <Compile Include="TestSuiteTreeViewArxNetFixture.cs" />
     <Compile Include="TestTreeArxNetTests.cs" />
+    <Compile Include="VisualStateArxNetTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

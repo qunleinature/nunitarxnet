@@ -10,6 +10,8 @@
 //  1.在nunit2.6.2基础上修改
 //  2.NUnit.Gui.SettingsPages.TreeSettingsPage改为NUnit.Gui.ArxNet.SettingsPagesArxNet.TreeSettingsPageArxNet类
 //  3.改SettingsPage为SettingsPageArxNet
+// 2013.5.31修改
+//  1.改TestSuiteTreeView为TestSuiteTreeViewArxNet
 // ****************************************************************
 
 using System;
@@ -21,6 +23,8 @@ using System.Reflection;
 using System.Windows.Forms;
 using NUnit.UiKit;
 using NUnit.Util;
+
+using NUnit.UiKit.ArxNet;
 
 namespace NUnit.Gui.ArxNet.SettingsPagesArxNet
 {
@@ -347,7 +351,7 @@ namespace NUnit.Gui.ArxNet.SettingsPagesArxNet
 
 		public override void LoadSettings()
 		{
-			initialDisplayComboBox.SelectedIndex = (int)(TestSuiteTreeView.DisplayStyle)settings.GetSetting( "Gui.TestTree.InitialTreeDisplay", TestSuiteTreeView.DisplayStyle.Auto );
+			initialDisplayComboBox.SelectedIndex = (int)(TestSuiteTreeViewArxNet.DisplayStyle)settings.GetSetting( "Gui.TestTree.InitialTreeDisplay", TestSuiteTreeView.DisplayStyle.Auto );
 			clearResultsCheckBox.Checked = settings.GetSetting( "Options.TestLoader.ClearResultsOnReload", true );
 			saveVisualStateCheckBox.Checked = settings.GetSetting( "Gui.TestTree.SaveVisualState", true );
 			showCheckBoxesCheckBox.Checked = settings.GetSetting( "Options.ShowCheckBoxes", false );
@@ -368,7 +372,7 @@ namespace NUnit.Gui.ArxNet.SettingsPagesArxNet
 
 		public override void ApplySettings()
 		{
-			settings.SaveSetting( "Gui.TestTree.InitialTreeDisplay", (TestSuiteTreeView.DisplayStyle)initialDisplayComboBox.SelectedIndex );
+			settings.SaveSetting( "Gui.TestTree.InitialTreeDisplay", (TestSuiteTreeViewArxNet.DisplayStyle)initialDisplayComboBox.SelectedIndex );
 			settings.SaveSetting( "Options.TestLoader.ClearResultsOnReload", clearResultsCheckBox.Checked );
 			settings.SaveSetting( "Gui.TestTree.SaveVisualState", saveVisualStateCheckBox.Checked );
 			settings.SaveSetting( "Options.ShowCheckBoxes", showCheckBoxesCheckBox.Checked );
