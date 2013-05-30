@@ -13,6 +13,13 @@
 //   1.改TextOutputSettingsPage为TextOutputSettingsPageArxNet
 //   2.改TreeSettingsPage为TreeSettingsPageArxNet
 //   3.改TestResultSettingsPage为TestResultSettingsPageArxNet
+//   4.改ProjectEditorSettingsPage为ProjectEditorSettingsPageArxNet
+//   5.改TestLoaderSettingsPage为TestLoaderSettingsPageArxNet
+//   6.改AssemblyReloadSettingsPage为AssemblyReloadSettingsPageArxNet
+//   7.改RuntimeSelectionSettingsPage为RuntimeSelectionSettingsPageArxNet
+//   8.改AdvancedLoaderSettingsPage为AdvancedLoaderSettingsPageArxNet
+//   9.改VisualStudioSettingsPage为VisualStudioSettingsPageArxNet
+//   10.改InternalTraceSettingsPage为InternalTraceSettingsPageArxNet
 // ****************************************************************
 
 #define TREE_BASED
@@ -44,13 +51,13 @@ namespace NUnit.Gui.ArxNet
 				new TreeSettingsPageArxNet("Gui.Tree Display"),
 				new TestResultSettingsPageArxNet("Gui.Test Results"),
 				new TextOutputSettingsPageArxNet("Gui.Text Output"),
-                new ProjectEditorSettingsPage("Gui.Project Editor"),
-                new TestLoaderSettingsPage("Test Loader.Assembly Isolation"),
-				new AssemblyReloadSettingsPage("Test Loader.Assembly Reload"),
-                new RuntimeSelectionSettingsPage("Test Loader.Runtime Selection"),
-				new AdvancedLoaderSettingsPage("Test Loader.Advanced"),
-				new VisualStudioSettingsPage("IDE Support.Visual Studio"),
-                new InternalTraceSettingsPage("Advanced Settings.Internal Trace"));
+                new ProjectEditorSettingsPageArxNet("Gui.Project Editor"),
+                new TestLoaderSettingsPageArxNet("Test Loader.Assembly Isolation"),
+				new AssemblyReloadSettingsPageArxNet("Test Loader.Assembly Reload"),
+                new RuntimeSelectionSettingsPageArxNet("Test Loader.Runtime Selection"),
+				new AdvancedLoaderSettingsPageArxNet("Test Loader.Advanced"),
+				new VisualStudioSettingsPageArxNet("IDE Support.Visual Studio"),
+                new InternalTraceSettingsPageArxNet("Advanced Settings.Internal Trace"));
 		}
 #else
 		public static void Display( Form owner )
@@ -60,9 +67,9 @@ namespace NUnit.Gui.ArxNet
 				new TreeSettingsPageArxNet("Tree"),
 				new TestResultSettingsPageArxNet("Results"),
 				new TextOutputSettingsPageArxNet("Text Output"),
-				new TestLoaderSettingsPage("Test Load"),
-				new AssemblyReloadSettingsPage("Reload"),
-				new VisualStudioSettingsPage("Visual Studio"));
+				new TestLoaderSettingsPageArxNet("Test Load"),
+				new AssemblyReloadSettingsPageArxNet("Reload"),
+				new VisualStudioSettingsPageArxNet("Visual Studio"));
 		}
 #endif
 

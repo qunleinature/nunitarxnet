@@ -166,13 +166,43 @@
     <Compile Include="OptionsDialogArxNet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecentFileMenuHandlerArxNet.cs" />
+    <Compile Include="SettingsPagesArxNet\AdvancedLoaderSettingsPageArxNet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SettingsPagesArxNet\AssemblyReloadSettingsPageArxNet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="SettingsPagesArxNet\GuiSettingsPageArxNet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SettingsPagesArxNet\InternalTraceSettingsPageArxNet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SettingsPagesArxNet\InternalTraceSettingsPageArxNet.designer.cs">
+      <DependentUpon>InternalTraceSettingsPageArxNet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsPagesArxNet\ProjectEditorSettingsPageArxNet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SettingsPagesArxNet\ProjectEditorSettingsPageArxNet.designer.cs">
+      <DependentUpon>ProjectEditorSettingsPageArxNet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsPagesArxNet\RuntimeSelectionSettingsPageArxNet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SettingsPagesArxNet\RuntimeSelectionSettingsPageArxNet.designer.cs">
+      <DependentUpon>RuntimeSelectionSettingsPageArxNet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsPagesArxNet\TestLoaderSettingsPageArxNet.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="SettingsPagesArxNet\TestResultSettingsPageArxNet.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="SettingsPagesArxNet\TreeSettingsPageArxNet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SettingsPagesArxNet\VisualStudioSettingsPageArxNet.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="TestAssemblyInfoFormArxNet.cs">
@@ -186,11 +216,32 @@
     <EmbeddedResource Include="NUnitFormArxNet.resx">
       <DependentUpon>NUnitFormArxNet.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SettingsPagesArxNet\AdvancedLoaderSettingsPageArxNet.resx">
+      <DependentUpon>AdvancedLoaderSettingsPageArxNet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsPagesArxNet\AssemblyReloadSettingsPageArxNet.resx">
+      <DependentUpon>AssemblyReloadSettingsPageArxNet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsPagesArxNet\InternalTraceSettingsPageArxNet.resx">
+      <DependentUpon>InternalTraceSettingsPageArxNet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsPagesArxNet\ProjectEditorSettingsPageArxNet.resx">
+      <DependentUpon>ProjectEditorSettingsPageArxNet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsPagesArxNet\RuntimeSelectionSettingsPageArxNet.resx">
+      <DependentUpon>RuntimeSelectionSettingsPageArxNet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsPagesArxNet\TestLoaderSettingsPageArxNet.resx">
+      <DependentUpon>TestLoaderSettingsPageArxNet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SettingsPagesArxNet\TestResultSettingsPageArxNet.resx">
       <DependentUpon>TestResultSettingsPageArxNet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsPagesArxNet\TreeSettingsPageArxNet.resx">
       <DependentUpon>TreeSettingsPageArxNet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsPagesArxNet\VisualStudioSettingsPageArxNet.resx">
+      <DependentUpon>VisualStudioSettingsPageArxNet.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
