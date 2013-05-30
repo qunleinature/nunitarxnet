@@ -13,6 +13,8 @@
 //  1.在nunit2.6.2基础上修改
 //  2.ErrorDisplay改为ErrorDisplayArxNet
 //  3.NotRunTree改为NotRunTreeArxNet
+// 2013.5.31修改：
+//  1.改TextDisplayTabPage为TextDisplayTabPageArxNet
 // ****************************************************************
 
 using System;
@@ -391,7 +393,7 @@ namespace NUnit.UiKit.ArxNet
 		private class TextDisplayController
 		{
 			private TabControl tabControl;
-			List<TextDisplayTabPage> tabPages = new List<TextDisplayTabPage>();
+			List<TextDisplayTabPageArxNet> tabPages = new List<TextDisplayTabPageArxNet>();
 
 			public TextDisplayController(TabControl tabControl)
 			{			
@@ -403,7 +405,7 @@ namespace NUnit.UiKit.ArxNet
             {
                 get
                 {
-                    foreach (TextDisplayTabPage page in tabPages)
+                    foreach (TextDisplayTabPageArxNet page in tabPages)
                         if (page.Display.Content.Trace)
                             return true;
 
@@ -417,7 +419,7 @@ namespace NUnit.UiKit.ArxNet
                 {
                     LoggingThreshold logLevel = LoggingThreshold.Off;
 
-                    foreach (TextDisplayTabPage page in tabPages)
+                    foreach (TextDisplayTabPageArxNet page in tabPages)
                     {
                         LoggingThreshold level = page.Display.Content.LogLevel;
                         if (level > logLevel)
@@ -430,7 +432,7 @@ namespace NUnit.UiKit.ArxNet
 
             public void Clear()
 			{
-				foreach( TextDisplayTabPage page in tabPages )
+				foreach( TextDisplayTabPageArxNet page in tabPages )
 					page.Display.Clear();
 			}
 
@@ -438,16 +440,16 @@ namespace NUnit.UiKit.ArxNet
 			{
 				TextDisplayTabSettings tabSettings = new TextDisplayTabSettings();
 				tabSettings.LoadSettings();
-                List <TextDisplayTabPage> oldPages = tabPages;
-				tabPages = new List<TextDisplayTabPage>();
+                List <TextDisplayTabPageArxNet> oldPages = tabPages;
+				tabPages = new List<TextDisplayTabPageArxNet>();
 				Font displayFont = GetFixedFont();
 
 				foreach( TextDisplayTabSettings.TabInfo tabInfo in tabSettings.Tabs )
 				{
 					if ( tabInfo.Enabled )
 					{
-						TextDisplayTabPage thePage = null;
-						foreach( TextDisplayTabPage page in oldPages )
+						TextDisplayTabPageArxNet thePage = null;
+						foreach( TextDisplayTabPageArxNet page in oldPages )
 							if ( page.Name == tabInfo.Name )
 							{
 								thePage = page;
@@ -456,7 +458,7 @@ namespace NUnit.UiKit.ArxNet
 
 						if ( thePage == null )
 						{
-							thePage = new TextDisplayTabPage( tabInfo );
+							thePage = new TextDisplayTabPageArxNet( tabInfo );
 							thePage.Display.Subscribe(ServicesArxNet.TestLoader.Events);
 						}
 
@@ -476,7 +478,7 @@ namespace NUnit.UiKit.ArxNet
 				if ( settingName == "Gui.FixedFont" )
 				{
 					Font displayFont = GetFixedFont();
-					foreach( TextDisplayTabPage page in tabPages )
+					foreach( TextDisplayTabPageArxNet page in tabPages )
 						page.DisplayFont = displayFont;
 				}
 				else
@@ -488,7 +490,7 @@ namespace NUnit.UiKit.ArxNet
 					{
 						string tabName = fieldName.Substring( 0, dot );
 						string propName = fieldName.Substring( dot + 1 );
-						foreach( TextDisplayTabPage page in tabPages )
+						foreach( TextDisplayTabPageArxNet page in tabPages )
 							if ( page.Name == tabName )
 							{
 								switch(propName)

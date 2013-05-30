@@ -3,21 +3,32 @@
 // This is free software licensed under the NUnit license. You may
 // obtain a copy of the license at http://nunit.org
 // ****************************************************************
+
+// ****************************************************************
+// 2013.5.31修改：
+//  1.在nunit2.6.2基础上修改
+//  2.NUnit.UiKit.TextBoxDisplay改为NUnit.UiKit.ArxNet.TextBoxDisplayArxNet类
+//  3.改Services为ServicesArxNet
+// ****************************************************************
+
 using System;
 using System.Windows.Forms;
 using System.Drawing;
 using System.ComponentModel;
+
 using NUnit.Core;
 using NUnit.Util;
 using System.Diagnostics;
 
-namespace NUnit.UiKit
+using NUnit.Util.ArxNet;
+
+namespace NUnit.UiKit.ArxNet
 {
 	/// <summary>
 	/// TextBoxDisplay is an adapter that allows accessing a 
 	/// System.Windows.Forms.TextBox using the TextDisplay interface.
 	/// </summary>
-	public class TextBoxDisplay : System.Windows.Forms.RichTextBox, TextDisplay, TestObserver
+	public class TextBoxDisplayArxNet : System.Windows.Forms.RichTextBox, TextDisplay, TestObserver
 	{
 		private MenuItem copyMenuItem;
 		private MenuItem selectAllMenuItem;
@@ -29,7 +40,7 @@ namespace NUnit.UiKit
 
 		private TextDisplayContent content;
 
-		public TextBoxDisplay()
+		public TextBoxDisplayArxNet()
 		{
 			this.Multiline = true;
 			this.ReadOnly = true;
@@ -82,7 +93,7 @@ namespace NUnit.UiKit
 		{
 			this.Font = font;
 			TypeConverter converter = TypeDescriptor.GetConverter(typeof(Font));
-			Services.UserSettings.SaveSetting( "Gui.FixedFont", 
+			ServicesArxNet.UserSettings.SaveSetting( "Gui.FixedFont", 
                 converter.ConvertToString( null, System.Globalization.CultureInfo.InvariantCulture, font ) );
 		}
 		

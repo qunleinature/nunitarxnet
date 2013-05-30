@@ -138,6 +138,12 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextBoxDisplayArxNet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TextDisplayTabPageArxNet.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="TextOutputSettingsPageArxNet.cs">
       <SubType>UserControl</SubType>
     </Compile>
