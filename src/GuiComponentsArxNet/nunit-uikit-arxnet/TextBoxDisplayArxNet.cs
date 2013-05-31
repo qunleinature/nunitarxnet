@@ -9,6 +9,7 @@
 //  1.在nunit2.6.2基础上修改
 //  2.NUnit.UiKit.TextBoxDisplay改为NUnit.UiKit.ArxNet.TextBoxDisplayArxNet类
 //  3.改Services为ServicesArxNet
+//  4.改TextDisplay为TextDisplayArxNet
 // ****************************************************************
 
 using System;
@@ -28,7 +29,7 @@ namespace NUnit.UiKit.ArxNet
 	/// TextBoxDisplay is an adapter that allows accessing a 
 	/// System.Windows.Forms.TextBox using the TextDisplay interface.
 	/// </summary>
-	public class TextBoxDisplayArxNet : System.Windows.Forms.RichTextBox, TextDisplay, TestObserver
+	public class TextBoxDisplayArxNet : System.Windows.Forms.RichTextBox, TextDisplayArxNet, TestObserver
 	{
 		private MenuItem copyMenuItem;
 		private MenuItem selectAllMenuItem;
@@ -38,7 +39,7 @@ namespace NUnit.UiKit.ArxNet
 		private MenuItem decreaseFontMenuItem;
 		private MenuItem restoreFontMenuItem;
 
-		private TextDisplayContent content;
+		private TextDisplayContentArxNet content;
 
 		public TextBoxDisplayArxNet()
 		{
@@ -170,7 +171,7 @@ namespace NUnit.UiKit.ArxNet
 
 
 		#region TextDisplay Members
-		public TextDisplayContent Content
+		public TextDisplayContentArxNet Content
 		{
 			get { return content; }
 			set { content = value; }

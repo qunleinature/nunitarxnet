@@ -338,7 +338,7 @@ namespace NUnit.UiKit.ArxNet
 		{
 			textBox1.Text = tabInfo.Title;
 
-			TextDisplayContent content = tabInfo.Content;
+			TextDisplayContentArxNet content = tabInfo.Content;
             showStandardOutput.Checked = content.Out;
             showErrorOutput.Checked = content.Error;
             showTraceOutput.Checked = content.Trace;

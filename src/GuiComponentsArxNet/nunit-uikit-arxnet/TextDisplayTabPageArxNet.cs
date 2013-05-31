@@ -46,7 +46,7 @@ namespace NUnit.UiKit.ArxNet
 			this.Display.Content = tabInfo.Content;
 		}
 
-		public TextDisplay Display
+		public TextDisplayArxNet Display
 		{
 			get { return this.display; }
 		}

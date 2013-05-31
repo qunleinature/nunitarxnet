@@ -141,6 +141,8 @@
     <Compile Include="TextBoxDisplayArxNet.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="TextDisplayArxNet.cs" />
+    <Compile Include="TextDisplayContentArxNet.cs" />
     <Compile Include="TextDisplayTabPageArxNet.cs">
       <SubType>Component</SubType>
     </Compile>
