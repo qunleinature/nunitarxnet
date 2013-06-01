@@ -9,6 +9,9 @@
 //  1.在nunit2.6.2基础上修改
 //  2.NUnit.UiKit.TextDisplayTabPage改为NUnit.UiKit.ArxNet.TextDisplayTabPageArxNet类
 //  3.改TextBoxDisplay为TextBoxDisplayArxNet
+// 2013.6.1修改：
+//  1.改TextDisplayTabSettings为TextDisplayTabSettingsArxNet
+//  2.改TextDisplay为TextDisplayArxNet
 // ****************************************************************
 
 using System;
@@ -39,7 +42,7 @@ namespace NUnit.UiKit.ArxNet
 			set { display.Font = value; }
 		}
 
-		public TextDisplayTabPageArxNet( TextDisplayTabSettings.TabInfo tabInfo ) : this()
+		public TextDisplayTabPageArxNet( TextDisplayTabSettingsArxNet.TabInfo tabInfo ) : this()
 		{
 			this.Name = tabInfo.Name;
 			this.Text = tabInfo.Title;

@@ -22,6 +22,8 @@
 // 2013.1.1修改
 // 1.单元测试NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProject改
 // 2.单元测试NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProjectAs改
+// 2013.6.1修改：
+// 1.Services已经改ServicesArxNet
 // ****************************************************************
 
 using System;

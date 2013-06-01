@@ -15,6 +15,10 @@
 //  1.改TestProgressBar为TestProgressBarArxNet
 // 2013.5.28：
 //  1.改OptionsDialog为OptionsDialogArxNet
+// 2013.6.1：
+//  1.改AddinDialog为AddinDialogArxNet
+//  2.改ServiceManager为ServiceManagerArxNet
+//  3.Services已经改ServicesArxNet
 // ****************************************************************
 
 using System;
@@ -190,7 +194,7 @@ namespace NUnit.Gui.ArxNet
             AppEntryArxNet.log.Info("Application Exit");
 
             AppEntryArxNet.log.Info("Stopping Services");
-            ServiceManager.Services.StopAllServices();
+            ServiceManagerArxNet.Services.StopAllServices();
 
             AppEntryArxNet.log.Info("Exiting NUnit GUI");
             InternalTrace.Close();
@@ -1332,7 +1336,7 @@ namespace NUnit.Gui.ArxNet
 
 		private void addinInfoMenuItem_Click(object sender, System.EventArgs e)
 		{
-			AddinDialog dlg = new AddinDialog();
+			AddinDialogArxNet dlg = new AddinDialogArxNet();
 			dlg.ShowDialog();
 		}
 
@@ -1925,7 +1929,7 @@ namespace NUnit.Gui.ArxNet
             /*AppEntryArxNet.log.Info("Application Exit");
 
             AppEntryArxNet.log.Info("Stopping Services");
-            ServiceManager.ServicesArxNet.StopAllServices();            
+            ServiceManagerArxNet.Services.StopAllServices();            
 
             AppEntryArxNet.log.Info("Exiting NUnit GUI");
             InternalTrace.Close();*/

@@ -15,6 +15,9 @@
 //  3.NotRunTree改为NotRunTreeArxNet
 // 2013.5.31修改：
 //  1.改TextDisplayTabPage为TextDisplayTabPageArxNet
+// 2013.6.1修改：
+//  1.改TextOutputSettingsPage为TextOutputSettingsPageArxNet
+//  2.改TextDisplayTabSettings为TextDisplayTabSettingsArxNet
 // ****************************************************************
 
 using System;
@@ -242,7 +245,7 @@ namespace NUnit.UiKit.ArxNet
                     if (ServicesArxNet.TestLoader == null) return;//2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加
 
                     this.settings = ServicesArxNet.UserSettings;
-                    TextDisplayTabSettings tabSettings = new TextDisplayTabSettings();
+                    TextDisplayTabSettingsArxNet tabSettings = new TextDisplayTabSettingsArxNet();
                     tabSettings.LoadSettings(settings);
 
                     UpdateTabPages();
@@ -438,13 +441,13 @@ namespace NUnit.UiKit.ArxNet
 
 			public void UpdatePages()
 			{
-				TextDisplayTabSettings tabSettings = new TextDisplayTabSettings();
+				TextDisplayTabSettingsArxNet tabSettings = new TextDisplayTabSettingsArxNet();
 				tabSettings.LoadSettings();
                 List <TextDisplayTabPageArxNet> oldPages = tabPages;
 				tabPages = new List<TextDisplayTabPageArxNet>();
 				Font displayFont = GetFixedFont();
 
-				foreach( TextDisplayTabSettings.TabInfo tabInfo in tabSettings.Tabs )
+				foreach( TextDisplayTabSettingsArxNet.TabInfo tabInfo in tabSettings.Tabs )
 				{
 					if ( tabInfo.Enabled )
 					{

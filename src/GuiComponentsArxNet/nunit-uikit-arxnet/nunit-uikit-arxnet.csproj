@@ -99,6 +99,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddTabPageDialogArxNet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditTabPagesDialogArxNet.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ErrorDisplayArxNet.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -146,6 +152,7 @@
     <Compile Include="TextDisplayTabPageArxNet.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="TextDisplayTabSettingsArxNet.cs" />
     <Compile Include="TextOutputSettingsPageArxNet.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -172,6 +179,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AddTabPageDialogArxNet.resx">
+      <DependentUpon>AddTabPageDialogArxNet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditTabPagesDialogArxNet.resx">
+      <DependentUpon>EditTabPagesDialogArxNet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ErrorDisplayArxNet.resx">
       <DependentUpon>ErrorDisplayArxNet.cs</DependentUpon>
     </EmbeddedResource>

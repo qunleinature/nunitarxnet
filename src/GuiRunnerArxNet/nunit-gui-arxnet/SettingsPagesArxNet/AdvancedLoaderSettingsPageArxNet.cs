@@ -10,6 +10,8 @@
 //  1.在nunit2.6.2基础上修改
 //  2.NUnit.Gui.SettingsPages.AdvancedLoaderSettingsPage改为NUnit.Gui.ArxNet.SettingsPagesArxNet.AdvancedLoaderSettingsPageArxNet类
 //  3.改SettingsPage为SettingsPageArxNet
+// 2013.6.1修改：
+//  1.改Services为ServicesArxNet
 // ****************************************************************
 
 using System;
@@ -18,7 +20,10 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Security.Principal;
 using System.Windows.Forms;
+
 using NUnit.Util;
+
+using NUnit.Util.ArxNet;
 
 namespace NUnit.Gui.ArxNet.SettingsPagesArxNet
 {
@@ -226,7 +231,7 @@ namespace NUnit.Gui.ArxNet.SettingsPagesArxNet
 
 		public override void LoadSettings()
 		{
-			this.settings = Services.UserSettings;
+			this.settings = ServicesArxNet.UserSettings;
 
 			enableShadowCopyCheckBox.Checked = settings.GetSetting( "Options.TestLoader.ShadowCopyFiles", true );
             shadowCopyPathTextBox.Text = settings.GetSetting("Options.TestLoader.ShadowCopyPath", "");

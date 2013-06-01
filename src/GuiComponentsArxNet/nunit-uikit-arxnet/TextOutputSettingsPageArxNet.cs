@@ -9,6 +9,11 @@
 //  1.在nunit2.6.2基础上修改
 //  2.NUnit.UiKit.TextOutputSettingsPage改为NUnit.UiKit.ArxNet.TextOutputSettingsPageArxNet类
 //  3.SettingsPage改为SettingsPageArxNet
+//  4.改EditTabPagesDialog为EditTabPagesDialogArxNet
+// 2013.6.1修改：
+//  1.改AddTabPageDialog为AddTabPageDialogArxNet
+//  2.改TextDisplayTabSettings为TextDisplayTabSettingsArxNet
+//  3.改TextDisplayContent为TextDisplayContentArxNet
 // ****************************************************************
 
 using System;
@@ -36,7 +41,7 @@ namespace NUnit.UiKit.ArxNet
 		private System.Windows.Forms.TextBox textBox1;
 		private System.Windows.Forms.Label label5;
 
-		private TextDisplayTabSettings tabSettings = new TextDisplayTabSettings();
+		private TextDisplayTabSettingsArxNet tabSettings = new TextDisplayTabSettingsArxNet();
 		private System.Windows.Forms.CheckBox enabledCheckBox;
         private System.Windows.Forms.HelpProvider helpProvider1;
         private Label label6;
@@ -316,7 +321,7 @@ namespace NUnit.UiKit.ArxNet
 		{
 			tabSelectComboBox.Items.Clear();
 
-			foreach( TextDisplayTabSettings.TabInfo tabInfo in this.tabSettings.Tabs )
+			foreach( TextDisplayTabSettingsArxNet.TabInfo tabInfo in this.tabSettings.Tabs )
 				this.tabSelectComboBox.Items.Add( tabInfo.Title );
 
 			tabSelectComboBox.Items.Add( "<New...>" );
@@ -334,7 +339,7 @@ namespace NUnit.UiKit.ArxNet
 			InitializeTabSelectComboBox();
 		}
 
-		private void InitDisplay(TextDisplayTabSettings.TabInfo tabInfo)
+		private void InitDisplay(TextDisplayTabSettingsArxNet.TabInfo tabInfo)
 		{
 			textBox1.Text = tabInfo.Title;
 
@@ -369,7 +374,7 @@ namespace NUnit.UiKit.ArxNet
 
 		private void addNewTabPage()
 		{
-			using( AddTabPageDialog dlg = new AddTabPageDialog(tabSettings) )
+			using( AddTabPageDialogArxNet dlg = new AddTabPageDialogArxNet(tabSettings) )
 			{
 				this.ParentForm.Site.Container.Add( dlg );
 				if ( dlg.ShowDialog(this) == DialogResult.OK )
@@ -382,7 +387,7 @@ namespace NUnit.UiKit.ArxNet
 
 		private void editTabPages()
 		{
-			using( EditTabPagesDialog dlg = new EditTabPagesDialog( tabSettings) )
+			using( EditTabPagesDialogArxNet dlg = new EditTabPagesDialogArxNet( tabSettings) )
 			{
 				this.ParentForm.Site.Container.Add( dlg );
 				dlg.ShowDialog(this);
