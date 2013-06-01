@@ -12,9 +12,13 @@
 // 2013.5.27修改：
 //  1.在nunit2.6.2基础上修改
 //  2.增加Init方法，初始化静态成员
-// 2013-5-29修改：
+// 2013.5.29修改：
 //  1.改AddinManager为AddinManagerArxNet
 //  2.改ProjectService为ProjectServiceArxNet
+// 2013.6.1
+//  1.已经改ServiceManager为ServiceManagerArxNet
+// 2013.6.2
+//  1.已经改DomainManager为DomainManagerArxNet
 // ****************************************************************
 
 using System;

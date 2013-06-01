@@ -7,6 +7,8 @@
 // ****************************************************************
 // Copyright 2012, Lei Qun
 // 2013.5.28修改：测试NUnit.Util.ArxNet.DomainManagerArxNet类
+// 2013.6.1
+//  1.已经改DomainManager为DomainManagerArxNet
 // ****************************************************************
 
 using System;

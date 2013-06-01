@@ -9,6 +9,10 @@
 // 2012.12.19修改
 // 2013.5.29修改
 //   1.改ProjectService为ProjectServiceArxNet
+// 2013.6.1
+//   1.已经改ServiceManager为ServiceManagerArxNet
+// 2013.6.2  
+//   1.已经改DomainManager为DomainManagerArxNet
 // ****************************************************************
 
 using System;
