@@ -10,6 +10,8 @@
 //  1.在nunit2.6.2基础上修改
 //  2.NUnit.Util.ProjectService改为NUnit.Util.ArxNet.ProjectServiceArxNet类
 //  3.改Services改为ServicesArxNet
+// 2013.6.3修改：
+//  1.改VisualStudioConverter为VisualStudioConverterArxNet
 // ****************************************************************
 
 using System;
@@ -17,6 +19,8 @@ using System.IO;
 using NUnit.Core;
 using NUnit.Util.Extensibility;
 using NUnit.Util.ProjectConverters;
+
+using NUnit.Util.ArxNet.ProjectConvertersArxNet;
 
 namespace NUnit.Util.ArxNet
 {
@@ -40,7 +44,7 @@ namespace NUnit.Util.ArxNet
 		/// </summary>
 		IProjectConverter[] converters = new IProjectConverter[] 
 		{
-			new VisualStudioConverter()
+			new VisualStudioConverterArxNet()
 		};
 
 		#region Instance Methods

@@ -88,6 +88,7 @@
     <Compile Include="DefaultTestRunnerFactoryArxNet.cs" />
     <Compile Include="InterfacesArxNet\IRuntimeFrameworkSelectorArxNet.cs" />
     <Compile Include="ProcessRunnerArxNet.cs" />
+    <Compile Include="ProjectConvertersArxNet\VisualStudioConverterArxNet.cs" />
     <Compile Include="RuntimeFrameworkSelectorArxNet.cs" />
     <Compile Include="ServicesArxNet.cs" />
     <Compile Include="ServicesArxNet\AddinManagerArxNet.cs" />
