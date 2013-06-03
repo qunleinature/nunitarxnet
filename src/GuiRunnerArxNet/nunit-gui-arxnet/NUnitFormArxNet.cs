@@ -191,12 +191,12 @@ namespace NUnit.Gui.ArxNet
 			}
 			base.Dispose( disposing );
 
-            AppEntryArxNet.log.Info("Application Exit");
+            log.Info("Application Exit");
 
-            AppEntryArxNet.log.Info("Stopping Services");
+            log.Info("Stopping Services");
             ServiceManagerArxNet.Services.StopAllServices();
 
-            AppEntryArxNet.log.Info("Exiting NUnit GUI");
+            log.Info("Exiting NUnit-ArxNet Gui");
             InternalTrace.Close();
 		}
 

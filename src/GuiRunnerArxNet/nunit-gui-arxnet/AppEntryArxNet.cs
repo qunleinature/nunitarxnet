@@ -63,7 +63,7 @@ namespace NUnit.Gui.ArxNet
     /// </summary>
     public class AppEntryArxNet
     {
-        internal static Logger log = InternalTrace.GetLogger(typeof(AppEntryArxNet));
+        static Logger log = InternalTrace.GetLogger(typeof(AppEntryArxNet));
         private static EditorWriter m_EditorWriter = null;
         private static TextWriter m_SavedOut = null;
         private static TextWriter m_SavedError = null;
@@ -78,7 +78,7 @@ namespace NUnit.Gui.ArxNet
             SettingsServiceArxNet settingsService = new SettingsServiceArxNet();
             InternalTrace.Initialize("nunit-arxnet_%p.log", (InternalTraceLevel)settingsService.GetSetting("Options.InternalTraceLevel", InternalTraceLevel.Default));//2013.6.2lq改
 
-            log.Info("Starting NUnit ArxNet");//2013.6.2lq改
+            log.Info("Starting NUnit-ArxNet Gui");//2013.6.2lq改
 
             GuiOptionsArxNet guiOptions = new GuiOptionsArxNet(args);
 
@@ -157,13 +157,13 @@ namespace NUnit.Gui.ArxNet
 
             try
             {
-                log.Info("Starting Gui Application");
+                log.Info("Starting NUnit-ArxNet Gui Application");
                 CADApplication.ShowModelessDialog(form);               
                 //log.Info("Application Exit");
             }
             catch (SystemException ex)
             {
-                log.Error("Gui Application threw an excepion", ex );
+                log.Error("NUnit-ArxNet Gui Application threw an excepion", ex);
 
                 //2012.12.23改
                 log.Info("Stopping Services");

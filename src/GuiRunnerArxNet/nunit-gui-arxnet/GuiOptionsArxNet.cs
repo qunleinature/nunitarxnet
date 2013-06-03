@@ -80,7 +80,7 @@ namespace NUnit.Gui.ArxNet
 			return NoArgs || ParameterCount <= 1;
 		}
 
-		public override string GetHelpText()//2013.1.23ÐÞ¸Ä
+        public override string GetHelpText()//2013.1.23ÐÞ¸Ä,2013.6.2lqÐÞ¸Ä
 		{
 			return
 				"ÃüÁî:NUNIT-ArxNet\rargs:[inputfile] [options]\r\r" +
