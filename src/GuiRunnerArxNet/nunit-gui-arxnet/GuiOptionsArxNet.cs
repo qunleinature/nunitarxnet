@@ -83,13 +83,13 @@ namespace NUnit.Gui.ArxNet
 		public override string GetHelpText()//2013.1.23ÐÞ¸Ä
 		{
 			return
-				"ÃüÁî:NUNIT\nargs:[inputfile] [options]\r\r" +
-				"Runs a set of NUnit tests from the console. You may specify\r" +
-				"an assembly or a project file of type .nunit as input.\r\r" +
+				"ÃüÁî:NUNIT-ArxNet\rargs:[inputfile] [options]\r\r" +
+				"Runs a set of NUnit tests from the AutoCad command lines.You\r" +
+                "may specify an assembly or a project file of type .nunit as input.\r\r" +
 				"Options:\r" +
 				base.GetHelpText() +
 				"\rOptions that take values may use an equal sign, a colon\r" +
-				"or a space to separate the option from its value.";
+				"or a space to separate the option from its value.";//2013.6.2lqÐÞ¸Ä
 		}
 
 	}

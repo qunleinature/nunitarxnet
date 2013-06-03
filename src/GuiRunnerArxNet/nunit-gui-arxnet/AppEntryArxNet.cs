@@ -76,9 +76,9 @@ namespace NUnit.Gui.ArxNet
         {
             // Create SettingsService early so we know the trace level right at the start
             SettingsServiceArxNet settingsService = new SettingsServiceArxNet();
-            InternalTrace.Initialize("nunit-gui_%p.log", (InternalTraceLevel)settingsService.GetSetting("Options.InternalTraceLevel", InternalTraceLevel.Default));
+            InternalTrace.Initialize("nunit-arxnet_%p.log", (InternalTraceLevel)settingsService.GetSetting("Options.InternalTraceLevel", InternalTraceLevel.Default));//2013.6.2lq改
 
-            log.Info("Starting NUnit GUI");
+            log.Info("Starting NUnit ArxNet");//2013.6.2lq改
 
             GuiOptionsArxNet guiOptions = new GuiOptionsArxNet(args);
 
@@ -194,7 +194,7 @@ namespace NUnit.Gui.ArxNet
 
         private static IMessageDisplay MessageDisplay
         {
-            get { return new MessageDisplay("NUnit"); }
+            get { return new MessageDisplay("NUnit-ArxNet"); }//2013.6.2lq改
         }
 
         /// <summary>

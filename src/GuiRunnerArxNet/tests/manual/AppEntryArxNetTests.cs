@@ -9,9 +9,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using Autodesk.AutoCAD.Runtime;
+using Autodesk.AutoCAD.EditorInput;
+using Autodesk.AutoCAD.ApplicationServices;
+
 using NUnit.Framework;
-using NUnit.Gui.ArxNet;
 using NUnit.UiKit;
+
+using NUnit.Gui.ArxNet;
+using NUnit.Core.ArxNet;
 
 using Com.Utility.UnitTest;
 
@@ -20,17 +26,6 @@ namespace NUnit.Gui.ArxNet.Tests
     [TestFixture]
     public class AppEntryArxNetTests
     {
-        //public int Main(string[] args)
-        [Test]
-        public void Main()
-        {
-            string[] args = new string[0];
-            AppEntryArxNet.Init();
-            int result = AppEntryArxNet.Main(args);
-            //AppEntryArxNet.CleanUp();
-            Assert.That(result, Is.EqualTo(0));
-        }
-
         //private static IMessageDisplay MessageDisplay
         [Test]
         public void MessageDisplay()
@@ -38,6 +33,48 @@ namespace NUnit.Gui.ArxNet.Tests
             IMessageDisplay messageDisplay = UnitTestHelper.GetNonPublicStaticProperty(typeof(AppEntryArxNet), "MessageDisplay") as IMessageDisplay;
             Assert.That(messageDisplay, Is.Not.Null);
             messageDisplay.Display("NUnit.Gui.ArxNet.Tests.MessageDisplay");
+        }
+
+        //public static void Init()
+        [Test]
+        public void AppEntryArxNetInit()
+        {
+            AppEntryArxNet.Init();
+        }
+
+        //public static void CleanUp()
+        [Test]
+        public void AppEntryArxNetCleanUp()
+        {
+            AppEntryArxNet.Init();
+            AppEntryArxNet.CleanUp();
+        }
+
+        //public int Main(string[] args)
+        [Test]
+        public void AppEntryArxNetRun()
+        {            
+            Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;            
+            
+            PromptStringOptions opt = new PromptStringOptions("args:");
+            opt.AllowSpaces = true;
+            PromptResult res = ed.GetString(opt);
+            string[] args = new string[0];
+            switch (res.Status)
+            {
+                case PromptStatus.OK:
+                    if (res.StringResult.Trim() != "")
+                    {
+                        args = res.StringResult.Split(' ');
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            AppEntryArxNet.Init();
+            int result = AppEntryArxNet.Main(args);
+            Assert.That(result, Is.EqualTo(0));
         }
     }
 }
