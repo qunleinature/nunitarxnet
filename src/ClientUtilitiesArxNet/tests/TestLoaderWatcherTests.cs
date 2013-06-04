@@ -4,21 +4,14 @@
 // copyright ownership at http://nunit.org.
 // ****************************************************************
 
-// ****************************************************************
-// Copyright 2012, Lei Qun
-// 2013.5.28修改
-//   已改成在NUnit2.6.2基础
-// ****************************************************************
-
-
 using System;
 using NUnit.Framework;
 using NUnit.Tests.Assemblies;
 
-namespace NUnit.Util.ArxNet.Tests
+namespace NUnit.Util.Tests
 {
 	[TestFixture]
-	public class TestLoaderArxNetWatcherTests
+	public class TestLoaderWatcherTests
 	{
 		private readonly string assembly = MockAssembly.AssemblyPath;
 		private MockAssemblyWatcher2 mockWatcher;
@@ -30,14 +23,14 @@ namespace NUnit.Util.ArxNet.Tests
 		{
 			// arrange
 			mockWatcher = new MockAssemblyWatcher2();
-			testLoader = new TestLoaderArxNet(mockWatcher);
+			testLoader = new TestLoader(mockWatcher);
 			testLoader.LoadProject(assembly);
 		}
 
 		[TearDown]
 		public void CleanUpSettings()
 		{
-			ServicesArxNet.UserSettings.RemoveSetting(ReloadOnChangeSetting);
+			Services.UserSettings.RemoveSetting(ReloadOnChangeSetting);
 		}
 
 		private void AssertWatcherIsPrepared()
@@ -90,7 +83,7 @@ namespace NUnit.Util.ArxNet.Tests
 		public void LoadShouldStartWatcherDependingOnSettings()
 		{
 			// arrange
-			ServicesArxNet.UserSettings.SaveSetting(ReloadOnChangeSetting, false);
+			Services.UserSettings.SaveSetting(ReloadOnChangeSetting, false);
 			testLoader.LoadTest();
 
 			// assert
@@ -102,7 +95,7 @@ namespace NUnit.Util.ArxNet.Tests
 		public void ReloadShouldStartWatcherDependingOnSettings()
 		{
 			// arrange
-			ServicesArxNet.UserSettings.SaveSetting(ReloadOnChangeSetting, false);
+			Services.UserSettings.SaveSetting(ReloadOnChangeSetting, false);
 			testLoader.LoadTest();
 			testLoader.ReloadTest();
 
