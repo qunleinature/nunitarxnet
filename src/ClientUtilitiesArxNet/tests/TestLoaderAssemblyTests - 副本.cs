@@ -4,36 +4,25 @@
 // copyright ownership at http://nunit.org.
 // ****************************************************************
 
-// ****************************************************************
-// Copyright 2012, Lei Qun
-// 2012.12.19修改
-// 2013.6.4修改
-//   1.改成在NUnit2.6.2基础
-// ****************************************************************
-
 using System;
 using System.IO;
 using System.Threading;
-using System.Reflection;
-
 using NUnit.Core;
 using NUnit.Framework;
 using NUnit.Tests.Assemblies;
 
-using NUnit.Util;
-
-namespace NUnit.Util.ArxNet.Tests
+namespace NUnit.Util.Tests
 {
 	/// <summary>
 	/// 
 	/// </summary>
 	[TestFixture]
-    public class TestLoaderArxNetAssemblyTests
+	public class TestLoaderAssemblyTests
 	{
 		private readonly string assembly = MockAssembly.AssemblyPath;
 		private readonly string badFile = "/x.dll";
 
-        private TestLoaderArxNet loader;
+		private TestLoader loader;
 		private TestEventCatcher catcher;
 
 		private void LoadTest( string assembly )
@@ -46,7 +35,7 @@ namespace NUnit.Util.ArxNet.Tests
 		[SetUp]
 		public void SetUp()
 		{
-            loader = new TestLoaderArxNet();
+			loader = new TestLoader( );
 			catcher = new TestEventCatcher( loader.Events );
 		}
 
@@ -87,31 +76,6 @@ namespace NUnit.Util.ArxNet.Tests
 		public void LoadTest()
 		{
 			LoadTest( assembly );
-
-            Type type;
-            TestRunner testRunner;
-            FieldInfo field;
-            object value;
-            RemoteTestRunner remoteTestRunner;
-            //在CAD环境下，测试须是单线程
-            //TestLoaderArxNet:private TestRunner testRunner = null;
-            type = loader.GetType();
-            testRunner = null;
-            field = type.GetField("testRunner", BindingFlags.Instance | BindingFlags.GetField | BindingFlags.IgnoreCase | BindingFlags.NonPublic);
-            value = null;
-            if (field != null) value = field.GetValue(loader);
-            if (value != null) testRunner = value as TestRunner;
-            Assert.AreEqual(typeof(RemoteTestRunner), testRunner.GetType());
-            //ProxyTestRunner:private TestRunner testRunner;
-            remoteTestRunner = testRunner as RemoteTestRunner;
-            type = testRunner.GetType().BaseType;
-            testRunner = null;
-            field = type.GetField("testRunner", BindingFlags.Instance | BindingFlags.GetField | BindingFlags.IgnoreCase | BindingFlags.NonPublic);
-            value = null;
-            if (field != null) value = field.GetValue(remoteTestRunner);
-            if (value != null) testRunner = value as TestRunner;
-            Assert.AreEqual(typeof(SimpleTestRunner), testRunner.GetType());
-
 			Assert.IsTrue( loader.IsProjectLoaded, "Project not loaded" );
 			Assert.IsTrue( loader.IsTestLoaded, "Test not loaded" );
 			Assert.AreEqual( 4, catcher.Events.Count );
@@ -186,38 +150,13 @@ namespace NUnit.Util.ArxNet.Tests
             //loader.ReloadOnRun = false;
 			
 			LoadTest( assembly );
-
-            Type type;
-            TestRunner testRunner;
-            FieldInfo field;
-            object value;
-            RemoteTestRunner remoteTestRunner;
-            //在CAD环境下，测试须是单线程
-            //TestLoaderArxNet:private TestRunner testRunner = null;
-            type = loader.GetType();
-            testRunner = null;
-            field = type.GetField("testRunner", BindingFlags.Instance | BindingFlags.GetField | BindingFlags.IgnoreCase | BindingFlags.NonPublic);
-            value = null;
-            if (field != null) value = field.GetValue(loader);
-            if (value != null) testRunner = value as TestRunner;
-            Assert.AreEqual(typeof(RemoteTestRunner), testRunner.GetType());
-            //ProxyTestRunner:private TestRunner testRunner;
-            remoteTestRunner = testRunner as RemoteTestRunner;
-            type = testRunner.GetType().BaseType;
-            testRunner = null;
-            field = type.GetField("testRunner", BindingFlags.Instance | BindingFlags.GetField | BindingFlags.IgnoreCase | BindingFlags.NonPublic);
-            value = null;
-            if (field != null) value = field.GetValue(remoteTestRunner);
-            if (value != null) testRunner = value as TestRunner;
-            Assert.AreEqual(typeof(SimpleTestRunner), testRunner.GetType());
-
-            loader.RunTests(TestFilter.Empty);//2013.6.4Lq改
-            //do
-            //{
+			loader.RunTests(TestFilter.Empty);
+			do 
+			{
 				// TODO: Find a more robust way of handling this
-                //Thread.Sleep(500);
-            //}
-            //while (!catcher.GotRunFinished);
+				Thread.Sleep( 500 );
+			}
+			while( !catcher.GotRunFinished );
 
             Assert.AreEqual(TestAction.ProjectLoading, ((TestEventArgs)catcher.Events[0]).Action);
             Assert.AreEqual(TestAction.ProjectLoaded, ((TestEventArgs)catcher.Events[1]).Action);

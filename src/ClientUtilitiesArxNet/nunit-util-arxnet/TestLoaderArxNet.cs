@@ -703,7 +703,7 @@ namespace NUnit.Util.ArxNet
 		/// asynchronously, we use an event to let ui components
 		/// know that the failure happened.
 		/// </summary>
-        ////在CAD环境下异步单线程运行测试
+        ////在CAD环境下单线程运行测试
 		public void OnTestChanged( string testFileName )
 		{
             log.Info("Assembly changed: {0}", testFileName);

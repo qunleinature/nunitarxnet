@@ -73,13 +73,13 @@ namespace NUnit.Gui.ArxNet
             }
             catch (Autodesk.AutoCAD.Runtime.Exception e)
             {
-                //Application.ShowAlertDialog(e.Message);
-                ed.WriteMessage(e.Message);
+                Application.ShowAlertDialog(e.Message);
+                //ed.WriteMessage(e.Message);
             }
             catch (System.Exception e)
             {
-                //Application.ShowAlertDialog(e.Message);
-                ed.WriteMessage(e.Message);
+                Application.ShowAlertDialog(e.Message);
+                //ed.WriteMessage(e.Message);
             }
         }
         [CommandMethod("nunit-arxnet", CommandFlags.Session)]
