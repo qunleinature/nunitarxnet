@@ -4,17 +4,6 @@
 // copyright ownership at http://nunit.org.
 // ****************************************************************
 
-// ****************************************************************
-// Copyright 2012, Lei Qun 
-// 2012.12.21修改
-// 2013.5.31修改：
-//  1.改Services为ServicesArxNet
-//  2.改TestSuiteTreeView为TestSuiteTreeViewArxNet
-// 2013.6.5修改：
-//  1.已改TestLoader为TestLoaderArxNet
-//  2.改成在NUnit2.6.2基础
-// ****************************************************************
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,18 +13,14 @@ using System.Data;
 using System.Windows.Forms;
 using NUnit.Core;
 using NUnit.Util;
-using NUnit.UiKit;
 
-using NUnit.Util.ArxNet;
-using NUnit.Gui.ArxNet;
-
-namespace NUnit.UiKit.ArxNet
+namespace NUnit.UiKit
 {
 	public delegate void SelectedTestsChangedEventHandler(object sender, SelectedTestsChangedEventArgs e);
 	/// <summary>
 	/// Summary description for TestTree.
 	/// </summary>
-	public class TestTreeArxNet : System.Windows.Forms.UserControl
+	public class TestTree : System.Windows.Forms.UserControl
 	{
 		#region Instance Variables
 
@@ -45,8 +30,7 @@ namespace NUnit.UiKit.ArxNet
 		private IList availableCategories = new List<string>();
 
 		// Our test loader
-        //CAD环境下的TestLoaderArxNet
-		private TestLoaderArxNet loader = null;
+		private TestLoader loader;
 
 		private System.Windows.Forms.TabControl tabs;
 		private System.Windows.Forms.TabPage testPage;
@@ -55,7 +39,7 @@ namespace NUnit.UiKit.ArxNet
 		private System.Windows.Forms.Panel categoryPanel;
 		private System.Windows.Forms.Panel treePanel;
 		private System.Windows.Forms.Panel buttonPanel;
-		private NUnit.UiKit.ArxNet.TestSuiteTreeViewArxNet tests;
+		private NUnit.UiKit.TestSuiteTreeView tests;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.ListBox availableList;
 		private System.Windows.Forms.GroupBox selectedCategories;
@@ -121,7 +105,7 @@ namespace NUnit.UiKit.ArxNet
 
 		#region Construction and Initialization
 
-		public TestTreeArxNet()
+		public TestTree()
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
@@ -226,32 +210,19 @@ namespace NUnit.UiKit.ArxNet
 
 		protected override void OnLoad(EventArgs e)
 		{
-            try//2013-1-8:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加
-            {
-                if (!this.DesignMode)
-                {
-                    if (ServicesArxNet.TestLoader == null) return;//2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加
-
+			if ( !this.DesignMode )
+			{
 				this.ShowCheckBoxes = 
-                        ServicesArxNet.UserSettings.GetSetting("Options.ShowCheckBoxes", false);
-                    Initialize(ServicesArxNet.TestLoader as TestLoaderArxNet);
-                    ServicesArxNet.UserSettings.Changed += new SettingsEventHandler(UserSettings_Changed);
-                }
+					Services.UserSettings.GetSetting( "Options.ShowCheckBoxes", false );
+				Initialize( Services.TestLoader );
+				Services.UserSettings.Changed += new SettingsEventHandler(UserSettings_Changed);
+			}
 
 			base.OnLoad (e);
 		}
-            catch (SystemException exception)
-            {
-                NUnitFormArxNet form = this.ParentForm as NUnitFormArxNet;
-                form.MessageDisplay.Error("TestTreeArxNet unable to Load", exception);
-            }
-            /*2013-1-8:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加*/
-		}
 
-		public void Initialize(TestLoaderArxNet loader) 
+		public void Initialize(TestLoader loader) 
 		{
-            if (loader == null) return;//2013-1-10:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加
-
 			this.tests.Initialize(loader, loader.Events);
 			this.loader = loader;
 			loader.Events.TestLoaded += new NUnit.Util.TestEventHandler(events_TestLoaded);
@@ -366,7 +337,7 @@ namespace NUnit.UiKit.ArxNet
 			this.testPage = new System.Windows.Forms.TabPage();
 			this.testPanel = new System.Windows.Forms.Panel();
 			this.treePanel = new System.Windows.Forms.Panel();
-            this.tests = new NUnit.UiKit.ArxNet.TestSuiteTreeViewArxNet();
+			this.tests = new NUnit.UiKit.TestSuiteTreeView();
 			this.buttonPanel = new System.Windows.Forms.Panel();
 			this.checkFailedButton = new System.Windows.Forms.Button();
 			this.clearAllButton = new System.Windows.Forms.Button();
@@ -586,10 +557,10 @@ namespace NUnit.UiKit.ArxNet
 			this.availableList.TabIndex = 0;
 			this.availableList.DoubleClick += new System.EventHandler(this.addCategory_Click);
 			// 
-            // TestTreeArxNet
+			// TestTree
 			// 
 			this.Controls.Add(this.tabs);
-            this.Name = "TestTreeArxNet";
+			this.Name = "TestTree";
 			this.Size = new System.Drawing.Size(248, 496);
 			this.tabs.ResumeLayout(false);
 			this.testPage.ResumeLayout(false);
@@ -620,22 +591,16 @@ namespace NUnit.UiKit.ArxNet
 
 		public void RunAllTests(bool ignoreTests)
 		{
-            if (loader == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加
-
 			tests.RunAllTests(ignoreTests);
 		}
 
 		public void RunSelectedTests()
 		{
-            if (loader == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加
-
 			tests.RunSelectedTests();
 		}
 
 		public void RunFailedTests()
 		{
-            if (loader == null) return;//2013-1-11:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加
-
 			tests.RunFailedTests();
 		}
 
@@ -803,7 +768,7 @@ namespace NUnit.UiKit.ArxNet
 
 		private void checkBoxesMenuItem_Click(object sender, System.EventArgs e)
 		{
-			ServicesArxNet.UserSettings.SaveSetting( "Options.ShowCheckBoxes", 
+			Services.UserSettings.SaveSetting( "Options.ShowCheckBoxes", 
 				ShowCheckBoxes = !checkBoxesMenuItem.Checked );
 			
 			// Temporary till we can save tree state and restore
@@ -833,7 +798,7 @@ namespace NUnit.UiKit.ArxNet
 		private void UserSettings_Changed(object sender, SettingsEventArgs args)
 		{
 			if ( args.SettingName == "Options.ShowCheckBoxes" )
-				this.ShowCheckBoxes = ServicesArxNet.UserSettings.GetSetting( args.SettingName, false );
+				this.ShowCheckBoxes = Services.UserSettings.GetSetting( args.SettingName, false );
 		}
 	}
 

@@ -4,37 +4,25 @@
 // obtain a copy of the license at http://nunit.org
 // ****************************************************************
 
-// ****************************************************************
-// Copyright 2012, Lei Qun 
-// 2012.12.21修改
-// 2012.6.6修改
-//   1.改成在NUnit2.6.2基础
-//   2.改TestTree为TestTreeArxNet
-// ****************************************************************
-
 using System;
 using System.Collections;
 using System.Reflection;
 using NUnit.Framework;
-using NUnit.Util;
-using NUnit.UiKit;
-using NUnit.Util.ArxNet;
-using NUnit.UiKit.ArxNet;
 
-namespace NUnit.UiKit.ArxNet.Tests
+namespace NUnit.UiKit.Tests
 {
 	[TestFixture]
-	public class TestTreeArxNetTests
+	public class TestTreeTests
 	{
 		[Test]
 		public void SameCategoryShouldNotBeSelectedMoreThanOnce()
 		{
 			// arrange
-			TestTreeArxNet target = new TestTreeArxNet();
+			TestTree target = new TestTree();
 
 			// we need to populate the available categories
 			// this can be done via TestLoader but this way the test is isolated
-			FieldInfo fieldInfo = typeof (TestTreeArxNet).GetField("availableCategories", BindingFlags.NonPublic | BindingFlags.Instance);
+			FieldInfo fieldInfo = typeof (TestTree).GetField("availableCategories", BindingFlags.NonPublic | BindingFlags.Instance);
 			Assert.IsNotNull(fieldInfo, "The field 'availableCategories' should be found.");
 			object fieldValue = fieldInfo.GetValue(target);
 			Assert.IsNotNull(fieldValue, "The value of 'availableCategories' should not be null.");
