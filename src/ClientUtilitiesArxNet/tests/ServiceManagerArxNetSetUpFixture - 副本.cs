@@ -15,13 +15,12 @@
 //   1.已经改DomainManager为DomainManagerArxNet
 // 2013.6.7  
 //   1.已经改SettingsGroup为SettingsGroupArxNet
-//   2.已改在nunit2.6.2基础
+//   2.改在nunit2.6.2基础
 // ****************************************************************
 
 using System;
 using NUnit.Framework;
 using NUnit.Util;
-
 using NUnit.Util.ArxNet;
 
 namespace NUnit.Util.ArxNet.Tests

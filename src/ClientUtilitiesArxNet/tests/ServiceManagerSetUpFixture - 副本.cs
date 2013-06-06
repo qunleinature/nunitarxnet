@@ -4,27 +4,10 @@
 // obtain a copy of the license at http://nunit.org
 // ****************************************************************
 
-// ****************************************************************
-// Copyright 2012, Lei Qun
-// 2012.12.19修改
-// 2013.5.29修改
-//   1.改ProjectService为ProjectServiceArxNet
-// 2013.6.1
-//   1.已经改ServiceManager为ServiceManagerArxNet
-// 2013.6.2  
-//   1.已经改DomainManager为DomainManagerArxNet
-// 2013.6.7  
-//   1.已经改SettingsGroup为SettingsGroupArxNet
-//   2.已改在nunit2.6.2基础
-// ****************************************************************
-
 using System;
 using NUnit.Framework;
-using NUnit.Util;
 
-using NUnit.Util.ArxNet;
-
-namespace NUnit.Util.ArxNet.Tests
+namespace NUnit.Util.Tests
 {
 	/// <summary>
 	/// This fixture is used to set up a distinct ServiceMangager with its
@@ -37,27 +20,27 @@ namespace NUnit.Util.ArxNet.Tests
 	/// touching the backup storage.
 	/// </summary>
 	[SetUpFixture]
-	public class ServiceManagerArxNetSetUpFixture
+	public class ServiceManagerSetUpFixture
 	{
 		[SetUp]
 		public void CreateServicesForTestDomain()
 		{
-			ServiceManagerArxNet.Services.AddService( new DummySettingsService() );
-			ServiceManagerArxNet.Services.AddService( new DomainManagerArxNet() );
-            ServiceManagerArxNet.Services.AddService( new ProjectServiceArxNet() );
-			ServiceManagerArxNet.Services.AddService( new TestAgency( "TestDomain_TestAgency", 0 ) );
-			ServicesArxNet.TestAgency.Start();
+			ServiceManager.Services.AddService( new DummySettingsService() );
+			ServiceManager.Services.AddService( new DomainManager() );
+			ServiceManager.Services.AddService( new ProjectService() );
+			ServiceManager.Services.AddService( new TestAgency( "TestDomain_TestAgency", 0 ) );
+			Services.TestAgency.Start();
 		}
 
 		[TearDown]
 		public void ClearServices()
 		{
-			ServicesArxNet.TestAgency.Stop();
-			ServiceManagerArxNet.Services.ClearServices();
+			Services.TestAgency.Stop();
+			ServiceManager.Services.ClearServices();
 		}
 	}
 
-    class DummySettingsService : SettingsGroupArxNet, NUnit.Core.IService
+    class DummySettingsService : SettingsGroup, NUnit.Core.IService
     {
         public DummySettingsService()
         {

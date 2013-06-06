@@ -9,6 +9,8 @@
 // 2013.5.29修改
 //   1.nunit2.6.2基础上修改
 //   2.改RecentFilesService为RecentFilesServiceArxNet
+// 2013.6.7
+//   1.改SettingsGroup为SettingsGroupArxNet
 // ****************************************************************
 
 namespace NUnit.Util.ArxNet.Tests
@@ -35,7 +37,7 @@ namespace NUnit.Util.ArxNet.Tests
 		[SetUp]
 		public void SetUp()
 		{
-			recentFiles = new RecentFilesServiceArxNet( new SettingsGroup( new MemorySettingsStorage() ) );
+			recentFiles = new RecentFilesServiceArxNet( new SettingsGroupArxNet( new MemorySettingsStorage() ) );
 		}
 
 		#region Helper Methods
