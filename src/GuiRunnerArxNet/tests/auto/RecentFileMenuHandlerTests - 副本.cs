@@ -4,34 +4,27 @@
 // obtain a copy of the license at http://nunit.org
 // ****************************************************************
 
-// ****************************************************************
-//2012年8月25日，雷群修改
-//2013.6.6
-//  1.RecentFileMenuHandler改成RecentFileMenuHandlerArxNet
-//  2.已在NUnit2.6.2基础
-// ****************************************************************
-
 using System;
 using System.Collections;
 using System.Windows.Forms;
 using NUnit.Framework;
 using NUnit.Util;
 
-namespace NUnit.Gui.ArxNet.Tests
+namespace NUnit.Gui.Tests
 {
 	[TestFixture]
-	public class RecentFileMenuHandlerArxNetTests
+	public class RecentFileMenuHandlerTests
 	{
 		private MenuItem menu;
 		private RecentFiles files;
-		private RecentFileMenuHandlerArxNet handler;
+		private RecentFileMenuHandler handler;
 		
 		[SetUp]
 		public void SetUp()
 		{
 			menu = new MenuItem();
 			files = new FakeRecentFiles();
-			handler = new RecentFileMenuHandlerArxNet( menu, files );
+			handler = new RecentFileMenuHandler( menu, files );
             handler.CheckFilesExist = false;
         }
 

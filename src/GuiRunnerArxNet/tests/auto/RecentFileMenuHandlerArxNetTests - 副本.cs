@@ -8,7 +8,6 @@
 //2012年8月25日，雷群修改
 //2013.6.6
 //  1.RecentFileMenuHandler改成RecentFileMenuHandlerArxNet
-//  2.已在NUnit2.6.2基础
 // ****************************************************************
 
 using System;

@@ -4,29 +4,21 @@
 // copyright ownership at http://nunit.org.
 // ****************************************************************
 
-// ****************************************************************
-// Copyright 2012, Lei Qun
-// 2013.1.13修改：
-//  1.NUnitForm改为NUnitFormArxNet
-// 2013.6.6
-//  1.已改成在NUnit2.6.2基础
-// ****************************************************************
-
 using System;
 using System.Collections;
 using System.Windows.Forms;
 using NUnit.Util;
 
-namespace NUnit.Gui.ArxNet
+namespace NUnit.Gui
 {
-	public class RecentFileMenuHandlerArxNet
+	public class RecentFileMenuHandler
 	{
 		private MenuItem menu;
 		private RecentFiles recentFiles;
         private bool checkFilesExist = true;
 		private bool showNonRunnableFiles = false;
 
-		public RecentFileMenuHandlerArxNet( MenuItem menu, RecentFiles recentFiles )
+		public RecentFileMenuHandler( MenuItem menu, RecentFiles recentFiles )
 		{
 			this.menu = menu;
 			this.recentFiles = recentFiles;
@@ -92,7 +84,7 @@ namespace NUnit.Gui.ArxNet
 			string testFileName = item.Text.Substring( 2 );
 
             // TODO: Figure out a better way
-            NUnitFormArxNet form = item.GetMainMenu().GetForm() as NUnitFormArxNet;
+            NUnitForm form = item.GetMainMenu().GetForm() as NUnit.Gui.NUnitForm;
             if ( form != null)
                 form.Presenter.OpenProject( testFileName ); 
 		}

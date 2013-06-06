@@ -27,6 +27,7 @@
 // 2013.6.6修改：
 // 1.已改TestLoader为TestLoaderArxNet
 // 2.改成在NUnit2.6.2基础
+// 3.NUnitForm已改成NUnitFormArxNet
 // ****************************************************************
 
 using System;

@@ -23,6 +23,7 @@
 //  1.已改TestTree为TestTreeArxNet
 // 2013.6.6：
 //  1.已改TestLoader为TestLoaderArxNet
+//  2.RecentFileMenuHandler改成RecentFileMenuHandlerArxNet
 // ****************************************************************
 
 using System;
@@ -63,7 +64,7 @@ namespace NUnit.Gui.ArxNet
         #region Instance variables
 
 		// Handlers for our recentFiles and recentProjects
-		private RecentFileMenuHandler recentProjectsMenuHandler;
+		private RecentFileMenuHandlerArxNet recentProjectsMenuHandler;
 
 		private RecentFiles recentFilesService;
 		private ISettings userSettings;
@@ -757,8 +758,8 @@ namespace NUnit.Gui.ArxNet
             // 
             // suiteName
             // 
-            this.suiteName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.suiteName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.suiteName.AutoEllipsis = true;
             this.suiteName.Location = new System.Drawing.Point(145, 21);
             this.suiteName.Name = "suiteName";
@@ -767,8 +768,8 @@ namespace NUnit.Gui.ArxNet
             // 
             // runCount
             // 
-            this.runCount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.runCount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.runCount.AutoEllipsis = true;
             this.runCount.Location = new System.Drawing.Point(8, 89);
             this.runCount.Name = "runCount";
@@ -796,8 +797,8 @@ namespace NUnit.Gui.ArxNet
             // 
             // progressBar
             // 
-            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar.BackColor = System.Drawing.SystemColors.Control;
             this.progressBar.CausesValidation = false;
             this.progressBar.Enabled = false;
@@ -814,9 +815,9 @@ namespace NUnit.Gui.ArxNet
             // 
             // resultTabs
             // 
-            this.resultTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.resultTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.resultTabs.Location = new System.Drawing.Point(0, 120);
             this.resultTabs.Name = "resultTabs";
             this.resultTabs.Size = new System.Drawing.Size(498, 284);
@@ -855,7 +856,6 @@ namespace NUnit.Gui.ArxNet
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "NUnit";
             this.Closing += new System.ComponentModel.CancelEventHandler(this.NUnitFormArxNet_Closing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NUnitFormArxNet_Closed);
             this.Load += new System.EventHandler(this.NUnitFormArxNet_Load);
             this.rightPanel.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -1392,7 +1392,7 @@ namespace NUnit.Gui.ArxNet
 				EnableRunCommand( false );
 				EnableStopCommand( false );
 
-				recentProjectsMenuHandler = new RecentFileMenuHandler( recentProjectsMenu, recentFilesService );
+				recentProjectsMenuHandler = new RecentFileMenuHandlerArxNet( recentProjectsMenu, recentFilesService );
                 recentProjectsMenuHandler.CheckFilesExist = userSettings.GetSetting("Gui.RecentProjects.CheckFilesExist", true);
 
 				LoadFormSettings();
@@ -1928,16 +1928,6 @@ namespace NUnit.Gui.ArxNet
 
 		#endregion	
 
-        private void NUnitFormArxNet_Closed(object sender, FormClosedEventArgs e)
-        {
-            /*AppEntryArxNet.log.Info("Application Exit");
-
-            AppEntryArxNet.log.Info("Stopping Services");
-            ServiceManagerArxNet.Services.StopAllServices();            
-
-            AppEntryArxNet.log.Info("Exiting NUnit GUI");
-            InternalTrace.Close();*/
-        }
-	}
+    }
 }
 
