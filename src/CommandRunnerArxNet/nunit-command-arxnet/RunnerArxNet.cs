@@ -20,6 +20,8 @@
 // 2013.5.29：
 //  1.改AddinManager为AddinManagerArxNet
 //  2.改ProjectService为ProjectServiceArxNet
+// 2013.6.7
+//  1.已改SettingsServiceArxNet
 // ****************************************************************
 
 using System;
