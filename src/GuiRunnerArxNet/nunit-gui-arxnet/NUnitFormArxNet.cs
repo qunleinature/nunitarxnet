@@ -19,6 +19,10 @@
 //  1.改AddinDialog为AddinDialogArxNet
 //  2.改ServiceManager为ServiceManagerArxNet
 //  3.Services已经改ServicesArxNet
+// 2013.6.5：
+//  1.已改TestTree为TestTreeArxNet
+// 2013.6.6：
+//  1.已改TestLoader为TestLoaderArxNet
 // ****************************************************************
 
 using System;

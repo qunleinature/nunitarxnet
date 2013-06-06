@@ -29,6 +29,8 @@
 //  1.改AddinManager为AddinManagerArxNet
 //  2.改ProjectService为ProjectServiceArxNet
 //  3.改RecentFilesService为RecentFilesServiceArxNet
+// 2013.6.6：
+//  1.已改TestLoader为TestLoaderArxNet
 // ****************************************************************
 
 using System;

@@ -26,13 +26,16 @@
 // 1.Services已经改ServicesArxNet
 // 2013.6.6修改：
 // 1.已改TestLoader为TestLoaderArxNet
-// 2.改成在NUnit2.6.2基础
 // ****************************************************************
 
 using System;
-using System.Diagnostics;
-using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
+using System.IO;
+using System.Diagnostics;
+
 using NUnit.Core;
 using NUnit.Util;
 using NUnit.UiKit;
@@ -50,24 +53,6 @@ using CADException = Autodesk.AutoCAD.Runtime.Exception;
 
 namespace NUnit.Gui.ArxNet
 {
-	/// <summary>
-	/// NUnitPresenter does all file opening and closing that
-	/// involves interacting with the user.
-    /// 
-    /// NOTE: This class originated as the static class
-    /// TestLoaderUI and is slowly being converted to a
-    /// true presenter. Current limitations include:
-    /// 
-    /// 1. At this time, the presenter is created by
-    /// the form and interacts with it directly, rather
-    /// than through an interface. 
-    /// 
-    /// 2. Many functions, which should properly be in
-    /// the presenter, remain in the form.
-    /// 
-    /// 3. The presenter creates dialogs itself, which
-    /// limits testability.
-	/// </summary>
     public class NUnitPresenterArxNet
     {
         #region Instance Variables
@@ -82,7 +67,7 @@ namespace NUnit.Gui.ArxNet
 
         #region Constructor
 
-        // TODO: Use an interface for view and model
+        // TODO: Use an interface for view and model        
         public NUnitPresenterArxNet(NUnitFormArxNet form, TestLoaderArxNet loader)
         {
             this.form = form;
@@ -113,17 +98,17 @@ namespace NUnit.Gui.ArxNet
                 if (loader.IsProjectLoaded)
                     CloseProject();
 
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Title = "New Test Project";
-            dlg.Filter = "NUnit Test Project (*.nunit)|*.nunit|All Files (*.*)|*.*";
+                SaveFileDialog dlg = new SaveFileDialog();
+                dlg.Title = "New Test Project";
+                dlg.Filter = "NUnit Test Project (*.nunit)|*.nunit|All Files (*.*)|*.*";
                 dlg.FileName = ServicesArxNet.ProjectService.GenerateProjectName();
-            dlg.DefaultExt = "nunit";
-            dlg.ValidateNames = true;
-            dlg.OverwritePrompt = true;
+                dlg.DefaultExt = "nunit";
+                dlg.ValidateNames = true;
+                dlg.OverwritePrompt = true;
 
-            if (dlg.ShowDialog(Form) == DialogResult.OK)
-                loader.NewProject(dlg.FileName);
-        }
+                if (dlg.ShowDialog(Form) == DialogResult.OK)
+                    loader.NewProject(dlg.FileName);
+            }
             /*2012-12-30单元测试加*/
             catch (CADException exception)
             {
@@ -148,17 +133,17 @@ namespace NUnit.Gui.ArxNet
         #region Open Methods
 
         public void OpenProject()
-		{
-			OpenFileDialog dlg = new OpenFileDialog();
-			System.ComponentModel.ISite site = Form == null ? null : Form.Site;
-			if ( site != null ) dlg.Site = site;
-			dlg.Title = "Open Project";
-			
-			if ( VisualStudioSupport )
-			{
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            System.ComponentModel.ISite site = Form == null ? null : Form.Site;
+            if (site != null) dlg.Site = site;
+            dlg.Title = "Open Project";
+
+            if (VisualStudioSupport)
+            {
                 dlg.Filter =
-					"Projects & Assemblies(*.nunit,*.csproj,*.vbproj,*.vjsproj, *.vcproj,*.sln,*.dll,*.exe )|*.nunit;*.csproj;*.vjsproj;*.vbproj;*.vcproj;*.sln;*.dll;*.exe|" +
-					"All Project Types (*.nunit,*.csproj,*.vbproj,*.vjsproj,*.vcproj,*.sln)|*.nunit;*.csproj;*.vjsproj;*.vbproj;*.vcproj;*.sln|" +
+                    "Projects & Assemblies(*.nunit,*.csproj,*.vbproj,*.vjsproj, *.vcproj,*.sln,*.dll,*.exe )|*.nunit;*.csproj;*.vjsproj;*.vbproj;*.vcproj;*.sln;*.dll;*.exe|" +
+                    "All Project Types (*.nunit,*.csproj,*.vbproj,*.vjsproj,*.vcproj,*.sln)|*.nunit;*.csproj;*.vjsproj;*.vbproj;*.vcproj;*.sln|" +
                     "Test Projects (*.nunit)|*.nunit|" +
                     "Solutions (*.sln)|*.sln|" +
                     "C# Projects (*.csproj)|*.csproj|" +
@@ -166,21 +151,21 @@ namespace NUnit.Gui.ArxNet
                     "VB Projects (*.vbproj)|*.vbproj|" +
                     "C++ Projects (*.vcproj)|*.vcproj|" +
                     "Assemblies (*.dll,*.exe)|*.dll;*.exe";
-			}
-			else
-			{
+            }
+            else
+            {
                 dlg.Filter =
                     "Projects & Assemblies(*.nunit,*.dll,*.exe)|*.nunit;*.dll;*.exe|" +
                     "Test Projects (*.nunit)|*.nunit|" +
                     "Assemblies (*.dll,*.exe)|*.dll;*.exe";
-			}
+            }
 
-			dlg.FilterIndex = 1;
-			dlg.FileName = "";
+            dlg.FilterIndex = 1;
+            dlg.FileName = "";
 
-			if ( dlg.ShowDialog( Form ) == DialogResult.OK ) 
-				OpenProject( dlg.FileName );
-		}
+            if (dlg.ShowDialog(Form) == DialogResult.OK)
+                OpenProject(dlg.FileName);
+        }
 
         public void WatchProject(string projectPath)
         {
@@ -200,7 +185,7 @@ namespace NUnit.Gui.ArxNet
             }
         }
 
-        private void OnTestProjectChanged(string filePath)
+        void OnTestProjectChanged(string filePath)
         {
             string message = filePath + Environment.NewLine + Environment.NewLine +
                 "This file has been modified outside of NUnit." + Environment.NewLine +
@@ -211,31 +196,31 @@ namespace NUnit.Gui.ArxNet
         }
 
         public void OpenProject(string testFileName, string configName, string testName)
-		{
+        {
             try//2012-12-31单元测试加
             {
                 if (loader == null) return;//2012-12-31单元测试加
 
-			if ( loader.IsProjectLoaded && SaveProjectIfDirty() == DialogResult.Cancel )
-				return;
+                if (loader.IsProjectLoaded && SaveProjectIfDirty() == DialogResult.Cancel)
+                    return;
 
-			loader.LoadProject( testFileName, configName );
-			if ( loader.IsProjectLoaded )
-			{	
-				NUnitProject testProject = loader.TestProject;
+                loader.LoadProject(testFileName, configName);
+                if (loader.IsProjectLoaded)
+                {
+                    NUnitProject testProject = loader.TestProject;
 
                     if (testProject == null) return;//2012-12-31单元测试加
 
-				if ( testProject.Configs.Count == 0 )
-                    Form.MessageDisplay.Info("Loaded project contains no configuration data");
-				else if ( testProject.ActiveConfig == null )
-                    Form.MessageDisplay.Info("Loaded project has no active configuration");
-				else if ( testProject.ActiveConfig.Assemblies.Count == 0 )
-                    Form.MessageDisplay.Info("Active configuration contains no assemblies");
-				else
-					loader.LoadTest( testName );
-			}
-		}
+                    if (testProject.Configs.Count == 0)
+                        Form.MessageDisplay.Info("Loaded project contains no configuration data");
+                    else if (testProject.ActiveConfig == null)
+                        Form.MessageDisplay.Info("Loaded project has no active configuration");
+                    else if (testProject.ActiveConfig.Assemblies.Count == 0)
+                        Form.MessageDisplay.Info("Active configuration contains no assemblies");
+                    else
+                        loader.LoadTest(testName);
+                }
+            }
             /*2012-12-31单元测试加*/
             catch (CADException exception)
             {
@@ -254,24 +239,24 @@ namespace NUnit.Gui.ArxNet
             /*2012-12-31单元测试加*/
         }
 
-		public void OpenProject( string testFileName )
-		{
-			OpenProject( testFileName, null, null );
-		}
+        public void OpenProject(string testFileName)
+        {
+            OpenProject(testFileName, null, null);
+        }
 
-//		public static void OpenResults( Form owner )
-//		{
-//			OpenFileDialog dlg = new OpenFileDialog();
-//			System.ComponentModel.ISite site = owner == null ? null : owner.Site;
-//			if ( site != null ) dlg.Site = site;
-//			dlg.Title = "Open Test Results";
-//
-//			dlg.Filter = "XML Files (*.xml)|*.xml|All Files (*.*)|*.*";
-//			dlg.FilterIndex = 1;
-//			dlg.FileName = "";
-//
-//			if ( dlg.ShowDialog( owner ) == DialogResult.OK ) 
-//				OpenProject( owner, dlg.FileName );
+        //		public static void OpenResults( Form owner )
+        //		{
+        //			OpenFileDialog dlg = new OpenFileDialog();
+        //			System.ComponentModel.ISite site = owner == null ? null : owner.Site;
+        //			if ( site != null ) dlg.Site = site;
+        //			dlg.Title = "Open Test Results";
+        //
+        //			dlg.Filter = "XML Files (*.xml)|*.xml|All Files (*.*)|*.*";
+        //			dlg.FilterIndex = 1;
+        //			dlg.FileName = "";
+        //
+        //			if ( dlg.ShowDialog( owner ) == DialogResult.OK ) 
+        //				OpenProject( owner, dlg.FileName );
         //		}
 
         #endregion
@@ -282,16 +267,16 @@ namespace NUnit.Gui.ArxNet
         {
             try
             {
-            DialogResult result = SaveProjectIfDirty();
+                DialogResult result = SaveProjectIfDirty();
 
                 //2012-12-29单元测试加
                 if (loader == null) return DialogResult.No;
 
-            if (result != DialogResult.Cancel)
-                loader.UnloadProject();
+                if (result != DialogResult.Cancel)
+                    loader.UnloadProject();
 
-            return result;
-        }
+                return result;
+            }
             /*2012-12-29单元测试加*/
             catch (CADException exception)
             {
@@ -317,12 +302,12 @@ namespace NUnit.Gui.ArxNet
         #region Add Methods
 
         public void AddToProject()
-		{
-			AddToProject( null );
-		}
+        {
+            AddToProject(null);
+        }
         // TODO: Not used?
-		public void AddToProject( string configName )
-		{
+        public void AddToProject(string configName)
+        {
             try
             {
                 /*2012-12-25单元测试改*/
@@ -331,36 +316,36 @@ namespace NUnit.Gui.ArxNet
                 if (loader.TestProject.Configs == null) return;
                 /*2012-12-25单元测试改*/
 
-			    ProjectConfig config = configName == null
-				    ? loader.TestProject.ActiveConfig
-				    : loader.TestProject.Configs[configName];
+                ProjectConfig config = configName == null
+                    ? loader.TestProject.ActiveConfig
+                    : loader.TestProject.Configs[configName];
 
-                    /*2012-12-25单元测试改*/
-                    if (config == null) return;
-                    if (config.Assemblies == null) return;
-                    /*2012-12-25单元测试改*/
+                /*2012-12-25单元测试改*/
+                if (config == null) return;
+                if (config.Assemblies == null) return;
+                /*2012-12-25单元测试改*/
 
-			    OpenFileDialog dlg = new OpenFileDialog();
-			    dlg.Title = "Add Assemblies To Project";
-			    dlg.InitialDirectory = config.BasePath;
+                OpenFileDialog dlg = new OpenFileDialog();
+                dlg.Title = "Add Assemblies To Project";
+                dlg.InitialDirectory = config.BasePath;
 
-			    if ( VisualStudioSupport )
-				    dlg.Filter =
-					    "Projects & Assemblies(*.csproj,*.vbproj,*.vjsproj, *.vcproj,*.dll,*.exe )|*.csproj;*.vjsproj;*.vbproj;*.vcproj;*.dll;*.exe|" +
-					    "Visual Studio Projects (*.csproj,*.vjsproj,*.vbproj,*.vcproj)|*.csproj;*.vjsproj;*.vbproj;*.vcproj|" +
-					    "C# Projects (*.csproj)|*.csproj|" +
-					    "J# Projects (*.vjsproj)|*.vjsproj|" +
-					    "VB Projects (*.vbproj)|*.vbproj|" +
-					    "C++ Projects (*.vcproj)|*.vcproj|" +
-					    "Assemblies (*.dll,*.exe)|*.dll;*.exe";
-			    else
-				    dlg.Filter = "Assemblies (*.dll,*.exe)|*.dll;*.exe";
+                if (VisualStudioSupport)
+                    dlg.Filter =
+                        "Projects & Assemblies(*.csproj,*.vbproj,*.vjsproj, *.vcproj,*.dll,*.exe )|*.csproj;*.vjsproj;*.vbproj;*.vcproj;*.dll;*.exe|" +
+                        "Visual Studio Projects (*.csproj,*.vjsproj,*.vbproj,*.vcproj)|*.csproj;*.vjsproj;*.vbproj;*.vcproj|" +
+                        "C# Projects (*.csproj)|*.csproj|" +
+                        "J# Projects (*.vjsproj)|*.vjsproj|" +
+                        "VB Projects (*.vbproj)|*.vbproj|" +
+                        "C++ Projects (*.vcproj)|*.vcproj|" +
+                        "Assemblies (*.dll,*.exe)|*.dll;*.exe";
+                else
+                    dlg.Filter = "Assemblies (*.dll,*.exe)|*.dll;*.exe";
 
-			    dlg.FilterIndex = 1;
-			    dlg.FileName = "";
+                dlg.FilterIndex = 1;
+                dlg.FileName = "";
 
-			    if ( dlg.ShowDialog( Form ) != DialogResult.OK )
-				    return;
+                if (dlg.ShowDialog(Form) != DialogResult.OK)
+                    return;
 
                 if (PathUtils.IsAssemblyFileType(dlg.FileName))
                 {
@@ -369,7 +354,6 @@ namespace NUnit.Gui.ArxNet
                 }
                 else if (VSProject.IsProjectFile(dlg.FileName))
                 {
-
                     VSProject vsProject = new VSProject(dlg.FileName);
                     MessageBoxButtons buttons;
                     string msg;
@@ -412,8 +396,7 @@ namespace NUnit.Gui.ArxNet
                             config.Assemblies.Add(assembly);
                         return;
                     }
-                }
-                
+                }   
             }
             /*2012-12-29单元测试加*/
             catch (CADException exception)
@@ -433,13 +416,13 @@ namespace NUnit.Gui.ArxNet
             /*2012-12-29单元测试加*/
         }
 
-		public void AddAssembly()
-		{
-			AddAssembly( null );
-		}
+        public void AddAssembly()
+        {
+            AddAssembly(null);
+        }
 
-		public void AddAssembly( string configName )
-		{
+        public void AddAssembly(string configName)
+        {
             try//build29938fix002
             {
                 /*build29938fix002*/
@@ -448,25 +431,25 @@ namespace NUnit.Gui.ArxNet
                 if (loader.TestProject.Configs == null) return;
                 /*build29938fix002*/
 
-			ProjectConfig config = configName == null
-				? loader.TestProject.ActiveConfig
-				: loader.TestProject.Configs[configName];
+                ProjectConfig config = configName == null
+                    ? loader.TestProject.ActiveConfig
+                    : loader.TestProject.Configs[configName];
 
                 /*build29938fix002*/
                 if (config == null) return;
                 if (config.Assemblies == null) return;
                 /*build29938fix002*/
 
-			OpenFileDialog dlg = new OpenFileDialog();
-			dlg.Title = "Add Assembly";
-			dlg.InitialDirectory = config.BasePath;
-            dlg.Filter = "Assemblies (*.dll,*.exe)|*.dll;*.exe";
-			dlg.FilterIndex = 1;
-			dlg.FileName = "";
+                OpenFileDialog dlg = new OpenFileDialog();
+                dlg.Title = "Add Assembly";
+                dlg.InitialDirectory = config.BasePath;
+                dlg.Filter = "Assemblies (*.dll,*.exe)|*.dll;*.exe";
+                dlg.FilterIndex = 1;
+                dlg.FileName = "";
 
-            if (dlg.ShowDialog(Form) == DialogResult.OK)
-                config.Assemblies.Add(dlg.FileName);
-		}
+                if (dlg.ShowDialog(Form) == DialogResult.OK)
+                    config.Assemblies.Add(dlg.FileName);
+            }
             /*build29938fix002*/
             /*2012-12-29单元测试加*/
             catch (CADException exception)
@@ -487,8 +470,8 @@ namespace NUnit.Gui.ArxNet
             /*build29938fix002*/
         }
 
-		public void AddVSProject()
-		{
+        public void AddVSProject()
+        {
             try
             {
                 /*2012-12-单元测试加*/
@@ -496,24 +479,25 @@ namespace NUnit.Gui.ArxNet
                 if (loader.TestProject == null) return;
                 /*2012-12-单元测试加*/
 
-			    OpenFileDialog dlg = new OpenFileDialog();
-			    dlg.Title = "Add Visual Studio Project";
+                OpenFileDialog dlg = new OpenFileDialog();
+                dlg.Title = "Add Visual Studio Project";
 
-			    dlg.Filter =
-				    "All Project Types (*.csproj,*.vjsproj,*.vbproj,*.vcproj)|*.csproj;*.vjsproj;*.vbproj;*.vcproj|" +
-				    "C# Projects (*.csproj)|*.csproj|" +
-				    "J# Projects (*.vjsproj)|*.vjsproj|" +
-				    "VB Projects (*.vbproj)|*.vbproj|" +
-				    "C++ Projects (*.vcproj)|*.vcproj|" +
-				    "All Files (*.*)|*.*";
+                dlg.Filter =
+                    "All Project Types (*.csproj,*.vjsproj,*.vbproj,*.vcproj)|*.csproj;*.vjsproj;*.vbproj;*.vcproj|" +
+                    "C# Projects (*.csproj)|*.csproj|" +
+                    "J# Projects (*.vjsproj)|*.vjsproj|" +
+                    "VB Projects (*.vbproj)|*.vbproj|" +
+                    "C++ Projects (*.vcproj)|*.vcproj|" +
+                    "All Files (*.*)|*.*";
 
-			    dlg.FilterIndex = 1;
-			    dlg.FileName = "";
+                dlg.FilterIndex = 1;
+                dlg.FileName = "";
 
-			    if ( dlg.ShowDialog( Form ) == DialogResult.OK ) 
-			    {				
-				    VSProject vsProject = new VSProject( dlg.FileName );
-				    loader.TestProject.Add( vsProject );
+                if (dlg.ShowDialog(Form) == DialogResult.OK)
+                {                    
+                    VSProject vsProject = new VSProject(dlg.FileName);
+
+                    loader.TestProject.Add(vsProject);
                 }
             }
             /*2012-12-29单元测试加*/
@@ -539,19 +523,19 @@ namespace NUnit.Gui.ArxNet
         #region Save Methods
 
         public void SaveProject()
-		{
+        {
             try//2013-1-1单元测试NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProject加
             {
                 if (loader == null) return;//2013-1-1单元测试加
                 if (loader.TestProject == null) return;//2013-1-1单元测试加
 
-			if ( Path.IsPathRooted( loader.TestProject.ProjectPath ) &&
-				 NUnitProject.IsNUnitProjectFile( loader.TestProject.ProjectPath ) &&
-				 CanWriteProjectFile( loader.TestProject.ProjectPath ) )
-				loader.TestProject.Save();
-			else
-				SaveProjectAs();
-		}
+                if (Path.IsPathRooted(loader.TestProject.ProjectPath) &&
+                     NUnitProject.IsNUnitProjectFile(loader.TestProject.ProjectPath) &&
+                     CanWriteProjectFile(loader.TestProject.ProjectPath))
+                    loader.TestProject.Save();
+                else
+                    SaveProjectAs();
+            }
             /*2013-1-1单元测试加*/
             catch (CADException exception)
             {
@@ -572,35 +556,35 @@ namespace NUnit.Gui.ArxNet
 
         }
 
-		public void SaveProjectAs()
-		{
+        public void SaveProjectAs()
+        {
             try//2013-1-1单元测试NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProjectAs加
             {
                 if (loader == null) return;//2013-1-1单元测试加
                 if (loader.TestProject == null) return;//2013-1-1单元测试加
 
-			SaveFileDialog dlg = new SaveFileDialog();
-			dlg.Title = "Save Test Project";
-			dlg.Filter = "NUnit Test Project (*.nunit)|*.nunit|All Files (*.*)|*.*";
-			string path = NUnitProject.ProjectPathFromFile( loader.TestProject.ProjectPath );
-			if ( CanWriteProjectFile( path ) )
-				dlg.FileName = path;
-			dlg.DefaultExt = "nunit";
-			dlg.ValidateNames = true;
-			dlg.OverwritePrompt = true;
+                SaveFileDialog dlg = new SaveFileDialog();
+                dlg.Title = "Save Test Project";
+                dlg.Filter = "NUnit Test Project (*.nunit)|*.nunit|All Files (*.*)|*.*";
+                string path = NUnitProject.ProjectPathFromFile(loader.TestProject.ProjectPath);
+                if (CanWriteProjectFile(path))
+                    dlg.FileName = path;
+                dlg.DefaultExt = "nunit";
+                dlg.ValidateNames = true;
+                dlg.OverwritePrompt = true;
 
-			while( dlg.ShowDialog( Form ) == DialogResult.OK )
-			{
-				if ( !CanWriteProjectFile( dlg.FileName ) )
-                    Form.MessageDisplay.Info(string.Format("File {0} is write-protected. Select another file name.", dlg.FileName));
-				else
-				{
-					loader.TestProject.Save( dlg.FileName );
-                    ReloadProject();
-                    return;
-				}
-			}
-        }
+                while (dlg.ShowDialog(Form) == DialogResult.OK)
+                {
+                    if (!CanWriteProjectFile(dlg.FileName))
+                        Form.MessageDisplay.Info(string.Format("File {0} is write-protected. Select another file name.", dlg.FileName));
+                    else
+                    {
+                        loader.TestProject.Save(dlg.FileName);
+                        ReloadProject();
+                        return;
+                    }
+                }
+            }
             /*2013-1-1单元测试加*/
             catch (CADException exception)
             {
@@ -625,23 +609,23 @@ namespace NUnit.Gui.ArxNet
             {
                 if (loader == null) return DialogResult.No;//2012-12-29单元测试加
 
-                DialogResult result = DialogResult.OK;
-            NUnitProject project = loader.TestProject;
+                DialogResult result = DialogResult.No;
+                NUnitProject project = loader.TestProject;
 
                 if (project == null) return DialogResult.No;//2012-12-29单元测试加
 
-            if (project.IsDirty)
-            {
-                string msg = string.Format(
-                    "Project {0} has been changed. Do you want to save changes?", project.Name);
+                if (project.IsDirty)
+                {
+                    string msg = string.Format(
+                        "Project {0} has been changed. Do you want to save changes?", project.Name);
 
-                result = Form.MessageDisplay.Ask(msg, MessageBoxButtons.YesNoCancel);
-                if (result == DialogResult.Yes)
-                    SaveProject();
+                    result = Form.MessageDisplay.Ask(msg, MessageBoxButtons.YesNoCancel);
+                    if (result == DialogResult.Yes)
+                        SaveProject();
+                }
+
+                return result;
             }
-
-            return result;
-        }
             /*2012-12-29单元测试加*/
             catch (CADException exception)
             {
@@ -682,7 +666,7 @@ namespace NUnit.Gui.ArxNet
                 dlg.OverwritePrompt = true;
 
                 if (dlg.ShowDialog(Form) == DialogResult.OK)
-                {
+                {                    
                     string fileName = dlg.FileName;
 
                     loader.SaveLastResult(fileName);
@@ -719,22 +703,22 @@ namespace NUnit.Gui.ArxNet
             {
                 if (loader == null) return;//2012-12-31单元测试加
 
-            NUnitProject project = loader.TestProject;
+                NUnitProject project = loader.TestProject;
 
                 if (project == null) return;//2012-12-31单元测试加
 
-            bool wrapper = project.IsAssemblyWrapper;
-            string projectPath = project.ProjectPath;
-            string activeConfigName = project.ActiveConfigName;
+                bool wrapper = project.IsAssemblyWrapper;
+                string projectPath = project.ProjectPath;
+                string activeConfigName = project.ActiveConfigName;
 
-            // Unload first to avoid message asking about saving
-            loader.UnloadProject();
+                // Unload first to avoid message asking about saving
+                loader.UnloadProject();
 
-            if (wrapper)
-                OpenProject(projectPath);
-            else
-                OpenProject(projectPath, activeConfigName, null);
-        }
+                if (wrapper)
+                    OpenProject(projectPath);
+                else
+                    OpenProject(projectPath, activeConfigName, null);
+            }
             /*2012-12-31单元测试加*/
             catch (CADException exception)
             {
@@ -763,66 +747,66 @@ namespace NUnit.Gui.ArxNet
             {
                 if (loader == null) return;//2012-12-30单元测试加
 
-            NUnitProject project = loader.TestProject;
+                NUnitProject project = loader.TestProject;
 
                 if (project == null) return;
 
-            string editorPath = GetProjectEditorPath();
-            if (!File.Exists(editorPath))
-            {
-                string NL = Environment.NewLine;
-                string message =
-                    "Unable to locate the specified Project Editor:" + NL + NL + editorPath + NL + NL +
+                string editorPath = GetProjectEditorPath();
+                if (!File.Exists(editorPath))
+                {
+                    string NL = Environment.NewLine;
+                    string message =
+                        "Unable to locate the specified Project Editor:" + NL + NL + editorPath + NL + NL +
                         (ServicesArxNet.UserSettings.GetSetting("Options.ProjectEditor.EditorPath") == null
-                        ? "Verify that nunit.editor.exe is properly installed in the NUnit bin directory."
-                        : "Verify that you have set the path to the editor correctly.");
+                            ? "Verify that nunit.editor.exe is properly installed in the NUnit bin directory."
+                            : "Verify that you have set the path to the editor correctly.");
 
                     if (Form != null)
                         Form.MessageDisplay.Error(message);
                     else
                         CADApplication.ShowAlertDialog(message);
 
-                return;
-            }
+                    return;
+                }
 
-            if (!NUnitProject.IsNUnitProjectFile(project.ProjectPath))
-            {
-                if (Form.MessageDisplay.Display(
-                    "The project has not yet been saved. In order to edit the project, it must first be saved. Click OK to save the project or Cancel to exit.",
-                    MessageBoxButtons.OKCancel) == DialogResult.OK)
+                if (!NUnitProject.IsNUnitProjectFile(project.ProjectPath))
+                {
+                    if (Form.MessageDisplay.Display(
+                        "The project has not yet been saved. In order to edit the project, it must first be saved. Click OK to save the project or Cancel to exit.",
+                        MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    {
+                        project.Save();
+                    }
+                }
+                else if (!File.Exists(project.ProjectPath))
                 {
                     project.Save();
                 }
-            }
-            else if (!File.Exists(project.ProjectPath))
-            {
-                project.Save();
-            }
-            else if (project.IsDirty)
-            {
-                switch (Form.MessageDisplay.Ask(
-                    "There are unsaved changes. Do you want to save them before running the editor?",
-                    MessageBoxButtons.YesNoCancel))
+                else if (project.IsDirty)
                 {
-                    case DialogResult.Yes:
-                        project.Save();
-                        break;
+                    switch (Form.MessageDisplay.Ask(
+                        "There are unsaved changes. Do you want to save them before running the editor?",
+                        MessageBoxButtons.YesNoCancel))
+                    {
+                        case DialogResult.Yes:
+                            project.Save();
+                            break;
 
-                    case DialogResult.Cancel:
-                        return;
+                        case DialogResult.Cancel:
+                            return;
+                    }
+                }
+
+                // In case we tried to save project and failed
+                if (NUnitProject.IsNUnitProjectFile(project.ProjectPath) && File.Exists(project.ProjectPath))
+                {
+                    Process p = new Process();
+
+                    p.StartInfo.FileName = Quoted(editorPath);
+                    p.StartInfo.Arguments = Quoted(project.ProjectPath);
+                    p.Start();
                 }
             }
-
-            // In case we tried to save project and failed
-            if (NUnitProject.IsNUnitProjectFile(project.ProjectPath) && File.Exists(project.ProjectPath))
-            {
-                Process p = new Process();
-
-                p.StartInfo.FileName = Quoted(editorPath);
-                p.StartInfo.Arguments = Quoted(project.ProjectPath);
-                p.Start();
-            }
-        }
             /*2012-12-30单元测试加*/
             catch (CADException exception)
             {
@@ -843,7 +827,7 @@ namespace NUnit.Gui.ArxNet
 
         #endregion
 
-        #endregion
+        #endregion        
 
         #region Helper Properties and Methods
 
@@ -876,5 +860,6 @@ namespace NUnit.Gui.ArxNet
         }
 
         #endregion
+
     }
 }
