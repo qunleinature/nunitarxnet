@@ -1,0 +1,40 @@
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-command-arxnet.tests.dll /run:NUnit.CommandRunner.ArxNet.Tests.CommandLineTests.NoParametersCount
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-core-arxnet.tests.dll
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-core-arxnet.tests.manual.dll /fixture:NUnit.Core.ArxNet.Tests.EditorWriterTests
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-core-arxnet.tests.manual.dll /fixture:NUnit.Core.ArxNet.Tests.ConsoleSetOutEditorWriterTests
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-command-arxnet.tests.dll
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-command-arxnet.tests.manual.dll /run:NUnit.CommandRunner.ArxNet.Tests.CommandRunnerArxNetTest.RunnerArxNetInit
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-command-arxnet.tests.manual.dll /run:NUnit.CommandRunner.ArxNet.Tests.CommandRunnerArxNetTest.RunnerArxNetCleanUp
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-command-arxnet.tests.manual.dll /run:NUnit.CommandRunner.ArxNet.Tests.CommandRunnerArxNetTest.RunnerArxNetRun
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.AppEntryArxNetTests.Main
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-gui-arxnet.tests.dll
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-gui-arxnet.tests.dll /fixture:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.Dispose
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-util-arxnet.tests.dll
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.DomainManagerArxNetTests
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.PathUtilTests
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.PathUtilTests_Windows
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.PathUtilTests_Unix
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.TestLoaderArxNetWatcherTests
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-uikit-arxnet.tests.dll /fixture:NUnit.UiKit.ArxNet.Tests.ErrorDisplayArxNetTests
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-uikit-arxnet.tests.dll /fixture:NUnit.UiKit.ArxNet.Tests.ProgressBarArxNetTests
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.TestRunnerFactoryArxNetTests
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.NUnitProjectArxNetLoad
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.NUnitProjectArxNetSave
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.NUnitProjectArxNetTests
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.RecentFilesArxNetTests
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-uikit-arxnet.tests.dll /fixture:NUnit.UiKit.ArxNet.Tests.TestSuiteTreeNodeArxNetTests
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-uikit-arxnet.tests.dll /fixture:NUnit.UiKit.ArxNet.Tests.TestSuiteTreeViewArxNetTests
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-uikit-arxnet.tests.dll /fixture:NUnit.UiKit.ArxNet.Tests.VisualStateArxNetTests
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-gui-arxnet.tests.dll /fixture:NUnit.Gui.ArxNet.Tests.CommandLineArxNetTests
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.AppEntryArxNetTests.AppEntryArxNetInit
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.AppEntryArxNetTests.AppEntryArxNetCleanUp
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.AppEntryArxNetTests.AppEntryArxNetRun
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.VisualStudioConverterArxNetTests
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.TestLoaderArxNetAssemblyTests
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.TestLoaderArxNetWatcherTests
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-uikit-arxnet.tests.dll /fixture:NUnit.UiKit.ArxNet.Tests.TestTreeArxNetTests
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-gui-arxnet.tests.dll /fixture:NUnit.Gui.ArxNet.Tests.RecentFileMenuHandlerArxNetTests
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.RecentFilesArxNetTests
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.SettingsGroupArxNetTests
