@@ -4,14 +4,6 @@
 // copyright ownership at http://nunit.org.
 // ****************************************************************
 
-// ****************************************************************
-// Copyright 2013, Lei Qun
-// 2013.1.24修改
-//  1.修改显示版本信息
-// 2013.6.7
-//  1.改在nunit2.6.2基础
-// ****************************************************************
-
 using System;
 using System.Drawing;
 using System.Collections;
@@ -19,9 +11,9 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using System.Reflection;
 
-namespace NUnit.Gui.ArxNet
+namespace NUnit.Gui
 {
-	public class AboutBoxArxNet : System.Windows.Forms.Form
+	public class AboutBox : System.Windows.Forms.Form
 	{
 		private System.Windows.Forms.Button OkButton;
 		private System.Windows.Forms.Label label1;
@@ -41,7 +33,7 @@ namespace NUnit.Gui.ArxNet
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
-		public AboutBoxArxNet()
+		public AboutBox()
 		{
 			//
 			// Required for Windows Form Designer support
@@ -65,9 +57,8 @@ namespace NUnit.Gui.ArxNet
                 if ( configText != "" )
 				    versionText += string.Format(" ({0})",configText);
 			}
-
-            //2013-1-24修改
-            string copyrightText = "Copyright (C) 2013 Lei Qun.\r\nCopyright (C) 2002-2012 Charlie Poole.\r\nCopyright (C) 2002-2004 James W. Newkirk, Michael C. Two, Alexei A. Vorontsov.\r\nCopyright (C) 2000-2002 Philip Craig.\r\nAll Rights Reserved.";
+			
+			string copyrightText = "Copyright (C) 2002-2012 Charlie Poole.\r\nCopyright (C) 2002-2004 James W. Newkirk, Michael C. Two, Alexei A. Vorontsov.\r\nCopyright (C) 2000-2002 Philip Craig.\r\nAll Rights Reserved.";
 			objectAttrs = executingAssembly.GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
 			if ( objectAttrs.Length > 0 )
 				copyrightText = ((AssemblyCopyrightAttribute)objectAttrs[0]).Copyright;
@@ -99,7 +90,7 @@ namespace NUnit.Gui.ArxNet
 		/// </summary>
 		private void InitializeComponent()
 		{
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutBoxArxNet));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutBox));
             this.OkButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.versionLabel = new System.Windows.Forms.Label();
@@ -156,7 +147,7 @@ namespace NUnit.Gui.ArxNet
             this.label3.Size = new System.Drawing.Size(287, 48);
             this.label3.TabIndex = 4;
             this.label3.Text = "James W. Newkirk, Michael C. Two, Alexei A. Vorontsov, Philip Craig, Ethan Smith," +
-    " Doug de la Torre, Charlie Poole，Lei Qun";
+                " Doug de la Torre, Charlie Poole";
             // 
             // linkLabel1
             // 
@@ -225,7 +216,7 @@ namespace NUnit.Gui.ArxNet
             this.dotNetVersionLabel.TabIndex = 12;
             this.dotNetVersionLabel.Text = "label9";
             // 
-            // AboutBoxArxNet
+            // AboutBox
             // 
             this.AcceptButton = this.OkButton;
             this.CancelButton = this.OkButton;
@@ -247,7 +238,7 @@ namespace NUnit.Gui.ArxNet
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AboutBoxArxNet";
+            this.Name = "AboutBox";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "About NUnit";

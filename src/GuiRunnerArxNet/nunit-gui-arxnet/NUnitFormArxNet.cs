@@ -24,6 +24,8 @@
 // 2013.6.6：
 //  1.已改TestLoader为TestLoaderArxNet
 //  2.RecentFileMenuHandler改成RecentFileMenuHandlerArxNet
+// 2013.6.7
+//  1.改AboutBoxArxNet
 // ****************************************************************
 
 using System;
@@ -1366,7 +1368,7 @@ namespace NUnit.Gui.ArxNet
 		/// </summary>
 		private void aboutMenuItem_Click(object sender, System.EventArgs e)
 		{
-			using( AboutBox aboutBox = new AboutBox() )
+			using( AboutBoxArxNet aboutBox = new AboutBoxArxNet() )
 			{
 				this.Site.Container.Add( aboutBox );
 				aboutBox.ShowDialog();
