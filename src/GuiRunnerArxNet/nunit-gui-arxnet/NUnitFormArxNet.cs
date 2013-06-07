@@ -26,6 +26,7 @@
 //  2.RecentFileMenuHandler改成RecentFileMenuHandlerArxNet
 // 2013.6.7
 //  1.改AboutBoxArxNet
+//  2.已改GuiOptionsArxNet
 // ****************************************************************
 
 using System;

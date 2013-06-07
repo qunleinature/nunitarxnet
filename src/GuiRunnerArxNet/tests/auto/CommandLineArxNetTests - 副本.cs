@@ -8,10 +8,13 @@
 //2012年8月25日，雷群修改
 //2012-6-7
 //  1.已改GuiOptionsArxNet
-//  2.已改在nunit2.6.2基础
+//  2.改在nunit2.6.2基础
 // ****************************************************************
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 using NUnit.Framework;
 
