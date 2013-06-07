@@ -166,7 +166,7 @@ namespace NUnit.Gui.ArxNet
 			this.messageTextBox.TabIndex = 4;
 			this.messageTextBox.Text = "";
 			// 
-			// AddinDialog
+			// AddinDialogArxNet
 			// 
 			this.ClientSize = new System.Drawing.Size(464, 376);
 			this.Controls.Add(this.label2);
@@ -176,7 +176,7 @@ namespace NUnit.Gui.ArxNet
 			this.Controls.Add(this.descriptionTextBox);
 			this.Controls.Add(this.addinListView);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Name = "AddinDialog";
+			this.Name = "AddinDialogArxNet";
 			this.ShowInTaskbar = false;
 			this.Text = "Registered Addins";
 			this.Load += new System.EventHandler(this.AddinDialogArxNet_Load);
