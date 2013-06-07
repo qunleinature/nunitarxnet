@@ -27,6 +27,8 @@
 // 2013.6.7
 //  1.改AboutBoxArxNet
 //  2.已改GuiOptionsArxNet
+// 2013.6.8
+//  1.改TestAssemblyInfoFormArxNet
 // ****************************************************************
 
 using System;
@@ -1338,7 +1340,7 @@ namespace NUnit.Gui.ArxNet
 
 		private void assemblyDetailsMenuItem_Click(object sender, System.EventArgs e)
 		{
-            new TestAssemblyInfoForm().ShowDialog();
+            new TestAssemblyInfoFormArxNet().ShowDialog();
         }
 
 		private void addinInfoMenuItem_Click(object sender, System.EventArgs e)
