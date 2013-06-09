@@ -8,6 +8,8 @@
 // Copyright 2012, Lei Qun
 // 2013.5.28修改：
 //  1.在nunit2.6.2基础上修改
+// 2013.6.9
+//  1.已改TestProgressBarArxNet
 // ****************************************************************
 
 namespace NUnit.UiKit.ArxNet.Tests

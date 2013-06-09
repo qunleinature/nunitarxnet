@@ -39,3 +39,4 @@ F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-gu
 F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.RecentFilesArxNetTests
 F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.SettingsGroupArxNetTests
 E:\PC\lq\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.AppEntryArxNetTests.AppEntryArxNetRun
+E:\PC\lq\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-uikit-arxnet.tests.dll /fixture:NUnit.UiKit.ArxNet.Tests.ProgressBarArxNetTests
