@@ -3,43 +3,23 @@
 // This is free software licensed under the NUnit license. You may
 // obtain a copy of the license at http://nunit.org
 // ****************************************************************
-
-// ****************************************************************
-// Copyright 2012, Lei Qun 
-// 2012.12.21修改:基类改为SettingsDialogBaseArxNet
-// 2013.5.30修改：
-//  1.改SettingsPage为SettingsPageArxNet
-// 2013.6.9
-//  1.已改在NUnit2.6.2基础
-// ****************************************************************
-
 using System;
 using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-using NUnit.Util;
-using NUnit.UiKit;
-using NUnit.Util.ArxNet;
-
-namespace NUnit.UiKit.ArxNet
+namespace NUnit.UiKit
 {
-	public class SimpleSettingsDialogArxNet : SettingsDialogBaseArxNet
+	public class SimpleSettingsDialog : NUnit.UiKit.SettingsDialogBase
 	{
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.ComponentModel.IContainer components = null;
 
-		public static void Display( Form owner, SettingsPageArxNet page )
+		public static void Display( Form owner, SettingsPage page )
 		{
-            /*2013-1-12:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加*/
-            if (owner == null) return;
-            if (owner.Site == null) return;
-            if (owner.Site.Container == null) return;
-            /*2013-1-12:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加*/
-
-			using( SimpleSettingsDialogArxNet dialog = new SimpleSettingsDialogArxNet() )
+			using( SimpleSettingsDialog dialog = new SimpleSettingsDialog() )
 			{
 				owner.Site.Container.Add( dialog );
 				dialog.Font = owner.Font;
@@ -48,7 +28,7 @@ namespace NUnit.UiKit.ArxNet
 			}
 		}
 
-		public SimpleSettingsDialogArxNet()
+		public SimpleSettingsDialog()
 		{
 			// This call is required by the Windows Form Designer.
 			InitializeComponent();
@@ -125,7 +105,7 @@ namespace NUnit.UiKit.ArxNet
 
 		private void SimpleSettingsDialog_Load(object sender, System.EventArgs e)
 		{
-			SettingsPageArxNet page = this.SettingsPages[0];
+			SettingsPage page = this.SettingsPages[0];
 			this.panel1.Controls.Add( page );
 			this.Text = page.Title;
 		}

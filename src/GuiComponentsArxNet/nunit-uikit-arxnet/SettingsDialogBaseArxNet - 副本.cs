@@ -9,8 +9,6 @@
 // 2012.12.21修改:改Services为ServicesArxNet
 // 2013.5.30修改
 //   1.改SettingsPage为SettingsPageArxNet
-// 2013.6.9
-//   1.已改在NUnit2.6.2基础
 // ****************************************************************
 
 using System;

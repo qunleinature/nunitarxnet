@@ -9,8 +9,6 @@
 // 2012.12.21修改:基类改为SettingsDialogBaseArxNet
 // 2013.5.30修改：
 //  1.改SettingsPage为SettingsPageArxNet
-// 2013.6.9
-//  1.已改在NUnit2.6.2基础
 // ****************************************************************
 
 using System;
@@ -25,12 +23,13 @@ using NUnit.Util.ArxNet;
 
 namespace NUnit.UiKit.ArxNet
 {
-	public class TabbedSettingsDialogArxNet : SettingsDialogBaseArxNet
+	public class SimpleSettingsDialogArxNet : SettingsDialogBaseArxNet
 	{
-		protected System.Windows.Forms.TabControl tabControl1;
+		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.GroupBox groupBox1;
 		private System.ComponentModel.IContainer components = null;
 
-		public static void Display( Form owner, params SettingsPageArxNet[] pages )
+		public static void Display( Form owner, SettingsPageArxNet page )
 		{
             /*2013-1-12:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加*/
             if (owner == null) return;
@@ -38,16 +37,16 @@ namespace NUnit.UiKit.ArxNet
             if (owner.Site.Container == null) return;
             /*2013-1-12:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试加*/
 
-			using( TabbedSettingsDialogArxNet dialog = new TabbedSettingsDialogArxNet() )
+			using( SimpleSettingsDialogArxNet dialog = new SimpleSettingsDialogArxNet() )
 			{
 				owner.Site.Container.Add( dialog );
 				dialog.Font = owner.Font;
-				dialog.SettingsPages.AddRange( pages ); 
+				dialog.SettingsPages.Add( page ); 
 				dialog.ShowDialog();
 			}
 		}
 
-		public TabbedSettingsDialogArxNet()
+		public SimpleSettingsDialogArxNet()
 		{
 			// This call is required by the Windows Form Designer.
 			InitializeComponent();
@@ -77,54 +76,56 @@ namespace NUnit.UiKit.ArxNet
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.SuspendLayout();
 			// 
 			// cancelButton
 			// 
-			this.cancelButton.Location = new System.Drawing.Point(394, 392);
+			this.cancelButton.Location = new System.Drawing.Point(410, 392);
 			this.cancelButton.Name = "cancelButton";
 			// 
 			// okButton
 			// 
-			this.okButton.Location = new System.Drawing.Point(306, 392);
+			this.okButton.Location = new System.Drawing.Point(322, 392);
 			this.okButton.Name = "okButton";
 			// 
-			// tabControl1
+			// panel1
 			// 
-			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.tabControl1.ItemSize = new System.Drawing.Size(46, 18);
-			this.tabControl1.Location = new System.Drawing.Point(10, 8);
-			this.tabControl1.Name = "tabControl1";
-			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(456, 376);
-			this.tabControl1.TabIndex = 2;
+			this.panel1.Location = new System.Drawing.Point(16, 16);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(456, 336);
+			this.panel1.TabIndex = 21;
 			// 
-			// TabbedSettingsDialog
+			// groupBox1
 			// 
-			this.ClientSize = new System.Drawing.Size(474, 426);
-			this.Controls.Add(this.tabControl1);
-			this.Name = "TabbedSettingsDialog";
-			this.Load += new System.EventHandler(this.TabbedSettingsDialog_Load);
+			this.groupBox1.Location = new System.Drawing.Point(16, 360);
+			this.groupBox1.Name = "groupBox1";
+			this.groupBox1.Size = new System.Drawing.Size(456, 8);
+			this.groupBox1.TabIndex = 22;
+			this.groupBox1.TabStop = false;
+			// 
+			// SimpleSettingsDialog
+			// 
+			this.ClientSize = new System.Drawing.Size(490, 426);
+			this.Controls.Add(this.panel1);
+			this.Controls.Add(this.groupBox1);
+			this.Name = "SimpleSettingsDialog";
+			this.Load += new System.EventHandler(this.SimpleSettingsDialog_Load);
 			this.Controls.SetChildIndex(this.okButton, 0);
 			this.Controls.SetChildIndex(this.cancelButton, 0);
-			this.Controls.SetChildIndex(this.tabControl1, 0);
+			this.Controls.SetChildIndex(this.groupBox1, 0);
+			this.Controls.SetChildIndex(this.panel1, 0);
 			this.ResumeLayout(false);
 
 		}
 		#endregion
 
-		private void TabbedSettingsDialog_Load(object sender, System.EventArgs e)
+		private void SimpleSettingsDialog_Load(object sender, System.EventArgs e)
 		{
-			foreach( SettingsPageArxNet page in SettingsPages )
-			{
-				TabPage tabPage = new TabPage(page.Title);
-				tabPage.Controls.Add( page );
-				page.Location = new Point(0, 16);
-				this.tabControl1.TabPages.Add( tabPage );
-			}
+			SettingsPageArxNet page = this.SettingsPages[0];
+			this.panel1.Controls.Add( page );
+			this.Text = page.Title;
 		}
 	}
 }

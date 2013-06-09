@@ -3,32 +3,19 @@
 // This is free software licensed under the NUnit license. You may
 // obtain a copy of the license at http://nunit.org
 // ****************************************************************
-
-// ****************************************************************
-// Copyright 2012, Lei Qun 
-// 2012.12.21修改:改Services为ServicesArxNet
-// 2013.5.30修改
-//   1.改SettingsPage为SettingsPageArxNet
-// 2013.6.9
-//   1.已改在NUnit2.6.2基础
-// ****************************************************************
-
 using System;
 using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
-
 using NUnit.Util;
-using NUnit.UiKit;
-using NUnit.Util.ArxNet;
 
-namespace NUnit.UiKit.ArxNet
+namespace NUnit.UiKit
 {
 	/// <summary>
 	/// Summary description for OptionsDialogBase.
 	/// </summary>
-    public class SettingsDialogBaseArxNet : NUnitFormBase
+    public class SettingsDialogBase : NUnitFormBase
 	{
 		#region Instance Fields
 		protected System.Windows.Forms.Button cancelButton;
@@ -45,7 +32,7 @@ namespace NUnit.UiKit.ArxNet
 		#endregion
 
 		#region Construction and Disposal
-		public SettingsDialogBaseArxNet()
+		public SettingsDialogBase()
 		{
 			//
 			// Required for Windows Form Designer support
@@ -137,7 +124,7 @@ namespace NUnit.UiKit.ArxNet
 		#region Public Methods
 		public void ApplySettings()
 		{
-			foreach( SettingsPageArxNet page in pageList )
+			foreach( SettingsPage page in pageList )
 				if ( page.SettingsLoaded )
 					page.ApplySettings();
 		}
@@ -147,12 +134,12 @@ namespace NUnit.UiKit.ArxNet
 		private void SettingsDialogBase_Closed(object sender, System.EventArgs e)
 		{
 			if (this.reloadProjectOnClose)
-				ServicesArxNet.TestLoader.ReloadTest();
+				Services.TestLoader.ReloadTest();
 		}
 
 		private void okButton_Click(object sender, System.EventArgs e)
 		{
-			if ( ServicesArxNet.TestLoader.IsTestLoaded && this.HasChangesRequiringReload )
+			if ( Services.TestLoader.IsTestLoaded && this.HasChangesRequiringReload )
 			{
                 DialogResult answer = MessageDisplay.Ask( 
 					"Some changes will only take effect when you reload the test project. Do you want to reload now?");
@@ -174,7 +161,7 @@ namespace NUnit.UiKit.ArxNet
 		{
 			get
 			{
-				foreach( SettingsPageArxNet page in pageList )
+				foreach( SettingsPage page in pageList )
 					if ( page.SettingsLoaded && page.HasChangesRequiringReload )
 						return true;
 
@@ -186,26 +173,26 @@ namespace NUnit.UiKit.ArxNet
 		#region Nested SettingsPageCollection Class
 		public class SettingsPageCollection : CollectionBase
 		{
-			public void Add( SettingsPageArxNet page )
+			public void Add( SettingsPage page )
 			{
 				this.InnerList.Add( page );
 			}
 
-			public void AddRange( params SettingsPageArxNet[] pages )
+			public void AddRange( params SettingsPage[] pages )
 			{
 				this.InnerList.AddRange( pages );
 			}
 
-			public SettingsPageArxNet this[int index]
+			public SettingsPage this[int index]
 			{
-				get { return (SettingsPageArxNet)InnerList[index]; }
+				get { return (SettingsPage)InnerList[index]; }
 			}
 
-			public SettingsPageArxNet this[string key]
+			public SettingsPage this[string key]
 			{
 				get
 				{
-					foreach( SettingsPageArxNet page in InnerList )
+					foreach( SettingsPage page in InnerList )
 						if ( page.Key == key )
 							return page;
 

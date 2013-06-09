@@ -18,6 +18,8 @@
 // 2013.6.1修改：
 //  1.改TextOutputSettingsPage为TextOutputSettingsPageArxNet
 //  2.改TextDisplayTabSettings为TextDisplayTabSettingsArxNet
+// 2013.6.9
+//  1.已改SimpleSettingsDialogArxNet
 // ****************************************************************
 
 using System;
