@@ -8,6 +8,8 @@
 // Copyright 2013, Lei Qun
 // 2013.1.26：
 //  在NUnit2.6.2基础上修改
+// 2013.6.28
+//  1.已改CommandOptionsArxNet
 // ****************************************************************
 
 namespace NUnit.CommandRunner.ArxNet.Tests//2013.1.25改

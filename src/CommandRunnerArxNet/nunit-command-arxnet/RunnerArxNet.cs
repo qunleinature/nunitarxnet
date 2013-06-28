@@ -22,6 +22,8 @@
 //  2.改ProjectService为ProjectServiceArxNet
 // 2013.6.7
 //  1.已改SettingsServiceArxNet
+// 2013.6.28
+//  1.已改CommandOptionsArxNet
 // ****************************************************************
 
 using System;

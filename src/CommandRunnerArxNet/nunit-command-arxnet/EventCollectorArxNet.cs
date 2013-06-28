@@ -11,6 +11,8 @@
 // 2013.5.25：
 //  使用EditorWritor类在Editor输出
 //  线程中无法用Editor输出,添加一个StringWriter记录Editor输出
+// 2014.6.28
+//  1.已改CommandOptionsArxNet
 // ****************************************************************
 
 using System;
