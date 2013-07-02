@@ -13,6 +13,8 @@
 //  线程中无法用Editor输出,用StringWriter记录Editor输出
 // 2013.6.28
 //  1.已改CommandOptionsArxNet
+// 2013.7.2
+//  1.已改DefaultTestRunnerFactoryArxNet
 // ****************************************************************
 
 using System.Diagnostics;

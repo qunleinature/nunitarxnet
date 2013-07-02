@@ -19,6 +19,8 @@
 //      1.2013-1-1单元测试(?NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveLastResult)改
 //  2013.5.27修改：
 //      1.在nunit2.6.2基础上修改
+// 2013.7.2
+//   1.已改DefaultTestRunnerFactoryArxNet
 // ****************************************************************
 
 namespace NUnit.Util.ArxNet
