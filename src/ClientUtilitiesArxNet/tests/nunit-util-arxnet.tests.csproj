@@ -118,6 +118,7 @@
     <Compile Include="NUnitProjectArxNetTests.cs" />
     <Compile Include="NUnitProjectArxNetXml.cs" />
     <Compile Include="PathUtilArxNetTests.cs" />
+    <Compile Include="ProcessRunnerArxNetTests.cs" />
     <Compile Include="RecentFilesArxNetTests.cs" />
     <Compile Include="ServiceManagerArxNetSetUpFixture.cs" />
     <Compile Include="SettingsGroupArxNetTests.cs" />

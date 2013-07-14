@@ -41,3 +41,6 @@ F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-ut
 E:\PC\lq\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.AppEntryArxNetTests.AppEntryArxNetRun
 E:\PC\lq\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-uikit-arxnet.tests.dll /fixture:NUnit.UiKit.ArxNet.Tests.ProgressBarArxNetTests
 F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.TestRunnerFactoryArxNetTests
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.ProcessRunnerArxNetTests
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-util-arxnet.tests.dll /run:NUnit.Util.ArxNet.Tests.ProcessRunnerArxNetTests.TestProcessIsReused
+F:\LQ\Project\VS\C#\2010\NUnit\NUnit-2.6.2\bin\Debug\tests\nunit.util.tests.dll /run:NUnit.Util.Tests.ProcessRunnerTests.TestProcessIsReused
