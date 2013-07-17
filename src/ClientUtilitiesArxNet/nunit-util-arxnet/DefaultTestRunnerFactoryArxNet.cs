@@ -49,7 +49,7 @@ namespace NUnit.Util.ArxNet
             {
                 case ProcessModel.Multiple:
                     package.Settings.Remove("ProcessModel");
-                    return new MultipleTestProcessRunner();
+                    return new MultipleTestProcessRunnerArxNet();
                 case ProcessModel.Separate:
                     package.Settings.Remove("ProcessModel");
                     return new ProcessRunnerArxNet();
@@ -74,7 +74,7 @@ namespace NUnit.Util.ArxNet
             switch (processModel)
             {
                 case ProcessModel.Multiple:
-                    return runner is MultipleTestProcessRunner;
+                    return runner is MultipleTestProcessRunnerArxNet;
                 case ProcessModel.Separate:
                     ProcessRunnerArxNet processRunner = runner as ProcessRunnerArxNet;
                     return processRunner != null && processRunner.RuntimeFramework == targetFramework;

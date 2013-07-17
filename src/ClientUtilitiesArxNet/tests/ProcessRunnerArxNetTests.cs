@@ -9,6 +9,8 @@
 //  2013.7.7
 //   1.在NUnit2.6.2基础
 //   2.测试NUnit.Util.ArxNet.ProcessRunnerArxNet类
+// 2013.7.18
+//   1.测试未通过,nunit-agent.exe发生异常：可能在CAD环境下不能新建一个进程运行nunit-agent.exe？
 // ****************************************************************
 
 using System.Diagnostics;
