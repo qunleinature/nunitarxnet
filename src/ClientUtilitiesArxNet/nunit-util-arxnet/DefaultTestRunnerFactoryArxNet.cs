@@ -11,8 +11,10 @@
 // 2013.5.29修改：
 //  1.改ProcessRunner为ProcessRunnerArxNet
 //  2.CAD环境下测试包是单进程、无应用域
-// 2.13.7.2
+// 2013.7.2
 //  1.已改NUnit2.6.2基础
+// 2013.7.19
+//  1.改InProcessTestRunnerFactoryArxNet
 // ****************************************************************
 
 using System;
@@ -25,7 +27,7 @@ namespace NUnit.Util.ArxNet
     /// runner for a given package to be loaded and run either in a 
     /// separate process or within the same process. 
     /// </summary>
-    public class DefaultTestRunnerFactoryArxNet : InProcessTestRunnerFactory, ITestRunnerFactory
+    public class DefaultTestRunnerFactoryArxNet : InProcessTestRunnerFactoryArxNet, ITestRunnerFactory
     {
 #if CLR_2_0 || CLR_4_0
         private RuntimeFrameworkSelectorArxNet selector = new RuntimeFrameworkSelectorArxNet();//RuntimeFrameworkSelectorArxNet    

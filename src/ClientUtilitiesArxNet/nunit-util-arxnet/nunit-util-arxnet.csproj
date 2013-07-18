@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="AggregatingTestRunnerArxNet.cs" />
     <Compile Include="DefaultTestRunnerFactoryArxNet.cs" />
+    <Compile Include="InProcessTestRunnerFactoryArxNet.cs" />
     <Compile Include="InterfacesArxNet\IRuntimeFrameworkSelectorArxNet.cs" />
     <Compile Include="ProcessRunnerArxNet.cs" />
     <Compile Include="ProjectConvertersArxNet\VisualStudioConverterArxNet.cs" />
