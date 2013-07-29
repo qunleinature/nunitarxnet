@@ -15,6 +15,8 @@
 //  1.已改NUnit2.6.2基础
 // 2013.7.19
 //  1.改InProcessTestRunnerFactoryArxNet
+// 2013.7.29
+//  1.已改MultipleTestProcessRunnerArxNet
 // ****************************************************************
 
 using System;

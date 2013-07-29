@@ -120,6 +120,7 @@
     <Compile Include="PathUtilArxNetTests.cs" />
     <Compile Include="ProcessRunnerArxNetTests.cs" />
     <Compile Include="RecentFilesArxNetTests.cs" />
+    <Compile Include="RuntimeFrameworkSelectorArxNetTests.cs" />
     <Compile Include="ServiceManagerArxNetSetUpFixture.cs" />
     <Compile Include="SettingsGroupArxNetTests.cs" />
     <Compile Include="TestEventCatcher.cs" />
