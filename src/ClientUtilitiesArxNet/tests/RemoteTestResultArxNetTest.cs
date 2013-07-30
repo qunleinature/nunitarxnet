@@ -9,6 +9,7 @@
 //  2013.7.30
 //   1.在NUnit2.6.2基础
 //   2.改TestDomainArxNet
+//   3.测试未通过,可能是在CAD环境下不支持程序域下的测试？
 // ****************************************************************
 
 using System;
@@ -18,7 +19,7 @@ using NUnit.Core;
 namespace NUnit.Util.ArxNet.Tests
 {
 	[TestFixture]
-	public class RemoteTestResultTest
+	public class RemoteTestResultArxNetTest
 	{
         private static readonly string mockDll = 
             NUnit.Tests.Assemblies.MockAssembly.AssemblyPath; 
