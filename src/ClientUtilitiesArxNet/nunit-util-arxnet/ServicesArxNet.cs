@@ -5,7 +5,7 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2012, Lei Qun
+// Copyright 2013, Lei Qun
 // 2012.12.21修改：TestLoader改为TestLoaderArxNet类
 // 2013.1.7修改：
 //  1.改为调用NUnit.Util.ArxNet.SettingsServiceArxNet类

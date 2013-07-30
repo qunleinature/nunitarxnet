@@ -50,7 +50,7 @@ namespace NUnit.Util.ArxNet
                     return new RemoteTestRunner();
                 case DomainUsage.Single:
                 default:
-                    return new TestDomain();
+                    return new TestDomainArxNet();
             }
         }
 

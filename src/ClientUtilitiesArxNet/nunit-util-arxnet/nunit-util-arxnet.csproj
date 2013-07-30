@@ -101,6 +101,7 @@
     <Compile Include="ServicesArxNet\SettingsServiceArxNet.cs" />
     <Compile Include="SettingsGroupArxNet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestDomainArxNet.cs" />
     <Compile Include="TestLoaderArxNet.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -10,6 +10,8 @@
 //  1.在nunit2.6.2基础上修改
 //  2.NUnit.Util.DomainManager改为NUnit.Util.ArxNet.DomainManagerArxNet类
 //  3.增加Init方法，初始化静态成员
+// 2013.7.29
+//  1.已改ServicesArxNet
 // ****************************************************************
 
 using System;

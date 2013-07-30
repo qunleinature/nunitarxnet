@@ -428,7 +428,7 @@ namespace NUnit.Util.ArxNet
         #region CreateRunner
         protected override TestRunner CreateRunner(int runnerID)
         {
-            return new TestDomain(runnerID);
+            return new TestDomainArxNet(runnerID);
         }
         #endregion
     }

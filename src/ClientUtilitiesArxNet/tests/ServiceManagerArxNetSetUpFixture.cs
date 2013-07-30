@@ -16,6 +16,8 @@
 // 2013.6.7  
 //   1.已经改SettingsGroup为SettingsGroupArxNet
 //   2.已改在nunit2.6.2基础
+// 2013.7.29
+//   1.已改ServicesArxNet
 // ****************************************************************
 
 using System;
