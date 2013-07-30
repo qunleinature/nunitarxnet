@@ -125,6 +125,7 @@
     <Compile Include="ServiceManagerArxNetSetUpFixture.cs" />
     <Compile Include="SettingsGroupArxNetTests.cs" />
     <Compile Include="TestDomainArxNetFixture.cs" />
+    <Compile Include="TestDomainArxNetTests_Multiple.cs" />
     <Compile Include="TestEventCatcher.cs" />
     <Compile Include="TestLoaderArxNetAssemblyTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

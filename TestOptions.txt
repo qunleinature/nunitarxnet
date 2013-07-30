@@ -48,3 +48,7 @@ F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-ut
 F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.RuntimeFrameworkSelectorArxNetTests
 F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.RemoteTestResultArxNetTest
 F:\LQ\Project\VS\C#\2010\NUnit\NUnit-2.6.2\bin\Debug\tests\nunit.util.tests.dll /fixture:NUnit.Util.Tests.RemoteTestResultTest
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.TestDomainArxNetFixture
+F:\LQ\Project\VS\C#\2010\NUnit\NUnit-2.6.2\bin\Debug\tests\nunit.util.tests.dll /fixture:NUnit.Util.Tests.TestDomainFixture
+F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.TestDomainArxNetTests_Multiple
+F:\LQ\Project\VS\C#\2010\NUnit\NUnit-2.6.2\bin\Debug\tests\nunit.util.tests.dll /fixture:NUnit.Util.Tests.TestDomainTests_Multiple
