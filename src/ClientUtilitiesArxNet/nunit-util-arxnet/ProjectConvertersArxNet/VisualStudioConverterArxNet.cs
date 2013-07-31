@@ -5,7 +5,7 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2012, Lei Qun
+// Copyright 2013, Lei Qun
 // 2013.6.3修改：
 //  1.在nunit2.6.2基础上修改
 //  2.NUnit.Util.ProjectConverters.VisualStudioConverter改为NUnit.Util.ArxNet.ProjectConvertersArxNet.VisualStudioConverterArxNet类

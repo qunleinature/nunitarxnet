@@ -5,7 +5,7 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2012, Lei Qun
+// Copyright 2013, Lei Qun
 // 2013.6.3  
 //   1.改VisualStudioConverter为VisualStudioConverterArxNet
 //   2.改Services为ServicesArxNet

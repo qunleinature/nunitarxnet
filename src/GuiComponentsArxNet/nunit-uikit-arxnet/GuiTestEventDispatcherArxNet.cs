@@ -5,7 +5,7 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2012, Lei Qun 
+// Copyright 2013, Lei Qun 
 // 2012.12.23修改:
 //      private void InvokeHandler( MulticastDelegate handlerList, EventArgs e )中
 //      control.Invoke( handler, args );死锁,改为 

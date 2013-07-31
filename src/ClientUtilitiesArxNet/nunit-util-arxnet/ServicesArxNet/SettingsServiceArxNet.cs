@@ -5,7 +5,7 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2012, Lei Qun
+// Copyright 2013, Lei Qun
 // 2013.1.7修改：
 //  1.NUnit.Util.SettingsService改为NUnit.Util.ArxNet.SettingsServiceArxNet类
 //  2.从NUnit.Util.ArxNet.SettingsGroupArxNet类继承

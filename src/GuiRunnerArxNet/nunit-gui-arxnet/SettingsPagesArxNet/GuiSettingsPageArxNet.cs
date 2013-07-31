@@ -5,7 +5,7 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2012, Lei Qun
+// Copyright 2013, Lei Qun
 // 2013.5.29修改：
 //  1.在nunit2.6.2基础上修改
 //  2.NUnit.Gui.SettingsPages.GuiSettingsPage改为NUnit.Gui.ArxNet.SettingsPagesArxNet.GuiSettingsPageArxNet类

@@ -5,7 +5,7 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2012, Lei Qun
+// Copyright 2013, Lei Qun
 // 2013.5.28修改
 //   1.nunit2.6.2基础上修改
 //   2.改DefaultTestRunnerFactory为DefaultTestRunnerFactoryArxNet

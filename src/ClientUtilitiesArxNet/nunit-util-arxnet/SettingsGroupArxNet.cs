@@ -5,7 +5,7 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2012, Lei Qun
+// Copyright 2013, Lei Qun
 // 2013.1.6修改：
 //  1.NUnit.Util.SettingsGroup改为NUnit.Util.ArxNet.SettingsGroupArxNet类
 //  2.添加对storage为null的处理

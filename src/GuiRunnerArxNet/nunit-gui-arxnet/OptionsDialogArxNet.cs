@@ -5,7 +5,7 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2012, Lei Qun
+// Copyright 2013, Lei Qun
 // 2012.12.21修改:调用TabbedSettingsDialogArxNet类,TreeBasedSettingsDialogArxNet类
 // 2013.5.29修改
 //   1.改GuiSettingsPage为GuiSettingsPageArxNet
