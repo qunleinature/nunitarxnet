@@ -15,6 +15,8 @@
 //  1.已改CommandOptionsArxNet
 // 2013.7.2
 //  1.已改DefaultTestRunnerFactoryArxNet
+// 2013.7.31
+//  1.已改ServicesArxNet
 // ****************************************************************
 
 using System.Diagnostics;

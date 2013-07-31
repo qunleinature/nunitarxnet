@@ -12,6 +12,8 @@
 //    3.改MultipleTestDomainRunnerArxNet
 //    4.改MultipleTestProcessRunnerArxNet
 //    5.改ProcessRunnerArxNet
+//  2013.7.31
+//    1.已改TestDomainArxNet
 // ****************************************************************
 
 namespace NUnit.Util.ArxNet

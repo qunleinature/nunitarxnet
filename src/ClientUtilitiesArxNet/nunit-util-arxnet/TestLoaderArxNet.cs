@@ -21,6 +21,8 @@
 //      1.在nunit2.6.2基础上修改
 // 2013.7.2
 //   1.已改DefaultTestRunnerFactoryArxNet
+// 2013.7.31
+//   1.已改ServicesArxNet
 // ****************************************************************
 
 namespace NUnit.Util.ArxNet

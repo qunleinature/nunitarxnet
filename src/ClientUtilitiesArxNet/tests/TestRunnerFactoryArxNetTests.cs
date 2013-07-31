@@ -10,6 +10,8 @@
 //   1.nunit2.6.2基础上修改
 //   2.改DefaultTestRunnerFactory为DefaultTestRunnerFactoryArxNet
 //   3.改ProcessRunner为ProcessRunnerArxNet
+// 2013.7.31
+//   1.改TestDomainArxNet
 // ****************************************************************
 
 using System;
@@ -37,7 +39,7 @@ namespace NUnit.Util.ArxNet.Tests
         public void SameFrameworkUsesTestDomain()
         {
             package.Settings["RuntimeFramework"] = currentFramework;
-            //Assert.That( factory.MakeTestRunner(package), Is.TypeOf(typeof(TestDomain)));
+            //Assert.That( factory.MakeTestRunner(package), Is.TypeOf(typeof(TestDomainArxNet)));
             Assert.That(factory.MakeTestRunner(package), Is.TypeOf(typeof(RemoteTestRunner)));//CAD环境下测试包是单进程、无应用域
         }
 

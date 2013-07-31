@@ -9,6 +9,8 @@
 //  2013.7.19修改：
 //    1.在nunit2.6.2基础上
 //    2.改MultipleTestDomainRunnerArxNet
+//  2013.7.31
+//    1.已改TestDomainArxNet
 // ****************************************************************
 
 using System;
