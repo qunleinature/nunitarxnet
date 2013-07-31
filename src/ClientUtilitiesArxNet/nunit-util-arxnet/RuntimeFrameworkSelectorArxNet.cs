@@ -8,8 +8,10 @@
 // Copyright 2013, Lei Qun
 // 2013.5.27修改：
 //  1.Services改为ServicesArxNet
- // 2013.7.29
+// 2013.7.29
 //  1.已改NUnit2.6.2基础
+// 2013.8.1
+//  1.已改IRuntimeFrameworkSelectorArxNet
 // ****************************************************************
 
 using System;
