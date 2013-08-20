@@ -34,3 +34,12 @@ build0032580βbug001
 	原因：控制台命令变量生命周期为程序运行时间，CAD命令为插件加载时间，设置变量两次命令之间保留，没有自动重新设置初始值（对象一般为null）。
 	解决：每次命令之前设置变量设初值。
 fix:
+2013.8.12
+nunit-gui-arxnet.dll
+v0.0.3.4972α-n2.6.2.12296-AC2012
+bug:
+build4972bug001
+	在利用nunit-arxnet测试时,选择菜单项“View"-》“Tree”-》“Properties” ,
+	出现异常“无法在类“NUnit.UiKit.ArxNet.TestPropertiesDialogArxNet”中找到资源“Images.pinned.gif””，
+	见“build4972bug001截图001.jpg”
+	点“继续”，可以显示对话框，但右侧图标不显示，见“build4972bug001截图001.jpg”

@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDwgClean", "..\..\CAD\D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7E5451FC-D5A0-42E0-A465-0E47AFAEE19B}"
 	ProjectSection(SolutionItems) = preProject
-		bug.txt = bug.txt
+		bug\bug.txt = bug\bug.txt
 		..\NUnit-2.6.0.11340\src\nunit.snk = ..\NUnit-2.6.0.11340\src\nunit.snk
 		..\NUnit-2.6.2\src\nunit.snk = ..\NUnit-2.6.2\src\nunit.snk
 		..\NUnit-2.6.0.11340\NUnitTests.config = ..\NUnit-2.6.0.11340\NUnitTests.config
