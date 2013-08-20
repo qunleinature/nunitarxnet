@@ -224,7 +224,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\Ellipsis.gif" />
-    <Content Include="Images\pinned.gif" />
+    <EmbeddedResource Include="Images\pinned.gif" />
     <Content Include="Images\Tree\Circles\Failure.jpg" />
     <Content Include="Images\Tree\Circles\Ignored.jpg" />
     <Content Include="Images\Tree\Circles\Inconclusive.jpg" />
@@ -246,7 +246,7 @@
     <Content Include="Images\Tree\Visual Studio\SeriousWarning.png" />
     <Content Include="Images\Tree\Visual Studio\Skipped.png" />
     <Content Include="Images\Tree\Visual Studio\Success.png" />
-    <Content Include="Images\unpinned.gif" />
+    <EmbeddedResource Include="Images\unpinned.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
