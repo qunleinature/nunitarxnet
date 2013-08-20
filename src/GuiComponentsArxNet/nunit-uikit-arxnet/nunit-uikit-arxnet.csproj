@@ -222,6 +222,32 @@
       <DependentUpon>TreeBasedSettingsDialogArxNet.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\Ellipsis.gif" />
+    <Content Include="Images\pinned.gif" />
+    <Content Include="Images\Tree\Circles\Failure.jpg" />
+    <Content Include="Images\Tree\Circles\Ignored.jpg" />
+    <Content Include="Images\Tree\Circles\Inconclusive.jpg" />
+    <Content Include="Images\Tree\Circles\Skipped.jpg" />
+    <Content Include="Images\Tree\Circles\Success.jpg" />
+    <Content Include="Images\Tree\Classic\Failure.jpg" />
+    <Content Include="Images\Tree\Classic\Ignored.jpg" />
+    <Content Include="Images\Tree\Classic\Inconclusive.jpg" />
+    <Content Include="Images\Tree\Classic\Skipped.jpg" />
+    <Content Include="Images\Tree\Classic\Success.jpg" />
+    <Content Include="Images\Tree\Default\Failure.png" />
+    <Content Include="Images\Tree\Default\Ignored.png" />
+    <Content Include="Images\Tree\Default\Inconclusive.png" />
+    <Content Include="Images\Tree\Default\Skipped.png" />
+    <Content Include="Images\Tree\Default\Success.png" />
+    <Content Include="Images\Tree\Visual Studio\Failure.png" />
+    <Content Include="Images\Tree\Visual Studio\Ignored.png" />
+    <Content Include="Images\Tree\Visual Studio\Inconclusive.png" />
+    <Content Include="Images\Tree\Visual Studio\SeriousWarning.png" />
+    <Content Include="Images\Tree\Visual Studio\Skipped.png" />
+    <Content Include="Images\Tree\Visual Studio\Success.png" />
+    <Content Include="Images\unpinned.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
