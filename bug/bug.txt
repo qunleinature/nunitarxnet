@@ -44,10 +44,27 @@ build4972bug001
 	见“build4972bug001截图001.jpg”
 	点“继续”，可以显示对话框，但右侧图标不显示，见“build4972bug001截图001.jpg”
 fix:
-build38644fix001
+build4972fix001
 	1.拷贝F:\LQ\Project\VS\C#\2010\NUnit\NUnit-2.6.2\src\GuiComponents\UiKit\Images至
 		F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\src\GuiComponentsArxNet\nunit-uikit-arxnet\Images
 	2.在nunit-uikit-arxnet项目下添加Images文件夹及相应项
 	3.将“pinned.gif”、“unpinned.gif”的生成操作改为“嵌入的资源”
 build:
 v0.0.3.4980α-n2.6.2.12296-AC2012
+2013.8.21
+nunit-gui-arxnet.dll
+v0.0.3.4980α-n2.6.2.12296-AC2012
+bug:
+build4980bug001
+	在利用nunit-arxnet测试时,选择菜单项“Project"-》“Edit” ,不能定位项目编辑器的异常，
+	见“build4980bug001截图001.jpg”。
+build4980bug002
+	在利用nunit-arxnet测试时,选择菜单项“Tools"-》“Settings” ,在“Tree Display”设置页面中，
+	“Tree Images”右侧列表框不显示，见“build4980bug002截图001.jpg”。
+fix:
+build4980fix001
+	1.拷贝nunit-editor.exe至nunit-gui-arxnet.dll的目录下
+build4980fix002	
+	1.拷贝nunit2.6.2的Images目录至nunit-gui-runner-arxnet.dll的目录下
+build:
+v0.0.3.4981α-n2.6.2.12296-AC2012
