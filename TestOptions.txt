@@ -1,5 +1,6 @@
-F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-command-arxnet.tests.dll /run:NUnit.CommandRunner.ArxNet.Tests.CommandLineTests.NoParametersCount
-F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-core-arxnet.tests.dll
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.4-AC2015\bin\Debug\tests\nunit-command-arxnet.tests.dll /run:NUnit.CommandRunner.ArxNet.Tests.CommandLineTests.NoParametersCount
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.4-AC2015\bin\Debug\tests\nunit-core-arxnet.tests.dll /include:Constructor_Editor
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.4-AC2015\bin\Debug\tests\nunit-core-arxnet.tests.dll
 F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-core-arxnet.tests.manual.dll /fixture:NUnit.Core.ArxNet.Tests.EditorWriterTests
 F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-core-arxnet.tests.manual.dll /fixture:NUnit.Core.ArxNet.Tests.ConsoleSetOutEditorWriterTests
 F:\LQ\Project\VS\C#\2010\NUnit\NUnitArxNet-0.0.3-AC2012\bin\Debug\tests\nunit-command-arxnet.tests.dll

@@ -65,17 +65,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\lib\AcCoreMgd.dll</HintPath>
     </Reference>
-    <Reference Include="AcDbMgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="acdbmgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\lib\AcDbMgd.dll</HintPath>
+      <HintPath>..\..\..\..\lib\acdbmgd.dll</HintPath>
     </Reference>
     <Reference Include="acdbmgdbrep, Version=20.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\lib\acdbmgdbrep.dll</HintPath>
     </Reference>
-    <Reference Include="AcMgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="acmgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\lib\AcMgd.dll</HintPath>
+      <HintPath>..\..\..\..\lib\acmgd.dll</HintPath>
     </Reference>
     <Reference Include="Com.Utility.UnitTest, Version=0.0.4.30641, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

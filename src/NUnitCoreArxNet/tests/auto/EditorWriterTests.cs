@@ -5,8 +5,9 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2013, Lei Qun
+// Copyright 2014, Lei Qun
 // 2012.5.13新建：测试EditorWriter类
+// 2014.7.17AC2015,重新测试修改
 // ****************************************************************
 
 using System;
@@ -27,6 +28,7 @@ namespace NUnit.Core.ArxNet.Tests
     public class EditorWriterTests
     {
         //public EditorWriter()
+        [Category("Constructor_Editor")]
         [Test]
         public void Constructor_Default()
         {
