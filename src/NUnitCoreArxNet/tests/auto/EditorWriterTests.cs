@@ -58,14 +58,16 @@ namespace NUnit.Core.ArxNet.Tests
         public void Constructor_EditorNotActive()
         {
             Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
-            Application.DocumentManager.Add(null);
-            //ed.WriteMessage("\n原窗口");
+            //2014.7.17 Lei Qun修改
+            Document doc = Application.DocumentManager.Add(null);//获得新建的文档
             EditorWriter editorWriter = new EditorWriter(ed);
             Assert.That(editorWriter, Is.Not.Null);
             ed = Application.DocumentManager.MdiActiveDocument.Editor;
             Assert.That(editorWriter.Editor, Is.EqualTo(ed));
             UnicodeEncoding encoding = new UnicodeEncoding(false, false);
             Assert.That(editorWriter.Encoding.CodePage, Is.EqualTo(encoding.CodePage));
+            //2014.7.17 Lei Qun修改
+            doc.CloseAndDiscard();//关闭添加的文档            
         }
 
         [Test]
