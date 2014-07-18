@@ -5,13 +5,15 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2013, Lei Qun
+// Copyright 2014, Lei Qun
 // 2013.5.27修改：
 //  1.在nunit2.6.2基础上修改
 //  2.NUnit.Util.DomainManager改为NUnit.Util.ArxNet.DomainManagerArxNet类
 //  3.增加Init方法，初始化静态成员
 // 2013.7.29
 //  1.已改ServicesArxNet
+// 2014.7.17
+//  1.Evidence类中一些属性、方法已过时,修改
 // ****************************************************************
 
 using System;
@@ -126,15 +128,36 @@ namespace NUnit.Util.ArxNet
 			string domainName = "test-domain-" + package.Name;
             // Setup the Evidence
             Evidence evidence = new Evidence(AppDomain.CurrentDomain.Evidence);
-            if (evidence.Count == 0)
+            //2014.7.18 Lei Qun添加
+            IEnumerator enum1 = evidence.GetHostEnumerator();
+            enum1.Reset();
+            int count1 = 0;
+            while (enum1.MoveNext())
+            {
+                count1++;
+            }
+            enum1 = evidence.GetAssemblyEnumerator();
+            enum1.Reset();
+            int count2 = 0;
+            while (enum1.MoveNext())
+            {
+                count2++;
+            }
+            int count = count1 + count2;
+            if (/*evidence.Count*/count == 0)//2014.7.18 Lei Qun修改，Evidence.Count过时
             {
                 Zone zone = new Zone(SecurityZone.MyComputer);
-                evidence.AddHost(zone);
+                //evidence.AddHost(zone);//2014.7.18 Lei Qun修改，Evidence.AddHost过时
+                //2014.7.18 Lei Qun添加
+                evidence.AddHostEvidence(zone);
                 Assembly assembly = Assembly.GetExecutingAssembly();
                 Url url = new Url(assembly.CodeBase);
-                evidence.AddHost(url);
+                //evidence.AddHost(url);//2014.7.18 Lei Qun修改，Evidence.AddHost过时
+                //2014.7.18 Lei Qun添加
+                evidence.AddHostEvidence(url);
                 Hash hash = new Hash(assembly);
-                evidence.AddHost(hash);
+                //evidence.AddHost(hash);//2014.7.18 Lei Qun修改，Evidence.AddHost过时
+                evidence.AddHostEvidence(hash);
             }
 
             log.Info("Creating AppDomain " + domainName);
