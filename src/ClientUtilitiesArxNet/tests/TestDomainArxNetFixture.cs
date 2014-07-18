@@ -13,6 +13,9 @@
 //  2014.7.17
 //   1.测试未通过，可能是在CAD环境下不支持程序域下的测试？
 //   2.TestDomainArxNetFixture测试类加上IgnoreAttribute
+//  2014.7.18
+//   1.TestDomainRunnerTests改为TestDomainRunnerArxNetTests
+//   2.TestDomainTests改为TestDomainArxNetTests
 // ****************************************************************
 
 using System;
@@ -92,17 +95,18 @@ namespace NUnit.Util.ArxNet.Tests
 	}
 
 	[TestFixture]
-	public class TestDomainRunnerTests : NUnit.Core.Tests.BasicRunnerTests
+    [Ignore("CAD环境下忽略")]//2014.7.18 Lei Qun添加，在cad环境下不能通过，忽略
+    public class TestDomainRunnerArxNetTests : NUnit.Core.Tests.BasicRunnerTests//2017.7.18 Lei Qun修改，改为TestDomainRunnerArxNetTests
 	{
 		protected override TestRunner CreateRunner(int runnerID)
 		{
 			return new TestDomainArxNet (runnerID);
 		}
-
 	}
 
 	[TestFixture]
-	public class TestDomainTests
+    [Ignore("CAD环境下忽略")]//2014.7.18 Lei Qun添加，在cad环境下不能通过，忽略
+    public class TestDomainArxNetTests//2017.7.18 Lei Qun修改，改为TestDomainArxNetTests
 	{ 
 		private TestDomainArxNet  testDomain;
         private static readonly string mockDll = MockAssembly.AssemblyPath;

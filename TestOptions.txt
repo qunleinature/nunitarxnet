@@ -38,6 +38,8 @@ F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.4-AC2015\bin\Debug\tests\nunit-ut
 F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.4-AC2015\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.RemoteTestResultArxNetTest
 F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.4-AC2015\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.SettingsGroupArxNetTests
 F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.4-AC2015\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.TestDomainArxNetFixture
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.4-AC2015\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.TestDomainRunnerArxNetTests
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.4-AC2015\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.TestDomainArxNetTests
 F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.4-AC2015\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.TestDomainArxNetTests_Multiple
 F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.4-AC2015\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.TestDomainArxNetTests_MultipleFixture
 F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.4-AC2015\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.TestLoaderArxNetAssemblyTests

@@ -5,7 +5,7 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2013, Lei Qun
+// Copyright 2014, Lei Qun
 // 2012.12.19修改
 // 2013.5.29修改
 //   1.改ProjectService为ProjectServiceArxNet
@@ -18,6 +18,9 @@
 //   2.已改在nunit2.6.2基础
 // 2013.7.29
 //   1.已改ServicesArxNet
+// 2014.7.18
+//   1.可能是在CAD环境下不支持程序域下的测试？
+//   2.ServiceManagerArxNet不使用代理
 // ****************************************************************
 
 using System;
@@ -47,14 +50,16 @@ namespace NUnit.Util.ArxNet.Tests
 			ServiceManagerArxNet.Services.AddService( new DummySettingsService() );
 			ServiceManagerArxNet.Services.AddService( new DomainManagerArxNet() );
             ServiceManagerArxNet.Services.AddService( new ProjectServiceArxNet() );
-			ServiceManagerArxNet.Services.AddService( new TestAgency( "TestDomain_TestAgency", 0 ) );
-			ServicesArxNet.TestAgency.Start();
+            //2014.7.17 Lei Qun修改,ServiceManagerArxNet不使用代理
+			//ServiceManagerArxNet.Services.AddService( new TestAgency( "TestDomain_TestAgency", 0 ) );
+			//ServicesArxNet.TestAgency.Start();
 		}
 
 		[TearDown]
 		public void ClearServices()
 		{
-			ServicesArxNet.TestAgency.Stop();
+            //2014.7.17 Lei Qun修改,ServiceManagerArxNet不使用代理
+			//ServicesArxNet.TestAgency.Stop();
 			ServiceManagerArxNet.Services.ClearServices();
 		}
 	}
