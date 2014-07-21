@@ -68,7 +68,7 @@
   <ItemGroup>
     <Reference Include="Com.Utility.UnitTest, Version=0.0.4.30641, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Com.Utility\Com.Utility.UnitTest\0.0.4\Com.Utility.UnitTest\bin\Debug\Com.Utility.UnitTest.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Com.Utility\Com.Utility.UnitTest\0.0.5\Com.Utility.UnitTest\bin\Debug\Com.Utility.UnitTest.dll</HintPath>
     </Reference>
     <Reference Include="nunit-gui-runner, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

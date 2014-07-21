@@ -63,9 +63,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\lib\AcMgd.dll</HintPath>
     </Reference>
-    <Reference Include="Com.Utility.UnitTest, Version=0.0.4.30641, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Com.Utility.UnitTest, Version=0.0.5.5315, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Com.Utility\Com.Utility.UnitTest\0.0.4\Com.Utility.UnitTest\bin\Debug\Com.Utility.UnitTest.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Com.Utility\Com.Utility.UnitTest\0.0.5\Com.Utility.UnitTest\bin\Debug\Com.Utility.UnitTest.dll</HintPath>
     </Reference>
     <Reference Include="nunit-core-arxnet, Version=0.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
