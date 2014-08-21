@@ -85,10 +85,6 @@ namespace NUnit.Gui.ArxNet
                 Application.ShowAlertDialog(e.Message);
                 //ed.WriteMessage(e.Message);
             }
-            catch
-            {
-                Application.ShowAlertDialog("³ÌÐò´íÎó!");
-            }
         }
         [CommandMethod("nunit-arxnet", CommandFlags.Session)]
         public void Cmd_NUnit_ArxNet() 

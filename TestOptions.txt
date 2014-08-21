@@ -1,8 +1,8 @@
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.4-AC2015\bin\Debug\tests\nunit-command-arxnet.tests.dll
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.4-AC2015\bin\Debug\tests\nunit-command-arxnet.tests.dll /run:NUnit.CommandRunner.ArxNet.Tests.CommandLineTests.NoParametersCount
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.4-AC2015\bin\Debug\tests\nunit-command-arxnet.tests.manual.dll /run:NUnit.CommandRunner.ArxNet.Tests.CommandRunnerArxNetTest.RunnerArxNetInit
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.4-AC2015\bin\Debug\tests\nunit-command-arxnet.tests.manual.dll /run:NUnit.CommandRunner.ArxNet.Tests.CommandRunnerArxNetTest.RunnerArxNetCleanUp
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.4-AC2015\bin\Debug\tests\nunit-command-arxnet.tests.manual.dll /run:NUnit.CommandRunner.ArxNet.Tests.CommandRunnerArxNetTest.RunnerArxNetRun
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-command-arxnet.tests.dll /run:NUnit.CommandRunner.ArxNet.Tests.CommandLineTests.NoParametersCount
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-command-arxnet.tests.dll
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-command-arxnet.tests.manual.dll /run:NUnit.CommandRunner.ArxNet.Tests.CommandRunnerArxNetTest.RunnerArxNetInit
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-command-arxnet.tests.manual.dll /run:NUnit.CommandRunner.ArxNet.Tests.CommandRunnerArxNetTest.RunnerArxNetCleanUp
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-command-arxnet.tests.manual.dll /run:NUnit.CommandRunner.ArxNet.Tests.CommandRunnerArxNetTest.RunnerArxNetRun
 F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.4-AC2015\bin\Debug\tests\nunit-core-arxnet.tests.dll
 F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.4-AC2015\bin\Debug\tests\nunit-core-arxnet.tests.dll /include:Constructor_Editor
 F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.4-AC2015\bin\Debug\tests\nunit-core-arxnet.tests.dll /run:NUnit.Core.ArxNet.Tests.EditorWriterTests.Constructor_Default

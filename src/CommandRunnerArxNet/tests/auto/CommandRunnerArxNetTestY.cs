@@ -5,10 +5,13 @@
 // ****************************************************************
 
 // ****************************************************************
-//2012年1月16日，雷群修改
+// Copyright 2013, Lei Qun
+// 2013.1.26：
+//  在NUnit2.6.2基础上修改
 // ****************************************************************
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Collections;
@@ -21,13 +24,15 @@ using NUnit.Tests.Assemblies;
 namespace NUnit.CommandRunner.ArxNet.Tests
 {
 	[TestFixture]
-	public class CommandRunnerArxTestTest
-	{
+    public class CommandRunnerArxNetTest
+	{        
         private static readonly string failureMsg = 
             string.Format( "Errors: {0}, Failures: {1}", 
                 MockAssembly.Errors, MockAssembly.Failures );
+        private static readonly int expectedReturnCode =
+            MockAssembly.Errors + MockAssembly.Failures + MockAssembly.NotRunnable;
 
-		private static readonly string xmlFile = Path.Combine(Path.GetTempPath(), "console-test.xml");
+        private static readonly string xmlFile = Path.Combine(Path.GetTempPath(), "command-test.xml");
 		private StringBuilder output;
 		TextWriter saveOut;
 
@@ -61,7 +66,7 @@ namespace NUnit.CommandRunner.ArxNet.Tests
 		}
 
 		[Test]
-		public void MultiFailureFixture()
+		public void MultiFailureFixture() 
 		{
             int resultCode = runFixture(typeof(MultiFailureTest), "-noxml"); 
 			Assert.AreEqual(3, resultCode);
@@ -90,7 +95,7 @@ namespace NUnit.CommandRunner.ArxNet.Tests
 		public void InvalidFixture()
 		{
 			int resultCode = executeConsole( new string[] { MockAssembly.AssemblyPath, "-fixture:NUnit.Tests.BogusTest", "-noxml" });
-			Assert.AreEqual(CommandUiArxNet.FIXTURE_NOT_FOUND, resultCode);
+            Assert.AreEqual(CommandUiArxNet.FIXTURE_NOT_FOUND, resultCode);
 		}
 
 		[Test]
@@ -137,44 +142,102 @@ namespace NUnit.CommandRunner.ArxNet.Tests
 		[Test]
 		public void CanRunWithoutTestDomain()
 		{
-            Assert.AreEqual(MockAssembly.ErrorsAndFailures, executeConsole(MockAssembly.AssemblyPath, "-domain:None", "-noxml"));
+            Assert.AreEqual(expectedReturnCode, executeConsole(MockAssembly.AssemblyPath, "-domain:None", "-noxml"));
 			StringAssert.Contains( failureMsg, output.ToString() );
 		}
 
 		[Test]
 		public void CanRunWithSingleTestDomain()
 		{
-            Assert.AreEqual(MockAssembly.ErrorsAndFailures, executeConsole(MockAssembly.AssemblyPath, "-domain:Single", "-noxml"));
+            Assert.AreEqual(expectedReturnCode, executeConsole(MockAssembly.AssemblyPath, "-domain:Single", "-noxml"));
 			StringAssert.Contains( failureMsg, output.ToString() );
 		}
 
 		[Test]
 		public void CanRunWithMultipleTestDomains()
 		{
-            Assert.AreEqual(MockAssembly.ErrorsAndFailures, executeConsole(MockAssembly.AssemblyPath, NoNamespaceTestFixture.AssemblyPath, "-domain:Multiple", "-noxml"));
+            Assert.AreEqual(expectedReturnCode, executeConsole(MockAssembly.AssemblyPath, NoNamespaceTestFixture.AssemblyPath, "-domain:Multiple", "-noxml"));
 			StringAssert.Contains( failureMsg, output.ToString() );
 		}
 
 		[Test]
 		public void CanRunWithoutTestDomain_NoThread()
 		{
-            Assert.AreEqual(MockAssembly.ErrorsAndFailures, executeConsole(MockAssembly.AssemblyPath, "-domain:None", "-nothread", "-noxml"));
+            Assert.AreEqual(expectedReturnCode, executeConsole(MockAssembly.AssemblyPath, "-domain:None", "-nothread", "-noxml"));
 			StringAssert.Contains( failureMsg, output.ToString() );
 		}
 
 		[Test]
 		public void CanRunWithSingleTestDomain_NoThread()
 		{
-            Assert.AreEqual(MockAssembly.ErrorsAndFailures, executeConsole(MockAssembly.AssemblyPath, "-domain:Single", "-nothread", "-noxml"));
+            Assert.AreEqual(expectedReturnCode, executeConsole(MockAssembly.AssemblyPath, "-domain:Single", "-nothread", "-noxml"));
 			StringAssert.Contains( failureMsg, output.ToString() );
 		}
 
 		[Test]
 		public void CanRunWithMultipleTestDomains_NoThread()
 		{
-            Assert.AreEqual(MockAssembly.ErrorsAndFailures, executeConsole(MockAssembly.AssemblyPath, NoNamespaceTestFixture.AssemblyPath, "-domain:Multiple", "-nothread", "-noxml"));
+            Assert.AreEqual(expectedReturnCode, executeConsole(MockAssembly.AssemblyPath, NoNamespaceTestFixture.AssemblyPath, "-domain:Multiple", "-nothread", "-noxml"));
 			StringAssert.Contains( failureMsg, output.ToString() );
 		}
+
+        [Test]
+        public void CanSpecifyBasePathAndPrivateBinPath()
+        {
+            // Assuming mock assembly is at ...x/y/z/mock-assembly.dll
+            string basePath = Path.GetDirectoryName(MockAssembly.AssemblyPath); // ...x/y/z
+            string privateBinPath = Path.GetFileName(basePath); // z
+            basePath = Path.GetDirectoryName(basePath); // ...x/y
+            privateBinPath = Path.Combine(Path.GetFileName(basePath), privateBinPath); // y/z
+            basePath = Path.GetDirectoryName(basePath); // ...x
+
+            Assert.AreEqual(expectedReturnCode, executeConsole("mock-assembly.dll", "-basepath=" + basePath, "-privatebinpath=" + privateBinPath, "-noxml"));
+            StringAssert.Contains( failureMsg, output.ToString());
+        }
+
+		[Test]
+		public void DoesNotFailWithEmptyRunList()
+		{
+			string path = Path.GetTempFileName();
+
+			int returnCode = runFixture(typeof(SuccessTest), "-runlist=" + path, "-noxml");
+			Assert.AreEqual(0, returnCode);
+			StringAssert.Contains("Tests run: 0", output.ToString());
+
+			File.Delete(path);
+		}
+
+		[Test]
+		public void DoesNotFailIfRunListHasEmptyLines()
+		{
+			string path = Path.GetTempFileName();
+
+			using(StreamWriter writer = File.CreateText(path))
+				writer.WriteLine();
+
+			int returnCode = runFixture(typeof(SuccessTest), "-runlist=" + path, "-noxml");
+			Assert.AreEqual(0, returnCode);
+			StringAssert.Contains("Tests run: 0", output.ToString());
+		
+			File.Delete(path);
+		}
+
+		[Test]
+		public void FailsGracefullyIfRunListPointsToNonExistingFile()
+		{
+			int returnCode = runFixture(typeof(SuccessTest), "-runlist=NonExistingFile.txt");
+			Assert.AreEqual(CommandUiArxNet.INVALID_ARG, returnCode);
+			StringAssert.Contains("NonExistingFile.txt", output.ToString());
+		}
+
+
+		[Test]
+		public void FailsGracefullyIfRunListPointsToNonExistingDirectory()
+		{
+			int returnCode = runFixture(typeof(SuccessTest), "-runlist=NonExistingDirectory\\NonExistingFile.txt");
+			Assert.AreEqual(CommandUiArxNet.INVALID_ARG, returnCode);
+			StringAssert.Contains("NonExistingDirectory", output.ToString());
+		}        
 
 		private int runFixture( Type type )
 		{
@@ -198,17 +261,20 @@ namespace NUnit.CommandRunner.ArxNet.Tests
 		{
             int n = 0;
 #if CLR_2_0 || CLR_4_0
-            string[] args = new string[arguments.Length + 4];
+            string[] args = new string[arguments.Length + 2];
             args[n++] = "-process:single";
 #else
             string[] args = new string[arguments.Length + 1];
 #endif
-            args[n++] = "-domain:None";
-            args[n++] = "-nothread";
             args[n++] = "-trace:Off";
             foreach (string arg in arguments)
                 args[n++] = arg;
-            return NUnit.CommandRunner.ArxNet.RunnerArxNet.Main(args);
+
+            //NUnit.CommandRunner.ArxNet.RunnerArxNet.Init();//2015.5.25lq加
+            int resultCode = NUnit.CommandRunner.ArxNet.RunnerArxNet.Main(args);//2015.5.25lq改
+            //return NUnit.CommandRunner.ArxNet.RunnerArxNet.Main(args);
+            //NUnit.CommandRunner.ArxNet.RunnerArxNet.CleanUp();//2015.5.25lq加
+            return resultCode;//2015.5.25lq加
 		}
 	}
 }
