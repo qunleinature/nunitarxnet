@@ -66,40 +66,41 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="mock-assembly, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="mock-assembly, Version=2.6.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\tests\mock-assembly.dll</HintPath>
+      <HintPath>..\..\..\..\NUnit-2.6.3\bin\Debug\tests\mock-assembly.dll</HintPath>
     </Reference>
     <Reference Include="nonamespace-assembly, Version=2.6.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\bin\Debug\tests\nonamespace-assembly.dll</HintPath>
+      <HintPath>..\..\..\..\NUnit-2.6.3\bin\Debug\tests\nonamespace-assembly.dll</HintPath>
     </Reference>
     <Reference Include="nunit-util-arxnet">
       <HintPath>..\..\..\bin\Debug\lib\nunit-util-arxnet.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.core, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+    <Reference Include="nunit.core, Version=2.6.2.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\lib\nunit.core.dll</HintPath>
+      <HintPath>..\..\..\..\NUnit-2.6.3\bin\Debug\lib\nunit.core.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.core.interfaces, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+    <Reference Include="nunit.core.interfaces, Version=2.6.2.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\lib\nunit.core.interfaces.dll</HintPath>
+      <HintPath>..\..\..\..\NUnit-2.6.3\bin\Debug\lib\nunit.core.interfaces.dll</HintPath>
     </Reference>
     <Reference Include="nunit.core.tests, Version=2.6.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\bin\Debug\tests\nunit.core.tests.dll</HintPath>
+      <HintPath>..\..\..\..\NUnit-2.6.3\bin\Debug\tests\nunit.core.tests.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
-    <Reference Include="nunit.uikit, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+    <Reference Include="nunit.uikit, Version=2.6.2.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\lib\nunit.uikit.dll</HintPath>
+      <HintPath>..\..\..\..\NUnit-2.6.3\bin\Debug\lib\nunit.uikit.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.util, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+    <Reference Include="nunit.util, Version=2.6.2.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\lib\nunit.util.dll</HintPath>
+      <HintPath>..\..\..\..\NUnit-2.6.3\bin\Debug\lib\nunit.util.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.util.tests">
-      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\tests\nunit.util.tests.dll</HintPath>
+    <Reference Include="nunit.util.tests, Version=2.6.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\NUnit-2.6.3\bin\Debug\tests\nunit.util.tests.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -110,7 +111,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="test-utilities, Version=2.6.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\NUnit-2.6.2\bin\Debug\tests\test-utilities.dll</HintPath>
+      <HintPath>..\..\..\..\NUnit-2.6.3\bin\Debug\tests\test-utilities.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -4,17 +4,26 @@
 // obtain a copy of the license at http://nunit.org
 // ****************************************************************
 
+// ****************************************************************
+// Copyright 2013, Lei Qun
+//  2013.7.19修改：
+//    1.在nunit2.6.2基础上
+//    2.改MultipleTestDomainRunnerArxNet
+//  2013.7.31
+//    1.已改TestDomainArxNet
+// ****************************************************************
+
 using System;
 using NUnit.Core;
 
-namespace NUnit.Util
+namespace NUnit.Util.ArxNet
 {
     /// <summary>
     /// InProcessTestRunnerFactory handles creation of a suitable test 
     /// runner for a given package to be loaded and run within the
     /// same process.
     /// </summary>
-    public class InProcessTestRunnerFactory : ITestRunnerFactory
+    public class InProcessTestRunnerFactoryArxNet : ITestRunnerFactory
     {
         #region ITestRunnerFactory Members
 
@@ -28,6 +37,9 @@ namespace NUnit.Util
         /// <returns>A TestRunner</returns>
         public virtual TestRunner MakeTestRunner(TestPackage package)
         {
+            package.Settings["ProcessModel"] = ProcessModel.Single;//2013.7.19lq改，单进程
+            package.Settings["DomainUsage"] = DomainUsage.None;//2013.7.19lq改，无应用域
+
             DomainUsage domainUsage = 
                 (DomainUsage)package.GetSetting("DomainUsage", DomainUsage.Default);
 
@@ -35,12 +47,12 @@ namespace NUnit.Util
             {
                 case DomainUsage.Multiple:
                     package.Settings.Remove("DomainUsage");
-                    return new MultipleTestDomainRunner();
+                    return new MultipleTestDomainRunnerArxNet();
                 case DomainUsage.None:
                     return new RemoteTestRunner();
                 case DomainUsage.Single:
                 default:
-                    return new TestDomain();
+                    return new TestDomainArxNet();
             }
         }
 

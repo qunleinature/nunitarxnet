@@ -4,20 +4,32 @@
 // obtain a copy of the license at http://nunit.org
 // ****************************************************************
 
-namespace NUnit.Util
+// ****************************************************************
+// Copyright 2013, Lei Qun
+//  2013.7.18修改：
+//    1.在nunit2.6.2基础上修改
+//    2.改AggregatingTestRunnerArxNet
+//    3.改MultipleTestDomainRunnerArxNet
+//    4.改MultipleTestProcessRunnerArxNet
+//    5.改ProcessRunnerArxNet
+//  2013.7.31
+//    1.已改TestDomainArxNet
+// ****************************************************************
+
+namespace NUnit.Util.ArxNet
 {
 	using System;
 	using System.Collections;
 	using System.IO;
 	using NUnit.Core;
 
-    #region AggregatingTestRunner
+    #region AggregatingTestRunnerArxNet
     /// <summary>
-	/// AggregatingTestRunner allows running multiple TestRunners
+	/// AggregatingTestRunnerArxNet allows running multiple TestRunners
 	/// and combining the results.
 	/// </summary>
     
-	public abstract class AggregatingTestRunner : MarshalByRefObject, TestRunner, EventListener
+	public abstract class AggregatingTestRunnerArxNet : MarshalByRefObject, TestRunner, EventListener
 	{
         private Logger log;
         private Logger Log
@@ -70,8 +82,8 @@ namespace NUnit.Util
 		#endregion
 
 		#region Constructors
-		public AggregatingTestRunner() : this( 0 ) { }
-		public AggregatingTestRunner( int runnerID )
+		public AggregatingTestRunnerArxNet() : this( 0 ) { }
+		public AggregatingTestRunnerArxNet( int runnerID )
 		{
 			this.runnerID = runnerID;
 			this.testName = new TestName();
@@ -403,41 +415,41 @@ namespace NUnit.Util
     }
     #endregion
 
-    #region MultipleTestDomainRunner
+    #region MultipleTestDomainRunnerArxNet
     /// <summary>
-    /// Summary description for MultipleTestDomainRunner.
+    /// Summary description for MultipleTestDomainRunnerArxNet.
     /// </summary>
-    public class MultipleTestDomainRunner : AggregatingTestRunner
+    public class MultipleTestDomainRunnerArxNet : AggregatingTestRunnerArxNet
     {
         #region Constructors
-        public MultipleTestDomainRunner() : base(0) { }
+        public MultipleTestDomainRunnerArxNet() : base(0) { }
 
-        public MultipleTestDomainRunner(int runnerID) : base(runnerID) { }
+        public MultipleTestDomainRunnerArxNet(int runnerID) : base(runnerID) { }
         #endregion
 
         #region CreateRunner
         protected override TestRunner CreateRunner(int runnerID)
         {
-            return new TestDomain(runnerID);
+            return new TestDomainArxNet(runnerID);
         }
         #endregion
     }
     #endregion
 
-    #region MultipleTestProcessRunner
+    #region MultipleTestProcessRunnerArxNet
 #if CLR_2_0 || CLR_4_0
-    public class MultipleTestProcessRunner : AggregatingTestRunner
+    public class MultipleTestProcessRunnerArxNet : AggregatingTestRunnerArxNet
     {
         #region Constructors
-        public MultipleTestProcessRunner() : base(0) { }
+        public MultipleTestProcessRunnerArxNet() : base(0) { }
 
-        public MultipleTestProcessRunner(int runnerID) : base(runnerID) { }
+        public MultipleTestProcessRunnerArxNet(int runnerID) : base(runnerID) { }
         #endregion
 
         #region CreateRunner
         protected override TestRunner CreateRunner(int runnerID)
         {
-            return new ProcessRunner(runnerID);
+            return new ProcessRunnerArxNet(runnerID);
         }
         #endregion
     }

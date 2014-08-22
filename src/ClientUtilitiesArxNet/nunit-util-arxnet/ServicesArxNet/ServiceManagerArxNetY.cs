@@ -4,25 +4,41 @@
 // obtain a copy of the license at http://nunit.org
 // ****************************************************************
 
+// ****************************************************************
+// Copyright 2013, Lei Qun
+// 2013.5.27修改：
+//  1.在nunit2.6.2基础上修改
+//  2.NUnit.Util.ServiceManger改为NUnit.Util.ArxNet.ServiceMangerArxNet类
+//  3.增加Init方法，初始化静态成员
+// ****************************************************************
+
 using System;
 using System.Collections;
 using NUnit.Core;
 
-namespace NUnit.Util
+namespace NUnit.Util.ArxNet
 {
 	/// <summary>
 	/// Summary description for ServiceManger.
 	/// </summary>
-	public class ServiceManager
+	public class ServiceManagerArxNet
 	{
 		private ArrayList services = new ArrayList();
 		private Hashtable serviceIndex = new Hashtable();
 
-		private static ServiceManager defaultServiceManager = new ServiceManager();
+		private static ServiceManagerArxNet defaultServiceManager = new ServiceManagerArxNet();
 
-		static Logger log = InternalTrace.GetLogger(typeof(ServiceManager));
+		static Logger log = InternalTrace.GetLogger(typeof(ServiceManagerArxNet));
 
-		public static ServiceManager Services
+        /*2013-5-27lq加*/
+        //初始化静态成员
+        public static void Init()
+        {
+		    defaultServiceManager = new ServiceManagerArxNet();
+		    log = InternalTrace.GetLogger(typeof(ServiceManagerArxNet));
+        }
+
+		public static ServiceManagerArxNet Services
 		{
 			get { return defaultServiceManager; }
 		}
@@ -98,6 +114,6 @@ namespace NUnit.Util
 			services.Clear();
 		}
 
-		private ServiceManager() { }
+		private ServiceManagerArxNet() { }
 	}
 }

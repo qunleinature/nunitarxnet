@@ -3,17 +3,29 @@
 // This is free software licensed under the NUnit license. You may
 // obtain a copy of the license at http://nunit.org
 // ****************************************************************
+
+// ****************************************************************
+// Copyright 2013, Lei Qun
+// 2013.5.27修改：
+//  1.Services改为ServicesArxNet
+// 2013.7.29
+//  1.已改NUnit2.6.2基础
+// 2013.8.1
+//  1.已改IRuntimeFrameworkSelectorArxNet
+// ****************************************************************
+
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using NUnit.Core;
+using NUnit.Util;
 
-namespace NUnit.Util
+namespace NUnit.Util.ArxNet
 {
-    public class RuntimeFrameworkSelector : IRuntimeFrameworkSelector
+    public class RuntimeFrameworkSelectorArxNet : IRuntimeFrameworkSelectorArxNet
     {
-        static Logger log = InternalTrace.GetLogger(typeof(RuntimeFrameworkSelector));
+        static Logger log = InternalTrace.GetLogger(typeof(RuntimeFrameworkSelectorArxNet));
 
         /// <summary>
         /// Selects a target runtime framework for a TestPackage based on
@@ -46,7 +58,7 @@ namespace NUnit.Util
 
             if (targetVersion == RuntimeFramework.DefaultVersion)
             {
-                if (Services.UserSettings.GetSetting("Options.TestLoader.RuntimeSelectionEnabled", true))
+                if (ServicesArxNet.UserSettings.GetSetting("Options.TestLoader.RuntimeSelectionEnabled", true))
                     foreach (string assembly in package.Assemblies)
                     {
                         using (AssemblyReader reader = new AssemblyReader(assembly))
@@ -64,7 +76,7 @@ namespace NUnit.Util
                     targetVersion = RuntimeFramework.CurrentFramework.ClrVersion;
 
                 RuntimeFramework checkFramework = new RuntimeFramework(targetRuntime, targetVersion);
-                if (!checkFramework.IsAvailable || !Services.TestAgency.IsRuntimeVersionSupported(targetVersion))
+                if (!checkFramework.IsAvailable || !ServicesArxNet.TestAgency.IsRuntimeVersionSupported(targetVersion))
                 {
                     log.Debug("Preferred version {0} is not installed or this NUnit installation does not support it", targetVersion);
                     if (targetVersion < currentFramework.FrameworkVersion)

@@ -5,12 +5,20 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2012, Lei Qun
+// Copyright 2013, Lei Qun
 // 2012.12.21修改：TestLoader改为TestLoaderArxNet类
 // 2013.1.7修改：
-//  1.改为调用NUnit.Util.ArxNet.SettingsService类
+//  1.改为调用NUnit.Util.ArxNet.SettingsServiceArxNet类
 // 2013.5.27修改：
 //  1.在nunit2.6.2基础上修改
+//  2.增加Init方法，初始化静态成员
+// 2013.5.29修改：
+//  1.改AddinManager为AddinManagerArxNet
+//  2.改ProjectService为ProjectServiceArxNet
+// 2013.6.1
+//  1.已经改ServiceManager为ServiceManagerArxNet
+// 2013.6.2
+//  1.已经改DomainManager为DomainManagerArxNet
 // ****************************************************************
 
 using System;
@@ -27,13 +35,13 @@ namespace NUnit.Util.ArxNet
 	public class ServicesArxNet
 	{
 		#region AddinManager
-		private static AddinManager addinManager;
-		public static AddinManager AddinManager
+		private static AddinManagerArxNet addinManager;
+		public static AddinManagerArxNet AddinManager
 		{
 			get 
 			{
 				if (addinManager == null )
-					addinManager = (AddinManager)ServiceManager.Services.GetService( typeof( AddinManager ) );
+					addinManager = (AddinManagerArxNet)ServiceManagerArxNet.Services.GetService( typeof( AddinManagerArxNet ) );
 
 				return addinManager; 
 			}
@@ -47,7 +55,7 @@ namespace NUnit.Util.ArxNet
 			get 
 			{
 				if (addinRegistry == null)
-					addinRegistry = (IAddinRegistry)ServiceManager.Services.GetService( typeof( IAddinRegistry ) );
+					addinRegistry = (IAddinRegistry)ServiceManagerArxNet.Services.GetService( typeof( IAddinRegistry ) );
                 
 				return addinRegistry;
 			}
@@ -55,13 +63,13 @@ namespace NUnit.Util.ArxNet
 		#endregion
 
 		#region DomainManager
-		private static DomainManager domainManager;
-		public static DomainManager DomainManager
+		private static DomainManagerArxNet domainManager;
+        public static DomainManagerArxNet DomainManager
 		{
 			get
 			{
 				if ( domainManager == null )
-					domainManager = (DomainManager)ServiceManager.Services.GetService( typeof( DomainManager ) );
+                    domainManager = (DomainManagerArxNet)ServiceManagerArxNet.Services.GetService(typeof(DomainManagerArxNet));
 
 				return domainManager;
 			}
@@ -75,7 +83,7 @@ namespace NUnit.Util.ArxNet
 			get 
 			{ 
 				if ( userSettings == null )
-					userSettings = (ISettings)ServiceManager.Services.GetService( typeof( ISettings ) );
+					userSettings = (ISettings)ServiceManagerArxNet.Services.GetService( typeof( ISettings ) );
 
 				// Temporary fix needed to run TestDomain tests in test AppDomain
 				// TODO: Figure out how to set up the test domain correctly
@@ -96,7 +104,7 @@ namespace NUnit.Util.ArxNet
 			get
 			{
 				if ( recentFiles == null )
-					recentFiles = (RecentFiles)ServiceManager.Services.GetService( typeof( RecentFiles ) );
+					recentFiles = (RecentFiles)ServiceManagerArxNet.Services.GetService( typeof( RecentFiles ) );
 
 				return recentFiles;
 			}
@@ -106,13 +114,13 @@ namespace NUnit.Util.ArxNet
 
 		#region TestLoader
 #if CLR_2_0 || CLR_4_0
-		private static TestLoader loader;
-		public static TestLoader TestLoader
+        private static TestLoaderArxNet loader;
+        public static TestLoaderArxNet TestLoader
 		{
 			get
 			{
 				if ( loader == null )
-					loader = (TestLoader)ServiceManager.Services.GetService( typeof( TestLoader ) );
+                    loader = (TestLoaderArxNet)ServiceManagerArxNet.Services.GetService(typeof(TestLoaderArxNet));
 
 				return loader;
 			}
@@ -127,7 +135,7 @@ namespace NUnit.Util.ArxNet
 			get
 			{
 				if ( agency == null )
-					agency = (TestAgency)ServiceManager.Services.GetService( typeof( TestAgency ) );
+					agency = (TestAgency)ServiceManagerArxNet.Services.GetService( typeof( TestAgency ) );
 
 				// Temporary fix needed to run ProcessRunner tests in test AppDomain
 				// TODO: Figure out how to set up the test domain correctly
@@ -143,18 +151,32 @@ namespace NUnit.Util.ArxNet
 		#endregion
 
 		#region ProjectLoader
-		private static ProjectService projectService;
-		public static ProjectService ProjectService
+		private static ProjectServiceArxNet projectService;
+		public static ProjectServiceArxNet ProjectService
 		{
 			get
 			{
 				if ( projectService == null )
-					projectService = (ProjectService)
-						ServiceManager.Services.GetService( typeof( ProjectService ) );
+					projectService = (ProjectServiceArxNet)
+						ServiceManagerArxNet.Services.GetService( typeof( ProjectServiceArxNet ) );
 
 				return projectService;
 			}
 		}
 		#endregion
+
+        /*2013-5-27lq加*/
+        //初始化静态成员
+        public static void Init()
+        {
+            addinManager = null;
+            addinRegistry = null;
+            domainManager = null;
+            userSettings = null;
+            recentFiles = null;
+            loader = null;
+            agency = null;
+            projectService = null;
+        }
 	}
 }

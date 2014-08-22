@@ -4,6 +4,14 @@
 // obtain a copy of the license at http://nunit.org
 // ****************************************************************
 
+// ****************************************************************
+// Copyright 2013, Lei Qun
+//  2013.5.29修改：
+//    1.在nunit2.6.2基础上修改
+//    2.NUnit.Util.ProcessRunner改NUnit.Util.ArxNet.ProcessRunnerArxNet
+//    3.Services改ServicesArxNet
+// ****************************************************************
+
 using System;
 using System.IO;
 using System.Diagnostics;
@@ -15,23 +23,23 @@ using System.Runtime.Remoting.Channels;
 using System.Runtime.Remoting.Channels.Tcp;
 using NUnit.Core;
 
-namespace NUnit.Util
+namespace NUnit.Util.ArxNet
 {
 	/// <summary>
 	/// Summary description for ProcessRunner.
 	/// </summary>
-	public class ProcessRunner : ProxyTestRunner
+	public class ProcessRunnerArxNet : ProxyTestRunner
 	{
-        static Logger log = InternalTrace.GetLogger(typeof(ProcessRunner));
+        static Logger log = InternalTrace.GetLogger(typeof(ProcessRunnerArxNet));
 
 		private TestAgent agent;
 
         private RuntimeFramework runtimeFramework;
 
 		#region Constructors
-		public ProcessRunner() : base( 0 ) { }
+		public ProcessRunnerArxNet() : base( 0 ) { }
 
-		public ProcessRunner( int runnerID ) : base( runnerID ) { }
+		public ProcessRunnerArxNet( int runnerID ) : base( runnerID ) { }
 		#endregion
 
         #region Properties
@@ -56,7 +64,7 @@ namespace NUnit.Util
 			{
                 if (this.agent == null)
                 {
-                    this.agent = Services.TestAgency.GetAgent(
+                    this.agent = ServicesArxNet.TestAgency.GetAgent(
                         runtimeFramework,
                         30000);
 
