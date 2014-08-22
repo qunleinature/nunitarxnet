@@ -3,14 +3,22 @@
 // This is free software licensed under the NUnit license. You may
 // obtain a copy of the license at http://nunit.org
 // ****************************************************************
+
+// ****************************************************************
+// Copyright 2013, Lei Qun
+// 2013.5.28修改：测试NUnit.Util.ArxNet.DomainManagerArxNet类
+// 2013.6.1
+//  1.已经改DomainManager为DomainManagerArxNet
+// ****************************************************************
+
 using System;
 using System.Collections;
 using System.IO;
 using NUnit.Framework;
 
-namespace NUnit.Util.Tests
+namespace NUnit.Util.ArxNet.Tests
 {
-    public class DomainManagerTests
+    public class DomainManagerArxNetTests
     {
         static string path1 = TestPath("/test/bin/debug/test1.dll");
         static string path2 = TestPath("/test/bin/debug/test2.dll");
@@ -23,7 +31,7 @@ namespace NUnit.Util.Tests
 
             Assert.AreEqual(
                 TestPath("bin/debug") + Path.PathSeparator + TestPath("utils"),
-                DomainManager.GetPrivateBinPath(TestPath("/test"), assemblies));
+                DomainManagerArxNet.GetPrivateBinPath(TestPath("/test"), assemblies));
         }
 
         [Test]
@@ -33,7 +41,7 @@ namespace NUnit.Util.Tests
 
             Assert.AreEqual(
                 TestPath("/test/bin/debug"),
-                DomainManager.GetCommonAppBase(assemblies));
+                DomainManagerArxNet.GetCommonAppBase(assemblies));
         }
 
         [Test]
@@ -43,7 +51,7 @@ namespace NUnit.Util.Tests
 
             Assert.AreEqual(
                 TestPath("/test/bin/debug"),
-                DomainManager.GetCommonAppBase(assemblies));
+                DomainManagerArxNet.GetCommonAppBase(assemblies));
         }
 
         [Test]
@@ -53,7 +61,7 @@ namespace NUnit.Util.Tests
 
             Assert.AreEqual(
                 TestPath("/test"),
-                DomainManager.GetCommonAppBase(assemblies));
+                DomainManagerArxNet.GetCommonAppBase(assemblies));
         }
 
         [Test]
@@ -63,16 +71,16 @@ namespace NUnit.Util.Tests
 
             Assert.AreEqual(
                 TestPath("/test"),
-                DomainManager.GetCommonAppBase(assemblies));
+                DomainManagerArxNet.GetCommonAppBase(assemblies));
         }
 
         [Test]
         public void UnloadUnloadedDomain()
         {
-            AppDomain domain = AppDomain.CreateDomain("DomainManagerTests-domain");
+            AppDomain domain = AppDomain.CreateDomain("DomainManagerArxNetTests-domain");
             AppDomain.Unload(domain);
 
-            DomainManager manager = new DomainManager();
+            DomainManagerArxNet manager = new DomainManagerArxNet();
             manager.Unload(domain);
         }
 

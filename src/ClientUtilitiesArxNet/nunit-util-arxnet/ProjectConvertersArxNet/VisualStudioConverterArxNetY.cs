@@ -3,6 +3,15 @@
 // This is free software licensed under the NUnit license. You may
 // obtain a copy of the license at http://nunit.org
 // ****************************************************************
+
+// ****************************************************************
+// Copyright 2013, Lei Qun
+// 2013.6.3修改：
+//  1.在nunit2.6.2基础上修改
+//  2.NUnit.Util.ProjectConverters.VisualStudioConverter改为NUnit.Util.ArxNet.ProjectConvertersArxNet.VisualStudioConverterArxNet类
+//  3.改Services改为ServicesArxNet
+// ****************************************************************
+
 using System;
 using System.Collections;
 using System.IO;
@@ -10,12 +19,12 @@ using NUnit.Core;
 using NUnit.Core.Extensibility;
 using NUnit.Util.Extensibility;
 
-namespace NUnit.Util.ProjectConverters
+namespace NUnit.Util.ArxNet.ProjectConvertersArxNet
 {
 	/// <summary>
 	/// Summary description for VSProjectLoader.
 	/// </summary>
-	public class VisualStudioConverter : IProjectConverter
+	public class VisualStudioConverterArxNet : IProjectConverter
 	{
 		#region IProjectConverter Members
 
@@ -32,7 +41,7 @@ namespace NUnit.Util.ProjectConverters
 			}
 			else if ( VSProject.IsSolutionFile(path) )
 			{
-                return Services.UserSettings.GetSetting("Options.TestLoader.VisualStudio.UseSolutionConfigs", true)
+                return ServicesArxNet.UserSettings.GetSetting("Options.TestLoader.VisualStudio.UseSolutionConfigs", true)
                     ? ConvertVSSolution(path)
                     : LegacyConvertVSSolution(path);
 			}

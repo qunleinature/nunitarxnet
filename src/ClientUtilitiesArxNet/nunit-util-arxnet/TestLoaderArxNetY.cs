@@ -1,7 +1,7 @@
 // ****************************************************************
-// Copyright 2002-2011, Charlie Poole
-// This is free software licensed under the NUnit license. You may
-// obtain a copy of the license at http://nunit.org
+// This is free software licensed under the NUnit license. You
+// may obtain a copy of the license as well as information regarding
+// copyright ownership at http://nunit.org.
 // ****************************************************************
 
 // ****************************************************************
@@ -23,12 +23,6 @@
 //   1.已改DefaultTestRunnerFactoryArxNet
 // 2013.7.31
 //   1.已改ServicesArxNet
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
-// 2014.8.22：
-//  在NUnit2.6.3基础上修改
 // ****************************************************************
 
 namespace NUnit.Util.ArxNet

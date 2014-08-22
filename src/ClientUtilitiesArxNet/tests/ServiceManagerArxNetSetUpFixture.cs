@@ -23,6 +23,12 @@
 //   2.ServiceManagerArxNet不使用代理
 // ****************************************************************
 
+// ****************************************************************
+// Copyright 2014, Lei Qun
+// 2014.8.22：
+//  在NUnit2.6.3基础上修改
+// ****************************************************************
+
 using System;
 using NUnit.Framework;
 using NUnit.Util;
@@ -47,7 +53,7 @@ namespace NUnit.Util.ArxNet.Tests
 		[SetUp]
 		public void CreateServicesForTestDomain()
 		{
-			ServiceManagerArxNet.Services.AddService( new DummySettingsService() );
+            ServiceManagerArxNet.Services.AddService( new DummySettingsService() );
 			ServiceManagerArxNet.Services.AddService( new DomainManagerArxNet() );
             ServiceManagerArxNet.Services.AddService( new ProjectServiceArxNet() );
             //2014.7.17 Lei Qun修改,ServiceManagerArxNet不使用代理
