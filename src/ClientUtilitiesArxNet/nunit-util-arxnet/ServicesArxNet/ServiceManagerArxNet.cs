@@ -1,4 +1,4 @@
-// ****************************************************************
+ï»¿// ****************************************************************
 // Copyright 2007, Charlie Poole
 // This is free software licensed under the NUnit license. You may
 // obtain a copy of the license at http://nunit.org
@@ -6,16 +6,16 @@
 
 // ****************************************************************
 // Copyright 2013, Lei Qun
-// 2013.5.27ĞŞ¸Ä£º
-//  1.ÔÚnunit2.6.2»ù´¡ÉÏĞŞ¸Ä
-//  2.NUnit.Util.ServiceManger¸ÄÎªNUnit.Util.ArxNet.ServiceMangerArxNetÀà
-//  3.Ôö¼ÓInit·½·¨£¬³õÊ¼»¯¾²Ì¬³ÉÔ±
+// 2013.5.27ä¿®æ”¹ï¼š
+//  1.åœ¨nunit2.6.2åŸºç¡€ä¸Šä¿®æ”¹
+//  2.NUnit.Util.ServiceMangeræ”¹ä¸ºNUnit.Util.ArxNet.ServiceMangerArxNetç±»
+//  3.å¢åŠ Initæ–¹æ³•ï¼Œåˆå§‹åŒ–é™æ€æˆå‘˜
 // ****************************************************************
 
 // ****************************************************************
 // Copyright 2014, Lei Qun
-// 2014.8.22£º
-//  ÔÚNUnit2.6.3»ù´¡ÉÏĞŞ¸Ä
+// 2014.8.22ï¼š
+//  åœ¨NUnit2.6.3åŸºç¡€ä¸Šä¿®æ”¹
 // ****************************************************************
 
 using System;
@@ -24,65 +24,65 @@ using NUnit.Core;
 
 namespace NUnit.Util.ArxNet
 {
-	/// <summary>
-	/// Summary description for ServiceManger.
-	/// </summary>
-	public class ServiceManagerArxNet
-	{
-		private ArrayList services = new ArrayList();
-		private Hashtable serviceIndex = new Hashtable();
+    /// <summary>
+    /// Summary description for ServiceManger.
+    /// </summary>
+    public class ServiceManagerArxNet
+    {
+        private ArrayList services = new ArrayList();
+        private Hashtable serviceIndex = new Hashtable();
 
-		private static ServiceManagerArxNet defaultServiceManager = new ServiceManagerArxNet();
+        private static ServiceManagerArxNet defaultServiceManager = new ServiceManagerArxNet();
 
-		static Logger log = InternalTrace.GetLogger(typeof(ServiceManagerArxNet));
+        static Logger log = InternalTrace.GetLogger(typeof(ServiceManagerArxNet));
 
-        /*2013-5-27lq¼Ó*/
-        //³õÊ¼»¯¾²Ì¬³ÉÔ±
+        /*2013-5-27lqåŠ */
+        //åˆå§‹åŒ–é™æ€æˆå‘˜
         public static void Init()
         {
-		    defaultServiceManager = new ServiceManagerArxNet();
-		    log = InternalTrace.GetLogger(typeof(ServiceManagerArxNet));
+            defaultServiceManager = new ServiceManagerArxNet();
+            log = InternalTrace.GetLogger(typeof(ServiceManagerArxNet));
         }
 
-		public static ServiceManagerArxNet Services
-		{
-			get { return defaultServiceManager; }
-		}
+        public static ServiceManagerArxNet Services
+        {
+            get { return defaultServiceManager; }
+        }
 
-		public void AddService( IService service )
-		{
-			services.Add( service );
-			log.Debug( "Added " + service.GetType().Name );
-		}
+        public void AddService(IService service)
+        {
+            services.Add(service);
+            log.Debug("Added " + service.GetType().Name);
+        }        
 
-		public IService GetService( Type serviceType )
-		{
-			IService theService = (IService)serviceIndex[serviceType];
-			if ( theService == null )
-				foreach( IService service in services )
-				{
-					// TODO: Does this work on Mono?
-					if( serviceType.IsInstanceOfType( service ) )
-					{
-						serviceIndex[serviceType] = service;
-						theService = service;
-						break;
-					}
-				}
+        public IService GetService(Type serviceType)
+        {
+            IService theService = (IService)serviceIndex[serviceType];
+            if (theService == null)
+                foreach (IService service in services)
+                {
+                    // TODO: Does this work on Mono?
+                    if (serviceType.IsInstanceOfType(service))
+                    {
+                        serviceIndex[serviceType] = service;
+                        theService = service;
+                        break;
+                    }
+                }
 
-			if ( theService == null )
-				log.Error( string.Format( "Requested service {0} was not found", serviceType.FullName ) );
-			else
-				log.Debug( string.Format( "Request for service {0} satisfied by {1}", serviceType.Name, theService.GetType().Name ) );
-			
-			return theService;
-		}
+            if (theService == null)
+                log.Error(string.Format("Requested service {0} was not found", serviceType.FullName));
+            else
+                log.Debug(string.Format("Request for service {0} satisfied by {1}", serviceType.Name, theService.GetType().Name));
 
-		public void InitializeServices()
-		{
-			foreach( IService service in services )
-			{
-				log.Info( "Initializing " + service.GetType().Name );
+            return theService;
+        }
+
+        public void InitializeServices()
+        {
+            foreach (IService service in services)
+            {
+                log.Info("Initializing " + service.GetType().Name);
                 try
                 {
                     service.InitializeService();
@@ -91,18 +91,18 @@ namespace NUnit.Util.ArxNet
                 {
                     log.Error("Failed to initialize service", ex);
                 }
-			}
-		}
+            }
+        }
 
-		public void StopAllServices()
-		{
-			// Stop services in reverse of initialization order
-			// TODO: Deal with dependencies explicitly
-			int index = services.Count;
+        public void StopAllServices()
+        {
+            // Stop services in reverse of initialization order
+            // TODO: Deal with dependencies explicitly
+            int index = services.Count;
             while (--index >= 0)
             {
                 IService service = services[index] as IService;
-                log.Info( "Stopping " + service.GetType().Name );
+                log.Info("Stopping " + service.GetType().Name);
                 try
                 {
                     service.UnloadService();
@@ -112,14 +112,14 @@ namespace NUnit.Util.ArxNet
                     log.Error("Failure stopping service", ex);
                 }
             }
-		}
+        }
 
-		public void ClearServices()
-		{
+        public void ClearServices()
+        {
             log.Info("Clearing Service list");
-			services.Clear();
-		}
+            services.Clear();
+        }
 
-		private ServiceManagerArxNet() { }
-	}
+        private ServiceManagerArxNet() { }
+    }
 }
