@@ -48,4 +48,3 @@ F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-ut
 F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-util-arxnet.tests.dll /fixture:NUnit.Util.ArxNet.Tests.VisualStudioConverterArxNetTests
 F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-util-arxnet.tests.dll
 F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-uikit-arxnet.tests.dll
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-uikit-arxnet.tests.dll
