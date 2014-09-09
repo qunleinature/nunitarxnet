@@ -66,7 +66,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.core, Version=2.6.2.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+    <Reference Include="nunit.core, Version=2.6.3.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\NUnit-2.6.3\bin\Debug\lib\nunit.core.dll</HintPath>
     </Reference>
@@ -101,7 +101,9 @@
     <Compile Include="ServicesArxNet\DomainManagerArxNet.cs" />
     <Compile Include="ServicesArxNet\ProjectServiceArxNet.cs" />
     <Compile Include="ServicesArxNet\RecentFilesServiceArxNet.cs" />
-    <Compile Include="ServicesArxNet\ServiceManagerArxNet.cs" />
+    <Compile Include="ServicesArxNet\ServiceManagerArxNet.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ServicesArxNet\SettingsServiceArxNet.cs" />
     <Compile Include="SettingsGroupArxNet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
