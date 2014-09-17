@@ -8,9 +8,9 @@ using Autodesk.AutoCAD.Geometry;
 using Autodesk.AutoCAD.EditorInput;
 
 // This line is not mandatory, but improves loading performances
-[assembly: ExtensionApplication(typeof(nunit_util_arxnet.tests.command.MyPlugin))]
+[assembly: ExtensionApplication(typeof(NUnit.Util.ArxNet.Tests.MyPlugin))]
 
-namespace nunit_util_arxnet.tests.command
+namespace NUnit.Util.ArxNet.Tests
 {
 
     // This class is instantiated by AutoCAD once and kept alive for the 
@@ -18,6 +18,7 @@ namespace nunit_util_arxnet.tests.command
     // then you should remove this class.
     public class MyPlugin : IExtensionApplication
     {
+        private ServiceManagerArxNetSetUpFixture m_fixture = null;
 
         void IExtensionApplication.Initialize()
         {
@@ -52,12 +53,25 @@ namespace nunit_util_arxnet.tests.command
                 ed.WriteMessage("\n\tGetCommonAppBase_TwoElements_DifferentDirectories");
                 ed.WriteMessage("\n\tGetCommonAppBase_ThreeElements_DiferentDirectories");
                 ed.WriteMessage("\n\tUnloadUnloadedDomain");
+
+                ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.NUnitProjectArxNetLoadCommands:");
+                ed.WriteMessage("\n\tLoadEmptyProject");
+                ed.WriteMessage("\n\tLoadEmptyConfigs");
+                ed.WriteMessage("\n\tLoadNormalProject");
+                ed.WriteMessage("\n\tLoadProjectWithManualBinPath");
+                ed.WriteMessage("\n\tFromAssembly");
+                ed.WriteMessage("\n\tSaveClearsAssemblyWrapper");
             }
+
+            m_fixture = new ServiceManagerArxNetSetUpFixture();
+            m_fixture.CreateServicesForTestDomain();
         }
 
         void IExtensionApplication.Terminate()
         {
             // Do plug-in application clean up here
+            m_fixture.ClearServices();
+            m_fixture = null;
         }
 
     }

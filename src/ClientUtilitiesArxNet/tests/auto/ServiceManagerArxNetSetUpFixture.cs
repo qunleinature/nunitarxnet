@@ -53,12 +53,16 @@ namespace NUnit.Util.ArxNet.Tests
 		[SetUp]
 		public void CreateServicesForTestDomain()
 		{
+            //2014.9.17增加
+            ServiceManagerArxNet.Init();
+            DomainManagerArxNet.Init();
+            ServicesArxNet.Init();
+
             ServiceManagerArxNet.Services.AddService( new DummySettingsService() );
 			ServiceManagerArxNet.Services.AddService( new DomainManagerArxNet() );
             ServiceManagerArxNet.Services.AddService( new ProjectServiceArxNet() );
-            //2014.7.17 Lei Qun修改,ServiceManagerArxNet不使用代理
-			//ServiceManagerArxNet.Services.AddService( new TestAgency( "TestDomain_TestAgency", 0 ) );
-			//ServicesArxNet.TestAgency.Start();
+            ServiceManagerArxNet.Services.AddService( new TestAgency( "TestDomain_TestAgency", 0 ) );
+			ServicesArxNet.TestAgency.Start();
 		}
 
 		[TearDown]
