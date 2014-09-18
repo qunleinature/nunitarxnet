@@ -70,6 +70,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void NewProjectNotLoadable()
+        [CommandMethod("NewProjectNotLoadable")]
         public void NewProjectNotLoadable()
         {
             NUnitProjectArxNetTests tests = new NUnitProjectArxNetTests();
@@ -79,6 +80,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void SaveMakesProjectNotDirty()
+        [CommandMethod("SaveMakesProjectNotDirty")]
         public void SaveMakesProjectNotDirty()
         {
             NUnitProjectArxNetTests tests = new NUnitProjectArxNetTests();
@@ -88,6 +90,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void SaveSetsProjectPath()
+        [CommandMethod("SaveSetsProjectPath")]
         public void SaveSetsProjectPath()
         {
             NUnitProjectArxNetTests tests = new NUnitProjectArxNetTests();
@@ -97,6 +100,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void DefaultApplicationBase()
+        [CommandMethod("DefaultApplicationBase")]
         public void DefaultApplicationBase()
         {
             NUnitProjectArxNetTests tests = new NUnitProjectArxNetTests();
@@ -106,6 +110,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void DefaultConfigurationFile()
+        [CommandMethod("DefaultConfigurationFile")]
         public void DefaultConfigurationFile()
         {
             NUnitProjectArxNetTests tests = new NUnitProjectArxNetTests();
@@ -115,6 +120,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void ConfigurationFileFromAssembly()
+        [CommandMethod("ConfigurationFileFromAssembly")]
         public void ConfigurationFileFromAssembly()
         {
             NUnitProjectArxNetTests tests = new NUnitProjectArxNetTests();
@@ -124,6 +130,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void ConfigurationFileFromAssemblies()
+        [CommandMethod("ConfigurationFileFromAssemblies")]
         public void ConfigurationFileFromAssemblies()
         {
             NUnitProjectArxNetTests tests = new NUnitProjectArxNetTests();
@@ -133,6 +140,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void DefaultProjectName()
+        [CommandMethod("DefaultProjectName")]
         public void DefaultProjectName()
         {
             NUnitProjectArxNetTests tests = new NUnitProjectArxNetTests();
@@ -142,6 +150,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void LoadMakesProjectNotDirty()
+        [CommandMethod("LoadMakesProjectNotDirty")]
         public void LoadMakesProjectNotDirty()
         {
             NUnitProjectArxNetTests tests = new NUnitProjectArxNetTests();
@@ -151,6 +160,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void CanSetAppBase()
+        [CommandMethod("CanSetAppBase")]
         public void CanSetAppBase()
         {
             NUnitProjectArxNetTests tests = new NUnitProjectArxNetTests();
@@ -160,6 +170,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void CanAddConfigs()
+        [CommandMethod("CanAddConfigs")]
         public void CanAddConfigs()
         {
             NUnitProjectArxNetTests tests = new NUnitProjectArxNetTests();
@@ -169,6 +180,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void CanSetActiveConfig()
+        [CommandMethod("CanSetActiveConfig")]
         public void CanSetActiveConfig()
         {
             NUnitProjectArxNetTests tests = new NUnitProjectArxNetTests();
@@ -178,6 +190,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void CanAddAssemblies()
+        [CommandMethod("CanAddAssemblies")]
         public void CanAddAssemblies()
         {
             NUnitProjectArxNetTests tests = new NUnitProjectArxNetTests();
@@ -187,6 +200,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void AddConfigMakesProjectDirty()
+        [CommandMethod("AddConfigMakesProjectDirty")]
         public void AddConfigMakesProjectDirty()
         {
             NUnitProjectArxNetTests tests = new NUnitProjectArxNetTests();
@@ -196,6 +210,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void RenameConfigMakesProjectDirty()
+        [CommandMethod("RenameConfigMakesProjectDirty")]
         public void RenameConfigMakesProjectDirty()
         {
             NUnitProjectArxNetTests tests = new NUnitProjectArxNetTests();
@@ -205,6 +220,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void DefaultActiveConfig()
+        [CommandMethod("DefaultActiveConfig")]
         public void DefaultActiveConfig()
         {
             NUnitProjectArxNetTests tests = new NUnitProjectArxNetTests();
@@ -214,6 +230,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void RenameActiveConfig()
+        [CommandMethod("RenameActiveConfig")]
         public void RenameActiveConfig()
         {
             NUnitProjectArxNetTests tests = new NUnitProjectArxNetTests();
@@ -223,6 +240,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void RemoveConfigMakesProjectDirty()
+        [CommandMethod("RemoveConfigMakesProjectDirty")]
         public void RemoveConfigMakesProjectDirty()
         {
             NUnitProjectArxNetTests tests = new NUnitProjectArxNetTests();
@@ -232,6 +250,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void RemoveActiveConfig()
+        [CommandMethod("RemoveActiveConfig")]
         public void RemoveActiveConfig()
         {
             NUnitProjectArxNetTests tests = new NUnitProjectArxNetTests();
@@ -241,6 +260,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void SettingActiveConfigMakesProjectDirty()
+        [CommandMethod("SettingActiveConfigMakesProjectDirty")]
         public void SettingActiveConfigMakesProjectDirty()
         {
             NUnitProjectArxNetTests tests = new NUnitProjectArxNetTests();
@@ -250,6 +270,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void SaveAndLoadEmptyProject()
+        [CommandMethod("SaveAndLoadEmptyProject")]
         public void SaveAndLoadEmptyProject()
         {
             NUnitProjectArxNetTests tests = new NUnitProjectArxNetTests();
@@ -259,6 +280,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void SaveAndLoadEmptyConfigs()
+        [CommandMethod("SaveAndLoadEmptyConfigs")]
         public void SaveAndLoadEmptyConfigs()
         {
             NUnitProjectArxNetTests tests = new NUnitProjectArxNetTests();
@@ -268,6 +290,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void SaveAndLoadConfigsWithAssemblies()
+        [CommandMethod("SaveAndLoadConfigsWithAssemblies")]
         public void SaveAndLoadConfigsWithAssemblies()
         {
             NUnitProjectArxNetTests tests = new NUnitProjectArxNetTests();
