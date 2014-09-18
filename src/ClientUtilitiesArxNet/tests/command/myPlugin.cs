@@ -61,6 +61,39 @@ namespace NUnit.Util.ArxNet.Tests
                 ed.WriteMessage("\n\tLoadProjectWithManualBinPath");
                 ed.WriteMessage("\n\tFromAssembly");
                 ed.WriteMessage("\n\tSaveClearsAssemblyWrapper");
+
+                ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.NUnitProjectArxNetSaveCommands:");
+                ed.WriteMessage("\n\tSaveEmptyProject");
+                ed.WriteMessage("\n\tSaveEmptyConfigs");
+                ed.WriteMessage("\n\tSaveNormalProject");
+
+                ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.NUnitProjectArxNetTestsCommands:");
+                ed.WriteMessage("\n\tIsProjectFile");
+                ed.WriteMessage("\n\tNewProjectIsEmpty");
+                ed.WriteMessage("\n\tNewProjectIsNotDirty");
+                ed.WriteMessage("\n\tNewProjectDefaultPath");
+                ed.WriteMessage("\n\tNewProjectNotLoadable");
+                ed.WriteMessage("\n\tSaveMakesProjectNotDirty");
+                ed.WriteMessage("\n\tSaveSetsProjectPath");
+                ed.WriteMessage("\n\tDefaultApplicationBase");
+                ed.WriteMessage("\n\tDefaultConfigurationFile");
+                ed.WriteMessage("\n\tConfigurationFileFromAssembly");
+                ed.WriteMessage("\n\tConfigurationFileFromAssemblies");
+                ed.WriteMessage("\n\tDefaultProjectName");
+                ed.WriteMessage("\n\tLoadMakesProjectNotDirty");
+                ed.WriteMessage("\n\tCanSetAppBase");
+                ed.WriteMessage("\n\tCanAddConfigs");
+                ed.WriteMessage("\n\tCanSetActiveConfig");
+                ed.WriteMessage("\n\tCanAddAssemblies");
+                ed.WriteMessage("\n\tAddConfigMakesProjectDirty");
+                ed.WriteMessage("\n\tRenameConfigMakesProjectDirty");
+                ed.WriteMessage("\n\tDefaultActiveConfig");
+                ed.WriteMessage("\n\tRenameActiveConfig");
+                ed.WriteMessage("\n\tRemoveActiveConfig");
+                ed.WriteMessage("\n\tSettingActiveConfigMakesProjectDirty");
+                ed.WriteMessage("\n\tSaveAndLoadEmptyProject");
+                ed.WriteMessage("\n\tSaveAndLoadEmptyConfigs");
+                ed.WriteMessage("\n\tSaveAndLoadConfigsWithAssemblies");
             }
 
             m_fixture = new ServiceManagerArxNetSetUpFixture();

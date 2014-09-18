@@ -111,6 +111,8 @@
     <Compile Include="myPlugin.cs" />
     <Compile Include="myCommands.cs" />
     <Compile Include="NUnitProjectArxNetLoad.cs" />
+    <Compile Include="NUnitProjectArxNetSave.cs" />
+    <Compile Include="NUnitProjectArxNetTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
