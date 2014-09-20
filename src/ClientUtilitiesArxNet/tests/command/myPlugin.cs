@@ -94,6 +94,14 @@ namespace NUnit.Util.ArxNet.Tests
                 ed.WriteMessage("\n\tSaveAndLoadEmptyProject");
                 ed.WriteMessage("\n\tSaveAndLoadEmptyConfigs");
                 ed.WriteMessage("\n\tSaveAndLoadConfigsWithAssemblies");
+
+                ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.PathUtilArxNetTestsCommands:");
+                ed.WriteMessage("\n\tCheckDefaults");
+
+                ed.WriteMessage("\nPathUtilArxNetTests_WindowsCommands:");
+                ed.WriteMessage("\n\tIsAssemblyFileType");
+                ed.WriteMessage("\n\tCanonicalize");
+
             }
 
             m_fixture = new ServiceManagerArxNetSetUpFixture();

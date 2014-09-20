@@ -6,7 +6,10 @@
 
 // ****************************************************************
 // Copyright 2013, Lei Qun
-// 2013.5.28修改
+//  2013.5.28修改
+//  2014.9.19修改
+//      1.PathUtilTests改PathUtilArxNetTests
+//      2.PathUtilTests_Windows改PathUtilArxNetTests_Windows
 // ****************************************************************
 
 using System;
@@ -16,7 +19,7 @@ using NUnit.Framework;
 namespace NUnit.Util.ArxNet.Tests
 {
 	[TestFixture]
-	public class PathUtilTests : PathUtils
+    public class PathUtilArxNetTests : PathUtils//2014.9.19改PathUtilTests为PathUtilArxNetTests
 	{
 		[Test]
 		public void CheckDefaults()
@@ -55,7 +58,7 @@ namespace NUnit.Util.ArxNet.Tests
 	}
 
 	[TestFixture]
-	public class PathUtilTests_Windows : PathUtils
+    public class PathUtilArxNetTests_Windows : PathUtils//2014.9.19lq改PathUtilTests_Windows为PathUtilArxNetTests_Windows
 	{
 		[TestFixtureSetUp]
 		public static void SetUpUnixSeparators()
