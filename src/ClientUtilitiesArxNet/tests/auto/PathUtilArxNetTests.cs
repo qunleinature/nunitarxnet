@@ -10,6 +10,8 @@
 //  2014.9.19修改
 //      1.PathUtilTests改PathUtilArxNetTests
 //      2.PathUtilTests_Windows改PathUtilArxNetTests_Windows
+//  2014.9.20修改
+//      1.PathUtilTests_Unix改PathUtilArxNetTests_Unix
 // ****************************************************************
 
 using System;
@@ -167,7 +169,7 @@ namespace NUnit.Util.ArxNet.Tests
 	}
 
 	[TestFixture]
-	public class PathUtilTests_Unix : PathUtils
+    public class PathUtilArxNetTests_Unix : PathUtils//2014.9.20lq改PathUtilTests_Unix为PathUtilArxNetTests_Unix
 	{
 		[TestFixtureSetUp]
 		public static void SetUpUnixSeparators()

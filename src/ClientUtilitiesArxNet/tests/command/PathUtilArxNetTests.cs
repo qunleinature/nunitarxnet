@@ -23,6 +23,7 @@ using Autodesk.AutoCAD.EditorInput;
 // This line is not mandatory, but improves loading performances
 [assembly: CommandClass(typeof(NUnit.Util.ArxNet.Tests.PathUtilArxNetTestsCommands))]
 [assembly: CommandClass(typeof(NUnit.Util.ArxNet.Tests.PathUtilArxNetTests_WindowsCommands))]
+[assembly: CommandClass(typeof(NUnit.Util.ArxNet.Tests.PathUtilArxNetTests_UnixCommands))]
 
 namespace NUnit.Util.ArxNet.Tests
 {
@@ -50,7 +51,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void IsAssemblyFileType()
-        [CommandMethod("IsAssemblyFileType")]
+        [CommandMethod("PathUtilArxNetTests_WindowsCommands", "IsAssemblyFileType", CommandFlags.Modal)]
         public void IsAssemblyFileType()
         {
             PathUtilArxNetTests_Windows tests = new PathUtilArxNetTests_Windows();
@@ -63,6 +64,51 @@ namespace NUnit.Util.ArxNet.Tests
         {
             PathUtilArxNetTests_Windows tests = new PathUtilArxNetTests_Windows();
             tests.Canonicalize();
+        }
+
+        //public void SamePath()
+        [CommandMethod("SamePath")]
+        public void SamePath()
+        {
+            PathUtilArxNetTests_Windows tests = new PathUtilArxNetTests_Windows();
+            tests.SamePath();
+        }
+
+        //public void SamePathOrUnder()
+        [CommandMethod("SamePathOrUnder")]
+        public void SamePathOrUnder()
+        {
+            PathUtilArxNetTests_Windows tests = new PathUtilArxNetTests_Windows();
+            tests.SamePathOrUnder();
+        }
+
+        //public void PathFromUri()
+        [CommandMethod("PathFromUri")]
+        public void PathFromUri()
+        {
+            PathUtilArxNetTests_Windows tests = new PathUtilArxNetTests_Windows();
+            tests.PathFromUri();
+        }
+    }
+
+    public class PathUtilArxNetTests_UnixCommands
+    {
+        public PathUtilArxNetTests_UnixCommands()
+        {
+            PathUtilArxNetTests_Unix.SetUpUnixSeparators();
+        }
+
+        ~PathUtilArxNetTests_UnixCommands()
+        {
+            PathUtilArxNetTests_Unix.RestoreDefaultSeparators();
+        }
+
+        //public void IsAssemblyFileType()
+        [CommandMethod("PathUtilArxNetTests_UnixCommands", "IsAssemblyFileType", CommandFlags.Modal)]
+        public void IsAssemblyFileType()
+        {
+            PathUtilArxNetTests_Unix tests = new PathUtilArxNetTests_Unix();
+            tests.IsAssemblyFileType();
         }
     }
 }

@@ -98,10 +98,15 @@ namespace NUnit.Util.ArxNet.Tests
                 ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.PathUtilArxNetTestsCommands:");
                 ed.WriteMessage("\n\tCheckDefaults");
 
-                ed.WriteMessage("\nPathUtilArxNetTests_WindowsCommands:");
+                ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.PathUtilArxNetTests_WindowsCommands:");
                 ed.WriteMessage("\n\tIsAssemblyFileType");
                 ed.WriteMessage("\n\tCanonicalize");
+                ed.WriteMessage("\n\tSamePath");
+                ed.WriteMessage("\n\tSamePathOrUnder");
+                ed.WriteMessage("\n\tPathFromUri");
 
+                ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.PathUtilArxNetTests_UnixCommands:");
+                ed.WriteMessage("\n\tIsAssemblyFileType");
             }
 
             m_fixture = new ServiceManagerArxNetSetUpFixture();
