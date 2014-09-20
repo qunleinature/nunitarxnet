@@ -39,76 +39,68 @@ namespace NUnit.Util.ArxNet.Tests
     }
 
     public class PathUtilArxNetTests_WindowsCommands
-    {        
-        public PathUtilArxNetTests_WindowsCommands()
-        {
-            PathUtilArxNetTests_Windows.SetUpUnixSeparators();
-        }
-
-        ~PathUtilArxNetTests_WindowsCommands()
-        {
-            PathUtilArxNetTests_Windows.RestoreDefaultSeparators();
-        }
-
+    { 
         //public void IsAssemblyFileType()
         [CommandMethod("PathUtilArxNetTests_WindowsCommands", "IsAssemblyFileType", CommandFlags.Modal)]
         public void IsAssemblyFileType()
         {
+            PathUtilArxNetTests_Windows.SetUpUnixSeparators();
             PathUtilArxNetTests_Windows tests = new PathUtilArxNetTests_Windows();
             tests.IsAssemblyFileType();
+            PathUtilArxNetTests_Windows.RestoreDefaultSeparators();
         }
 
         //public void Canonicalize()
         [CommandMethod("Canonicalize")]
         public void Canonicalize()
         {
+            PathUtilArxNetTests_Windows.SetUpUnixSeparators();
             PathUtilArxNetTests_Windows tests = new PathUtilArxNetTests_Windows();
             tests.Canonicalize();
+            PathUtilArxNetTests_Windows.RestoreDefaultSeparators();
         }
 
         //public void SamePath()
         [CommandMethod("SamePath")]
         public void SamePath()
         {
+            PathUtilArxNetTests_Windows.SetUpUnixSeparators();
             PathUtilArxNetTests_Windows tests = new PathUtilArxNetTests_Windows();
             tests.SamePath();
+            PathUtilArxNetTests_Windows.RestoreDefaultSeparators();
         }
 
         //public void SamePathOrUnder()
         [CommandMethod("SamePathOrUnder")]
         public void SamePathOrUnder()
         {
+            PathUtilArxNetTests_Windows.SetUpUnixSeparators();
             PathUtilArxNetTests_Windows tests = new PathUtilArxNetTests_Windows();
             tests.SamePathOrUnder();
+            PathUtilArxNetTests_Windows.RestoreDefaultSeparators();
         }
 
         //public void PathFromUri()
         [CommandMethod("PathFromUri")]
         public void PathFromUri()
         {
+            PathUtilArxNetTests_Windows.SetUpUnixSeparators();
             PathUtilArxNetTests_Windows tests = new PathUtilArxNetTests_Windows();
             tests.PathFromUri();
+            PathUtilArxNetTests_Windows.RestoreDefaultSeparators();
         }
     }
 
     public class PathUtilArxNetTests_UnixCommands
     {
-        public PathUtilArxNetTests_UnixCommands()
-        {
-            PathUtilArxNetTests_Unix.SetUpUnixSeparators();
-        }
-
-        ~PathUtilArxNetTests_UnixCommands()
-        {
-            PathUtilArxNetTests_Unix.RestoreDefaultSeparators();
-        }
-
         //public void IsAssemblyFileType()
         [CommandMethod("PathUtilArxNetTests_UnixCommands", "IsAssemblyFileType", CommandFlags.Modal)]
         public void IsAssemblyFileType()
         {
+            PathUtilArxNetTests_Unix.SetUpUnixSeparators();
             PathUtilArxNetTests_Unix tests = new PathUtilArxNetTests_Unix();
             tests.IsAssemblyFileType();
+            PathUtilArxNetTests_Unix.RestoreDefaultSeparators();
         }
     }
 }
