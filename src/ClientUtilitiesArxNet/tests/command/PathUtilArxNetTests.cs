@@ -51,7 +51,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void Canonicalize()
-        [CommandMethod("Canonicalize")]
+        [CommandMethod("PathUtilArxNetTests_WindowsCommands", "Canonicalize", CommandFlags.Modal)]
         public void Canonicalize()
         {
             PathUtilArxNetTests_Windows.SetUpUnixSeparators();
@@ -61,7 +61,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void SamePath()
-        [CommandMethod("SamePath")]
+        [CommandMethod("PathUtilArxNetTests_WindowsCommands", "SamePath", CommandFlags.Modal)]
         public void SamePath()
         {
             PathUtilArxNetTests_Windows.SetUpUnixSeparators();
@@ -71,7 +71,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void SamePathOrUnder()
-        [CommandMethod("SamePathOrUnder")]
+        [CommandMethod("PathUtilArxNetTests_WindowsCommands", "SamePathOrUnder", CommandFlags.Modal)]
         public void SamePathOrUnder()
         {
             PathUtilArxNetTests_Windows.SetUpUnixSeparators();
@@ -81,7 +81,7 @@ namespace NUnit.Util.ArxNet.Tests
         }
 
         //public void PathFromUri()
-        [CommandMethod("PathFromUri")]
+        [CommandMethod("PathUtilArxNetTests_WindowsCommands", "PathFromUri", CommandFlags.Modal)]
         public void PathFromUri()
         {
             PathUtilArxNetTests_Windows.SetUpUnixSeparators();
@@ -100,6 +100,56 @@ namespace NUnit.Util.ArxNet.Tests
             PathUtilArxNetTests_Unix.SetUpUnixSeparators();
             PathUtilArxNetTests_Unix tests = new PathUtilArxNetTests_Unix();
             tests.IsAssemblyFileType();
+            PathUtilArxNetTests_Unix.RestoreDefaultSeparators();
+        }
+
+        //public void Canonicalize()
+        [CommandMethod("PathUtilArxNetTests_UnixCommands", "Canonicalize", CommandFlags.Modal)]
+        public void Canonicalize()
+        {
+            PathUtilArxNetTests_Unix.SetUpUnixSeparators();
+            PathUtilArxNetTests_Unix tests = new PathUtilArxNetTests_Unix();
+            tests.Canonicalize();
+            PathUtilArxNetTests_Unix.RestoreDefaultSeparators();
+        }
+
+        //public void RelativePath()
+        [CommandMethod("RelativePath")]
+        public void RelativePath()
+        {
+            PathUtilArxNetTests_Unix.SetUpUnixSeparators();
+            PathUtilArxNetTests_Unix tests = new PathUtilArxNetTests_Unix();
+            tests.RelativePath();
+            PathUtilArxNetTests_Unix.RestoreDefaultSeparators();
+        }
+
+        //public void SamePath()
+        [CommandMethod("PathUtilArxNetTests_UnixCommands", "SamePath", CommandFlags.Modal)]
+        public void SamePath()
+        {
+            PathUtilArxNetTests_Unix.SetUpUnixSeparators();
+            PathUtilArxNetTests_Unix tests = new PathUtilArxNetTests_Unix();
+            tests.SamePath();
+            PathUtilArxNetTests_Unix.RestoreDefaultSeparators();
+        }
+
+        //public void SamePathOrUnder()
+        [CommandMethod("PathUtilArxNetTests_UnixCommands", "SamePathOrUnder", CommandFlags.Modal)]
+        public void SamePathOrUnder()
+        {
+            PathUtilArxNetTests_Unix.SetUpUnixSeparators();
+            PathUtilArxNetTests_Unix tests = new PathUtilArxNetTests_Unix();
+            tests.SamePathOrUnder();
+            PathUtilArxNetTests_Unix.RestoreDefaultSeparators();
+        }
+
+        //public void PathFromUri()
+        [CommandMethod("PathUtilArxNetTests_UnixCommands", "PathFromUri", CommandFlags.Modal)]
+        public void PathFromUri()
+        {
+            PathUtilArxNetTests_Unix.SetUpUnixSeparators();
+            PathUtilArxNetTests_Unix tests = new PathUtilArxNetTests_Unix();
+            tests.PathFromUri();
             PathUtilArxNetTests_Unix.RestoreDefaultSeparators();
         }
     }

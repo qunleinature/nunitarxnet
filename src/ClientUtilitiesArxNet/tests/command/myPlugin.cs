@@ -100,13 +100,29 @@ namespace NUnit.Util.ArxNet.Tests
 
                 ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.PathUtilArxNetTests_WindowsCommands:");
                 ed.WriteMessage("\n\tPathUtilArxNetTests_WindowsCommands.IsAssemblyFileType");
-                ed.WriteMessage("\n\tCanonicalize");
-                ed.WriteMessage("\n\tSamePath");
-                ed.WriteMessage("\n\tSamePathOrUnder");
-                ed.WriteMessage("\n\tPathFromUri");
+                ed.WriteMessage("\n\tPathUtilArxNetTests_WindowsCommands.Canonicalize");
+                ed.WriteMessage("\n\tPathUtilArxNetTests_WindowsCommands.SamePath");
+                ed.WriteMessage("\n\tPathUtilArxNetTests_WindowsCommands.SamePathOrUnder");
+                ed.WriteMessage("\n\tPathUtilArxNetTests_WindowsCommands.PathFromUri");
 
                 ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.PathUtilArxNetTests_UnixCommands:");
                 ed.WriteMessage("\n\tPathUtilArxNetTests_UnixCommands.IsAssemblyFileType");
+                ed.WriteMessage("\n\tPathUtilArxNetTests_UnixCommands.Canonicalize");
+                ed.WriteMessage("\n\tRelativePath");
+                ed.WriteMessage("\n\tPathUtilArxNetTests_UnixCommands.SamePath");
+                ed.WriteMessage("\n\tPathUtilArxNetTests_UnixCommands.SamePathOrUnder");
+                ed.WriteMessage("\n\tPathUtilArxNetTests_UnixCommands.PathFromUri");
+
+                ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.ProcessRunnerArxNetTestsCommands:");
+                ed.WriteMessage("\n\tTestProcessIsReused--测试未通过,致命错误：可能在CAD环境下进程错误");
+
+                ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.RecentFilesArxNetTestsCommands:");
+                ed.WriteMessage("\n\tCountDefault");
+                ed.WriteMessage("\n\tCountOverMax");
+                ed.WriteMessage("\n\tCountUnderMin");
+                ed.WriteMessage("\n\tCountAtMax");
+                ed.WriteMessage("\n\tCountAtMin");
+                ed.WriteMessage("\n\tEmptyList");
             }
 
             m_fixture = new ServiceManagerArxNetSetUpFixture();

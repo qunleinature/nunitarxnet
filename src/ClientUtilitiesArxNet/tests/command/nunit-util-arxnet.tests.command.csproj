@@ -74,14 +74,34 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\lib\AcMgd.dll</HintPath>
     </Reference>
+    <Reference Include="mock-assembly, Version=2.6.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\NUnit-2.6.3\bin\Debug\tests\mock-assembly.dll</HintPath>
+    </Reference>
     <Reference Include="nunit-util-arxnet.tests, Version=0.0.5.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\bin\Debug\tests\nunit-util-arxnet.tests.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.core, Version=2.6.3.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\NUnit-2.6.3\bin\Debug\lib\nunit.core.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.core.interfaces, Version=2.6.3.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\NUnit-2.6.3\bin\Debug\lib\nunit.core.interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.core.tests, Version=2.6.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\NUnit-2.6.3\bin\Debug\tests\nunit.core.tests.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
     <Reference Include="nunit.util, Version=2.6.3.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\NUnit-2.6.3\bin\Debug\lib\nunit.util.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.util.tests, Version=2.6.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\NUnit-2.6.3\bin\Debug\tests\nunit.util.tests.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -118,7 +138,9 @@
     <Compile Include="NUnitProjectArxNetSave.cs" />
     <Compile Include="NUnitProjectArxNetTests.cs" />
     <Compile Include="PathUtilArxNetTests.cs" />
+    <Compile Include="ProcessRunnerArxNetTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecentFilesArxNetTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="myCommands.resx">
