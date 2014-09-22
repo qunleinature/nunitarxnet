@@ -144,6 +144,7 @@
     <Compile Include="RemoteTestResultArxNetTest.cs" />
     <Compile Include="RuntimeFrameworkSelectorArxNetTests.cs" />
     <Compile Include="SettingsGroupArxNetTests.cs" />
+    <Compile Include="TestDomainArxNetFixture.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="myCommands.resx">

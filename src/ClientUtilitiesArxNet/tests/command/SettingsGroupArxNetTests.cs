@@ -46,5 +46,35 @@ namespace NUnit.Util.ArxNet.Tests
             tests.SubGroupSettings();
             tests.AfterEachTest();
         }
+
+        //public void TypeSafeSettings()
+        [CommandMethod("TypeSafeSettings")]
+        public void TypeSafeSettings()
+        {
+            SettingsGroupArxNetTests tests = new SettingsGroupArxNetTests();
+            tests.BeforeEachTest();
+            tests.TypeSafeSettings();
+            tests.AfterEachTest();
+        }
+
+        //public void DefaultSettings()
+        [CommandMethod("DefaultSettings")]
+        public void DefaultSettings()
+        {
+            SettingsGroupArxNetTests tests = new SettingsGroupArxNetTests();
+            tests.BeforeEachTest();
+            tests.DefaultSettings();
+            tests.AfterEachTest();
+        }
+
+        //public void BadSetting()
+        [CommandMethod("BadSetting")]
+        public void BadSetting()
+        {
+            SettingsGroupArxNetTests tests = new SettingsGroupArxNetTests();
+            tests.BeforeEachTest();
+            tests.BadSetting();
+            tests.AfterEachTest();
+        }
     }
 }

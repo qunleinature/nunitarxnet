@@ -135,6 +135,17 @@ namespace NUnit.Util.ArxNet.Tests
                 ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.SettingsGroupArxNetTestsCommands:");
                 ed.WriteMessage("\n\tTopLevelSettings");
                 ed.WriteMessage("\n\tSubGroupSettings");
+                ed.WriteMessage("\n\tTypeSafeSettings");
+                ed.WriteMessage("\n\tDefaultSettings");
+                ed.WriteMessage("\n\tBadSetting");
+
+                ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.TestDomainArxNetFixtureCommands:");
+                ed.WriteMessage("\n\tAssemblyIsLoadedCorrectly--测试未通过，可能是在CAD环境下不支持程序域下的测试");
+                ed.WriteMessage("\n\tCanRunMockAssemblyTests--测试未通过，可能是在CAD环境下不支持程序域下的测试");
+
+                ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.TestDomainArxNetTestsCommands:");
+                ed.WriteMessage("\n\tFileNotFound");
+                ed.WriteMessage("\n\tInvalidTestFixture--测试未通过，可能是在CAD环境下不支持程序域下的测试");
             }
 
             m_fixture = new ServiceManagerArxNetSetUpFixture();
