@@ -1,0 +1,50 @@
+﻿// ****************************************************************
+// This is free software licensed under the NUnit license. You
+// may obtain a copy of the license as well as information regarding
+// copyright ownership at http://nunit.org.
+// ****************************************************************
+
+// ****************************************************************
+// Copyright 2014, Lei Qun
+// 2014.9.22：
+//  1.利用cad命令直接测试
+// ****************************************************************
+
+using System;
+using NUnit.Framework;
+using Microsoft.Win32;
+
+using Autodesk.AutoCAD.Runtime;
+using Autodesk.AutoCAD.ApplicationServices;
+using Autodesk.AutoCAD.DatabaseServices;
+using Autodesk.AutoCAD.Geometry;
+using Autodesk.AutoCAD.EditorInput;
+
+// This line is not mandatory, but improves loading performances
+[assembly: CommandClass(typeof(NUnit.Util.ArxNet.Tests.SettingsGroupArxNetTestsCommands))]
+
+namespace NUnit.Util.ArxNet.Tests
+{
+    public class SettingsGroupArxNetTestsCommands
+    {
+        //public void TopLevelSettings()
+        [CommandMethod("TopLevelSettings")]
+        public void TopLevelSettings()
+        {
+            SettingsGroupArxNetTests tests = new SettingsGroupArxNetTests();
+            tests.BeforeEachTest();
+            tests.TopLevelSettings();
+            tests.AfterEachTest();
+        }
+
+        //public void SubGroupSettings()
+        [CommandMethod("SubGroupSettings")]
+        public void SubGroupSettings()
+        {
+            SettingsGroupArxNetTests tests = new SettingsGroupArxNetTests();
+            tests.BeforeEachTest();
+            tests.SubGroupSettings();
+            tests.AfterEachTest();
+        }
+    }
+}

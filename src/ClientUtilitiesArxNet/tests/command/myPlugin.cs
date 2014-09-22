@@ -123,6 +123,18 @@ namespace NUnit.Util.ArxNet.Tests
                 ed.WriteMessage("\n\tCountAtMax");
                 ed.WriteMessage("\n\tCountAtMin");
                 ed.WriteMessage("\n\tEmptyList");
+
+                ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.RemoteTestResultArxNetTestCommands:");
+                ed.WriteMessage("\n\tResultStillValidAfterDomainUnload--测试未通过,可能是在CAD环境下不支持程序域下的测试");
+                ed.WriteMessage("\n\tAppDomainUnloadedBug--测试未通过,可能是在CAD环境下不支持程序域下的测试");
+
+                ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.RuntimeFrameworkSelectorArxNetTestsCommands:");
+                ed.WriteMessage("\n\tRequestForSpecificFrameworkIsHonored");
+                ed.WriteMessage("\n\tRequestForSpecificVersionIsHonored");
+
+                ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.SettingsGroupArxNetTestsCommands:");
+                ed.WriteMessage("\n\tTopLevelSettings");
+                ed.WriteMessage("\n\tSubGroupSettings");
             }
 
             m_fixture = new ServiceManagerArxNetSetUpFixture();

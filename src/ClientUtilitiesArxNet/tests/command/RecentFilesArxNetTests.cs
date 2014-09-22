@@ -38,8 +38,6 @@ namespace NUnit.Util.ArxNet.Tests
             tests.CountDefault();
         }
 
-
-
         //public void CountOverMax()
         [CommandMethod("CountOverMax")]
         public void CountOverMax()
