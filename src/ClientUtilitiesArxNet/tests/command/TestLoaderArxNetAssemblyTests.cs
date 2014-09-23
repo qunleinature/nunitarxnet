@@ -62,5 +62,15 @@ namespace NUnit.Util.ArxNet.Tests
             tests.LoadTest();
             tests.TearDown();
         }
+
+        //public void UnloadTest()
+        [CommandMethod("UnloadTest")]
+        public void UnloadTest()
+        {
+            TestLoaderArxNetAssemblyTests tests = new TestLoaderArxNetAssemblyTests();
+            tests.SetUp();
+            tests.UnloadTest();
+            tests.TearDown();
+        }
     }
 }

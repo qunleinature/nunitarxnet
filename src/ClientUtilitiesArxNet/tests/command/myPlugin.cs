@@ -163,6 +163,7 @@ namespace NUnit.Util.ArxNet.Tests
                 ed.WriteMessage("\n\tLoadProject");
                 ed.WriteMessage("\n\tUnloadProject");
                 ed.WriteMessage("\n\tLoadTest");
+                ed.WriteMessage("\n\tUnloadTest");
                 
             }
 
