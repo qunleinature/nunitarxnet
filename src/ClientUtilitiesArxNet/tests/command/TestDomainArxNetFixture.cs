@@ -80,5 +80,41 @@ namespace NUnit.Util.ArxNet.Tests
             tests.InvalidTestFixture();
             tests.TearDown();
         }
+
+        //public void FileFoundButNotValidAssembly()
+        [CommandMethod("FileFoundButNotValidAssembly")]
+        public void FileFoundButNotValidAssembly()
+        {
+            TestDomainArxNetTests tests = new TestDomainArxNetTests();
+            tests.SetUp();
+            try
+            {
+                tests.FileFoundButNotValidAssembly();
+                Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
+                ed.WriteMessage("\n不是期望的BadImageFormatException异常");
+            }
+            catch (BadImageFormatException) { }
+            tests.TearDown();
+        }
+
+        //public void SpecificTestFixture()
+        [CommandMethod("SpecificTestFixture")]
+        public void SpecificTestFixture()
+        {
+            TestDomainArxNetTests tests = new TestDomainArxNetTests();
+            tests.SetUp();
+            tests.SpecificTestFixture();
+            tests.TearDown();
+        }
+
+        //public void BasePathOverrideIsHonored()
+        [CommandMethod("BasePathOverrideIsHonored")]
+        public void BasePathOverrideIsHonored()
+        {
+            TestDomainArxNetTests tests = new TestDomainArxNetTests();
+            tests.SetUp();
+            tests.BasePathOverrideIsHonored();
+            tests.TearDown();
+        }
     }
 }
