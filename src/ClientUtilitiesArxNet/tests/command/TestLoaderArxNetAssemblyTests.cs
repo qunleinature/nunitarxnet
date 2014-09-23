@@ -72,5 +72,15 @@ namespace NUnit.Util.ArxNet.Tests
             tests.UnloadTest();
             tests.TearDown();
         }
+
+        //public void FileNotFound()
+        [CommandMethod("TestLoaderArxNetAssemblyTestsCommands", "FileNotFound", CommandFlags.Modal)]
+        public void FileNotFound()
+        {
+            TestLoaderArxNetAssemblyTests tests = new TestLoaderArxNetAssemblyTests();
+            tests.SetUp();
+            tests.FileNotFound();
+            tests.TearDown();
+        }
     }
 }

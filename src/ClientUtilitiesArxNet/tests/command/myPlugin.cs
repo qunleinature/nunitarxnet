@@ -144,7 +144,7 @@ namespace NUnit.Util.ArxNet.Tests
                 ed.WriteMessage("\n\tCanRunMockAssemblyTests--测试未通过，可能是在CAD环境下不支持程序域下的测试");
 
                 ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.TestDomainArxNetTestsCommands:");
-                ed.WriteMessage("\n\tFileNotFound");
+                ed.WriteMessage("\n\tTestDomainArxNetTestsCommands.FileNotFound");
                 ed.WriteMessage("\n\tInvalidTestFixture--测试未通过，可能是在CAD环境下不支持程序域下的测试");
                 ed.WriteMessage("\n\tFileFoundButNotValidAssembly");
                 ed.WriteMessage("\n\tSpecificTestFixture--测试未通过，可能是在CAD环境下不支持程序域下的测试");
@@ -164,6 +164,7 @@ namespace NUnit.Util.ArxNet.Tests
                 ed.WriteMessage("\n\tUnloadProject");
                 ed.WriteMessage("\n\tLoadTest");
                 ed.WriteMessage("\n\tUnloadTest");
+                ed.WriteMessage("\n\tTestLoaderArxNetAssemblyTestsCommands.FileNotFound");
                 
             }
 

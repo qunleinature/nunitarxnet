@@ -56,7 +56,7 @@ namespace NUnit.Util.ArxNet.Tests
     public class TestDomainArxNetTestsCommands
     {
         //public void FileNotFound()
-        [CommandMethod("FileNotFound")]
+        [CommandMethod("TestDomainArxNetTestsCommands", "FileNotFound", CommandFlags.Modal)]
         public void FileNotFound()
         {
             TestDomainArxNetTests tests = new TestDomainArxNetTests();
