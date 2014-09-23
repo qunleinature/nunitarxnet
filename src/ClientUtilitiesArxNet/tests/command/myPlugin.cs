@@ -168,6 +168,13 @@ namespace NUnit.Util.ArxNet.Tests
                 ed.WriteMessage("\n\tInvalidAssembly");
                 ed.WriteMessage("\n\tAssemblyWithNoTests");
                 ed.WriteMessage("\n\tRunTest");
+
+                ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.TestLoaderArxNetWatcherTestsCommands:");
+                ed.WriteMessage("\n\tLoadShouldStartWatcher");
+                ed.WriteMessage("\n\tReloadShouldStartWatcher");
+                ed.WriteMessage("\n\tUnloadShouldStopWatcherAndFreeResources");
+                ed.WriteMessage("\n\tLoadShouldStartWatcherDependingOnSettings");
+                ed.WriteMessage("\n\tReloadShouldStartWatcherDependingOnSettings");
                 
             }
 
