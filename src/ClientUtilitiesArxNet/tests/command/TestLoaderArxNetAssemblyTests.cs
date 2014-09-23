@@ -82,5 +82,35 @@ namespace NUnit.Util.ArxNet.Tests
             tests.FileNotFound();
             tests.TearDown();
         }
+
+        //public void InvalidAssembly()
+        [CommandMethod("InvalidAssembly")]
+        public void InvalidAssembly()
+        {
+            TestLoaderArxNetAssemblyTests tests = new TestLoaderArxNetAssemblyTests();
+            tests.SetUp();
+            tests.InvalidAssembly();
+            tests.TearDown();
+        }
+
+        //public void AssemblyWithNoTests()
+        [CommandMethod("AssemblyWithNoTests")]
+        public void AssemblyWithNoTests()
+        {
+            TestLoaderArxNetAssemblyTests tests = new TestLoaderArxNetAssemblyTests();
+            tests.SetUp();
+            tests.AssemblyWithNoTests();
+            tests.TearDown();
+        }
+
+        //public void RunTest()
+        [CommandMethod("RunTest")]
+        public void RunTest()
+        {
+            TestLoaderArxNetAssemblyTests tests = new TestLoaderArxNetAssemblyTests();
+            tests.SetUp();
+            tests.RunTest();
+            tests.TearDown();
+        }
     }
 }

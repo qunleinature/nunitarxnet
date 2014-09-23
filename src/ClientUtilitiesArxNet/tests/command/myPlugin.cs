@@ -165,6 +165,9 @@ namespace NUnit.Util.ArxNet.Tests
                 ed.WriteMessage("\n\tLoadTest");
                 ed.WriteMessage("\n\tUnloadTest");
                 ed.WriteMessage("\n\tTestLoaderArxNetAssemblyTestsCommands.FileNotFound");
+                ed.WriteMessage("\n\tInvalidAssembly");
+                ed.WriteMessage("\n\tAssemblyWithNoTests");
+                ed.WriteMessage("\n\tRunTest");
                 
             }
 
