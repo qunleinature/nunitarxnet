@@ -148,6 +148,22 @@ namespace NUnit.Util.ArxNet.Tests
                 ed.WriteMessage("\n\tInvalidTestFixture--测试未通过，可能是在CAD环境下不支持程序域下的测试");
                 ed.WriteMessage("\n\tFileFoundButNotValidAssembly");
                 ed.WriteMessage("\n\tSpecificTestFixture--测试未通过，可能是在CAD环境下不支持程序域下的测试");
+
+                ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.TestDomainArxNetTests_MultipleCommands:");
+                ed.WriteMessage("\n\tBuildSuite--测试未通过，可能是在CAD环境下不支持程序域下的测试");
+                ed.WriteMessage("\n\tRootNode--测试未通过，可能是在CAD环境下不支持程序域下的测试");
+                ed.WriteMessage("\n\tAssemblyNodes--测试未通过，可能是在CAD环境下不支持程序域下的测试");
+                ed.WriteMessage("\n\tTestCaseCount--测试未通过，可能是在CAD环境下不支持程序域下的测试");
+                ed.WriteMessage("\n\tRunMultipleAssemblies--测试未通过，可能是在CAD环境下不支持程序域下的测试");
+
+                ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.TestDomainArxNetTests_MultipleFixtureCommands:");
+                ed.WriteMessage("\n\tLoadFixture--测试未通过，可能是在CAD环境下不支持程序域下的测试");
+
+                ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.TestLoaderArxNetAssemblyTestsCommands:");
+                ed.WriteMessage("\n\tLoadProject");
+                ed.WriteMessage("\n\tUnloadProject");
+                ed.WriteMessage("\n\tLoadTest");
+                
             }
 
             m_fixture = new ServiceManagerArxNetSetUpFixture();

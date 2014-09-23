@@ -21,7 +21,6 @@ using System.Reflection;
 using NUnit.Core;
 using NUnit.Framework;
 using NUnit.Tests.Assemblies;
-
 using NUnit.Util;
 
 namespace NUnit.Util.ArxNet.Tests
