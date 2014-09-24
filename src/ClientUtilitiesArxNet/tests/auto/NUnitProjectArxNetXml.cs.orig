@@ -4,28 +4,15 @@
 // copyright ownership at http://nunit.org.
 // ****************************************************************
 
-// ****************************************************************
-// Copyright 2013, Lei Qun
-// 2013.5.28修改
-//   1.nunit2.6.2基础上修改
-//   2.改ProjectService为ProjectServiceArxNet
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
-// 2014.9.24：
-//  在NUnit2.6.3基础上修改
-// ****************************************************************
-
 using System;
 using System.IO;
 
-namespace NUnit.Util.ArxNet.Tests
+namespace NUnit.Util.Tests
 {
 	/// <summary>
 	/// Summary description for NUnitProjectXml.
 	/// </summary>
-	public class NUnitProjectArxNetXml
+	public class NUnitProjectXml
 	{
 		public static readonly string EmptyProject = "<NUnitProject />";
 		

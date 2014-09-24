@@ -4,30 +4,16 @@
 // copyright ownership at http://nunit.org.
 // ****************************************************************
 
-// ****************************************************************
-// Copyright 2013, Lei Qun
-// 2013.5.29修改
-//   1.nunit2.6.2基础上修改
-//   2.改ProjectService为ProjectServiceArxNet
-//   3.改NUnitProjectXml为NUnitProjectArxNetXml
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
-// 2014.9.24：
-//  在NUnit2.6.3基础上修改
-// ****************************************************************
-
 using System;
 using System.Text;
 using System.Xml;
 using System.IO;
 using NUnit.Framework;
 
-namespace NUnit.Util.ArxNet.Tests
+namespace NUnit.Util.Tests
 {
 	[TestFixture]
-	public class NUnitProjectArxNetSave
+	public class NUnitProjectSave
 	{
 		static readonly string xmlfile = Path.Combine(Path.GetTempPath(), "test.nunit");
 
@@ -59,7 +45,7 @@ namespace NUnit.Util.ArxNet.Tests
 		{
 			project.Save( xmlfile );
 
-			CheckContents( NUnitProjectArxNetXml.EmptyProject );
+			CheckContents( NUnitProjectXml.EmptyProject );
 		}
 
 		[Test]
@@ -70,7 +56,7 @@ namespace NUnit.Util.ArxNet.Tests
 
 			project.Save( xmlfile );
 
-			CheckContents( NUnitProjectArxNetXml.EmptyConfigs );			
+			CheckContents( NUnitProjectXml.EmptyConfigs );			
 		}
 
 		[Test]
@@ -93,7 +79,7 @@ namespace NUnit.Util.ArxNet.Tests
 
 			project.Save( xmlfile );
 
-			CheckContents( NUnitProjectArxNetXml.NormalProject );
+			CheckContents( NUnitProjectXml.NormalProject );
 		}
 	}
 }

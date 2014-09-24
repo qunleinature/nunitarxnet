@@ -4,30 +4,14 @@
 // copyright ownership at http://nunit.org.
 // ****************************************************************
 
-// ****************************************************************
-// Copyright 2013, Lei Qun
-//  2013.5.28修改
-//  2014.9.19修改
-//      1.PathUtilTests改PathUtilArxNetTests
-//      2.PathUtilTests_Windows改PathUtilArxNetTests_Windows
-//  2014.9.20修改
-//      1.PathUtilTests_Unix改PathUtilArxNetTests_Unix
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
-// 2014.9.24：
-//  在NUnit2.6.3基础上修改
-// ****************************************************************
-
 using System;
 using System.IO;
 using NUnit.Framework;
 
-namespace NUnit.Util.ArxNet.Tests
+namespace NUnit.Util.Tests
 {
 	[TestFixture]
-    public class PathUtilArxNetTests : PathUtils//2014.9.19改PathUtilTests为PathUtilArxNetTests
+	public class PathUtilTests : PathUtils
 	{
 		[Test]
 		public void CheckDefaults()
@@ -66,7 +50,7 @@ namespace NUnit.Util.ArxNet.Tests
 	}
 
 	[TestFixture]
-    public class PathUtilArxNetTests_Windows : PathUtils//2014.9.19lq改PathUtilTests_Windows为PathUtilArxNetTests_Windows
+	public class PathUtilTests_Windows : PathUtils
 	{
 		[TestFixtureSetUp]
 		public static void SetUpUnixSeparators()
@@ -175,7 +159,7 @@ namespace NUnit.Util.ArxNet.Tests
 	}
 
 	[TestFixture]
-    public class PathUtilArxNetTests_Unix : PathUtils//2014.9.20lq改PathUtilTests_Unix为PathUtilArxNetTests_Unix
+	public class PathUtilTests_Unix : PathUtils
 	{
 		[TestFixtureSetUp]
 		public static void SetUpUnixSeparators()

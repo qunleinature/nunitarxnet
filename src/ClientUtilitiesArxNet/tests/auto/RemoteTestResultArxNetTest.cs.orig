@@ -4,41 +4,23 @@
 // copyright ownership at http://nunit.org.
 // ****************************************************************
 
-// ****************************************************************
-// Copyright 2014, Lei Qun
-//  2013.7.30
-//   1.在NUnit2.6.2基础
-//   2.改TestDomainArxNet
-//   3.测试未通过,可能是在CAD环境下不支持程序域下的测试？
-//  2014.7.17
-//   1.测试未通过,可能是在CAD环境下不支持程序域下的测试？
-//   2.RemoteTestResultArxNetTest测试类加上IgnoreAttribute
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
-// 2014.9.24：
-//  在NUnit2.6.3基础上修改
-// ****************************************************************
-
 using System;
 using NUnit.Framework;
 using NUnit.Core;
 
-namespace NUnit.Util.ArxNet.Tests
+namespace NUnit.Util.Tests
 {
 	[TestFixture]
-    [Ignore("CAD环境下忽略")]//2014.7.17 Lei Qun添加，在cad环境下不能通过，忽略
-	public class RemoteTestResultArxNetTest
+	public class RemoteTestResultTest
 	{
         private static readonly string mockDll = 
             NUnit.Tests.Assemblies.MockAssembly.AssemblyPath; 
-        private TestDomainArxNet  domain;
+        private TestDomain domain;
 
         [SetUp]
         public void CreateRunner()
         {
-            domain = new TestDomainArxNet ();
+            domain = new TestDomain();
         }
 
         [TearDown]
@@ -65,7 +47,7 @@ namespace NUnit.Util.ArxNet.Tests
         [Test, Explicit("Fails intermittently")]
         public void AppDomainUnloadedBug()
         {
-            TestDomainArxNet  domain = new TestDomainArxNet();
+            TestDomain domain = new TestDomain();
             domain.Load( new TestPackage( mockDll ) );
             domain.Run(new NullListener(), TestFilter.Empty, false, LoggingThreshold.Off);
             domain.Unload();

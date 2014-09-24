@@ -4,40 +4,27 @@
 // copyright ownership at http://nunit.org.
 // ****************************************************************
 
-// ****************************************************************
-// Copyright 2013, Lei Qun
-// 2013.5.29修改
-//   1.nunit2.6.2基础上修改
-//   2.改ProjectService为ProjectServiceArxNet
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
-// 2014.9.24：
-//  在NUnit2.6.3基础上修改
-// ****************************************************************
-
 using System;
 using System.IO;
 using System.Xml;
 using System.Text;
 using NUnit.Framework;
 
-namespace NUnit.Util.ArxNet.Tests
+namespace NUnit.Util.Tests
 {
 	[TestFixture]
-	public class NUnitProjectArxNetTests
+	public class NUnitProjectTests
 	{
 		static readonly string xmlfile = Path.Combine(Path.GetTempPath(), "test.nunit");
         static readonly string mockDll = NUnit.Tests.Assemblies.MockAssembly.AssemblyPath;
 
 		private NUnitProject project;
-		private ProjectServiceArxNet projectService;
+		private ProjectService projectService;
 
 		[SetUp]
 		public void SetUp()
 		{
-			projectService = new ProjectServiceArxNet();
+			projectService = new ProjectService();
 			project = projectService.EmptyProject();
 		}
 
@@ -140,7 +127,7 @@ namespace NUnit.Util.ArxNet.Tests
 		public void LoadMakesProjectNotDirty()
 		{
 			project.Save( xmlfile );
-			NUnitProject project2 = new ProjectServiceArxNet().LoadProject( xmlfile );
+			NUnitProject project2 = new ProjectService().LoadProject( xmlfile );
 			Assert.IsFalse( project2.IsDirty );
 		}
 

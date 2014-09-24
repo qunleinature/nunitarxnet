@@ -9,14 +9,11 @@
 // 2012.12.19修改
 // ****************************************************************
 
-// ****************************************************************
-// Copyright 2014, Lei Qun
-// 2014.9.24：
-//  在NUnit2.6.3基础上修改
-// ****************************************************************
-
 using System;
 using System.Collections;
+using System.Threading;
+using System.Reflection;
+
 using NUnit.Core;
 using NUnit.Util;
 using NUnit.Util.ArxNet;
@@ -44,6 +41,8 @@ namespace NUnit.Util.ArxNet.Tests
 		private TestEventArgsCollection events;
 
         public bool GotRunFinished = false;
+
+        public Thread RunThread = null;
 
 		public TestEventCatcher( ITestEvents source )
 		{

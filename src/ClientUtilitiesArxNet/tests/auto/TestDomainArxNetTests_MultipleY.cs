@@ -17,12 +17,6 @@
 //   4.TestDomainArxNetTests_MultipleFixture测试类加上IgnoreAttribute
 // ****************************************************************
 
-// ****************************************************************
-// Copyright 2014, Lei Qun
-// 2014.9.24：
-//  在NUnit2.6.3基础上修改
-// ****************************************************************
-
 using System.IO;
 using NUnit.Framework;
 using NUnit.Core;

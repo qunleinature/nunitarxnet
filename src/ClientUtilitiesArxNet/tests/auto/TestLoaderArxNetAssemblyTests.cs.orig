@@ -13,17 +13,9 @@
 //   1.已改TestLoaderArxNet
 // ****************************************************************
 
-// ****************************************************************
-// Copyright 2014, Lei Qun
-// 2014.9.24：
-//  在NUnit2.6.3基础上修改
-// ****************************************************************
-
 using System;
 using System.IO;
 using System.Threading;
-using System.Reflection;
-
 using NUnit.Core;
 using NUnit.Framework;
 using NUnit.Tests.Assemblies;

@@ -4,24 +4,11 @@
 // copyright ownership at http://nunit.org.
 // ****************************************************************
 
-// ****************************************************************
-// Copyright 2013, Lei Qun
-// 2012.12.19修改
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
-// 2014.9.24：
-//  在NUnit2.6.3基础上修改
-// ****************************************************************
-
 using System;
 using System.Collections;
 using NUnit.Core;
-using NUnit.Util;
-using NUnit.Util.ArxNet;
 
-namespace NUnit.Util.ArxNet.Tests
+namespace NUnit.Util.Tests
 {
 	/// <summary>
 	/// Summary description for TestEventCatcher.

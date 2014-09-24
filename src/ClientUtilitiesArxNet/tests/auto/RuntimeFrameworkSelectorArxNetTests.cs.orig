@@ -4,27 +4,14 @@
 // obtain a copy of the license at http://nunit.org
 // ****************************************************************
 
-// ****************************************************************
-// Copyright 2013, Lei Qun
-//  2013.7.29
-//   1.在NUnit2.6.2基础
-//   2.测试NUnit.Util.ArxNet.RuntimeFrameworkSelectorArxNet类
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
-// 2014.9.24：
-//  在NUnit2.6.3基础上修改
-// ****************************************************************
-
 using System;
 using NUnit.Core;
 using NUnit.Framework;
 
-namespace NUnit.Util.ArxNet.Tests
+namespace NUnit.Util.Tests
 {
     [TestFixture]
-    public class RuntimeFrameworkSelectorArxNetTests
+    public class RuntimeFrameworkSelectorTests
     {
         TestPackage package = new TestPackage("/dummy.dll");
 
@@ -50,7 +37,7 @@ namespace NUnit.Util.ArxNet.Tests
         {
             Assume.That(requestedFramework.Runtime, Is.Not.EqualTo(RuntimeType.Any));
 
-            RuntimeFrameworkSelectorArxNet selector = new RuntimeFrameworkSelectorArxNet();
+            RuntimeFrameworkSelector selector = new RuntimeFrameworkSelector();
             package.Settings["RuntimeFramework"] = requestedFramework;
 
             RuntimeFramework selectedFramework = selector.SelectRuntimeFramework(package);
@@ -63,7 +50,7 @@ namespace NUnit.Util.ArxNet.Tests
         {
             Assume.That(requestedFramework.Runtime, Is.EqualTo(RuntimeType.Any));
 
-            RuntimeFrameworkSelectorArxNet selector = new RuntimeFrameworkSelectorArxNet();
+            RuntimeFrameworkSelector selector = new RuntimeFrameworkSelector();
             package.Settings["RuntimeFramework"] = requestedFramework;
 
             RuntimeFramework selectedFramework = selector.SelectRuntimeFramework(package);

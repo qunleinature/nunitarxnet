@@ -4,36 +4,21 @@
 // obtain a copy of the license at http://nunit.org
 // ****************************************************************
 
-// ****************************************************************
-// Copyright 2013, Lei Qun
-// 2013.6.3  
-//   1.改VisualStudioConverter为VisualStudioConverterArxNet
-//   2.改Services为ServicesArxNet
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
-// 2014.9.24：
-//  在NUnit2.6.3基础上修改
-// ****************************************************************
-
 using System;
 using System.IO;
 using NUnit.Framework;
 using NUnit.TestUtilities;
 using NUnit.Util.ProjectConverters;
 using NUnit.Util.Tests.resources;
-using NUnit.Util.ArxNet;
-using NUnit.Util.ArxNet.ProjectConvertersArxNet;
 
-namespace NUnit.Util.ArxNet.Tests
+namespace NUnit.Util.Tests
 {
 	[TestFixture]
-	public class VisualStudioConverterArxNetTests
+	public class VisualStudioConverterTests
 	{
-		private VisualStudioConverterArxNet converter;
+		private VisualStudioConverter converter;
         static readonly bool useSolutionConfigs = 
-            ServicesArxNet.UserSettings.GetSetting("Options.TestLoader.VisualStudio.UseSolutionConfigs", true);
+            Services.UserSettings.GetSetting("Options.TestLoader.VisualStudio.UseSolutionConfigs", true);
 		
 		private void AssertCanLoadVsProject( string resourceName )
 		{
@@ -53,7 +38,7 @@ namespace NUnit.Util.ArxNet.Tests
 		[SetUp]
 		public void CreateImporter()
 		{
-			converter = new VisualStudioConverterArxNet();
+			converter = new VisualStudioConverter();
 		}
 
 		[Test]

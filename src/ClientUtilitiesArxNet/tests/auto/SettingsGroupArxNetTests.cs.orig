@@ -4,35 +4,22 @@
 // copyright ownership at http://nunit.org.
 // ****************************************************************
 
-// ****************************************************************
-// Copyright 2013, Lei Qun
-// 2013.1.6修改：测试NUnit.Util.ArxNet.SettingsGroupArxNet类
-// 2013.6.7
-//   1.改在nunit2.6.2基础
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
-// 2014.9.24：
-//  在NUnit2.6.3基础上修改
-// ****************************************************************
-
 using System;
 using NUnit.Framework;
 using Microsoft.Win32;
 
-namespace NUnit.Util.ArxNet.Tests
+namespace NUnit.Util.Tests
 {
 	[TestFixture]
-    public class SettingsGroupArxNetTests
+	public class SettingsGroupTests
 	{
-		private SettingsGroupArxNet testGroup;
+		private SettingsGroup testGroup;
 
 		[SetUp]
 		public void BeforeEachTest()
 		{
 			MemorySettingsStorage storage = new MemorySettingsStorage();
-            testGroup = new SettingsGroupArxNet(storage);
+			testGroup = new SettingsGroup( storage );
 		}
 
 		[TearDown]
