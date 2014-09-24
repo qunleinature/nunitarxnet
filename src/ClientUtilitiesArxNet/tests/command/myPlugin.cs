@@ -189,6 +189,10 @@ namespace NUnit.Util.ArxNet.Tests
                 ed.WriteMessage("\n\tFromProjectWithHebrewFileIncluded");
                 ed.WriteMessage("\n\tFromVSSolution2003");
                 ed.WriteMessage("\n\tFromVSSolution2005");
+                ed.WriteMessage("\n\tFromWebApplication");
+                ed.WriteMessage("\n\tWithUnmanagedCpp");
+                ed.WriteMessage("\n\tFromMakefileProject");
+                ed.WriteMessage("\n\tFromSolutionWithDisabledProject");
                 
             }
 

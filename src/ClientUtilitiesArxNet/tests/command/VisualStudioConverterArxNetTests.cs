@@ -94,5 +94,41 @@ namespace NUnit.Util.ArxNet.Tests
             tests.CreateImporter();
             tests.FromVSSolution2005();
         }
+
+        //public void FromWebApplication()
+        [CommandMethod("FromWebApplication")]
+        public void FromWebApplication()
+        {
+            VisualStudioConverterArxNetTests tests = new VisualStudioConverterArxNetTests();
+            tests.CreateImporter();
+            tests.FromWebApplication();
+        }
+
+        //public void WithUnmanagedCpp()
+        [CommandMethod("WithUnmanagedCpp")]
+        public void WithUnmanagedCpp()
+        {
+            VisualStudioConverterArxNetTests tests = new VisualStudioConverterArxNetTests();
+            tests.CreateImporter();
+            tests.WithUnmanagedCpp();
+        }
+
+        //public void FromMakefileProject()
+        [CommandMethod("FromMakefileProject")]
+        public void FromMakefileProject()
+        {
+            VisualStudioConverterArxNetTests tests = new VisualStudioConverterArxNetTests();
+            tests.CreateImporter();
+            tests.FromMakefileProject();
+        }
+
+        //public void FromSolutionWithDisabledProject()
+        [CommandMethod("FromSolutionWithDisabledProject")]
+        public void FromSolutionWithDisabledProject()
+        {
+            VisualStudioConverterArxNetTests tests = new VisualStudioConverterArxNetTests();
+            tests.CreateImporter();
+            tests.FromSolutionWithDisabledProject();
+        }
     }
 }
