@@ -175,6 +175,11 @@ namespace NUnit.Util.ArxNet.Tests
                 ed.WriteMessage("\n\tUnloadShouldStopWatcherAndFreeResources");
                 ed.WriteMessage("\n\tLoadShouldStartWatcherDependingOnSettings");
                 ed.WriteMessage("\n\tReloadShouldStartWatcherDependingOnSettings");
+
+                ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.TestRunnerFactoryArxNetTestsCommands:");
+                ed.WriteMessage("\n\tSameFrameworkUsesTestDomain");
+                ed.WriteMessage("\n\tDifferentRuntimeUsesProcessRunner");
+                ed.WriteMessage("\n\tDifferentVersionUsesProcessRunner");
                 
             }
 

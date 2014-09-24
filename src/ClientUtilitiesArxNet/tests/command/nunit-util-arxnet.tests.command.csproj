@@ -148,6 +148,7 @@
     <Compile Include="TestDomainArxNetTests_Multiple.cs" />
     <Compile Include="TestLoaderArxNetAssemblyTests.cs" />
     <Compile Include="TestLoaderArxNetWatcherTests.cs" />
+    <Compile Include="TestRunnerFactoryArxNetTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="myCommands.resx">
