@@ -17,7 +17,6 @@ using NUnit.Framework;
 using NUnit.TestUtilities;
 using NUnit.Util.ProjectConverters;
 using NUnit.Util.Tests.resources;
-
 using NUnit.Util.ArxNet;
 using NUnit.Util.ArxNet.ProjectConvertersArxNet;
 

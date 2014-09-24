@@ -47,7 +47,7 @@ namespace NUnit.Util.ArxNet.Tests
 	/// TODO: Refactor SettingsService so we can use it without actually
 	/// touching the backup storage.
 	/// </summary>
-	[SetUpFixture]
+    //[SetUpFixture]//2014.9.24lq暂时不使用，因为测试时找不到ServiceManagerArxNet的方法
 	public class ServiceManagerArxNetSetUpFixture
 	{
 		[SetUp]

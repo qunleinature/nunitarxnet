@@ -180,6 +180,15 @@ namespace NUnit.Util.ArxNet.Tests
                 ed.WriteMessage("\n\tSameFrameworkUsesTestDomain");
                 ed.WriteMessage("\n\tDifferentRuntimeUsesProcessRunner");
                 ed.WriteMessage("\n\tDifferentVersionUsesProcessRunner");
+
+                ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.VisualStudioConverterArxNetTestsCommands:");
+                ed.WriteMessage("\n\tFromCSharpProject");
+                ed.WriteMessage("\n\tFromVBProject");
+                ed.WriteMessage("\n\tFromJsharpProject");
+                ed.WriteMessage("\n\tFromCppProject");
+                ed.WriteMessage("\n\tFromProjectWithHebrewFileIncluded");
+                ed.WriteMessage("\n\tFromVSSolution2003");
+                ed.WriteMessage("\n\tFromVSSolution2005");
                 
             }
 
