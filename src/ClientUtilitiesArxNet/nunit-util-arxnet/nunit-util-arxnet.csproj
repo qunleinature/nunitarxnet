@@ -110,6 +110,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestDomainArxNet.cs" />
     <Compile Include="TestLoaderArxNet.cs" />
+    <Compile Include="TestServerArxNet.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram_nunit-util-arxnet.cd" />
