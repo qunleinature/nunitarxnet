@@ -7,11 +7,11 @@
     </ProductVersion>
     <SchemaVersion>
     </SchemaVersion>
-    <ProjectGuid>{F22F76B6-7677-43F1-A2D0-6F8DE7DCB60B}</ProjectGuid>
+    <ProjectGuid>{6AD70D01-5A7B-4FBB-90B3-22A46021E762}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NUnit.Util.ArxNet.Tests</RootNamespace>
-    <AssemblyName>nunit-util-arxnet.tests.command</AssemblyName>
+    <RootNamespace>NUnit.CommandRunner.ArxNet.Tests</RootNamespace>
+    <AssemblyName>nunit-command-arxnet.tests.command</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -58,19 +58,19 @@
     <!--ACA Refences End-->
     <!--AME Referebces Begin-->
     <!--AME Reference End-->
-    <Reference Include="AcCoreMgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="AcCoreMgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\lib\AcCoreMgd.dll</HintPath>
     </Reference>
-    <Reference Include="AcDbMgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="AcDbMgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\lib\AcDbMgd.dll</HintPath>
     </Reference>
-    <Reference Include="acdbmgdbrep, Version=20.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="acdbmgdbrep, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\lib\acdbmgdbrep.dll</HintPath>
     </Reference>
-    <Reference Include="AcMgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="AcMgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\lib\AcMgd.dll</HintPath>
     </Reference>
@@ -78,13 +78,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\NUnit-2.6.3\bin\Debug\tests\mock-assembly.dll</HintPath>
     </Reference>
-    <Reference Include="nunit-util-arxnet, Version=0.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="nonamespace-assembly, Version=2.6.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\bin\Debug\lib\nunit-util-arxnet.dll</HintPath>
+      <HintPath>..\..\..\..\..\NUnit-2.6.3\bin\Debug\tests\nonamespace-assembly.dll</HintPath>
     </Reference>
-    <Reference Include="nunit-util-arxnet.tests, Version=0.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="nunit-command-arxnet.tests, Version=0.0.5.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\bin\Debug\tests\nunit-util-arxnet.tests.dll</HintPath>
+      <HintPath>..\..\..\..\bin\Debug\tests\nunit-command-arxnet.tests.dll</HintPath>
     </Reference>
     <Reference Include="nunit.core, Version=2.6.3.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -94,19 +94,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\NUnit-2.6.3\bin\Debug\lib\nunit.core.interfaces.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.core.tests, Version=2.6.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\NUnit-2.6.3\bin\Debug\tests\nunit.core.tests.dll</HintPath>
-    </Reference>
     <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
-    <Reference Include="nunit.util, Version=2.6.3.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\NUnit-2.6.3\bin\Debug\lib\nunit.util.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.util.tests, Version=2.6.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\NUnit-2.6.3\bin\Debug\tests\nunit.util.tests.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>4.5</RequiredTargetFramework>
@@ -119,9 +107,9 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="test-utilities, Version=2.6.3.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="test-assembly, Version=2.6.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\NUnit-2.6.3\bin\Debug\tests\test-utilities.dll</HintPath>
+      <HintPath>..\..\..\..\..\NUnit-2.6.3\bin\Debug\tests\test-assembly.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -130,25 +118,22 @@
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DomainManagerArxNetTests.cs" />
+    <Compile Include="CommandRunnerArxNetTest.cs" />
+    <Compile Include="myCommands.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>myCommands.resx</DependentUpon>
+    </Compile>
     <Compile Include="myPlugin.cs" />
-    <Compile Include="NUnitProjectArxNetLoad.cs" />
-    <Compile Include="NUnitProjectArxNetSave.cs" />
-    <Compile Include="NUnitProjectArxNetTests.cs" />
-    <Compile Include="PathUtilArxNetTests.cs" />
-    <Compile Include="ProcessRunnerArxNetTests.cs" />
+    <Compile Include="myCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RecentFilesArxNetTests.cs" />
-    <Compile Include="RemoteTestResultArxNetTest.cs" />
-    <Compile Include="RuntimeFrameworkSelectorArxNetTests.cs" />
-    <Compile Include="SettingsGroupArxNetTests.cs" />
-    <Compile Include="TestAgentArxNetTests.cs" />
-    <Compile Include="TestDomainArxNetFixture.cs" />
-    <Compile Include="TestDomainArxNetTests_Multiple.cs" />
-    <Compile Include="TestLoaderArxNetAssemblyTests.cs" />
-    <Compile Include="TestLoaderArxNetWatcherTests.cs" />
-    <Compile Include="TestRunnerFactoryArxNetTests.cs" />
-    <Compile Include="VisualStudioConverterArxNetTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="myCommands.resx">
+      <DependentUpon>myCommands.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>myCommands.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">

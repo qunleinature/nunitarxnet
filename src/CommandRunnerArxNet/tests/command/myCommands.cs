@@ -8,9 +8,9 @@ using Autodesk.AutoCAD.Geometry;
 using Autodesk.AutoCAD.EditorInput;
 
 // This line is not mandatory, but improves loading performances
-[assembly: CommandClass(typeof(NUnit.Util.ArxNet.Tests.MyCommands))]
+[assembly: CommandClass(typeof(nunit_command_arxnet.tests.command.MyCommands))]
 
-namespace NUnit.Util.ArxNet.Tests
+namespace nunit_command_arxnet.tests.command
 {
 
     // This class is instantiated by AutoCAD for each document when

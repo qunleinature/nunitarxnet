@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NUnit.Util.ArxNet.Tests {
+namespace NUnit.CommandRunner.ArxNet.Tests {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace NUnit.Util.ArxNet.Tests {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NUnit.Util.ArxNet.Tests.myCommands", typeof(myCommands).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NUnit.CommandRunner.ArxNet.Tests.myCommands", typeof(myCommands).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
