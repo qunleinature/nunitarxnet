@@ -148,6 +148,7 @@
     <Compile Include="RemoteTestResultArxNetTest.cs" />
     <Compile Include="RuntimeFrameworkSelectorArxNetTests.cs" />
     <Compile Include="SettingsGroupArxNetTests.cs" />
+    <Compile Include="TestAgentArxNetTests.cs" />
     <Compile Include="TestDomainArxNetFixture.cs" />
     <Compile Include="TestDomainArxNetTests_Multiple.cs" />
     <Compile Include="TestLoaderArxNetAssemblyTests.cs" />
