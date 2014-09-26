@@ -65,7 +65,12 @@ namespace NUnit.CommandRunner.ArxNet.Tests
                 ed.WriteMessage("\n\tDoesNotFailIfRunListHasEmptyLines");
                 ed.WriteMessage("\n\tFailsGracefullyIfRunListPointsToNonExistingFile");
                 ed.WriteMessage("\n\tFailsGracefullyIfRunListPointsToNonExistingDirectory");
-                                
+
+                ed.WriteMessage("\nNUnit.CommandRunner.ArxNet.Tests.CommandRunnerArxNetTestManualCommands:");
+                ed.WriteMessage("\n\tRunnerArxNetInit");
+                ed.WriteMessage("\n\tRunnerArxNetCleanUp");
+                ed.WriteMessage("\n\tRunnerArxNetRun");
+                
             }
         }
 

@@ -30,7 +30,7 @@ using NUnit.Framework;
 namespace NUnit.CommandRunner.ArxNet.Tests
 {
     [TestFixture]
-    public class CommandRunnerArxNetTest
+    public class CommandRunnerArxNetTestManual
     {
         //public static void Init()
         [Test]

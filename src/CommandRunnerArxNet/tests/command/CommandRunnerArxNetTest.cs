@@ -29,6 +29,7 @@ using Autodesk.AutoCAD.EditorInput;
 
 // This line is not mandatory, but improves loading performances
 [assembly: CommandClass(typeof(NUnit.CommandRunner.ArxNet.Tests.CommandRunnerArxNetTestCommands))]
+[assembly: CommandClass(typeof(NUnit.CommandRunner.ArxNet.Tests.CommandRunnerArxNetTestManualCommands))]
 
 namespace NUnit.CommandRunner.ArxNet.Tests
 {
@@ -244,5 +245,33 @@ namespace NUnit.CommandRunner.ArxNet.Tests
             tests.FailsGracefullyIfRunListPointsToNonExistingDirectory();
             tests.CleanUp();
         } 
+    }
+
+    public class CommandRunnerArxNetTestManualCommands
+    {
+        //public void RunnerArxNetInit()
+        [CommandMethod("RunnerArxNetInit")]
+        public void RunnerArxNetInit()
+        {
+            CommandRunnerArxNetTestManual tests = new CommandRunnerArxNetTestManual();
+            tests.RunnerArxNetInit();
+        }
+
+        //public void RunnerArxNetCleanUp()
+        [CommandMethod("RunnerArxNetCleanUp")]
+        public void RunnerArxNetCleanUp()
+        {
+            CommandRunnerArxNetTestManual tests = new CommandRunnerArxNetTestManual();
+            tests.RunnerArxNetCleanUp();
+        }
+
+        //public void RunnerArxNetRun()
+        [CommandMethod("RunnerArxNetRun")]
+        public void RunnerArxNetRun()
+        {
+            CommandRunnerArxNetTestManual tests = new CommandRunnerArxNetTestManual();
+            tests.RunnerArxNetRun();
+        }
+    
     }
 }
