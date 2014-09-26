@@ -53,5 +53,196 @@ namespace NUnit.CommandRunner.ArxNet.Tests
             tests.MultiFailureFixture();
             tests.CleanUp();
         }
+
+        //public void SuccessFixture()
+        [CommandMethod("SuccessFixture")]
+        public void SuccessFixture()
+        {
+            CommandRunnerArxNetTest tests = new CommandRunnerArxNetTest();
+            tests.Init();
+            tests.SuccessFixture();
+            tests.CleanUp();
+        }
+
+        //public void XmlResult()
+        [CommandMethod("XmlResult")]
+        public void XmlResult()
+        {
+            CommandRunnerArxNetTest tests = new CommandRunnerArxNetTest();
+            tests.Init();
+            tests.XmlResult();
+            tests.CleanUp();
+        }
+
+        //public void InvalidFixture()
+        [CommandMethod("InvalidFixture")]
+        public void InvalidFixture()
+        {
+            CommandRunnerArxNetTest tests = new CommandRunnerArxNetTest();
+            tests.Init();
+            tests.InvalidFixture();
+            tests.CleanUp();
+        }
+
+        //public void AssemblyNotFound()
+        [CommandMethod("AssemblyNotFound")]
+        public void AssemblyNotFound()
+        {
+            CommandRunnerArxNetTest tests = new CommandRunnerArxNetTest();
+            tests.Init();
+            tests.AssemblyNotFound();
+            tests.CleanUp();
+        }
+
+        //public void OneOfTwoAssembliesNotFound()
+        [CommandMethod("OneOfTwoAssembliesNotFound")]
+        public void OneOfTwoAssembliesNotFound()
+        {
+            CommandRunnerArxNetTest tests = new CommandRunnerArxNetTest();
+            tests.Init();
+            tests.OneOfTwoAssembliesNotFound();
+            tests.CleanUp();
+        }
+
+        //public void XmlToConsole()
+        [CommandMethod("XmlToConsole")]
+        public void XmlToConsole()
+        {
+            CommandRunnerArxNetTest tests = new CommandRunnerArxNetTest();
+            tests.Init();
+            tests.XmlToConsole();
+            tests.CleanUp();
+        }
+
+        //public void Bug1073539Test()
+        [CommandMethod("Bug1073539Test")]
+        public void Bug1073539Test()
+        {
+            CommandRunnerArxNetTest tests = new CommandRunnerArxNetTest();
+            tests.Init();
+            tests.Bug1073539Test();
+            tests.CleanUp();
+        }
+
+        //public void Bug1311644Test()
+        [CommandMethod("Bug1311644Test")]
+        public void Bug1311644Test()
+        {
+            CommandRunnerArxNetTest tests = new CommandRunnerArxNetTest();
+            tests.Init();
+            tests.Bug1311644Test();
+            tests.CleanUp();
+        }
+
+        //public void CanRunWithoutTestDomain()
+        [CommandMethod("CanRunWithoutTestDomain")]
+        public void CanRunWithoutTestDomain()
+        {
+            CommandRunnerArxNetTest tests = new CommandRunnerArxNetTest();
+            tests.Init();
+            tests.CanRunWithoutTestDomain();
+            tests.CleanUp();
+        }
+
+        //public void CanRunWithSingleTestDomain()
+        [CommandMethod("CanRunWithSingleTestDomain")]
+        public void CanRunWithSingleTestDomain()
+        {
+            CommandRunnerArxNetTest tests = new CommandRunnerArxNetTest();
+            tests.Init();
+            tests.CanRunWithSingleTestDomain();
+            tests.CleanUp();
+        }
+
+        //public void CanRunWithMultipleTestDomains()
+        [CommandMethod("CanRunWithMultipleTestDomains")]
+        public void CanRunWithMultipleTestDomains()
+        {
+            CommandRunnerArxNetTest tests = new CommandRunnerArxNetTest();
+            tests.Init();
+            tests.CanRunWithMultipleTestDomains();
+            tests.CleanUp();
+        }
+
+        //public void CanRunWithoutTestDomain_NoThread()
+        [CommandMethod("CanRunWithoutTestDomain_NoThread")]
+        public void CanRunWithoutTestDomain_NoThread()
+        {
+            CommandRunnerArxNetTest tests = new CommandRunnerArxNetTest();
+            tests.Init();
+            tests.CanRunWithoutTestDomain_NoThread();
+            tests.CleanUp();
+        }
+
+        //public void CanRunWithSingleTestDomain_NoThread()
+        [CommandMethod("CanRunWithSingleTestDomain_NoThread")]
+        public void CanRunWithSingleTestDomain_NoThread()
+        {
+            CommandRunnerArxNetTest tests = new CommandRunnerArxNetTest();
+            tests.Init();
+            tests.CanRunWithSingleTestDomain_NoThread();
+            tests.CleanUp();
+        }
+
+        //public void CanRunWithMultipleTestDomains_NoThread()
+        [CommandMethod("CanRunWithMultipleTestDomains_NoThread")]
+        public void CanRunWithMultipleTestDomains_NoThread()
+        {
+            CommandRunnerArxNetTest tests = new CommandRunnerArxNetTest();
+            tests.Init();
+            tests.CanRunWithMultipleTestDomains_NoThread();
+            tests.CleanUp();
+        }
+
+        //public void CanSpecifyBasePathAndPrivateBinPath()
+        [CommandMethod("CanSpecifyBasePathAndPrivateBinPath")]
+        public void CanSpecifyBasePathAndPrivateBinPath()
+        {
+            CommandRunnerArxNetTest tests = new CommandRunnerArxNetTest();
+            tests.Init();
+            tests.CanSpecifyBasePathAndPrivateBinPath();
+            tests.CleanUp();
+        }
+
+        //public void DoesNotFailWithEmptyRunList()
+        [CommandMethod("DoesNotFailWithEmptyRunList")]
+        public void DoesNotFailWithEmptyRunList()
+        {
+            CommandRunnerArxNetTest tests = new CommandRunnerArxNetTest();
+            tests.Init();
+            tests.DoesNotFailWithEmptyRunList();
+            tests.CleanUp();
+        }
+
+        //public void DoesNotFailIfRunListHasEmptyLines()
+        [CommandMethod("DoesNotFailIfRunListHasEmptyLines")]
+        public void DoesNotFailIfRunListHasEmptyLines()
+        {
+            CommandRunnerArxNetTest tests = new CommandRunnerArxNetTest();
+            tests.Init();
+            tests.DoesNotFailIfRunListHasEmptyLines();
+            tests.CleanUp();
+        }
+
+        //public void FailsGracefullyIfRunListPointsToNonExistingFile()
+        [CommandMethod("FailsGracefullyIfRunListPointsToNonExistingFile")]
+        public void FailsGracefullyIfRunListPointsToNonExistingFile()
+        {
+            CommandRunnerArxNetTest tests = new CommandRunnerArxNetTest();
+            tests.Init();
+            tests.FailsGracefullyIfRunListPointsToNonExistingFile();
+            tests.CleanUp();
+        }
+
+
+        //public void FailsGracefullyIfRunListPointsToNonExistingDirectory()
+        [CommandMethod("FailsGracefullyIfRunListPointsToNonExistingDirectory")]
+        public void FailsGracefullyIfRunListPointsToNonExistingDirectory()
+        {
+            CommandRunnerArxNetTest tests = new CommandRunnerArxNetTest();
+            tests.Init();
+            tests.FailsGracefullyIfRunListPointsToNonExistingDirectory();
+            tests.CleanUp();
+        } 
     }
 }

@@ -48,7 +48,24 @@ namespace NUnit.CommandRunner.ArxNet.Tests
                 ed.WriteMessage("\nNUnit.CommandRunner.ArxNet.Tests.CommandRunnerArxNetTestCommands:");
                 ed.WriteMessage("\n\tFailureFixture");
                 ed.WriteMessage("\n\tMultiFailureFixture");
-                
+                ed.WriteMessage("\n\tSuccessFixture");
+                ed.WriteMessage("\n\tXmlResult");
+                ed.WriteMessage("\n\tInvalidFixture");
+                ed.WriteMessage("\n\tAssemblyNotFound");
+                ed.WriteMessage("\n\tOneOfTwoAssembliesNotFound");
+                ed.WriteMessage("\n\tXmlToConsole");
+                ed.WriteMessage("\n\tBug1073539Test");
+                ed.WriteMessage("\n\tBug1311644Test");
+                ed.WriteMessage("\n\tCanRunWithoutTestDomain");
+                ed.WriteMessage("\n\tCanRunWithMultipleTestDomains");
+                ed.WriteMessage("\n\tCanRunWithSingleTestDomain_NoThread");
+                ed.WriteMessage("\n\tCanRunWithMultipleTestDomains_NoThread");
+                ed.WriteMessage("\n\tCanSpecifyBasePathAndPrivateBinPath");
+                ed.WriteMessage("\n\tDoesNotFailWithEmptyRunList");
+                ed.WriteMessage("\n\tDoesNotFailIfRunListHasEmptyLines");
+                ed.WriteMessage("\n\tFailsGracefullyIfRunListPointsToNonExistingFile");
+                ed.WriteMessage("\n\tFailsGracefullyIfRunListPointsToNonExistingDirectory");
+                                
             }
         }
 
