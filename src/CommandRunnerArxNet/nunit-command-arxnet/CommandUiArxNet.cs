@@ -19,6 +19,12 @@
 //  1.已改ServicesArxNet
 // ****************************************************************
 
+// ****************************************************************
+// Copyright 2014, Lei Qun
+//  2014.9.26：
+//      在NUnit2.6.3基础上修改
+// ****************************************************************
+
 using System.Diagnostics;
 
 namespace NUnit.CommandRunner.ArxNet
@@ -34,7 +40,6 @@ namespace NUnit.CommandRunner.ArxNet
 	using NUnit.Core.Filters;
 	using NUnit.Util;
     using NUnit.ConsoleRunner;
-
     using NUnit.Util.ArxNet;
 
     using Autodesk.AutoCAD.Runtime;
@@ -42,7 +47,7 @@ namespace NUnit.CommandRunner.ArxNet
     using Autodesk.AutoCAD.ApplicationServices;
 
 	/// <summary>
-	/// Summary description for ConsoleUi.
+    /// Summary description for CommandUiArxNet.
 	/// </summary>
 	public class CommandUiArxNet
 	{
@@ -58,7 +63,7 @@ namespace NUnit.CommandRunner.ArxNet
 		{
 		}
 
-        public int Execute(CommandOptionsArxNet options)//2013.1.25改//2013.5.25lq改
+        public int Execute(CommandOptionsArxNet options)//2013.1.25改//2013.5.25lq改//2014.9.26lq改
 		{
             this.workDir = options.work;
             if (workDir == null || workDir == string.Empty)
@@ -164,7 +169,8 @@ namespace NUnit.CommandRunner.ArxNet
 
 				try
 				{
-					result = testRunner.Run( collector, testFilter, false, LoggingThreshold.Off );
+                    //result = testRunner.Run( collector, testFilter, false, LoggingThreshold.Off );//2014.9.26lq删
+                    result = testRunner.Run(collector, testFilter, true, LoggingThreshold.Off);//2014.9.26lq改
                     /*2013.1.25加*/
                     //if (!redirectOutput) ed.WriteMessage("\n" + outWriter.ToString());
                     //if (!redirectError) ed.WriteMessage("\n" + errorWriter.ToString());
