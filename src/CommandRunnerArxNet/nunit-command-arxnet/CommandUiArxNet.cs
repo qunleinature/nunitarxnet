@@ -6,17 +6,17 @@
 
 // ****************************************************************
 // Copyright 2013, Lei Qun
-// 2013.1.25：
-//  在NUnit2.6.2基础上修改
-// 2013.5.25：
-//  使用EditorWritor类在Editor输出
-//  线程中无法用Editor输出,用StringWriter记录Editor输出
-// 2013.6.28
-//  1.已改CommandOptionsArxNet
-// 2013.7.2
-//  1.已改DefaultTestRunnerFactoryArxNet
-// 2013.7.31
-//  1.已改ServicesArxNet
+//  2013.1.25：
+//      在NUnit2.6.2基础上修改
+//  2013.5.25：
+//      使用EditorWritor类在Editor输出
+//      线程中无法用Editor输出,用StringWriter记录Editor输出
+//  2013.6.28
+//      1.已改CommandOptionsArxNet
+//  2013.7.2
+//      1.已改DefaultTestRunnerFactoryArxNet
+//  2013.7.31
+//      1.已改ServicesArxNet
 // ****************************************************************
 
 // ****************************************************************
@@ -193,7 +193,7 @@ namespace NUnit.CommandRunner.ArxNet
 				}
 
                 /*2013.5.25lq加*/
-                Console.Write(collector.EditorStringWriter.ToString());//2013-5-25加，Editor输出StringWriter记录
+                Console.Write(collector.EditorStringWriter.ToString());//2013.5.25加，Editor输出StringWriter记录
                 /*2013.5.25lq加*/
 
                 //ed.WriteMessage("\n");//2013.1.25改
