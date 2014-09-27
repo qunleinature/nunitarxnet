@@ -186,14 +186,14 @@ namespace NUnit.CommandRunner.ArxNet
 			string versionText = executingAssembly.GetName().Version.ToString();
 
 #if CLR_1_0
-            string productName = "NUnit-Console (.NET 1.0)";
+            string productName = "NUnit-Command-ArxNet (.NET 1.0)";//2013.9.27lq改
 #elif CLR_1_1
-            string productName = "NUnit-Console (.NET 1.1)";
+            string productName = "NUnit-Command-ArxNet (.NET 1.1)";//2013.9.27lq改
 #else
             string productName = "NUnit-Command-ArxNet";//2013.1.25改
 #endif
-            string copyrightText = "Copyright (C) 2013 Lei Qun.\r\nCopyright (C) 2002-2012 Charlie Poole.\r\nCopyright (C) 2002-2004 James W. Newkirk, Michael C. Two, Alexei A. Vorontsov.\r\nCopyright (C) 2000-2002 Philip Craig.\r\nAll Rights Reserved.";
-
+            string copyrightText = "Copyright (C) 2014 Lei Qun.\r\nCopyright (C) 2002-2012 Charlie Poole.\r\nCopyright (C) 2002-2004 James W. Newkirk, Michael C. Two, Alexei A. Vorontsov.\r\nCopyright (C) 2000-2002 Philip Craig.\r\nAll Rights Reserved.";//2013.9.27lq改
+                        
             //object[] objectAttrs = executingAssembly.GetCustomAttributes(typeof(AssemblyProductAttribute), false);
             //if ( objectAttrs.Length > 0 )
             //    productName = ((AssemblyProductAttribute)objectAttrs[0]).Product;

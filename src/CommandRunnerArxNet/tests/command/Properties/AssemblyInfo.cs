@@ -14,7 +14,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCompany("NUnit.org & LeiSoft")]
 [assembly: AssemblyProduct("NUnitArxNet")]
 [assembly: AssemblyCopyright("Copyright (C) 2014 Lei Qun.\r\nCopyright (C) 2002-2012 Charlie Poole.\r\nCopyright (C) 2002-2004 James W. Newkirk, Michael C. Two, Alexei A. Vorontsov.\r\nCopyright (C) 2000-2002 Philip Craig.\r\nAll Rights Reserved.")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("NUnit is a trademark of NUnit.org")]
 [assembly: AssemblyCulture("")]
 
 // Version information for an assembly consists of the following four values:
