@@ -31,6 +31,12 @@
 //  1.改TestAssemblyInfoFormArxNet
 // ****************************************************************
 
+// ****************************************************************
+// Copyright 2014, Lei Qun
+//  2014.9.28：
+//      在NUnit2.6.3基础上修改
+// ****************************************************************
+
 using System;
 using System.Drawing;
 using System.Collections;
@@ -860,8 +866,8 @@ namespace NUnit.Gui.ArxNet
             this.Name = "NUnitFormArxNet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "NUnit";
-            this.Closing += new System.ComponentModel.CancelEventHandler(this.NUnitFormArxNet_Closing);
             this.Load += new System.EventHandler(this.NUnitFormArxNet_Load);
+            this.Closing += new System.ComponentModel.CancelEventHandler(this.NUnitFormArxNet_Closing);            
             this.rightPanel.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

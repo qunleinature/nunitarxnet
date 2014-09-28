@@ -30,6 +30,12 @@
 // 3.NUnitForm已改成NUnitFormArxNet
 // ****************************************************************
 
+// ****************************************************************
+// Copyright 2014, Lei Qun
+//  2014.9.28：
+//      在NUnit2.6.3基础上修改
+// ****************************************************************
+
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -626,23 +632,23 @@ namespace NUnit.Gui.ArxNet
             {
                 if (loader == null) return DialogResult.No;//2012-12-29单元测试加
 
-                DialogResult result = DialogResult.OK;
-            NUnitProject project = loader.TestProject;
+                DialogResult result = DialogResult.No;//OK;//2014.9.29改
+                NUnitProject project = loader.TestProject;
 
                 if (project == null) return DialogResult.No;//2012-12-29单元测试加
 
-            if (project.IsDirty)
-            {
-                string msg = string.Format(
-                    "Project {0} has been changed. Do you want to save changes?", project.Name);
+                if (project.IsDirty)
+                {
+                    string msg = string.Format(
+                        "Project {0} has been changed. Do you want to save changes?", project.Name);
 
-                result = Form.MessageDisplay.Ask(msg, MessageBoxButtons.YesNoCancel);
-                if (result == DialogResult.Yes)
-                    SaveProject();
+                    result = Form.MessageDisplay.Ask(msg, MessageBoxButtons.YesNoCancel);
+                    if (result == DialogResult.Yes)
+                        SaveProject();
+                }
+
+                return result;
             }
-
-            return result;
-        }
             /*2012-12-29单元测试加*/
             catch (CADException exception)
             {

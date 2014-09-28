@@ -1,4 +1,9 @@
-﻿using System;
+﻿// Copyright 2014, Lei Qun
+//  2014.9.28：
+//      在NUnit2.6.3基础上调试
+// ****************************************************************
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -68,6 +73,8 @@ namespace NUnit.Gui.ArxNet.Tests
             nUnitPresenterArxNet.NewProject();
             nUnitPresenterArxNet.AddAssembly();
             TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            if (loader == null) return;//2014.9.29lq加
+            if (loader.TestProject == null) return;//2014.9.29lq加
             ProjectConfig config = loader.TestProject.ActiveConfig;
             if (config.Assemblies !=null && config.Assemblies.Count > 0)
             {
@@ -97,6 +104,8 @@ namespace NUnit.Gui.ArxNet.Tests
             nUnitPresenterArxNet.AddToProject("Debug");
 
             TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            if (loader == null) return;//2014.9.29lq加
+            if (loader.TestProject == null) return;//2014.9.29lq加
             NUnitProject project = loader.TestProject;
             ProjectConfig config = project.Configs[project.Configs.Count - 1];
             if (config.Assemblies !=null && config.Assemblies.Count > 0)
@@ -128,6 +137,8 @@ namespace NUnit.Gui.ArxNet.Tests
             nUnitPresenterArxNet.AddVSProject();
 
             TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            if (loader == null) return;//2014.9.29lq加
+            if (loader.TestProject == null) return;//2014.9.29lq加
             NUnitProject project = loader.TestProject;
             ProjectConfig config = project.Configs[project.Configs.Count - 1];
             CADApplication.ShowAlertDialog("添加的VS项目文件：" + config.ConfigurationFilePath);
@@ -150,7 +161,8 @@ namespace NUnit.Gui.ArxNet.Tests
             nUnitPresenterArxNet = NewPresenter(false);
             nUnitPresenterArxNet.NewProject();
             nUnitPresenterArxNet.AddAssembly();
-            DialogResult result = (DialogResult)UnitTestHelper.CallNonPublicMethod(nUnitPresenterArxNet, "SaveProjectIfDirty", null);
+            object[] args = null;//2014.9.29lq加
+            DialogResult result = (DialogResult)UnitTestHelper.CallNonPublicMethod(nUnitPresenterArxNet, "SaveProjectIfDirty", args);//2014.9.29lq改
             CADApplication.ShowAlertDialog("DialogResult：" + result);
         }
 
@@ -159,7 +171,8 @@ namespace NUnit.Gui.ArxNet.Tests
         public void SaveProjectIfDirty_form_loader_null()
         {
             nUnitPresenterArxNet = NewPresenter(true);
-            DialogResult result = (DialogResult)UnitTestHelper.CallNonPublicMethod(nUnitPresenterArxNet, "SaveProjectIfDirty", null);
+            object[] args = null;//2014.9.29lq加
+            DialogResult result = (DialogResult)UnitTestHelper.CallNonPublicMethod(nUnitPresenterArxNet, "SaveProjectIfDirty", args);//2014.9.29lq改
             CADApplication.ShowAlertDialog("DialogResult：" + result);
         }
 
