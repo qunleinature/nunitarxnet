@@ -12,6 +12,12 @@
 //  1.在NUnit2.6.2基础上修改
 // ****************************************************************
 
+// ****************************************************************
+// Copyright 2014, Lei Qun
+//  2014.9.28：
+//      在NUnit2.6.3基础上修改
+// ****************************************************************
+
 namespace NUnit.Gui.ArxNet
 {
 	using System;
@@ -84,12 +90,12 @@ namespace NUnit.Gui.ArxNet
 		{
 			return
 				"命令:NUNIT-ArxNet\rargs:[inputfile] [options]\r\r" +
-				"Runs a set of NUnit tests from the AutoCad command lines.You\r" +
-                "may specify an assembly or a project file of type .nunit as input.\r\r" +
-				"Options:\r" +
-				base.GetHelpText() +
-				"\rOptions that take values may use an equal sign, a colon\r" +
-				"or a space to separate the option from its value.";//2013.6.2lq修改
+                "Runs a set of NUnit tests from the AutoCad command lines.You may specify\r" +
+                "an assembly or a project file of type .nunit as input.\r\r" +
+                "Options:\r" +
+                base.GetHelpText() +
+                "\rOptions that take values may use an equal sign, a colon\r" +
+                "or a space to separate the option from its value."; //2013.6.2lq修改,2014.9.28改
 		}
 
 	}
