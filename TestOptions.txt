@@ -34,4 +34,10 @@ F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gu
 F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.OpenProject_form_loader_null
 F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.ReloadProject
 F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.ReloadProject_form_loader_null
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveLastResult
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveLastResult_form_loader_null
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProject
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProject_form_loader_null
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProjectAs
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProjectAs_form_loader_null
 F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-uikit-arxnet.tests.dll

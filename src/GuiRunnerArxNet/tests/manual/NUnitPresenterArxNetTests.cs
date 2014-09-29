@@ -269,7 +269,6 @@ namespace NUnit.Gui.ArxNet.Tests
         }
 
         //public void SaveLastResult()
-        /*
         [Test]
         [Category("SaveLastResult")]
         public void SaveLastResult()
@@ -278,12 +277,12 @@ namespace NUnit.Gui.ArxNet.Tests
             nUnitPresenterArxNet.NewProject();
             nUnitPresenterArxNet.AddAssembly();            
             TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
-            loader.LoadTest();
-            loader.RunTests();
-
+            if (loader == null) return;//2014.9.29lq加
+            if (loader.TestProject == null) return;//2014.9.29lq加
+            //loader.LoadTest();
+            //loader.RunTests(null);
             nUnitPresenterArxNet.SaveLastResult();
         }
-        */
         [Test]
         [Category("SaveLastResult")]
         public void SaveLastResult_form_loader_null()
@@ -318,6 +317,22 @@ namespace NUnit.Gui.ArxNet.Tests
             nUnitPresenterArxNet = NewPresenter(false);
             nUnitPresenterArxNet.NewProject();
             nUnitPresenterArxNet.SaveProjectAs();
+
+            TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            if (loader == null)//2014.9.29lq加
+            {
+                CADApplication.ShowAlertDialog("loader:null");
+                return;
+            }
+
+            NUnitProject testProject = loader.TestProject;
+            if (loader.TestProject == null)//2014.9.29lq加
+            {
+                CADApplication.ShowAlertDialog("TestProject:null");
+                return;
+            } 
+           
+            CADApplication.ShowAlertDialog("SaveProjectAs:" + testProject.Name);
         }
 
         [Test]
