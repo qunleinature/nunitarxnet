@@ -225,25 +225,7 @@ namespace NUnit.Gui.ArxNet.Tests
         {
             nUnitPresenterArxNet = NewPresenter(true);
             nUnitPresenterArxNet.OpenProject();
-        }
-
-        //public void ReloadProject()
-        [Test]
-        [Category("ReloadProject")]
-        public void ReloadProject()
-        {
-            nUnitPresenterArxNet = NewPresenter(false);
-            nUnitPresenterArxNet.NewProject();
-            nUnitPresenterArxNet.ReloadProject();
-        }
-
-        [Test]
-        [Category("ReloadProject")]
-        public void ReloadProject_form_loader_null()
-        {
-            nUnitPresenterArxNet = NewPresenter(true);
-            nUnitPresenterArxNet.ReloadProject();
-        }
+        }        
 
         //public void SaveProject()
         [Test]
@@ -403,6 +385,46 @@ namespace NUnit.Gui.ArxNet.Tests
 
             TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
             if (loader == null)//2014.9.29lq加
+            {
+                CADApplication.ShowAlertDialog("loader:null");
+                return;
+            }
+        }
+
+        //public void ReloadProject()
+        [Test]
+        [Category("ReloadProject")]
+        public void ReloadProject()
+        {
+            nUnitPresenterArxNet = NewPresenter(false);
+            nUnitPresenterArxNet.NewProject();
+            nUnitPresenterArxNet.SaveProject();
+            nUnitPresenterArxNet.ReloadProject();
+
+            TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            if (loader == null)//2014.9.30lq加
+            {
+                CADApplication.ShowAlertDialog("loader:null");
+                return;
+            }
+            NUnitProject testProject = loader.TestProject;
+            if (testProject == null)//2014.9.30lq加
+            {
+                CADApplication.ShowAlertDialog("TestProject:null");
+                return;
+            }
+            CADApplication.ShowAlertDialog("ReloadProject:" + testProject.Name);//2014.9.30lq加
+        }
+
+        [Test]
+        [Category("ReloadProject")]
+        public void ReloadProject_form_loader_null()
+        {
+            nUnitPresenterArxNet = NewPresenter(true);
+            nUnitPresenterArxNet.ReloadProject();
+
+            TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            if (loader == null)//2014.9.30lq加
             {
                 CADApplication.ShowAlertDialog("loader:null");
                 return;

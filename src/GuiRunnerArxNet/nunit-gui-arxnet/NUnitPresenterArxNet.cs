@@ -726,22 +726,22 @@ namespace NUnit.Gui.ArxNet
             {
                 if (loader == null) return;//2012-12-31单元测试加
 
-            NUnitProject project = loader.TestProject;
+                NUnitProject project = loader.TestProject;
 
                 if (project == null) return;//2012-12-31单元测试加
 
-            bool wrapper = project.IsAssemblyWrapper;
-            string projectPath = project.ProjectPath;
-            string activeConfigName = project.ActiveConfigName;
+                bool wrapper = project.IsAssemblyWrapper;
+                string projectPath = project.ProjectPath;
+                string activeConfigName = project.ActiveConfigName;
 
-            // Unload first to avoid message asking about saving
-            loader.UnloadProject();
+                // Unload first to avoid message asking about saving
+                loader.UnloadProject();
 
-            if (wrapper)
-                OpenProject(projectPath);
-            else
-                OpenProject(projectPath, activeConfigName, null);
-        }
+                if (wrapper)
+                    OpenProject(projectPath);
+                else
+                    OpenProject(projectPath, activeConfigName, null);
+            }
             /*2012-12-31单元测试加*/
             catch (CADException exception)
             {
