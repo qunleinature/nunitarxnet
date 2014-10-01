@@ -64,135 +64,6 @@ namespace NUnit.Gui.ArxNet.Tests
             
         }
 
-        //public void AddAssembly(string configName)
-        [Test]
-        [Category("AddAssembly")]
-        public void AddAssembly()
-        {
-            nUnitPresenterArxNet = NewPresenter(false);
-            nUnitPresenterArxNet.NewProject();
-            nUnitPresenterArxNet.AddAssembly();
-            TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
-            if (loader == null) return;//2014.9.29lq加
-            if (loader.TestProject == null) return;//2014.9.29lq加
-            ProjectConfig config = loader.TestProject.ActiveConfig;
-            if (config.Assemblies !=null && config.Assemblies.Count > 0)
-            {
-                string assembly = config.Assemblies[config.Assemblies.Count - 1];
-                CADApplication.ShowAlertDialog("添加的程序集为：" + assembly);
-            }
-            else
-                CADApplication.ShowAlertDialog("没添加程序集!");
-        }
-
-        [Test]
-        [Category("AddAssembly")]
-        public void AddAssembly_form_loader_null()
-        {
-            nUnitPresenterArxNet = NewPresenter(true);
-            nUnitPresenterArxNet.AddAssembly();
-        }
-
-        //public void AddToProject(string configName)
-        [Test]
-        [Category("AddToProject")]
-        public void AddToProject()
-        {
-            nUnitPresenterArxNet = NewPresenter(false);
-            nUnitPresenterArxNet.NewProject();
-            ServicesArxNet.UserSettings.SaveSetting("Options.TestLoader.VisualStudioSupport", true);
-            nUnitPresenterArxNet.AddToProject("Debug");
-
-            TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
-            if (loader == null) return;//2014.9.29lq加
-            if (loader.TestProject == null) return;//2014.9.29lq加
-            NUnitProject project = loader.TestProject;
-            ProjectConfig config = project.Configs[project.Configs.Count - 1];
-            if (config.Assemblies !=null && config.Assemblies.Count > 0)
-            {
-                string assembly = config.Assemblies[config.Assemblies.Count - 1];
-                CADApplication.ShowAlertDialog("最后一个程序集为：" + assembly);
-            }
-            else
-                CADApplication.ShowAlertDialog("没添加程序集!");
-
-            CADApplication.ShowAlertDialog("最后一个项目文件：" + config.ConfigurationFilePath);
-        }
-
-        [Test]
-        [Category("AddToProject")]
-        public void AddToProject_form_loader_null()
-        {
-            nUnitPresenterArxNet = NewPresenter(true);
-            nUnitPresenterArxNet.AddToProject();
-        }
-
-        //public void AddVSProject()
-        [Test]
-        [Category("AddVSProject")]
-        public void AddVSProject()
-        {
-            nUnitPresenterArxNet = NewPresenter(false);
-            nUnitPresenterArxNet.NewProject();            
-            nUnitPresenterArxNet.AddVSProject();
-
-            TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
-            if (loader == null) return;//2014.9.29lq加
-            if (loader.TestProject == null) return;//2014.9.29lq加
-            NUnitProject project = loader.TestProject;
-            ProjectConfig config = project.Configs[project.Configs.Count - 1];
-            CADApplication.ShowAlertDialog("添加的VS项目文件：" + config.ConfigurationFilePath);
-
-        }
-
-        [Test]
-        [Category("AddVSProject")]
-        public void AddVSProject_form_loader_null()
-        {
-            nUnitPresenterArxNet = NewPresenter(true);
-            nUnitPresenterArxNet.AddVSProject();
-        }        
-
-        //public DialogResult CloseProject()
-        [Test]
-        [Category("CloseProject")]
-        public void CloseProject()
-        {
-            nUnitPresenterArxNet = NewPresenter(false);
-            nUnitPresenterArxNet.NewProject();
-            nUnitPresenterArxNet.AddAssembly();
-            DialogResult result = (DialogResult)nUnitPresenterArxNet.CloseProject();
-            CADApplication.ShowAlertDialog("DialogResult：" + result);
-        }
-
-        [Test]
-        [Category("CloseProject")]
-        public void CloseProject_form_loader_null()
-        {
-            nUnitPresenterArxNet = NewPresenter(true);
-            DialogResult result = (DialogResult)nUnitPresenterArxNet.CloseProject();
-            CADApplication.ShowAlertDialog("DialogResult：" + result);
-        }
-
-        //public void EditProject()
-        [Test]
-        [Category("EditProject")]
-        public void EditProject()
-        {
-            nUnitPresenterArxNet = NewPresenter(false);
-            nUnitPresenterArxNet.NewProject();
-            nUnitPresenterArxNet.AddAssembly();
-            nUnitPresenterArxNet.EditProject();
-        }
-
-        [Test]
-        [Category("EditProject")]
-        public void EditProject_form_loader_null()
-        {
-            nUnitPresenterArxNet = NewPresenter(true);
-            nUnitPresenterArxNet.EditProject();
-        }
-
         //public void NewProject()
         [Test]
         [Category("NewProject")]
@@ -225,7 +96,195 @@ namespace NUnit.Gui.ArxNet.Tests
         {
             nUnitPresenterArxNet = NewPresenter(true);
             nUnitPresenterArxNet.OpenProject();
-        }        
+        }
+
+        //public DialogResult CloseProject()
+        [Test]
+        [Category("CloseProject")]
+        public void CloseProject()
+        {
+            nUnitPresenterArxNet = NewPresenter(false);
+            nUnitPresenterArxNet.NewProject();
+            nUnitPresenterArxNet.AddAssembly();
+            DialogResult result = (DialogResult)nUnitPresenterArxNet.CloseProject();
+            CADApplication.ShowAlertDialog("DialogResult:" + result);
+
+            TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            if (loader == null)//2014.10.1lq加
+            {
+                CADApplication.ShowAlertDialog("loader:null");
+                return;
+            }
+            NUnitProject testProject = loader.TestProject;
+            if (testProject == null)//2014.10.1lq加
+            {
+                CADApplication.ShowAlertDialog("TestProject:null");
+                return;
+            }
+            CADApplication.ShowAlertDialog("CloseProject:" + testProject.ProjectPath);
+        }
+
+        [Test]
+        [Category("CloseProject")]
+        public void CloseProject_form_loader_null()
+        {
+            nUnitPresenterArxNet = NewPresenter(true);
+            DialogResult result = (DialogResult)nUnitPresenterArxNet.CloseProject();
+            CADApplication.ShowAlertDialog("DialogResult:" + result);
+
+            TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            if (loader == null)//2014.10.1lq加
+            {
+                CADApplication.ShowAlertDialog("loader:null");
+                return;
+            }
+        } 
+
+        //public void AddToProject(string configName)
+        [Test]
+        [Category("AddToProject")]
+        public void AddToProject()
+        {
+            nUnitPresenterArxNet = NewPresenter(false);
+            nUnitPresenterArxNet.NewProject();
+            ServicesArxNet.UserSettings.SaveSetting("Options.TestLoader.VisualStudioSupport", true);
+            nUnitPresenterArxNet.AddToProject("Debug");
+
+            TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            if (loader == null)//2014.10.1lq改
+            {
+                CADApplication.ShowAlertDialog("loader:null");
+                return;
+            }
+            NUnitProject testProject = loader.TestProject;
+            if (testProject == null)//2014.10.1lq改
+            {
+                CADApplication.ShowAlertDialog("TestProject:null");
+                return;
+            }
+            ProjectConfig config = testProject.ActiveConfig;
+            if (config.Assemblies != null && config.Assemblies.Count > 0)
+            {
+                string assembly = config.Assemblies[config.Assemblies.Count - 1];
+                CADApplication.ShowAlertDialog("AddToProject:" + assembly);
+            }
+            else
+                CADApplication.ShowAlertDialog("AddToProject:null");
+            CADApplication.ShowAlertDialog("ConfigurationFile:" + config.ConfigurationFilePath);
+        }
+
+        [Test]
+        [Category("AddToProject")]
+        public void AddToProject_form_loader_null()
+        {
+            nUnitPresenterArxNet = NewPresenter(true);
+            nUnitPresenterArxNet.AddToProject();
+
+            TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            if (loader == null)//2014.10.1lq加
+            {
+                CADApplication.ShowAlertDialog("loader:null");
+                return;
+            }
+        }
+
+        //public void AddAssembly(string configName)
+        [Test]
+        [Category("AddAssembly")]
+        public void AddAssembly()
+        {
+            nUnitPresenterArxNet = NewPresenter(false);
+            nUnitPresenterArxNet.NewProject();
+            nUnitPresenterArxNet.AddAssembly();
+            
+            TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            if (loader == null)//2014.10.1lq改
+            {
+                CADApplication.ShowAlertDialog("loader:null");
+                return;
+            }
+            NUnitProject testProject = loader.TestProject;
+            if (testProject == null)//2014.10.1lq改
+            {
+                CADApplication.ShowAlertDialog("TestProject:null");
+                return;
+            }
+            ProjectConfig config = testProject.ActiveConfig;
+            if (config.Assemblies != null && config.Assemblies.Count > 0)
+            {
+                string assembly = config.Assemblies[config.Assemblies.Count - 1];
+                CADApplication.ShowAlertDialog("AddAssembly:" + assembly);
+            }
+            else
+                CADApplication.ShowAlertDialog("AddAssembly:null");
+        }
+
+        [Test]
+        [Category("AddAssembly")]
+        public void AddAssembly_form_loader_null()
+        {
+            nUnitPresenterArxNet = NewPresenter(true);
+            nUnitPresenterArxNet.AddAssembly();
+
+            TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            if (loader == null)//2014.10.1lq加
+            {
+                CADApplication.ShowAlertDialog("loader:null");
+                return;
+            }
+        }       
+
+        //public void AddVSProject()
+        [Test]
+        [Category("AddVSProject")]
+        public void AddVSProject()
+        {
+            nUnitPresenterArxNet = NewPresenter(false);
+            nUnitPresenterArxNet.NewProject();
+            nUnitPresenterArxNet.AddVSProject();
+
+            TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            if (loader == null)//2014.10.1lq改
+            {
+                CADApplication.ShowAlertDialog("loader:null");
+                return;
+            }
+            NUnitProject testProject = loader.TestProject;
+            if (testProject == null)//2014.10.1lq改
+            {
+                CADApplication.ShowAlertDialog("TestProject:null");
+                return;
+            }
+            ProjectConfig config = testProject.ActiveConfig;
+            if (config.Assemblies != null && config.Assemblies.Count > 0)
+            {
+                string str = "AddVSProject:";
+                //string assembly = config.Assemblies[config.Assemblies.Count - 1];
+                foreach (string assembly in config.Assemblies)
+                {
+                    str = str + "\n" + assembly;
+                }
+                CADApplication.ShowAlertDialog(str);
+            }
+            else
+                CADApplication.ShowAlertDialog("AddVSProject:null");
+            CADApplication.ShowAlertDialog("ConfigurationFile:" + config.ConfigurationFilePath);
+        }
+
+        [Test]
+        [Category("AddVSProject")]
+        public void AddVSProject_form_loader_null()
+        {
+            nUnitPresenterArxNet = NewPresenter(true);
+            nUnitPresenterArxNet.AddVSProject();
+
+            TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            if (loader == null)//2014.10.1lq加
+            {
+                CADApplication.ShowAlertDialog("loader:null");
+                return;
+            }
+        }
 
         //public void SaveProject()
         [Test]
@@ -248,7 +307,7 @@ namespace NUnit.Gui.ArxNet.Tests
                 CADApplication.ShowAlertDialog("TestProject:null");
                 return;
             }
-            CADApplication.ShowAlertDialog("SaveProject:" + testProject.Name);//2014.9.29lq加
+            CADApplication.ShowAlertDialog("SaveProject:" + testProject.ProjectPath);//2014.9.29lq加
         }
 
         [Test]
@@ -287,7 +346,7 @@ namespace NUnit.Gui.ArxNet.Tests
                 CADApplication.ShowAlertDialog("TestProject:null");
                 return;
             }
-            CADApplication.ShowAlertDialog("SaveProjectAs:" + testProject.Name);//2014.9.29lq加
+            CADApplication.ShowAlertDialog("SaveProjectAs:" + testProject.ProjectPath);//2014.9.29lq加
         }
 
         [Test]
@@ -329,7 +388,7 @@ namespace NUnit.Gui.ArxNet.Tests
                 CADApplication.ShowAlertDialog("TestProject:null");
                 return;
             }
-            CADApplication.ShowAlertDialog("SaveProjectIfDirty:" + testProject.Name);//2014.9.30lq加
+            CADApplication.ShowAlertDialog("SaveProjectIfDirty:" + testProject.ProjectPath);//2014.9.30lq加
         }
 
         [Test]
@@ -373,7 +432,7 @@ namespace NUnit.Gui.ArxNet.Tests
                 CADApplication.ShowAlertDialog("TestProject:null");
                 return;
             }
-            CADApplication.ShowAlertDialog("SaveLastResult:" + testProject.Name);//2014.9.30lq加
+            CADApplication.ShowAlertDialog("SaveLastResult:" + testProject.ProjectPath);//2014.9.30lq加
 
         }
         [Test]
@@ -413,7 +472,7 @@ namespace NUnit.Gui.ArxNet.Tests
                 CADApplication.ShowAlertDialog("TestProject:null");
                 return;
             }
-            CADApplication.ShowAlertDialog("ReloadProject:" + testProject.Name);//2014.9.30lq加
+            CADApplication.ShowAlertDialog("ReloadProject:" + testProject.ProjectPath);//2014.9.30lq加
         }
 
         [Test]
@@ -425,6 +484,46 @@ namespace NUnit.Gui.ArxNet.Tests
 
             TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
             if (loader == null)//2014.9.30lq加
+            {
+                CADApplication.ShowAlertDialog("loader:null");
+                return;
+            }
+        }
+
+        //public void EditProject()
+        [Test]
+        [Category("EditProject")]
+        public void EditProject()
+        {
+            nUnitPresenterArxNet = NewPresenter(false);
+            nUnitPresenterArxNet.NewProject();
+            nUnitPresenterArxNet.AddAssembly();
+            nUnitPresenterArxNet.EditProject();
+
+            TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            if (loader == null)//2014.10.1lq加
+            {
+                CADApplication.ShowAlertDialog("loader:null");
+                return;
+            }
+            NUnitProject testProject = loader.TestProject;
+            if (testProject == null)//2014.10.1lq加
+            {
+                CADApplication.ShowAlertDialog("TestProject:null");
+                return;
+            }
+            CADApplication.ShowAlertDialog("EditProject:" + testProject.ProjectPath);//2014.10.1lq加
+        }
+
+        [Test]
+        [Category("EditProject")]
+        public void EditProject_form_loader_null()
+        {
+            nUnitPresenterArxNet = NewPresenter(true);
+            nUnitPresenterArxNet.EditProject();
+
+            TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            if (loader == null)//2014.10.1lq加
             {
                 CADApplication.ShowAlertDialog("loader:null");
                 return;
