@@ -1,4 +1,5 @@
-﻿// Copyright 2014, Lei Qun
+﻿// ****************************************************************
+// Copyright 2014, Lei Qun
 //  2014.9.28：
 //      在NUnit2.6.3基础上调试
 // ****************************************************************
@@ -71,6 +72,20 @@ namespace NUnit.Gui.ArxNet.Tests
         {
             nUnitPresenterArxNet = NewPresenter(false);
             nUnitPresenterArxNet.NewProject();
+
+            TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            if (loader == null)//2014.10.3lq加
+            {
+                CADApplication.ShowAlertDialog("loader:null");
+                return;
+            }
+            NUnitProject testProject = loader.TestProject;
+            if (testProject == null)//2014.10.3lq加
+            {
+                CADApplication.ShowAlertDialog("TestProject:null");
+                return;
+            }
+            CADApplication.ShowAlertDialog("OpenProject:" + testProject.ProjectPath);
         }
 
         [Test]
@@ -79,6 +94,13 @@ namespace NUnit.Gui.ArxNet.Tests
         {
             nUnitPresenterArxNet = NewPresenter(true);
             nUnitPresenterArxNet.NewProject();
+
+            TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            if (loader == null)//2014.10.3lq加
+            {
+                CADApplication.ShowAlertDialog("loader:null");
+                return;
+            }
         }
 
         // public void OpenProject()
@@ -88,6 +110,20 @@ namespace NUnit.Gui.ArxNet.Tests
         {
             nUnitPresenterArxNet = NewPresenter(false);
             nUnitPresenterArxNet.OpenProject();
+
+            TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            if (loader == null)//2014.10.3lq加
+            {
+                CADApplication.ShowAlertDialog("loader:null");
+                return;
+            }
+            NUnitProject testProject = loader.TestProject;
+            if (testProject == null)//2014.10.3lq加
+            {
+                CADApplication.ShowAlertDialog("TestProject:null");
+                return;
+            }
+            CADApplication.ShowAlertDialog("OpenProject:" + testProject.ProjectPath);
         }
 
         [Test]
@@ -96,6 +132,13 @@ namespace NUnit.Gui.ArxNet.Tests
         {
             nUnitPresenterArxNet = NewPresenter(true);
             nUnitPresenterArxNet.OpenProject();
+
+            TestLoaderArxNet loader = UnitTestHelper.GetNonPublicField(nUnitPresenterArxNet, "loader") as TestLoaderArxNet;
+            if (loader == null)//2014.10.3lq加
+            {
+                CADApplication.ShowAlertDialog("loader:null");
+                return;
+            }
         }
 
         //public DialogResult CloseProject()
