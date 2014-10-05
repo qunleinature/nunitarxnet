@@ -14,6 +14,12 @@
 //  1.改Services为ServicesArxNet
 // ****************************************************************
 
+// ****************************************************************
+// Copyright 2014, Lei Qun
+//  2014.10.5：
+//      在NUnit2.6.3基础上修改
+// ****************************************************************
+
 using System;
 using System.Collections;
 using System.ComponentModel;
@@ -22,7 +28,6 @@ using System.Security.Principal;
 using System.Windows.Forms;
 
 using NUnit.Util;
-
 using NUnit.Util.ArxNet;
 
 namespace NUnit.Gui.ArxNet.SettingsPagesArxNet
