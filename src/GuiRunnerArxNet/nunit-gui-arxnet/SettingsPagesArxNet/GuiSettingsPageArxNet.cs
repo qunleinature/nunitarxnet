@@ -15,6 +15,12 @@
 //  1.改SettingsPage为SettingsPageArxNet
 // ****************************************************************
 
+// ****************************************************************
+// Copyright 2014, Lei Qun
+//  2014.10.9：
+//      在NUnit2.6.3基础上修改
+// ****************************************************************
+
 using System;
 using System.Collections;
 using System.ComponentModel;
@@ -23,7 +29,6 @@ using System.Windows.Forms;
 
 using NUnit.Util;
 using NUnit.UiKit;
-
 using NUnit.Util.ArxNet;
 
 namespace NUnit.Gui.ArxNet.SettingsPagesArxNet
