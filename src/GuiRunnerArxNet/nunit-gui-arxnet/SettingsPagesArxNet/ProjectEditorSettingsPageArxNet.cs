@@ -12,6 +12,12 @@
 //  3.改SettingsPage为SettingsPageArxNet
 // ****************************************************************
 
+// ****************************************************************
+// Copyright 2014, Lei Qun
+//  2014.10.10：
+//      在NUnit2.6.3基础上修改
+// ****************************************************************
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
