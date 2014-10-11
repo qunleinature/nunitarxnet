@@ -14,6 +14,12 @@
 //  1.改TestSuiteTreeView为TestSuiteTreeViewArxNet
 // ****************************************************************
 
+// ****************************************************************
+// Copyright 2014, Lei Qun
+//  2014.10.11：
+//      在NUnit2.6.3基础上修改
+// ****************************************************************
+
 using System;
 using System.Collections;
 using System.ComponentModel;
@@ -23,7 +29,6 @@ using System.Reflection;
 using System.Windows.Forms;
 using NUnit.UiKit;
 using NUnit.Util;
-
 using NUnit.UiKit.ArxNet;
 
 namespace NUnit.Gui.ArxNet.SettingsPagesArxNet
