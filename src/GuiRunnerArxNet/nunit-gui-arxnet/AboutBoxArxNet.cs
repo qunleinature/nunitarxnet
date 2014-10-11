@@ -12,6 +12,12 @@
 //  1.改在nunit2.6.2基础
 // ****************************************************************
 
+// ****************************************************************
+// Copyright 2014, Lei Qun
+//  2014.10.11：
+//      在NUnit2.6.3基础上修改
+// ****************************************************************
+
 using System;
 using System.Drawing;
 using System.Collections;
@@ -66,8 +72,8 @@ namespace NUnit.Gui.ArxNet
 				    versionText += string.Format(" ({0})",configText);
 			}
 
-            //2013-1-24修改
-            string copyrightText = "Copyright (C) 2013 Lei Qun.\r\nCopyright (C) 2002-2012 Charlie Poole.\r\nCopyright (C) 2002-2004 James W. Newkirk, Michael C. Two, Alexei A. Vorontsov.\r\nCopyright (C) 2000-2002 Philip Craig.\r\nAll Rights Reserved.";
+            //2013.1.24lq修改//2013-1-24修改
+            string copyrightText = "Copyright (C) 2014 Lei Qun.\r\nCopyright (C) 2002-2012 Charlie Poole.\r\nCopyright (C) 2002-2004 James W. Newkirk, Michael C. Two, Alexei A. Vorontsov.\r\nCopyright (C) 2000-2002 Philip Craig.\r\nAll Rights Reserved.";
 			objectAttrs = executingAssembly.GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
 			if ( objectAttrs.Length > 0 )
 				copyrightText = ((AssemblyCopyrightAttribute)objectAttrs[0]).Copyright;
@@ -156,7 +162,7 @@ namespace NUnit.Gui.ArxNet
             this.label3.Size = new System.Drawing.Size(287, 48);
             this.label3.TabIndex = 4;
             this.label3.Text = "James W. Newkirk, Michael C. Two, Alexei A. Vorontsov, Philip Craig, Ethan Smith," +
-    " Doug de la Torre, Charlie Poole，Lei Qun";
+    " Doug de la Torre, Charlie Poole, Lei Qun";
             // 
             // linkLabel1
             // 
