@@ -1,4 +1,10 @@
-﻿using System;
+﻿// ****************************************************************
+// Copyright 2014, Lei Qun
+//  2014.10.19：
+//      在NUnit2.6.3基础上调试
+// ****************************************************************
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
