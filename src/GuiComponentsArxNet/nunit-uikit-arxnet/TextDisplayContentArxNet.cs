@@ -11,12 +11,17 @@
 //  3.改Services为ServicesArxNet
 // ****************************************************************
 
+// ****************************************************************
+// Copyright 2014, Lei Qun
+//  2014.10.20：
+//      在NUnit2.6.3基础上修改
+// ****************************************************************
+
 using System;
 using System.Diagnostics;
 using System.Text;
 using NUnit.Core;
 using NUnit.Util;
-
 using NUnit.Util.ArxNet;
 
 namespace NUnit.UiKit
