@@ -14,6 +14,12 @@
 //  6.改TestPropertiesDialog为TestPropertiesDialogArxNet
 // ****************************************************************
 
+// ****************************************************************
+// Copyright 2014, Lei Qun
+//  2014.10.21：
+//      在NUnit2.6.3基础上修改
+// ****************************************************************
+
 using System;
 using System.IO;
 using System.Drawing;
@@ -28,7 +34,6 @@ using NUnit.Core;
 using NUnit.Core.Filters;
 using NUnit.Util;
 using NUnit.UiKit;
-
 using NUnit.Util.ArxNet;
 
 namespace NUnit.UiKit.ArxNet
