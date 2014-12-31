@@ -1,0 +1,12 @@
+obj
+Properties
+App.ico
+ClassDiagram_nunit-command-arxnet.cd
+ClassDiagram1.cd
+CommandOptionsArxNet.cs
+CommandUiArxNet.cs
+dir.txt
+EventCollectorArxNet.cs
+nunit-command-arxnet.csproj
+nunit-command-arxnet.sln
+RunnerArxNet.cs
