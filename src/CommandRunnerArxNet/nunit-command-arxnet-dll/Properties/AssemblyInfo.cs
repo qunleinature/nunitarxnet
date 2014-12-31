@@ -25,5 +25,6 @@ using System.Runtime.InteropServices;
 //      修正版本号
 //      编译版本号
 //
-[assembly: AssemblyVersion("0.0.5.0")]
-[assembly: AssemblyFileVersionAttribute("0.0.5.0")]
+[assembly: AssemblyVersion("0.0.6.0")]
+[assembly: AssemblyFileVersionAttribute("0.0.6.0")]
+[assembly: AssemblyTitleAttribute("Nunit-Command-ArxNet")]

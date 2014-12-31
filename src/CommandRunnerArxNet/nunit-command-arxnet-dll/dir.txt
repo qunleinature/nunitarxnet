@@ -1,0 +1,9 @@
+bin
+obj
+Properties
+App.config
+App.ico
+Commands.cs
+dir.txt
+nunit-command-arxnet.dll.csproj
+nunit-command-arxnet.dll.csproj.user
