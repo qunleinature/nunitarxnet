@@ -100,9 +100,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\bin\Debug\lib\nunit-core-arxnet.dll</HintPath>
     </Reference>
-    <Reference Include="nunit-gui-runner, Version=2.6.2.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+    <Reference Include="nunit-gui-runner, Version=2.6.3.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\NUnit-2.6.3\bin\Debug\lib\nunit-gui-runner.dll</HintPath>
+      <HintPath>..\..\..\..\NUnit-2.6.4\bin\Debug\lib\nunit-gui-runner.dll</HintPath>
     </Reference>
     <Reference Include="nunit-uikit-arxnet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -113,21 +113,21 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\bin\Debug\lib\nunit-util-arxnet.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.core, Version=2.6.3.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+    <Reference Include="nunit.core, Version=2.6.4.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\NUnit-2.6.3\bin\Debug\lib\nunit.core.dll</HintPath>
+      <HintPath>..\..\..\..\NUnit-2.6.4\bin\Debug\lib\nunit.core.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.core.interfaces, Version=2.6.3.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+    <Reference Include="nunit.core.interfaces, Version=2.6.4.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\NUnit-2.6.3\bin\Debug\lib\nunit.core.interfaces.dll</HintPath>
+      <HintPath>..\..\..\..\NUnit-2.6.4\bin\Debug\lib\nunit.core.interfaces.dll</HintPath>
     </Reference>
     <Reference Include="nunit.uikit, Version=2.6.3.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\NUnit-2.6.3\bin\Debug\lib\nunit.uikit.dll</HintPath>
+      <HintPath>..\..\..\..\NUnit-2.6.4\bin\Debug\lib\nunit.uikit.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.util, Version=2.6.3.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+    <Reference Include="nunit.util, Version=2.6.4.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\NUnit-2.6.3\bin\Debug\lib\nunit.util.dll</HintPath>
+      <HintPath>..\..\..\..\NUnit-2.6.4\bin\Debug\lib\nunit.util.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
