@@ -1,49 +1,49 @@
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-command-arxnet.tests.dll
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-command-arxnet.tests.manual.dll /run:NUnit.CommandRunner.ArxNet.Tests.CommandRunnerArxNetTestManual.RunnerArxNetInit
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-command-arxnet.tests.manual.dll /run:NUnit.CommandRunner.ArxNet.Tests.CommandRunnerArxNetTestManual.RunnerArxNetCleanUp
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-command-arxnet.tests.manual.dll /run:NUnit.CommandRunner.ArxNet.Tests.CommandRunnerArxNetTestManual.RunnerArxNetRun
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-core-arxnet.tests.dll
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-core-arxnet.tests.manual.dll /fixture:NUnit.Core.ArxNet.Tests.EditorWriterTests
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-core-arxnet.tests.manual.dll /fixture:NUnit.Core.ArxNet.Tests.ConsoleSetOutEditorWriterTests
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-util-arxnet.tests.dll
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.dll /fixture:NUnit.Gui.ArxNet.Tests.CommandLineArxNetTests
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.dll /fixture:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.dll /fixture:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.dll
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.AppEntryArxNetTests.AppEntryArxNetInit
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.AppEntryArxNetTests.AppEntryArxNetCleanUp
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.AppEntryArxNetTests.AppEntryArxNetRun
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.Dispose
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModelessDialog
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.NewProject
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.NewProject_form_loader_null
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.OpenProject
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.OpenProject_form_loader_null
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.CloseProject
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.CloseProject_form_loader_null
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.AddToProject
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.AddToProject_form_loader_null
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.AddAssembly
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.AddAssembly_form_loader_null
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.AddVSProject
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.AddVSProject_form_loader_null
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProject
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProject_form_loader_null
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProjectAs
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProjectAs_form_loader_null
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProjectIfDirty
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProjectIfDirty_form_loader_null
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveLastResult
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveLastResult_form_loader_null
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.ReloadProject
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.ReloadProject_form_loader_null
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.EditProject
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.EditProject_form_loader_null
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.AppEntryArxNetTests.MessageDisplay
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.AppEntryArxNetTests.AppEntryArxNetInit
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.AppEntryArxNetTests.AppEntryArxNetCleanUp
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.AppEntryArxNetTests.AppEntryArxNetRun
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.OptionsDialogArxNetTests.Display
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.TestAssemblyInfoFormArxNeTests.ShowDialog
-F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.5-AC2015\bin\Debug\tests\nunit-uikit-arxnet.tests.dll
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-command-arxnet.tests.dll
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-command-arxnet.tests.manual.dll /run:NUnit.CommandRunner.ArxNet.Tests.CommandRunnerArxNetTestManual.RunnerArxNetInit
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-command-arxnet.tests.manual.dll /run:NUnit.CommandRunner.ArxNet.Tests.CommandRunnerArxNetTestManual.RunnerArxNetCleanUp
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-command-arxnet.tests.manual.dll /run:NUnit.CommandRunner.ArxNet.Tests.CommandRunnerArxNetTestManual.RunnerArxNetRun
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-core-arxnet.tests.dll
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-core-arxnet.tests.manual.dll /fixture:NUnit.Core.ArxNet.Tests.EditorWriterTests
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-core-arxnet.tests.manual.dll /fixture:NUnit.Core.ArxNet.Tests.ConsoleSetOutEditorWriterTests
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-util-arxnet.tests.dll
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.dll /fixture:NUnit.Gui.ArxNet.Tests.CommandLineArxNetTests
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.dll /fixture:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.dll /fixture:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.dll
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.AppEntryArxNetTests.AppEntryArxNetInit
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.AppEntryArxNetTests.AppEntryArxNetCleanUp
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.AppEntryArxNetTests.AppEntryArxNetRun
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.Dispose
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModelessDialog
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.NewProject
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.NewProject_form_loader_null
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.OpenProject
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.OpenProject_form_loader_null
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.CloseProject
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.CloseProject_form_loader_null
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.AddToProject
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.AddToProject_form_loader_null
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.AddAssembly
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.AddAssembly_form_loader_null
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.AddVSProject
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.AddVSProject_form_loader_null
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProject
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProject_form_loader_null
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProjectAs
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProjectAs_form_loader_null
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProjectIfDirty
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProjectIfDirty_form_loader_null
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveLastResult
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveLastResult_form_loader_null
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.ReloadProject
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.ReloadProject_form_loader_null
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.EditProject
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.EditProject_form_loader_null
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.AppEntryArxNetTests.MessageDisplay
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.AppEntryArxNetTests.AppEntryArxNetInit
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.AppEntryArxNetTests.AppEntryArxNetCleanUp
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.AppEntryArxNetTests.AppEntryArxNetRun
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.OptionsDialogArxNetTests.Display
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-gui-arxnet.tests.manual.dll /run:NUnit.Gui.ArxNet.Tests.TestAssemblyInfoFormArxNeTests.ShowDialog
+F:\LQ\Project\VS\C#\2012\NUnit\NUnitArxNet-0.0.6-AC2015\bin\Debug\tests\nunit-uikit-arxnet.tests.dll
