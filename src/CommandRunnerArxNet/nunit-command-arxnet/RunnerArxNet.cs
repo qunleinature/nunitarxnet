@@ -5,31 +5,29 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2013, Lei Qun
-// 2013.1.25：
-//  在NUnit2.6.2基础上修改
-// 2013.5.25：
-//  使用EditorWritor类在Editor输出
-// 2013.5.27：
-//  1.ServiceManager改为ServiceManagerArxNet
-//  2.Init方法增加ServiceManagerArxNet初始化
-//  3.DomainManager改为DomainManagerArxNet
-//  4.Init方法增加DomainManagerArxNet初始化
-//  5.Services改为ServicesArxNet
-//  6.Init方法增加ServicesArxNet初始化
-// 2013.5.29：
-//  1.改AddinManager为AddinManagerArxNet
-//  2.改ProjectService为ProjectServiceArxNet
-// 2013.6.7
-//  1.已改SettingsServiceArxNet
-// 2013.6.28
-//  1.已改CommandOptionsArxNet
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
-// 2014.8.21：
-//  在NUnit2.6.3基础上修改
+// Copyright 2015, Lei Qun
+//  2013.1.25：
+//      在NUnit2.6.2基础上修改
+//  2013.5.25：
+//      使用EditorWritor类在Editor输出
+//  2013.5.27：
+//      1.ServiceManager改为ServiceManagerArxNet
+//      2.Init方法增加ServiceManagerArxNet初始化
+//      3.DomainManager改为DomainManagerArxNet
+//      4.Init方法增加DomainManagerArxNet初始化
+//      5.Services改为ServicesArxNet
+//      6.Init方法增加ServicesArxNet初始化
+//  2013.5.29：
+//      1.改AddinManager为AddinManagerArxNet
+//      2.改ProjectService为ProjectServiceArxNet
+//  2013.6.7
+//      1.已改SettingsServiceArxNet
+//  2013.6.28
+//      1.已改CommandOptionsArxNet
+//  2014.8.21：
+//      在NUnit2.6.3基础上修改
+//  2015.1.3：
+//      在NUnit2.6.4基础上修改
 // ****************************************************************
 
 using System;
@@ -192,7 +190,7 @@ namespace NUnit.CommandRunner.ArxNet
 #else
             string productName = "NUnit-Command-ArxNet";//2013.1.25改
 #endif
-            string copyrightText = "Copyright (C) 2014 Lei Qun.\r\nCopyright (C) 2002-2012 Charlie Poole.\r\nCopyright (C) 2002-2004 James W. Newkirk, Michael C. Two, Alexei A. Vorontsov.\r\nCopyright (C) 2000-2002 Philip Craig.\r\nAll Rights Reserved.";//2013.9.27lq改
+            string copyrightText = "Copyright (C) 2015 Lei Qun.\r\nCopyright (C) 2002-2012 Charlie Poole.\r\nCopyright (C) 2002-2004 James W. Newkirk, Michael C. Two, Alexei A. Vorontsov.\r\nCopyright (C) 2000-2002 Philip Craig.\r\nAll Rights Reserved.";//2015.1.3lq改//2013.9.27lq改
                         
             //object[] objectAttrs = executingAssembly.GetCustomAttributes(typeof(AssemblyProductAttribute), false);
             //if ( objectAttrs.Length > 0 )

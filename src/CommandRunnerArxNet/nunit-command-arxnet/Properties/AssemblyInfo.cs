@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // 与程序集关联的信息。
 [assembly: AssemblyCompany("NUnit.org & LeiSoft")]
 [assembly: AssemblyProduct("NUnitArxNet")]
-[assembly: AssemblyCopyright("Copyright (C) 2014 Lei Qun.\r\nCopyright (C) 2002-2012 Charlie Poole.\r\nCopyright (C) 2002-2004 James W. Newkirk, Michael C. Two, Alexei A. Vorontsov.\r\nCopyright (C) 2000-2002 Philip Craig.\r\nAll Rights Reserved.")]
+[assembly: AssemblyCopyright("Copyright (C) 2015 Lei Qun.\r\nCopyright (C) 2002-2012 Charlie Poole.\r\nCopyright (C) 2002-2004 James W. Newkirk, Michael C. Two, Alexei A. Vorontsov.\r\nCopyright (C) 2000-2002 Philip Craig.\r\nAll Rights Reserved.")]
 [assembly: AssemblyTrademark("NUnit is a trademark of NUnit.org")]
 
 // 将 ComVisible 设置为 false 使此程序集中的类型

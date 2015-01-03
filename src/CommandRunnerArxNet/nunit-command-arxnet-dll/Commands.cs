@@ -5,9 +5,11 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2014, Lei Qun
-// 2014.8.21：
-//  在NUnit2.6.3基础上修改
+// Copyright 2015, Lei Qun
+//  2014.8.21：
+//      在NUnit2.6.3基础上修改
+//  2015.1.3：
+//      在NUnit2.6.4基础上修改
 // ****************************************************************
 
 using System;
@@ -35,7 +37,7 @@ namespace NUnit.CommandRunner.ArxNet
 
         // Define Command "nunit-command"
         [CommandMethod("nunit-command", CommandFlags.Session)]
-        static public void CMD_NUnit_Command() // This method can have any name
+        static public void NUnit_Command() // This method can have any name
         {
             // Put your command code here
             //Application.ShowAlertDialog("nunit-command");
@@ -76,10 +78,10 @@ namespace NUnit.CommandRunner.ArxNet
 
         // Define Command "nunit-console"
         [CommandMethod("nunit-command-arxnet", CommandFlags.Session)]
-        static public void Cmd_NUnit_Command_Arxnet() // This method can have any name
+        static public void NUnit_Command_Arxnet() // This method can have any name
         {
             // Put your command code here
-            CMD_NUnit_Command();
+            NUnit_Command();
         }
 
     }
