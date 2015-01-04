@@ -69,8 +69,7 @@ namespace NUnit.CommandRunner.ArxNet.Tests
                 ed.WriteMessage("\nNUnit.CommandRunner.ArxNet.Tests.CommandRunnerArxNetTestManualCommands:");
                 ed.WriteMessage("\n\tRunnerArxNetInit");
                 ed.WriteMessage("\n\tRunnerArxNetCleanUp");
-                ed.WriteMessage("\n\tRunnerArxNetRun");
-                
+                ed.WriteMessage("\n\tRunnerArxNetRun");                
             }
         }
 
