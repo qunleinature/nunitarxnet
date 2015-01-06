@@ -5,20 +5,16 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2013, Lei Qun
-// 2013.1.7修改：
-//  1.NUnit.Util.SettingsService改为NUnit.Util.ArxNet.SettingsServiceArxNet类
-//  2.从NUnit.Util.ArxNet.SettingsGroupArxNet类继承
-//  3.NUnit.Util.LegacySettingsConverter改为NUnit.Util.ArxNet.LegacySettingsConverterArxNet类
-//  4.从NUnit.Util.ArxNet.SettingsGroupArxNet类继承
+// Copyright 2015, Lei Qun
+//  2013.1.7修改：
+//      1.NUnit.Util.SettingsService改为NUnit.Util.ArxNet.SettingsServiceArxNet类
+//      2.从NUnit.Util.ArxNet.SettingsGroupArxNet类继承
+//      3.NUnit.Util.LegacySettingsConverter改为NUnit.Util.ArxNet.LegacySettingsConverterArxNet类
+//      4.从NUnit.Util.ArxNet.SettingsGroupArxNet类继承
 //  2013.5.27修改：
 //      1.在nunit2.6.2基础上修改
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
-// 2014.8.22：
-//  在NUnit2.6.3基础上修改
+//  2014.8.22：
+//      在NUnit2.6.3基础上修改
 // ****************************************************************
 
 using System;
