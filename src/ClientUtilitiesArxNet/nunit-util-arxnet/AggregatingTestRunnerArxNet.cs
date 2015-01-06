@@ -7,19 +7,17 @@
 // ****************************************************************
 // Copyright 2013, Lei Qun
 //  2013.7.18修改：
-//    1.在nunit2.6.2基础上修改
-//    2.改AggregatingTestRunnerArxNet
-//    3.改MultipleTestDomainRunnerArxNet
-//    4.改MultipleTestProcessRunnerArxNet
-//    5.改ProcessRunnerArxNet
+//      1.在nunit2.6.2基础上修改
+//      2.改AggregatingTestRunnerArxNet
+//      3.改MultipleTestDomainRunnerArxNet
+//      4.改MultipleTestProcessRunnerArxNet
+//      5.改ProcessRunnerArxNet
 //  2013.7.31
-//    1.已改TestDomainArxNet
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
-// 2014.8.22：
-//  在NUnit2.6.3基础上修改
+//      1.已改TestDomainArxNet
+//  2014.8.22：
+//      在NUnit2.6.3基础上修改
+//  2015.1.6：
+//      在NUnit2.6.3基础上修改
 // ****************************************************************
 
 namespace NUnit.Util.ArxNet

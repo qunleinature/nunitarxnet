@@ -5,14 +5,14 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2013, Lei Qun
-// 2012.12.21修改
-// 2012.12.25修改：
-//  build29938bug002
-//      NUnit.Util.ArxNet.TestLoaderArxNet.CanReloadUnderRuntimeVersion空对象错误
-//  build29938fix002
-//      1.对NNUnit.Util.ArxNet.TestLoaderArxNet.CanReloadUnderRuntimeVersion方法添加对异常的处理
-//      2.添加对对象为null的检查
+// Copyright 2015, Lei Qun
+//  2012.12.21修改
+//  2012.12.25修改：
+//      build29938bug002
+//          NUnit.Util.ArxNet.TestLoaderArxNet.CanReloadUnderRuntimeVersion空对象错误
+//      build29938fix002
+//          1.对NNUnit.Util.ArxNet.TestLoaderArxNet.CanReloadUnderRuntimeVersion方法添加对异常的处理
+//          2.添加对对象为null的检查
 //  2012.12.29修改：
 //      1.2012-12-29单元测试(NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.CloseProject)改
 //  2013.1.1修改：
@@ -20,15 +20,11 @@
 //  2013.5.27修改：
 //      1.在nunit2.6.2基础上修改
 // 2013.7.2
-//   1.已改DefaultTestRunnerFactoryArxNet
+//      1.已改DefaultTestRunnerFactoryArxNet
 // 2013.7.31
-//   1.已改ServicesArxNet
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
+//      1.已改ServicesArxNet
 // 2014.8.22：
-//  在NUnit2.6.3基础上修改
+//      在NUnit2.6.3基础上修改
 // ****************************************************************
 
 namespace NUnit.Util.ArxNet

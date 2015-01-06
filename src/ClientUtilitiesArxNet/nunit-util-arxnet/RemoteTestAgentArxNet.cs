@@ -5,11 +5,13 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2014, Lei Qun
+// Copyright 2015, Lei Qun
 //  2014.9.25修改：
 //      1.在nunit2.6.3基础上修改
 //      2.NUnit.Util.RemoteTestAgent改NUnit.Util.ArxNet.RemoteTestAgentArxNet
 //      3.InProcessTestRunnerFactory改InProcessTestRunnerFactoryArxNet
+//  2015.1.6修改：
+//      1.在nunit2.6.4基础上修改
 // ****************************************************************
 
 using System;

@@ -5,24 +5,27 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2013, Lei Qun
-// 2013.5.27修改：
-//  1.selector改为RuntimeFrameworkSelectorArxNet
-// 2013.5.29修改：
-//  1.改ProcessRunner为ProcessRunnerArxNet
-//  2.CAD环境下测试包是单进程、无应用域
-// 2013.7.2
-//  1.已改NUnit2.6.2基础
-// 2013.7.19
-//  1.改InProcessTestRunnerFactoryArxNet
-// 2013.7.29
-//  1.已改MultipleTestProcessRunnerArxNet
+// Copyright 2015, Lei Qun
+//  2013.5.27修改：
+//      1.selector改为RuntimeFrameworkSelectorArxNet
+//  2013.5.29修改：
+//      1.改ProcessRunner为ProcessRunnerArxNet
+//      2.CAD环境下测试包是单进程、无应用域
+//  2013.7.2
+//      1.已改NUnit2.6.2基础
+//  2013.7.19
+//      1.改InProcessTestRunnerFactoryArxNet
+//  2013.7.29
+//      1.已改MultipleTestProcessRunnerArxNet
+//  2014.8.22：
+//      在NUnit2.6.3基础上修改
+//  2015.1.6：
+//      在NUnit2.6.4基础上修改
 // ****************************************************************
 
 // ****************************************************************
 // Copyright 2014, Lei Qun
-// 2014.8.22：
-//  在NUnit2.6.3基础上修改
+
 // ****************************************************************
 
 using System;
