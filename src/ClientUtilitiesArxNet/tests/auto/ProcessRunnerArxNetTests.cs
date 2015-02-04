@@ -5,21 +5,19 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2014, Lei Qun
+// Copyright 2015, Lei Qun
 //  2013.7.7
-//   1.在NUnit2.6.2基础
-//   2.测试NUnit.Util.ArxNet.ProcessRunnerArxNet类
+//      1.在NUnit2.6.2基础
+//      2.测试NUnit.Util.ArxNet.ProcessRunnerArxNet类
 // 2013.7.18
-//   1.测试未通过,nunit-agent.exe发生异常：可能在CAD环境下不能新建一个进程运行nunit-agent.exe？
+//      1.测试未通过,nunit-agent.exe发生异常：可能在CAD环境下不能新建一个进程运行nunit-agent.exe？
 // 2014.7.17
-//   1.测试未通过,nunit-agent.exe发生异常：可能在CAD环境下不能新建一个进程运行nunit-agent.exe？
-//   2.ProcessRunnerArxNetTests测试类加上IgnoreAttribute
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
+//      1.测试未通过,nunit-agent.exe发生异常：可能在CAD环境下不能新建一个进程运行nunit-agent.exe？
+//      2.ProcessRunnerArxNetTests测试类加上IgnoreAttribute
 // 2014.9.24：
-//  在NUnit2.6.3基础上修改
+//      在NUnit2.6.3基础上修改
+// 2015.2.4：
+//      在NUnit2.6.4基础上修改
 // ****************************************************************
 
 using System.Diagnostics;

@@ -5,28 +5,26 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2014, Lei Qun
-// 2012.12.19修改
-// 2013.5.29修改
-//   1.改ProjectService为ProjectServiceArxNet
-// 2013.6.1
-//   1.已经改ServiceManager为ServiceManagerArxNet
-// 2013.6.2  
-//   1.已经改DomainManager为DomainManagerArxNet
-// 2013.6.7  
-//   1.已经改SettingsGroup为SettingsGroupArxNet
-//   2.已改在nunit2.6.2基础
-// 2013.7.29
-//   1.已改ServicesArxNet
-// 2014.7.18
-//   1.可能是在CAD环境下不支持程序域下的测试？
-//   2.ServiceManagerArxNet不使用代理
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
-// 2014.8.22：
-//  在NUnit2.6.3基础上修改
+// Copyright 2015, Lei Qun
+//  2012.12.19修改
+//  2013.5.29修改
+//      1.改ProjectService为ProjectServiceArxNet
+//  2013.6.1
+//      1.已经改ServiceManager为ServiceManagerArxNet
+//  2013.6.2  
+//      1.已经改DomainManager为DomainManagerArxNet
+//  2013.6.7  
+//      1.已经改SettingsGroup为SettingsGroupArxNet
+//      2.已改在nunit2.6.2基础
+//  2013.7.29
+//      1.已改ServicesArxNet
+//  2014.7.18
+//      1.可能是在CAD环境下不支持程序域下的测试？
+//      2.ServiceManagerArxNet不使用代理
+//  2014.8.22：
+//      在NUnit2.6.3基础上修改
+//  2015.2.4：
+//      在NUnit2.6.4基础上修改
 // ****************************************************************
 
 using System;
@@ -47,7 +45,7 @@ namespace NUnit.Util.ArxNet.Tests
 	/// TODO: Refactor SettingsService so we can use it without actually
 	/// touching the backup storage.
 	/// </summary>
-    //[SetUpFixture]//2014.9.24lq暂时不使用，因为测试时找不到ServiceManagerArxNet的方法
+    [SetUpFixture]
 	public class ServiceManagerArxNetSetUpFixture
 	{
 		[SetUp]
@@ -69,7 +67,7 @@ namespace NUnit.Util.ArxNet.Tests
 		public void ClearServices()
 		{
             //2014.7.17 Lei Qun修改,ServiceManagerArxNet不使用代理
-			//ServicesArxNet.TestAgency.Stop();
+			ServicesArxNet.TestAgency.Stop();
 			ServiceManagerArxNet.Services.ClearServices();
 		}
 	}

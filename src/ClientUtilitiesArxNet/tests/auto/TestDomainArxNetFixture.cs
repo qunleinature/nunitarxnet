@@ -5,23 +5,21 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2014, Lei Qun
+// Copyright 2015, Lei Qun
 //  2013.7.30
-//   1.在NUnit2.6.2基础
-//   2.改TestDomainArxNet
-//   3.测试未通过，可能是在CAD环境下不支持程序域下的测试？
+//      1.在NUnit2.6.2基础
+//      2.改TestDomainArxNet
+//      3.测试未通过，可能是在CAD环境下不支持程序域下的测试？
 //  2014.7.17
-//   1.测试未通过，可能是在CAD环境下不支持程序域下的测试？
-//   2.TestDomainArxNetFixture测试类加上IgnoreAttribute
+//      1.测试未通过，可能是在CAD环境下不支持程序域下的测试？
+//      2.TestDomainArxNetFixture测试类加上IgnoreAttribute
 //  2014.7.18
-//   1.TestDomainRunnerTests改为TestDomainRunnerArxNetTests
-//   2.TestDomainTests改为TestDomainArxNetTests
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
-// 2014.9.24：
-//  在NUnit2.6.3基础上修改
+//      1.TestDomainRunnerTests改为TestDomainRunnerArxNetTests
+//      2.TestDomainTests改为TestDomainArxNetTests
+//  2014.9.24：
+//      在NUnit2.6.3基础上修改
+//  2015.2.4：
+//      在NUnit2.6.4基础上修改
 // ****************************************************************
 
 using System;

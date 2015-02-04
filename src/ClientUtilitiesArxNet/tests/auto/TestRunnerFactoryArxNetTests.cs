@@ -5,19 +5,17 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2013, Lei Qun
-// 2013.5.28修改
-//   1.nunit2.6.2基础上修改
-//   2.改DefaultTestRunnerFactory为DefaultTestRunnerFactoryArxNet
-//   3.改ProcessRunner为ProcessRunnerArxNet
-// 2013.7.31
-//   1.改TestDomainArxNet
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
-// 2014.9.24：
-//  在NUnit2.6.3基础上修改
+// Copyright 2015, Lei Qun
+//  2013.5.28修改
+//      1.nunit2.6.2基础上修改
+//      2.改DefaultTestRunnerFactory为DefaultTestRunnerFactoryArxNet
+//      3.改ProcessRunner为ProcessRunnerArxNet
+//  2013.7.31
+//      1.改TestDomainArxNet
+//  2014.9.24：
+//      在NUnit2.6.3基础上修改
+//  2015.2.4：
+//      在NUnit2.6.4基础上修改
 // ****************************************************************
 
 using System;
