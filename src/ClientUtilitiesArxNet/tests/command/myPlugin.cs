@@ -1,5 +1,10 @@
-﻿// (C) Copyright 2014 by  
-//
+﻿// ****************************************************************
+// Copyright 2015, Lei Qun
+//  2015.2.6：
+//      利用cad命令直接测试
+// ****************************************************************
+
+
 using System;
 using Autodesk.AutoCAD.Runtime;
 using Autodesk.AutoCAD.ApplicationServices;
@@ -138,6 +143,9 @@ namespace NUnit.Util.ArxNet.Tests
                 ed.WriteMessage("\n\tTypeSafeSettings");
                 ed.WriteMessage("\n\tDefaultSettings");
                 ed.WriteMessage("\n\tBadSetting");
+
+                ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.RemoteTestAgentArxNetTestsCommands:");
+                ed.WriteMessage("\n\tAgentReturnsProcessId");
 
                 ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.TestDomainArxNetFixtureCommands:");
                 ed.WriteMessage("\n\tAssemblyIsLoadedCorrectly--测试未通过，可能是在CAD环境下不支持程序域下的测试");
