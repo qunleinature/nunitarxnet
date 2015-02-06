@@ -6,16 +6,14 @@
 
 // ****************************************************************
 // Copyright 2013, Lei Qun
-// 2013.5.30修改：
-//  1.在nunit2.6.2基础上修改
-//  2.NUnit.Gui.SettingsPages.AssemblyReloadSettingsPage改为NUnit.Gui.ArxNet.SettingsPagesArxNet.AssemblyReloadSettingsPageArxNet类
-//  3.改SettingsPage为SettingsPageArxNet
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
+//  2013.5.30修改：
+//      1.在nunit2.6.2基础上修改
+//      2.NUnit.Gui.SettingsPages.AssemblyReloadSettingsPage改为NUnit.Gui.ArxNet.SettingsPagesArxNet.AssemblyReloadSettingsPageArxNet类
+//      3.改SettingsPage为SettingsPageArxNet
 //  2014.10.9：
 //      在NUnit2.6.3基础上修改
+//  2015.2.6：
+//      在NUnit2.6.4基础上修改
 // ****************************************************************
 
 using System;

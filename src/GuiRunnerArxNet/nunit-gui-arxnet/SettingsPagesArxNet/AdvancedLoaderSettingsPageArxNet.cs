@@ -5,19 +5,17 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2013, Lei Qun
-// 2013.5.30修改：
-//  1.在nunit2.6.2基础上修改
-//  2.NUnit.Gui.SettingsPages.AdvancedLoaderSettingsPage改为NUnit.Gui.ArxNet.SettingsPagesArxNet.AdvancedLoaderSettingsPageArxNet类
-//  3.改SettingsPage为SettingsPageArxNet
-// 2013.6.1修改：
-//  1.改Services为ServicesArxNet
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
+// Copyright 2015, Lei Qun
+//  2013.5.30修改：
+//      1.在nunit2.6.2基础上修改
+//      2.NUnit.Gui.SettingsPages.AdvancedLoaderSettingsPage改为NUnit.Gui.ArxNet.SettingsPagesArxNet.AdvancedLoaderSettingsPageArxNet类
+//      3.改SettingsPage为SettingsPageArxNet
+//  2013.6.1修改：
+//      1.改Services为ServicesArxNet
 //  2014.10.5：
 //      在NUnit2.6.3基础上修改
+//  2015.2.6：
+//      在NUnit2.6.4基础上修改
 // ****************************************************************
 
 using System;
