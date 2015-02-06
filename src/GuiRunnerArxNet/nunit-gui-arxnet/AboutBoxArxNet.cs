@@ -5,17 +5,15 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2013, Lei Qun
-// 2013.1.24修改
-//  1.修改显示版本信息
-// 2013.6.7
-//  1.改在nunit2.6.2基础
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
+// Copyright 2015, Lei Qun
+//  2013.1.24修改
+//      1.修改显示版本信息
+//  2013.6.7
+//      1.改在nunit2.6.2基础
 //  2014.10.11：
 //      在NUnit2.6.3基础上修改
+//  2015.2.6：
+//      在NUnit2.6.4基础上修改
 // ****************************************************************
 
 using System;
@@ -72,8 +70,8 @@ namespace NUnit.Gui.ArxNet
 				    versionText += string.Format(" ({0})",configText);
 			}
 
-            //2013.1.24lq修改//2013-1-24修改
-            string copyrightText = "Copyright (C) 2014 Lei Qun.\r\nCopyright (C) 2002-2012 Charlie Poole.\r\nCopyright (C) 2002-2004 James W. Newkirk, Michael C. Two, Alexei A. Vorontsov.\r\nCopyright (C) 2000-2002 Philip Craig.\r\nAll Rights Reserved.";
+            //2015.2.6lq修改//2014.10.11lq修改//2013-1-24修改
+            string copyrightText = "Copyright (C) 2015 Lei Qun.\r\nCopyright (C) 2002-2012 Charlie Poole.\r\nCopyright (C) 2002-2004 James W. Newkirk, Michael C. Two, Alexei A. Vorontsov.\r\nCopyright (C) 2000-2002 Philip Craig.\r\nAll Rights Reserved.";
 			objectAttrs = executingAssembly.GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
 			if ( objectAttrs.Length > 0 )
 				copyrightText = ((AssemblyCopyrightAttribute)objectAttrs[0]).Copyright;

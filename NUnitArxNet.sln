@@ -41,7 +41,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nunit-gui-arxnet.tests.manu
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NUnitCoreArxNet", "NUnitCoreArxNet", "{7270F0DE-9766-4AC9-BE9D-FA295D1954D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nunit-core-arxnet-dll", "src\NUnitCoreArxNet\nunit-core-arxnet-dll\nunit-core-arxnet-dll.csproj", "{E4CE5F5B-9F4B-4256-813D-8A55F4D03352}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nunit-core-arxnet.dll", "src\NUnitCoreArxNet\nunit-core-arxnet-dll\nunit-core-arxnet.dll.csproj", "{E4CE5F5B-9F4B-4256-813D-8A55F4D03352}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nunit-core-arxnet.tests", "src\NUnitCoreArxNet\tests\auto\nunit-core-arxnet.tests.csproj", "{F6D34B9A-B925-43B3-B473-3D4CC5E0012B}"
 EndProject
