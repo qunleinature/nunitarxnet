@@ -200,11 +200,7 @@ namespace NUnit.Util.ArxNet.Tests
                 ed.WriteMessage("\n\tFromWebApplication");
                 ed.WriteMessage("\n\tWithUnmanagedCpp");
                 ed.WriteMessage("\n\tFromMakefileProject");
-                ed.WriteMessage("\n\tFromSolutionWithDisabledProject");
-
-                ed.WriteMessage("\nNUnit.Util.ArxNet.Tests.AgentReturnsProcessIdCommands:");
-                ed.WriteMessage("\n\tAgentReturnsProcessId");
-                
+                ed.WriteMessage("\n\tFromSolutionWithDisabledProject");                
             }
 
             m_fixture = new ServiceManagerArxNetSetUpFixture();
