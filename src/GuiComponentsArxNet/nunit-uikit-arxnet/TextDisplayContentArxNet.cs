@@ -5,16 +5,15 @@
 // ****************************************************************
 
 // ****************************************************************
-// 2013.5.31修改：
-//  1.在nunit2.6.2基础上修改
-//  2.NUnit.UiKit.TextBoxDisplay改为NUnit.UiKit.ArxNet.TextBoxDisplayArxNet类
-//  3.改Services为ServicesArxNet
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
+// Copyright 2015, Lei Qun
+//  2013.5.31修改：
+//      1.在nunit2.6.2基础上修改
+//      2.NUnit.UiKit.TextBoxDisplay改为NUnit.UiKit.ArxNet.TextBoxDisplayArxNet类
+//      3.改Services为ServicesArxNet
 //  2014.10.20：
 //      在NUnit2.6.3基础上修改
+//  2015.2.9：
+//      在NUnit2.6.4基础上修改
 // ****************************************************************
 
 using System;

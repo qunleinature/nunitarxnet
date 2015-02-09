@@ -5,19 +5,18 @@
 // ****************************************************************
 
 // ****************************************************************
-// 2013.5.30修改：
-//  1.在nunit2.6.2基础上修改
-//  2.NUnit.UiKit.TestSuiteTreeView改为NUnit.UiKit.ArxNet.TestSuiteTreeViewArxNet类
-//  3.改Services为ServicesArxNet
-//  4.改VisualState为VisualStateArxNet
-//  5.改TestSuiteTreeNode为TestSuiteTreeNodeArxNet
-//  6.改TestPropertiesDialog为TestPropertiesDialogArxNet
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
+// Copyright 2015, Lei Qun
+//  2013.5.30修改：
+//      1.在nunit2.6.2基础上修改
+//      2.NUnit.UiKit.TestSuiteTreeView改为NUnit.UiKit.ArxNet.TestSuiteTreeViewArxNet类
+//      3.改Services为ServicesArxNet
+//      4.改VisualState为VisualStateArxNet
+//      5.改TestSuiteTreeNode为TestSuiteTreeNodeArxNet
+//      6.改TestPropertiesDialog为TestPropertiesDialogArxNet
 //  2014.10.21：
 //      在NUnit2.6.3基础上修改
+//  2015.2.9：
+//      在NUnit2.6.4基础上修改
 // ****************************************************************
 
 using System;

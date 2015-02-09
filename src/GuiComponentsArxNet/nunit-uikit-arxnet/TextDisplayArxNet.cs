@@ -5,10 +5,13 @@
 // ****************************************************************
 
 // ****************************************************************
-// 2013.5.31修改：
-//  1.在nunit2.6.2基础上修改
-//  2.NUnit.UiKit.TextDisplay改为NUnit.UiKit.ArxNet.TextDisplayArxNet接口
-//  3.改TextDisplayContent为TextDisplayContentArxNet
+// Copyright 2015, Lei Qun
+//  2013.5.31修改：
+//      1.在nunit2.6.2基础上修改
+//      2.NUnit.UiKit.TextDisplay改为NUnit.UiKit.ArxNet.TextDisplayArxNet接口
+//      3.改TextDisplayContent为TextDisplayContentArxNet
+//  2015.2.9：
+//      在NUnit2.6.4基础上修改
 // ****************************************************************
 
 using System;
