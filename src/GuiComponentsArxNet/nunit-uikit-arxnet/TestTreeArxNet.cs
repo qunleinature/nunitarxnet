@@ -5,14 +5,16 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2013, Lei Qun 
-// 2012.12.21修改
-// 2013.5.31修改：
-//  1.改Services为ServicesArxNet
-//  2.改TestSuiteTreeView为TestSuiteTreeViewArxNet
-// 2013.6.5修改：
-//  1.已改TestLoader为TestLoaderArxNet
-//  2.改成在NUnit2.6.2基础
+// Copyright 2015, Lei Qun 
+//  2012.12.21修改
+//  2013.5.31修改：
+//      1.改Services为ServicesArxNet
+//      2.改TestSuiteTreeView为TestSuiteTreeViewArxNet
+//  2013.6.5修改：
+//      1.已改TestLoader为TestLoaderArxNet
+//      2.改成在NUnit2.6.2基础
+//  2015.2.9：
+//      在NUnit2.6.4基础上修改
 // ****************************************************************
 
 using System;
@@ -258,6 +260,14 @@ namespace NUnit.UiKit.ArxNet
 			loader.Events.TestReloaded += new NUnit.Util.TestEventHandler(events_TestReloaded);
 			loader.Events.TestUnloaded += new NUnit.Util.TestEventHandler(events_TestUnloaded);
 		}
+
+        public void ClearSelectedCategories()
+        {
+            foreach (string cat in selectedList.Items)
+                availableList.Items.Add(cat);
+            selectedList.Items.Clear();
+            UpdateCategoryFilter();
+        }
 
 		public void SelectCategories( string[] categories, bool exclude )
 		{

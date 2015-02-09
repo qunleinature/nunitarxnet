@@ -5,38 +5,36 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2013, Lei Qun
-// 2012.8.24修改
-// 2012.12.23修改:
-//  1.改GuiTestEventDispatcher为GuiTestEventDispatcherArxNet  
-//  2.改主窗体为无模式对话框
-// 2012.12.24修改
-//  1.利用反射将ServiceManagerArxNet、ServicesArxNet类复位
-//  2.public int NUnit.Gui.ArxNet.AppEntryArxNet.Main (string[] args)去掉static
-//  3.增加：static public bool nunitRunned = false;//nunit测试命令是否已运行过了
-// 2012.12.23修改
-//  1.NUnit.Gui.ArxNet.AppEntryArxNet改为调用NUnit.Util.ArxNet.SettingsServiceArxNet
-// 2013.1.23修改
-//  1.NUnit.Gui.ArxNet.AppEntryArxNet改为调用NUnit.Gui.ArxNet.GuiOptionsArxNet
-// 2013.5.27：
-//  1.DomainManager改为DomainManagerArxNet
-//  2.ServiceManager改为ServiceManagerArxNet
-//  3.Services改为ServicesArxNet
-//  4.使用EditorWritor类在Editor输出
-//  5.增加Init、CleanUp方法
-//  6.在NUnit2.6.2基础上修改
-// 2013.5.29：
-//  1.改AddinManager为AddinManagerArxNet
-//  2.改ProjectService为ProjectServiceArxNet
-//  3.改RecentFilesService为RecentFilesServiceArxNet
-// 2013.6.6：
-//  1.已改TestLoader为TestLoaderArxNet
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
+// Copyright 2015, Lei Qun
+//  2012.8.24修改
+//  2012.12.23修改:
+//      1.改GuiTestEventDispatcher为GuiTestEventDispatcherArxNet  
+//      2.改主窗体为无模式对话框
+//  2012.12.24修改
+//      1.利用反射将ServiceManagerArxNet、ServicesArxNet类复位
+//      2.public int NUnit.Gui.ArxNet.AppEntryArxNet.Main (string[] args)去掉static
+//      3.增加：static public bool nunitRunned = false;//nunit测试命令是否已运行过了
+//  2012.12.23修改
+//      1.NUnit.Gui.ArxNet.AppEntryArxNet改为调用NUnit.Util.ArxNet.SettingsServiceArxNet
+//  2013.1.23修改
+//      1.NUnit.Gui.ArxNet.AppEntryArxNet改为调用NUnit.Gui.ArxNet.GuiOptionsArxNet
+//  2013.5.27：
+//      1.DomainManager改为DomainManagerArxNet
+//      2.ServiceManager改为ServiceManagerArxNet
+//      3.Services改为ServicesArxNet
+//      4.使用EditorWritor类在Editor输出
+//      5.增加Init、CleanUp方法
+//      6.在NUnit2.6.2基础上修改
+//  2013.5.29：
+//      1.改AddinManager为AddinManagerArxNet
+//      2.改ProjectService为ProjectServiceArxNet
+//      3.改RecentFilesService为RecentFilesServiceArxNet
+//  2013.6.6：
+//      1.已改TestLoader为TestLoaderArxNet
 //  2014.9.28：
 //      在NUnit2.6.3基础上修改
+//  2015.2.9：
+//      在NUnit2.6.4基础上修改
 // ****************************************************************
 
 using System;
