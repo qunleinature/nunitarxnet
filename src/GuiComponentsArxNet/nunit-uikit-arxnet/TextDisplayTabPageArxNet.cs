@@ -5,13 +5,15 @@
 // ****************************************************************
 
 // ****************************************************************
-// 2013.5.31修改：
-//  1.在nunit2.6.2基础上修改
-//  2.NUnit.UiKit.TextDisplayTabPage改为NUnit.UiKit.ArxNet.TextDisplayTabPageArxNet类
-//  3.改TextBoxDisplay为TextBoxDisplayArxNet
-// 2013.6.1修改：
-//  1.改TextDisplayTabSettings为TextDisplayTabSettingsArxNet
-//  2.改TextDisplay为TextDisplayArxNet
+// Copyright 2015, Lei Qun
+//  2013.5.31修改：
+//      1.在nunit2.6.2基础上修改
+//      2.NUnit.UiKit.TextDisplayTabPage改为NUnit.UiKit.ArxNet.TextDisplayTabPageArxNet类
+//      3.改TextBoxDisplay为TextBoxDisplayArxNet
+//  2013.6.1修改：
+//      1.改TextDisplayTabSettings为TextDisplayTabSettingsArxNet
+//  2015.2.9：
+//      在NUnit2.6.4基础上修改
 // ****************************************************************
 
 using System;

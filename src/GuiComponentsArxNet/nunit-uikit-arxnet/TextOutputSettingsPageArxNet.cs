@@ -5,15 +5,18 @@
 // ****************************************************************
 
 // ****************************************************************
-// 2013.5.30修改：
-//  1.在nunit2.6.2基础上修改
-//  2.NUnit.UiKit.TextOutputSettingsPage改为NUnit.UiKit.ArxNet.TextOutputSettingsPageArxNet类
-//  3.SettingsPage改为SettingsPageArxNet
-//  4.改EditTabPagesDialog为EditTabPagesDialogArxNet
-// 2013.6.1修改：
-//  1.改AddTabPageDialog为AddTabPageDialogArxNet
-//  2.改TextDisplayTabSettings为TextDisplayTabSettingsArxNet
-//  3.改TextDisplayContent为TextDisplayContentArxNet
+// Copyright 2015, Lei Qun
+//  2013.5.30修改：
+//      1.在nunit2.6.2基础上修改
+//      2.NUnit.UiKit.TextOutputSettingsPage改为NUnit.UiKit.ArxNet.TextOutputSettingsPageArxNet类
+//      3.SettingsPage改为SettingsPageArxNet
+//      4.改EditTabPagesDialog为EditTabPagesDialogArxNet
+//  2013.6.1修改：
+//      1.改AddTabPageDialog为AddTabPageDialogArxNet
+//      2.改TextDisplayTabSettings为TextDisplayTabSettingsArxNet
+//      3.改TextDisplayContent为TextDisplayContentArxNet
+//  2015.2.9：
+//      在NUnit2.6.4基础上修改
 // ****************************************************************
 
 using System;
