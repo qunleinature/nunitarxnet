@@ -5,11 +5,14 @@
 // ****************************************************************
 
 // ****************************************************************
-// 2013.5.28修改：
-//  1.在nunit2.6.2基础上修改
-//  2.NUnit.UiKit.ColorProgressBar改为NUnit.UiKit.ArxNet.ColorProgressBarArxNet类
-//  2.NUnit.UiKit.TestProgressBar改为NUnit.UiKit.ArxNet.TestProgressBarArxNet类
-//  3.Services改为ServicesArxNet
+// Copyright 2015, Lei Qun 
+//  2013.5.28修改：
+//      1.在nunit2.6.2基础上修改
+//      2.NUnit.UiKit.ColorProgressBar改为NUnit.UiKit.ArxNet.ColorProgressBarArxNet类
+//      2.NUnit.UiKit.TestProgressBar改为NUnit.UiKit.ArxNet.TestProgressBarArxNet类
+//      3.Services改为ServicesArxNet
+//  2015.2.9：
+//      在NUnit2.6.4基础上修改
 // ****************************************************************
 
 using System;

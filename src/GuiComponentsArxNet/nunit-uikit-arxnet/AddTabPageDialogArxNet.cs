@@ -5,10 +5,13 @@
 // ****************************************************************
 
 // ****************************************************************
-// 2013.5.31修改：
-//  1.在nunit2.6.2基础上修改
-//  2.NUnit.UiKit.AddTabPageDialog改为NUnit.UiKit.ArxNet.AddTabPageDialogArxNet类
-//  3.改TextDisplayTabSettings为TextDisplayTabSettingsArxNet
+// Copyright 2015, Lei Qun
+//  2013.5.31修改：
+//      1.在nunit2.6.2基础上修改
+//      2.NUnit.UiKit.AddTabPageDialog改为NUnit.UiKit.ArxNet.AddTabPageDialogArxNet类
+//      3.改TextDisplayTabSettings为TextDisplayTabSettingsArxNet
+//  2015.2.9：
+//      在NUnit2.6.4基础上调试
 // ****************************************************************
 
 using System;

@@ -5,35 +5,33 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2013, Lei Qun
-// 2012.8.24修改
-// 2012.12.20修改
-// 2012.12.25修改: 
-// 1.对build29938除bug
-// 2.单元测试改
-// 2012.12.27修改
-// 1.单元测试改
-// 2012.12.29修改
-// 1.单元测试改
-// 2012.12.30修改
-// 1.单元测试改
-// 2012.12.31修改
-// 1.单元测试改
-// 2013.1.1修改
-// 1.单元测试NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProject改
-// 2.单元测试NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProjectAs改
-// 2013.6.1修改：
+// Copyright 2015, Lei Qun
+//  2012.8.24修改
+//  2012.12.20修改
+//  2012.12.25修改: 
+//      1.对build29938除bug
+//      2.单元测试改
+//  2012.12.27修改
+//      1.单元测试改
+//  2012.12.29修改
+//      1.单元测试改
+//  2012.12.30修改
+//      1.单元测试改
+//  2012.12.31修改
+//      1.单元测试改
+//  2013.1.1修改
+//      1.单元测试NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProject改
+//      2.单元测试NUnit.Gui.ArxNet.Tests.NUnitPresenterArxNetTests.SaveProjectAs改
+//  2013.6.1修改：
 // 1.Services已经改ServicesArxNet
-// 2013.6.6修改：
-// 1.已改TestLoader为TestLoaderArxNet
-// 2.改成在NUnit2.6.2基础
-// 3.NUnitForm已改成NUnitFormArxNet
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
+//  2013.6.6修改：
+//      1.已改TestLoader为TestLoaderArxNet
+//      2.改成在NUnit2.6.2基础
+//      3.NUnitForm已改成NUnitFormArxNet
 //  2014.9.28：
 //      在NUnit2.6.3基础上修改
+//  2015.2.9：
+//      在NUnit2.6.4基础上修改
 // ****************************************************************
 
 using System;

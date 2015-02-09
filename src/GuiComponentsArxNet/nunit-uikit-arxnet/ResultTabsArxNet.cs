@@ -5,27 +5,25 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2013, Lei Qun 
-// 2012.12.21修改:改Services为ServicesArxNet
-// 2013.1.8修改：
-//  1.NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试改
-// 2013.5.28修改：
-//  1.在nunit2.6.2基础上修改
-//  2.ErrorDisplay改为ErrorDisplayArxNet
-//  3.NotRunTree改为NotRunTreeArxNet
-// 2013.5.31修改：
-//  1.改TextDisplayTabPage为TextDisplayTabPageArxNet
-// 2013.6.1修改：
-//  1.改TextOutputSettingsPage为TextOutputSettingsPageArxNet
-//  2.改TextDisplayTabSettings为TextDisplayTabSettingsArxNet
-// 2013.6.9
-//  1.已改SimpleSettingsDialogArxNet
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
+// Copyright 2015, Lei Qun 
+//  2012.12.21修改:改Services为ServicesArxNet
+//  2013.1.8修改：
+//      1.NUnit.Gui.ArxNet.Tests.NUnitFormArxNetTests.ShowModalDialog测试改
+//  2013.5.28修改：
+//      1.在nunit2.6.2基础上修改
+//      2.ErrorDisplay改为ErrorDisplayArxNet
+//      3.NotRunTree改为NotRunTreeArxNet
+//  2013.5.31修改：
+//      1.改TextDisplayTabPage为TextDisplayTabPageArxNet
+//  2013.6.1修改：
+//      1.改TextOutputSettingsPage为TextOutputSettingsPageArxNet
+//      2.改TextDisplayTabSettings为TextDisplayTabSettingsArxNet
+//  2013.6.9
+//      1.已改SimpleSettingsDialogArxNet
 //  2014.10.20：
 //      在NUnit2.6.3基础上修改
+//  2015.2.9：
+//      在NUnit2.6.4基础上修改
 // ****************************************************************
 
 using System;

@@ -5,29 +5,27 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2013, Lei Qun
-// 2012.12.21修改:调用TabbedSettingsDialogArxNet类,TreeBasedSettingsDialogArxNet类
-// 2013.5.29修改
-//   1.改GuiSettingsPage为GuiSettingsPageArxNet
-// 2013.5.30修改
-//   1.改TextOutputSettingsPage为TextOutputSettingsPageArxNet
-//   2.改TreeSettingsPage为TreeSettingsPageArxNet
-//   3.改TestResultSettingsPage为TestResultSettingsPageArxNet
-//   4.改ProjectEditorSettingsPage为ProjectEditorSettingsPageArxNet
-//   5.改TestLoaderSettingsPage为TestLoaderSettingsPageArxNet
-//   6.改AssemblyReloadSettingsPage为AssemblyReloadSettingsPageArxNet
-//   7.改RuntimeSelectionSettingsPage为RuntimeSelectionSettingsPageArxNet
-//   8.改AdvancedLoaderSettingsPage为AdvancedLoaderSettingsPageArxNet
-//   9.改VisualStudioSettingsPage为VisualStudioSettingsPageArxNet
-//   10.改InternalTraceSettingsPage为InternalTraceSettingsPageArxNet
-// 2013.6.7
-//   1.改在nunit2.6.2基础
-// ****************************************************************
-
-// ****************************************************************
-// Copyright 2014, Lei Qun
+// Copyright 2015, Lei Qun
+//  2012.12.21修改:调用TabbedSettingsDialogArxNet类,TreeBasedSettingsDialogArxNet类
+//  2013.5.29修改
+//      1.改GuiSettingsPage为GuiSettingsPageArxNet
+//  2013.5.30修改
+//      1.改TextOutputSettingsPage为TextOutputSettingsPageArxNet
+//      2.改TreeSettingsPage为TreeSettingsPageArxNet
+//      3.改TestResultSettingsPage为TestResultSettingsPageArxNet
+//      4.改ProjectEditorSettingsPage为ProjectEditorSettingsPageArxNet
+//      5.改TestLoaderSettingsPage为TestLoaderSettingsPageArxNet
+//      6.改AssemblyReloadSettingsPage为AssemblyReloadSettingsPageArxNet
+//      7.改RuntimeSelectionSettingsPage为RuntimeSelectionSettingsPageArxNet
+//      8.改AdvancedLoaderSettingsPage为AdvancedLoaderSettingsPageArxNet
+//      9.改VisualStudioSettingsPage为VisualStudioSettingsPageArxNet
+//      10.改InternalTraceSettingsPage为InternalTraceSettingsPageArxNet
+//  2013.6.7
+//      1.改在nunit2.6.2基础
 //  2014.10.9：
 //      在NUnit2.6.3基础上修改
+//  2015.2.9：
+//      在NUnit2.6.4基础上修改
 // ****************************************************************
 
 #define TREE_BASED

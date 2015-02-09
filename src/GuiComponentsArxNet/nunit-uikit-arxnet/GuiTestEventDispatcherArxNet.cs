@@ -5,13 +5,15 @@
 // ****************************************************************
 
 // ****************************************************************
-// Copyright 2013, Lei Qun 
-// 2012.12.23修改:
+// Copyright 2015, Lei Qun 
+//  2012.12.23修改:
 //      private void InvokeHandler( MulticastDelegate handlerList, EventArgs e )中
 //      control.Invoke( handler, args );死锁,改为 
 //      control.BeginInvoke(handler, args);
-// 2013.6.8
-//   1.改在nunit2.6.2基础
+//  2013.6.8
+//      1.改在nunit2.6.2基础
+//  2015.2.9：
+//      在NUnit2.6.4基础上修改
 // ****************************************************************
 
 using System;
