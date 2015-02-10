@@ -6,13 +6,13 @@
 
 // ****************************************************************
 // Copyright 2015, Lei Qun 
-// 2012.12.21修改:基类改为SettingsDialogBaseArxNet
-// 2013.5.30修改:
-//  1.SettingsPage改为SettingsPageArxNet
-// 2013.6.1修改:
-//  1.改Services为ServicesArxNet
-// 2013.6.9
-//  1.已改在NUnit2.6.2基础
+//  2012.12.21修改:基类改为SettingsDialogBaseArxNet
+//  2013.5.30修改:
+//      1.SettingsPage改为SettingsPageArxNet
+//  2013.6.1修改:
+//      1.改Services为ServicesArxNet
+//  2013.6.9
+//      1.已改在NUnit2.6.2基础
 //  2015.2.9：
 //      在NUnit2.6.4基础上修改
 // ****************************************************************
